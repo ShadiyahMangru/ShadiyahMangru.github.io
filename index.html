@@ -1,32 +1,350 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Shadiyah Mangru</title>
-        <style>
-            body{
-                font-family: Arial;
-            }
-        </style>
-    </head>
-	<body>
-		<nav>
-            <h2>A Website</h2>
-            <h3></h3>
-    		<ul>
-	        	<li><a href="/Link1">Link 1</a></li>
-        		<li><a href="/Link2">Link 2</a></li>
-        		<li><a href="/Link3">Link 3</a></li>
-                	<li><a href="/Link4">Link 4</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<p></p>
+<html lang="en">
+<head>
+<title>Demo Website</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<style type="text/css">
+
+.divTabSpacer {
+	border-top:1px silver solid;
+	width:100%;
+	margin-top:-1px;
+	z-index:900;
+}
+
+.divTabs {
+	padding-bottom:3px;
+}
+
+.divTabs .tab {
+	background-color: #8fe8e8;
+	border:1px silver solid;
+	border-radius:4px 4px 0 0;	
+	color:black;
+	padding:4px 20px 4px 20px;
+	cursor:pointer;
+    font-family: "Arial Narrow";
+}
+
+.divTabs .spacer {
+	width:100%;
+	border-bottom:1px silver solid;
+}
+
+.divTabs .active {
+	background-color:white!important;
+	border-bottom:1px white solid;
+	font-weight:bold;
+}
+
+.tabContents{
+    margin-top: 1em;
+    font-family: Tahoma;
+    margin-left: .5em;        
+}
+    
+.pageHeader{
+    font-size:24pt; 
+    font-family: "Verdana";
+    margin-left: .25em;
+    text-shadow: 1px 2px 2px grey;
+}
+    
+#title{
+    font-weight: 600;
+    font-family: "Forte";
+    font-size: 48px;
+    margin-top: -.5em;
+    margin-bottom: -.4em;
+    color: #5C246E;
+    margin-left: .25em;
+}
+#subtitle{
+    font-family: Tahoma;
+    margin-bottom: 1.75em;
+    margin-left: .25em;
+}   
+.fibB{
+    color: white;
+    background-color: cornflowerblue;
+    padding: 3px 5px 3px 5px;
+    border-radius: 10px;
+    font-weight: 600;
+        
+}
+    
+.fibI{
+    border-radius: 6px;
+    padding: 2px 5px 2px 5px;
+}
+
+.fibO{
+    color: dodgerblue; 
+    font-weight: 600; 
+    margin-top: 1em;
+}
+
+#divTabOne{
+    max-width: 90%;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 1em;
+}
+#developerCredit{
+    font-size:18pt; 
+    margin-top:100px; 
+    text-align: right; 
+    margin-right: 1em;
+    font-family: "Vladimir Script";
+    font-weight: 600;
+}
+</style>
+</head>
+    
+<body>
+	<div>
+        <!-- site header -->
+        <div id="title">
+            <p>Demo Website</p>
+        </div>
+        <p id="subtitle">Explore the sample content under the tabs below.</p>
+		<!-- Div containing the tabs -->
+		<div class="divTabs">
+			<span id="spanTabOne" class="tab active">
+				Calculate Fibonacci Numbers
+			</span>
+			<span id="spanTabTwo" class="tab">
+				Tab Two (Coming Soon!)
+			</span>
+            <span id="spanTabThree" class="tab">
+				Tab Three (Coming Soon!)
+			</span>
+             <span id="spanTabFour" class="tab">
+                Tab Four (Coming Soon!)
+			</span>
 		</div>
-		<footer>
-    		<ul>
-        		<li>By <a href="mailto:shadiyahmangru@gmail.com">Shadiyah Mangru</a></li>
-        		<li><a href="https://github.com/ShadiyahMangru">My Github site</a></li>
-			</ul>
-		</footer>
-	</body>
+		<div class="divTabSpacer">&nbsp;</div>
+
+
+
+
+    <!--------------------------------------------------------------
+	   Divs containing the tab contents
+    -------------------------------------------------------------->
+    <div class="tab-content clearfix" style="padding-top:20px;">
+
+        <div id="divTabOne">
+            
+            <div class="pageHeader">Calculate Fibonacci Numbers</div>
+                
+            <div class="tabContents" style="line-height: 170%">
+            The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, ....  
+            <br>
+            Each number in the sequence (starting from the third term) is the sum of the two preceding numbers.
+            <br><br>
+                
+        <!--sub tabs-->
+         <div class="divTabs">
+			<span id="spanSubTabOne" class="tab active" style="background-color: #EED2EE">
+                nth Term Calculator
+			</span>
+			<span id="spanSubTabTwo" class="tab" style="background-color: #EED2EE">
+				First n Terms Calculator
+			</span>
+		</div>
+		<div class="divTabSpacer">&nbsp;</div>   
+        <div id="divSubTabOne">    
+		    Find the nth term of the Fibonacci Sequence<br><br>
+            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nth" type="text" value="">
+            <button class="fibB" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
+            <div id="nthTerm" class="fibO"></div>
+            <br><br>
+        </div>
+        <div id="divSubTabTwo" style="display: none">
+            Print the first n terms of the Fibonacci Sequence<br><br>
+            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nVal" type="text" value="">
+            <button class="fibB" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
+            <div id="nTerms" class="fibO"></div>
+            <br><br>
+        </div>
+            </div>
+				
+        </div> <!-- End divTabOne -->
+        
+        <div id="divTabTwo" style="display: none;">
+
+            <div class="pageHeader">Page Two (Coming Soon!)</div>
+                
+            <div class="tabContents">Page Two contents will go here.
+            </div>
+	
+		</div> <!-- End divTabTwo -->
+        
+        
+        <div id="divTabThree" style="display:none;">
+            
+            <div class="pageHeader">Page Three (Coming Soon!)</div>
+                
+            <div class="tabContents">Page Three contents will go here.</div>
+				
+        </div> <!-- End divTabThree -->
+        
+        
+        <div id="divTabFour" style="display:none;">
+
+		    <div class="pageHeader">Page Four (Coming Soon!)</div>             
+            
+            <div class="tabContents">Page Four contents will go here.</div>
+            
+        </div><!-- End divTabFour -->
+            
+    </div>
+		
+
+
+        <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com">Shadiyah Mangru</a></div>
+</div>
+
+    <script type="text/javascript">
+
+	
+	$(document).ready( function() {
+        
+        
+		$(".dt-buttons span").addClass("btn");
+
+		////////////////////////////////////////////////////////////
+		// The following block handles the toggling of the tabs
+		////////////////////////////////////////////////////////////
+
+        $("#spanTabOne").click( function() {
+			$("#divTabOne").css("display", "block");
+			$("#spanTabOne").addClass("active");
+			
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+		
+		$("#spanTabTwo").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+
+			$("#divTabTwo").css("display", "block");
+			$("#spanTabTwo").addClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+        
+        $("#spanTabThree").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+
+            $("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+			$("#divTabThree").css("display", "block");
+			$("#spanTabThree").addClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+        
+        $("#spanTabFour").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+			
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "block");
+			$("#spanTabFour").addClass("active");
+		});
+        
+        
+        
+        $("#spanSubTabOne").click( function() {
+			$("#divSubTabOne").css("display", "block");
+			$("#spanSubTabOne").addClass("active");
+			
+			$("#divSubTabTwo").css("display", "none");
+			$("#spanSubTabTwo").removeClass("active");
+		});
+		
+		$("#spanSubTabTwo").click( function() {
+			$("#divSubTabOne").css("display", "none");
+			$("#spanSubTabOne").removeClass("active");
+
+			$("#divSubTabTwo").css("display", "block");
+			$("#spanSubTabTwo").addClass("active");
+		});
+        
+        
+        
+        
+        
+        
+        
+		////////////////////////////////////////////////////////////
+	});
+
+</script>
+    
+<script>
+    //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
+    
+    function fibCalc(Num){
+        fibArray = [];
+        Num = parseInt(Num);
+        if(Num==1){
+            fibNew = 1;
+            return fibNew;
+        }
+        if(Num==2){
+            fibNew = 1;
+            return fibNew;
+        }
+        if(Num>=3){
+            var i = 3;
+            fibArray.push(1);
+            fibArray.push(1);
+            while(i<=Num){
+                fibNew = fibArray[i-2] + fibArray[(i-3)];
+                fibNew = parseInt(fibNew);
+                fibArray.push(fibNew);
+                i++;
+            }
+            return fibNew;
+        }
+    }
+    
+    function nthFibCalc(Num){
+        document.querySelector('#nthTerm').innerHTML = "The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num));
+    }
+    
+    function nFibCalc(Num){
+        var firstN =[];
+        for(var i = 1; i<parseInt(Num)+1; i++){
+            firstN[i-1] = fibCalc(i);
+        }
+        document.querySelector("#nTerms").innerHTML = "The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", ");
+    }
+</script>
+    
+</body>
 </html>
+
