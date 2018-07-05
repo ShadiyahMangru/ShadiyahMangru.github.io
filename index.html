@@ -25,7 +25,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-    font-family: "Arial Narrow";
+        font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -94,7 +94,7 @@
 }
 #developerCredit{
     font-size:18pt; 
-    margin-top:100px; 
+    margin-top:90px; 
     text-align: right; 
     margin-right: 1em;
     font-family: "Vladimir Script";
@@ -116,7 +116,7 @@
 				Calculate Fibonacci Numbers
 			</span>
 			<span id="spanTabTwo" class="tab">
-				Tab Two (Coming Soon!)
+				Bubble Sort Your Data Set
 			</span>
             <span id="spanTabThree" class="tab">
 				Tab Three (Coming Soon!)
@@ -130,9 +130,7 @@
 
 
 
-    <!--------------------------------------------------------------
-	   Divs containing the tab contents
-    -------------------------------------------------------------->
+    <!-- Divs containing the tab contents -->
     <div class="tab-content clearfix" style="padding-top:20px;">
 
         <div id="divTabOne">
@@ -175,9 +173,18 @@
         
         <div id="divTabTwo" style="display: none;">
 
-            <div class="pageHeader">Page Two (Coming Soon!)</div>
+            <div class="pageHeader">Bubble Sort Your Data Set</div>
                 
-            <div class="tabContents">Page Two contents will go here.
+            <div class="tabContents" style="line-height: 170%">
+            Create a data set:<br>    
+            <strong style="color: deepskyblue;">Enter a number to add to data set:</strong> <input class="fibI" id="dsCreate" type="text" value="">
+            <button class="fibB" onclick="setDataSet(document.querySelector('#dsCreate').value);">Add to Data Set</button>
+            <button class="fibB" onclick="undo();">Undo</button>
+            <br>
+            <div id="dataSet" class="fibO"></div>
+            <br><br>  
+            <button class="fibB" onclick="bubbleSort(ds);">Bubble Sort</button><br><br>
+            <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
             </div>
 	
 		</div> <!-- End divTabTwo -->
@@ -204,7 +211,7 @@
 		
 
 
-        <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com">Shadiyah Mangru</a></div>
+        <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com" title="A Website By Shadiyah Mangru">Shadiyah Mangru</a></div>
 </div>
 
     <script type="text/javascript">
@@ -345,6 +352,52 @@
     }
 </script>
     
+<script>
+    //Methods to (i) create a user-defined data set, (ii) undo last data set entry, (iii) output the data set, (iv) bubble sort the data set
+    
+    var ds = [];
+    
+    function setDataSet(Num){
+        if((Num!="" && isNaN(Num)!=true)){
+            ds.unshift(Num);
+            output();
+        }
+        return ds;
+    }
+    
+    function undo(){
+        ds.shift();
+        if(ds.length<1){
+            document.querySelector("#dataSet").innerHTML = "Your Data Set: ";
+        }
+        else{
+            output();
+        }
+    }
+    
+    function output(){
+        document.querySelector("#dataSet").innerHTML = "Your Data Set: | " + ds.join(" | ") + " | ";  
+        document.querySelector("#dsCreate").value = ""; 
+    }
+    
+    function bubbleSort(set){
+		var ctr = 0;
+		do{
+			for(var i = 0; i<set.length-1; i++){
+				if(parseInt(set[i]) > parseInt(set[i+1])){
+					var temp = set[i];
+					set[i] = set[i+1];
+					set[i+1] = temp;
+				}		
+			}
+		ctr++;
+		}
+		while(ctr<set.length);
+		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
+		return set;
+	}
+    
+</script>
+    
 </body>
 </html>
-
