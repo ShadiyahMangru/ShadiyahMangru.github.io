@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Demo Website</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<style type="text/css">
+
+.divTabSpacer {
+	border-top:1px silver solid;
+	width:100%;
+	margin-top:-1px;
+	z-index:900;
+}
+
+.divTabs {
+	padding-bottom:3px;
+}
+
+.divTabs .tab {
+	background-color: #8fe8e8;
+	border:1px silver solid;
+	border-radius:4px 4px 0 0;	
+	color:black;
+	padding:4px 20px 4px 20px;
+	cursor:pointer;
+  font-family: "Arial Narrow";
+}
+
+.divTabs .spacer {
+	width:100%;
+	border-bottom:1px silver solid;
+}
+
+.divTabs .active {
+	background-color:white!important;
+	border-bottom:1px white solid;
+	font-weight:bold;
+}
+
+.tabContents{
+    margin-top: 1em;
+    font-family: Tahoma;
+    margin-left: .5em;        
+}
+    
+.pageHeader{
+    font-size:24pt; 
+    font-family: "Verdana";
+    margin-left: .25em;
+    text-shadow: 1px 2px 2px grey;
+}
+    
+#title{
+    font-weight: 600;
+    font-family: "Forte";
+    font-size: 48px;
+    margin-top: -.5em;
+    margin-bottom: -.4em;
+    color: #5C246E;
+    margin-left: .25em;
+}
+#subtitle{
+    font-family: Tahoma;
+    margin-bottom: 1.75em;
+    margin-left: .25em;
+}   
+.fibB{
+    color: white;
+    background-color: cornflowerblue;
+    padding: 3px 5px 3px 5px;
+    border-radius: 10px;
+    font-weight: 600;
+        
+}
+    
+.fibI{
+    border-radius: 6px;
+    padding: 2px 5px 2px 5px;
+}
+
+.fibO{
+    color: dodgerblue; 
+    font-weight: 600; 
+    margin-top: 1em;
+}
+
+#divTabOne, #divTabTwo, #divTabThree{
+    max-width: 90%;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 1em;
+}
+#developerCredit{
+    font-size:18pt; 
+    margin-top:90px; 
+    text-align: right; 
+    margin-right: 1em;
+    font-family: "Vladimir Script";
+    font-weight: 600;
+}
+</style>
+</head>
+    
+<body>
+	<div>
+        <!-- site header -->
+        <div id="title">
+            <p>Demo Website</p>
+        </div>
+        <p id="subtitle">Explore the sample content under the tabs below.</p>
+		<!-- Div containing the tabs -->
+		<div class="divTabs">
+			<span id="spanTabOne" class="tab active">
+				Calculate Fibonacci Numbers
+			</span>
+			<span id="spanTabTwo" class="tab">
+				Bubble Sort Your Data Set
+			</span>
+      <span id="spanTabThree" class="tab">
+				Let's Play Hangman!
+			</span>
+      <span id="spanTabFour" class="tab">
+        Tab Four (Coming Soon!)
+			</span>
+		</div>
+		<div class="divTabSpacer">&nbsp;</div>
+
+
+
+
+    <!-- Divs containing the tab contents -->
+    <div class="tab-content clearfix" style="padding-top:20px;">
+
+        <div id="divTabOne">
+            
+            <div class="pageHeader">Calculate Fibonacci Numbers</div>
+                
+            <div class="tabContents" style="line-height: 170%">
+            The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, ....  
+            <br>
+            Each number in the sequence (starting from the third term) is the sum of the two preceding numbers.
+            <br><br>
+                
+        <!--sub tabs-->
+         <div class="divTabs">
+			<span id="spanSubTabOne" class="tab active" style="background-color: #EED2EE">
+                nth Term Calculator
+			</span>
+			<span id="spanSubTabTwo" class="tab" style="background-color: #EED2EE">
+				First n Terms Calculator
+			</span>
+		</div>
+		<div class="divTabSpacer">&nbsp;</div>   
+        <div id="divSubTabOne">    
+		    Find the nth term of the Fibonacci Sequence<br><br>
+            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nth" type="text" value="">
+            <button class="fibB" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
+            <div id="nthTerm" class="fibO"></div>
+            <br><br>
+        </div>
+        <div id="divSubTabTwo" style="display: none">
+            Print the first n terms of the Fibonacci Sequence<br><br>
+            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nVal" type="text" value="">
+            <button class="fibB" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
+            <div id="nTerms" class="fibO"></div>
+            <br><br>
+        </div>
+            </div>
+				
+        </div> <!-- End divTabOne -->
+        
+        <div id="divTabTwo" style="display: none;">
+
+            <div class="pageHeader">Bubble Sort Your Data Set</div>
+                
+            <div class="tabContents" style="line-height: 170%">
+            Create a data set:<br>    
+            <strong style="color: deepskyblue;">Enter a number to add to data set:</strong> <input class="fibI" id="dsCreate" type="text" value="">
+            <button class="fibB" onclick="setDataSet(document.querySelector('#dsCreate').value);">Add to Data Set</button>
+            <button class="fibB" onclick="undo();">Undo</button>
+            <br>
+            <div id="dataSet" class="fibO"></div>
+            <br><br>  
+            <button class="fibB" onclick="bubbleSort(ds);">Bubble Sort</button><br><br>
+            <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
+            </div>
+	
+		</div> <!-- End divTabTwo -->
+        
+        
+        <div id="divTabThree" style="display:none;">
+            
+            <div class="pageHeader">Let's Play Hangman!</div>
+                
+            <div class="tabContents">Select Difficulty Level: 
+            <button id="easy" class="fibB" onclick="playGame(1);">Easy</button>
+            <button id="medium" class="fibB" onclick="playGame(2);">Medium</button>
+            <button id="hard" class="fibB" onclick="playGame(3);">Hard</button><br><br>
+            
+            <div id="answerFormat" style="font-weight: 600; font-size: 24px"></div><br>
+                
+            <strong id="getLetter" style="color: deepskyblue; display: none">Enter a letter:</strong> <input class="fibI" id="letterGuess" style="display: none; font-weight: 600; font-size: 16px" type="text" value="">
+            <button class="fibB" id="submit" style="display: none;" onclick="guessLetter(document.querySelector('#letterGuess').value);">Submit</button><Br><br>
+            <div id="feedback" style="color: purple; font-weight: 600; font-size: 18px"></div>
+                <div id="celebrate" style="display: none; margin-top: -4.5em"><img src="Images/celebrate.gif"></div>
+                <div id="sad" style="display: none;"><img src="Images/sad.svg" style="width: 20%;"></div>
+            <button class="fibB" id="playAgain" style="display: none;" onclick="playAgain();">Play Again!</button>
+            </div>
+				
+        </div> <!-- End divTabThree -->
+        
+        
+        <div id="divTabFour" style="display:none;">
+
+		    <div class="pageHeader">Page Four (Coming Soon!)</div>             
+            
+            <div class="tabContents">Page Four contents will go here.</div>
+            
+        </div><!-- End divTabFour -->
+            
+    </div>
+		
+
+
+        <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com" title="A Website By Shadiyah Mangru">Shadiyah Mangru</a></div>
+</div>
+
+    <script type="text/javascript">
+
+	
+	$(document).ready( function() {
+        
+        
+		$(".dt-buttons span").addClass("btn");
+
+		////////////////////////////////////////////////////////////
+		// The following block handles the toggling of the tabs
+		////////////////////////////////////////////////////////////
+
+        $("#spanTabOne").click( function() {
+			$("#divTabOne").css("display", "block");
+			$("#spanTabOne").addClass("active");
+			
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+		
+		$("#spanTabTwo").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+
+			$("#divTabTwo").css("display", "block");
+			$("#spanTabTwo").addClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+        
+        $("#spanTabThree").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+
+            $("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+			$("#divTabThree").css("display", "block");
+			$("#spanTabThree").addClass("active");
+            
+            $("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
+		});
+        
+        $("#spanTabFour").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
+			
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
+            
+            $("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
+            
+            $("#divTabFour").css("display", "block");
+			$("#spanTabFour").addClass("active");
+		});
+        
+        
+        
+        $("#spanSubTabOne").click( function() {
+			$("#divSubTabOne").css("display", "block");
+			$("#spanSubTabOne").addClass("active");
+			
+			$("#divSubTabTwo").css("display", "none");
+			$("#spanSubTabTwo").removeClass("active");
+		});
+		
+		$("#spanSubTabTwo").click( function() {
+			$("#divSubTabOne").css("display", "none");
+			$("#spanSubTabOne").removeClass("active");
+
+			$("#divSubTabTwo").css("display", "block");
+			$("#spanSubTabTwo").addClass("active");
+		});
+        
+        
+        
+        
+        
+        
+        
+		////////////////////////////////////////////////////////////
+	});
+
+</script>
+    
+<script>
+    //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
+    
+    function fibCalc(Num){
+        fibArray = [];
+        Num = parseInt(Num);
+        if(Num==1){
+            fibNew = 1;
+            return fibNew;
+        }
+        if(Num==2){
+            fibNew = 1;
+            return fibNew;
+        }
+        if(Num>=3){
+            var i = 3;
+            fibArray.push(1);
+            fibArray.push(1);
+            while(i<=Num){
+                fibNew = fibArray[i-2] + fibArray[(i-3)];
+                fibNew = parseInt(fibNew);
+                fibArray.push(fibNew);
+                i++;
+            }
+            return fibNew;
+        }
+    }
+    
+    function nthFibCalc(Num){
+        document.querySelector('#nthTerm').innerHTML = "The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num));
+    }
+    
+    function nFibCalc(Num){
+        var firstN =[];
+        for(var i = 1; i<parseInt(Num)+1; i++){
+            firstN[i-1] = fibCalc(i);
+        }
+        document.querySelector("#nTerms").innerHTML = "The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", ");
+    }
+</script>
+    
+<script>
+    //Methods to (i) create a user-defined data set, (ii) undo last data set entry, (iii) output the data set, (iv) bubble sort the data set
+    
+    var ds = [];
+    
+    function setDataSet(Num){
+        if((Num!="" && isNaN(Num)!=true)){
+            ds.unshift(Num);
+            output();
+        }
+        return ds;
+    }
+    
+    function undo(){
+        ds.shift();
+        if(ds.length<1){
+            document.querySelector("#dataSet").innerHTML = "Your Data Set: ";
+        }
+        else{
+            output();
+        }
+    }
+    
+    function output(){
+        document.querySelector("#dataSet").innerHTML = "Your Data Set: | " + ds.join(" | ") + " | ";  
+        document.querySelector("#dsCreate").value = ""; 
+    }
+    
+    function bubbleSort(set){
+		var ctr = 0;
+		do{
+			for(var i = 0; i<set.length-1; i++){
+				if(parseInt(set[i]) > parseInt(set[i+1])){
+					var temp = set[i];
+					set[i] = set[i+1];
+					set[i+1] = temp;
+				}		
+			}
+		ctr++;
+		}
+		while(ctr<set.length);
+		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
+		return set;
+	}
+    
+</script>
+
+<script>
+//Methods to play hangman!
+    
+var easyWords = ["flower", "cake", "rain", "tree", "bee", "frozen", "snow", "leaf", "hot", "apple", "star", "four", "cat", "zoo", "car", "train", "jump", "bag", "store", "heart", "hat", "sun"];
+    
+var mediumWords = ["January", "computer", "television", "soccer", "dinosaur", "shovel", "garden", "cucumber", "parade", "watermelon", "cupcake", "pizza", "tiger", "giant", "unicorn", "octopus", "volcano", "meteor", "ocean", "beach", "cloud", "elephant", "bakery"];
+
+var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut"];    
+    
+var mysteryWord; 
+var answerFormat = [];
+var alreadyGuess;
+var lives;
+    
+function playGame(num){
+    lives=7;
+    alreadyGuess = [];
+    document.querySelector("#getLetter").style.display = "inline-block";
+    document.querySelector("#letterGuess").style.display = "inline-block";
+    document.querySelector("#submit").style.display="inline-block";
+    if(num==3){
+        mysteryWord = hardWords[Math.floor(Math.random() * hardWords.length)];
+    }
+    else if(num==2){
+        mysteryWord = mediumWords[Math.floor(Math.random() * mediumWords.length)];
+    }
+    else{
+        mysteryWord = easyWords[Math.floor(Math.random() * easyWords.length)];
+    }
+    mysteryWord = mysteryWord.toUpperCase();
+    for(var i=0; i<mysteryWord.length; i++){
+        answerFormat[i] = "_ "
+    }
+    document.querySelector("#answerFormat").innerHTML = "ANSWER FORMAT: " + answerFormat.join("");
+    document.querySelector("#easy").disabled = true;
+    document.querySelector("#medium").disabled = true;
+    document.querySelector("#hard").disabled = true;
+    return mysteryWord;
+}              
+
+function guessLetter(guess){
+    guess = guess.toUpperCase();
+    if(guess.length==1){
+        //if current letter has already been guessed during this round, retrieve another guess from user
+        if(alreadyGuess.includes(guess)==true){
+            document.querySelector("#feedback").innerHTML="You have already guessed " + guess + ".  Try again!" 
+            document.querySelector("#letterGuess").value = "";
+        }
+        //if current letter guess is in word, update mystery word format key and reveal to user
+        else if(mysteryWord.includes(guess)==true & alreadyGuess.indexOf(guess)==-1){
+            alreadyGuess.unshift(guess);
+            for(var i=0; i < mysteryWord.length; i++){
+						if(mysteryWord.charAt(i)==guess.charAt(0)){
+							answerFormat[i] = guess + " ";	
+						}
+					}
+            document.querySelector("#answerFormat").innerHTML = "ANSWER FORMAT: " + answerFormat.join("");
+            document.querySelector("#letterGuess").value = "";
+        
+        //ask user for another letter guess, if answer key still contains dashes
+            if(answerFormat.includes("_ ")==true){
+                    document.querySelector("#feedback").innerHTML="Good Work!  Guess Again!";
+            }
+        //output winner message if no dashes remain in answer key and load a new round of game
+            else{
+                document.querySelector("#feedback").innerHTML = "  YOU WON!!!";
+                document.querySelector("#celebrate").style.display = "block";
+                document.querySelector("#playAgain").style.display = "block";
+            }
+        }   
+        //if current letter guess not in word, decrease 'lives' by one
+        else if(mysteryWord.includes(guess)==false){
+            alreadyGuess.unshift(guess);
+            lives--;
+             
+            //retrieve another letter guess from user if 'lives' remain
+            if(lives>0){
+                document.querySelector("#feedback").innerHTML = guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining";
+                 document.querySelector("#letterGuess").value = "";
+            }
+            else{
+            //output mystery word and a game over message to user if no 'lives' remain; load another round of game
+                document.querySelector("#feedback").innerHTML = "  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!";
+                document.querySelector("#sad").style.display = "block";
+                document.querySelector("#playAgain").style.display = "block";
+            }
+        }
+} 
+}
+
+function playAgain(){
+    document.querySelector("#getLetter").style.display = "none";
+    document.querySelector("#letterGuess").style.display = "none";
+    document.querySelector("#letterGuess").value = "";
+    document.querySelector("#submit").style.display="none";
+    document.querySelector("#answerFormat").innerHTML = "";
+    document.querySelector("#feedback").innerHTML = "";
+    document.querySelector("#playAgain").style.display = "none";
+    document.querySelector("#celebrate").style.display = "none";
+    document.querySelector("#sad").style.display = "none";
+    document.querySelector("#easy").disabled = false;
+    document.querySelector("#medium").disabled = false;
+    document.querySelector("#hard").disabled = false;
+}
+    
+</script>
+    
+</body>
+</html>
