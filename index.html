@@ -25,7 +25,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-  font-family: "Arial Narrow";
+        font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -118,11 +118,11 @@
 			<span id="spanTabTwo" class="tab">
 				Bubble Sort Your Data Set
 			</span>
-      <span id="spanTabThree" class="tab">
+            <span id="spanTabThree" class="tab">
 				Let's Play Hangman!
 			</span>
-      <span id="spanTabFour" class="tab">
-        Tab Four (Coming Soon!)
+             <span id="spanTabFour" class="tab">
+                Tab Four (Coming Soon!)
 			</span>
 		</div>
 		<div class="divTabSpacer">&nbsp;</div>
@@ -187,7 +187,7 @@
             <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
             </div>
 	
-		</div> <!-- End divTabTwo -->
+	</div> <!-- End divTabTwo -->
         
         
         <div id="divTabThree" style="display:none;">
@@ -200,7 +200,7 @@
             <button id="hard" class="fibB" onclick="playGame(3);">Hard</button><br><br>
             
             <div id="answerFormat" style="font-weight: 600; font-size: 24px"></div><br>
-                
+            <div id="guessed" style="font-weight: 600; font-size: 18px; border: 1px solid black; border-radius: 6px; padding: 1em; width: 30%; display: none; color: mediumblue"></div><br>
             <strong id="getLetter" style="color: deepskyblue; display: none">Enter a letter:</strong> <input class="fibI" id="letterGuess" style="display: none; font-weight: 600; font-size: 16px" type="text" value="">
             <button class="fibB" id="submit" style="display: none;" onclick="guessLetter(document.querySelector('#letterGuess').value);">Submit</button><Br><br>
             <div id="feedback" style="color: purple; font-weight: 600; font-size: 18px"></div>
@@ -313,12 +313,6 @@
 			$("#spanSubTabTwo").addClass("active");
 		});
         
-        
-        
-        
-        
-        
-        
 		////////////////////////////////////////////////////////////
 	});
 
@@ -408,7 +402,7 @@
 		while(ctr<set.length);
 		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
 		return set;
-	}
+   }
     
 </script>
 
@@ -470,6 +464,8 @@ function guessLetter(guess){
 					}
             document.querySelector("#answerFormat").innerHTML = "ANSWER FORMAT: " + answerFormat.join("");
             document.querySelector("#letterGuess").value = "";
+            document.querySelector("#guessed").style.display = "block";
+            document.querySelector("#guessed").innerHTML = "ALREADY GUESSED: " + alreadyGuess.join(", ");
         
         //ask user for another letter guess, if answer key still contains dashes
             if(answerFormat.includes("_ ")==true){
@@ -480,12 +476,15 @@ function guessLetter(guess){
                 document.querySelector("#feedback").innerHTML = "  YOU WON!!!";
                 document.querySelector("#celebrate").style.display = "block";
                 document.querySelector("#playAgain").style.display = "block";
+                document.querySelector("#answerFormat").innerHTML = "ANSWER: " + answerFormat.join("");
             }
         }   
         //if current letter guess not in word, decrease 'lives' by one
         else if(mysteryWord.includes(guess)==false){
             alreadyGuess.unshift(guess);
             lives--;
+            document.querySelector("#guessed").style.display = "block";
+            document.querySelector("#guessed").innerHTML = "ALREADY GUESSED: " + alreadyGuess.join(", ");
              
             //retrieve another letter guess from user if 'lives' remain
             if(lives>0){
@@ -515,6 +514,7 @@ function playAgain(){
     document.querySelector("#easy").disabled = false;
     document.querySelector("#medium").disabled = false;
     document.querySelector("#hard").disabled = false;
+    document.querySelector("#guessed").style.display = "none";
     answerFormat = [];
 }
     
