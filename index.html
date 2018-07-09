@@ -86,7 +86,7 @@
     margin-top: 1em;
 }
 
-#divTabOne, #divTabTwo, #divTabThree{
+#divTabOne, #divTabTwo, #divTabThree, #divTabFour{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -99,6 +99,11 @@
     margin-right: 1em;
     font-family: "Vladimir Script";
     font-weight: 600;
+}
+body{
+    min-width:1000px; /*minimun width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+    width:1000px;             /*IE*/
 }
 </style>
 </head>
@@ -118,12 +123,15 @@
 			<span id="spanTabTwo" class="tab">
 				Bubble Sort Your Data Set
 			</span>
-            <span id="spanTabThree" class="tab">
+            		<span id="spanTabThree" class="tab">
 				Let's Play Hangman!
 			</span>
-             <span id="spanTabFour" class="tab">
-                Tab Four (Coming Soon!)
+            		<span id="spanTabFour" class="tab">
+                		Let's Play War!
 			</span>
+            		<span id="spanTabFive" class="tab">
+                		Tab Five (Coming Soon!)
+	    		</span>
 		</div>
 		<div class="divTabSpacer">&nbsp;</div>
 
@@ -187,7 +195,7 @@
             <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
             </div>
 	
-	</div> <!-- End divTabTwo -->
+		</div> <!-- End divTabTwo -->
         
         
         <div id="divTabThree" style="display:none;">
@@ -199,6 +207,7 @@
             <button id="medium" class="fibB" onclick="playGame(2);">Medium</button>
             <button id="hard" class="fibB" onclick="playGame(3);">Hard</button><br><br>
             
+            <div id="HangmanPic"><img src="Images/HMPic.svg" style="width: 30%"></div>
             <div id="answerFormat" style="font-weight: 600; font-size: 24px"></div><br>
             <div id="guessed" style="font-weight: 600; font-size: 18px; border: 1px solid black; border-radius: 6px; padding: 1em; width: 30%; display: none; color: mediumblue"></div><br>
             <strong id="getLetter" style="color: deepskyblue; display: none">Enter a letter:</strong> <input class="fibI" id="letterGuess" style="display: none; font-weight: 600; font-size: 16px" type="text" value="">
@@ -214,10 +223,40 @@
         
         <div id="divTabFour" style="display:none;">
 
-		    <div class="pageHeader">Page Four (Coming Soon!)</div>             
-            
-            <div class="tabContents">Page Four contents will go here.</div>
-            
+		    <div class="pageHeader">Let's Play War!</div>             
+            <div>
+                <div style="width: 1100px; margin-left: 17em; margin-top: -2.5em; font-family: 'Verdana'">In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to start a round; this flips a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</div>
+                <div id="results" style="margin-top: 1em; margin-left: 30em; font-size: 26px; color: crimson; font-weight: 600; font-family: Arial;"></div>
+                <button class="fibB" id="playAgn" style="margin-left: .5em; margin-top: 1em; display: none" onclick="playWarAgain();">Play Again!</button>
+                <button class="fibB" id="war" style="margin-left: 30em;" onclick="flipCard();">War!</button>
+            </div>
+            <div class="tabContents">
+            <div style="margin-left: 14em; margin-top: -2.5em">
+                <table style="border: 1px solid black; border-radius: 6px; padding: .4em">
+                <tr>
+                    <thead>Score: </thead>    
+                </tr>
+                <tr>
+                    <td>You: </td><td><div id="youScore" style="padding-left: 1em">0</div></td>    
+                </tr>
+                <tr>
+                    <td>Dealer: </td><td><div id="dealerScore" style="padding-left: 1em">0</div></td>
+                    
+                </tr>
+                </table>
+            </div>
+            <div id="Kpic" style="display: inline-block"><img style="width: 230%; margin-top: .2em" src="Images/KofS.svg"></div>
+            <div id="youCPic" style="display: none; margin-top: -.5em">
+            <p id="youLabel" style="width: 6em">You: </p>
+            <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumY1" style="font-size: 36px; padding-left: .3em; color: red">Q</div><img id = "youCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/diamonds.png"><div id="cardNumY2"style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px; color: red">Q</div></div>
+            </div>
+              
+            <div id="Qpic" style="display: inline-block; margin-left: 15em"><img style="width: 230%; margin-top: .2em" src="Images/QofH.svg"></div>  
+            <div id="dealerCPic" style="display: none; margin-left: 11em; margin-top: -.5em">  
+            <p id="dealerLabel" style="width: 6em">The Dealer: </p>
+            <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumD1"style="font-size: 36px; padding-left: .3em">K</div><img id="dealerCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/clubs.png"><div id="cardNumD2" style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px">K</div></div>
+            </div>
+            </div>
         </div><!-- End divTabFour -->
             
     </div>
@@ -313,6 +352,12 @@
 			$("#spanSubTabTwo").addClass("active");
 		});
         
+        
+        
+        
+        
+        
+        
 		////////////////////////////////////////////////////////////
 	});
 
@@ -402,7 +447,7 @@
 		while(ctr<set.length);
 		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
 		return set;
-   }
+	}
     
 </script>
 
@@ -421,6 +466,7 @@ var alreadyGuess;
 var lives;
     
 function playGame(num){
+    document.querySelector("#HangmanPic").style.display = "none";
     lives=7;
     alreadyGuess = [];
     document.querySelector("#getLetter").style.display = "inline-block";
@@ -502,6 +548,7 @@ function guessLetter(guess){
 }
 
 function playAgain(){
+    document.querySelector("#HangmanPic").style.display = "block";
     document.querySelector("#getLetter").style.display = "none";
     document.querySelector("#letterGuess").style.display = "none";
     document.querySelector("#letterGuess").value = "";
@@ -519,6 +566,194 @@ function playAgain(){
 }
     
 </script>
+  
+<script>
+    //methods to play war!
     
+    var deck;
+    var dealerDeck;
+    var youDeck;
+    var points;
+    var dealerScore;
+    var youScore;
+    var cardsLeft;
+    var youCard;
+    var dealerCard;
+    
+    function loadGame(){
+        makeDeck();
+        shuffleDeck();
+        shuffleDeck();
+        shuffleDeck();
+        shuffleDeck();
+        shuffleDeck(); 
+        splitDeck(); 
+        cardsLeft = 26;
+    }
+    
+    loadGame();
+    
+    //construct a standard 52-card deck
+    function makeDeck(){
+        dealerScore = 0;
+        youScore = 0;
+        deck = [];
+        suitOfDeck("c");
+        suitOfDeck("s");
+        suitOfDeck("h");
+        suitOfDeck("d");
+        //alert(deck.toString());
+    }
+    
+    //make quarter of deck corresponding to a particular suit
+    function suitOfDeck(suit){
+        for(var i=1; i<14; i++){
+            deck.unshift(i + "," + suit);
+        }
+    }
+    
+    //shuffle deck
+    function shuffleDeck(){
+        dealerDeck = [];
+        youDeck = [];
+        
+        for(var i=0; i<26; i++){
+            var index = Math.floor(Math.random()*((26-i)-0+1)+0);
+            dealerDeck[i] = deck[index]; 
+            deck.splice(index, 1);
+        }
+        youDeck = deck;
+        deck = dealerDeck.concat(youDeck);
+        //alert("shuffle" + deck.toString());
+    }
+    
+    
+    
+    function splitDeck(){
+        dealerDeck = [];
+        dealerDeck = deck.slice(0, 26);
+        youDeck = [];
+        youDeck = deck.slice(26, 52);
+    }
+    
+    //'flip' 1 card from each deck
+    function flipCard(){
+        document.querySelector("#Kpic").style.display = "none";
+        document.querySelector("#Qpic").style.display = "none";
+        document.querySelector("#youCPic").style.display = "inline-block";
+        document.querySelector("#dealerCPic").style.display = "inline-block";
+        youCard = youDeck[26-cardsLeft];
+        //alert(typeof youCard.split(",")[1]);
+        cardImage(youCard, "#youCardDisplay", "#cardNumY1", "#cardNumY2");
+        cardNumber(youCard, "#cardNumY1", "#cardNumY2");
+        dealerCard = dealerDeck[26-cardsLeft];
+        cardImage(dealerCard, "#dealerCardDisplay", "#cardNumD1", "#cardNumD2");
+        cardNumber(dealerCard, "#cardNumD1", "#cardNumD2");
+        cardsLeft--;
+        score();
+        if(cardsLeft===0){
+            //disable war button when each 26 card pile has no cards remaining
+            //display a results message -- congrats to winner
+            document.querySelector("#war").disabled = true;
+            if(youScore > dealerScore){
+                document.querySelector("#results").innerHTML = "YOU WIN!!!"
+            }
+            else if(youScore < dealerScore){
+                document.querySelector("#results").innerHTML = "DEALER WINS!!!"
+            }
+            else{
+                document.querySelector("#results").innerHTML = "IT IS A TIE!!!"
+            }
+            //document.querySelector("#playAgn").style.display = "block";
+        }
+    }
+    
+    //function to determine which suit to display on screen
+    function cardImage(cardType, imgID, divID1, divID2){
+        if(cardType.split(",")[1]=="h"){
+            var pic = document.querySelector(imgID);
+            pic.src="Images/hearts.png";
+            document.querySelector(divID1).style.color = "red";
+            document.querySelector(divID2).style.color = "red";
+        }
+        else if(cardType.split(",")[1]=="d"){
+            var pic = document.querySelector(imgID);
+            pic.src="Images/diamonds.png";
+            document.querySelector(divID1).style.color = "red";
+            document.querySelector(divID2).style.color = "red";
+        }
+        else if(cardType.split(",")[1]=="c"){
+            var pic = document.querySelector(imgID);
+            pic.src="Images/clubs.png";
+            document.querySelector(divID1).style.color = "black";
+            document.querySelector(divID2).style.color = "black";
+        }
+        else if(cardType.split(",")[1]=="s"){
+            var pic = document.querySelector(imgID);
+            pic.src="Images/spades.png";
+            document.querySelector(divID1).style.color = "black";
+            document.querySelector(divID2).style.color = "black";
+        }
+    }
+    
+    //function to determine if a number or K, Q, J, A displayed on screen
+    function cardNumber(cardNum, divID1, divID2){
+        if(cardNum.split(",")[0]==="13"){
+            document.querySelector(divID1).innerHTML = "K";
+            document.querySelector(divID2).innerHTML = "K";
+        }
+        else if(cardNum.split(",")[0]==="12"){
+            document.querySelector(divID1).innerHTML = "Q";
+            document.querySelector(divID2).innerHTML = "Q";
+        }
+        else if(cardNum.split(",")[0]==="11"){
+            document.querySelector(divID1).innerHTML = "J";
+            document.querySelector(divID2).innerHTML = "J";
+        }
+        else if(cardNum.split(",")[0]==="1"){
+            document.querySelector(divID1).innerHTML = "A";
+            document.querySelector(divID2).innerHTML = "A";
+        }
+        else{
+            document.querySelector(divID1).innerHTML = cardNum.split(",")[0].toString();
+            document.querySelector(divID2).innerHTML = cardNum.split(",")[0].toString();
+        }
+    }
+    
+    //a function to compare cards and adjust score based on flipped card values
+    function score(){
+        //if dealer card < you card, +2 you
+        if(parseInt(youCard.split(",")[0]) > parseInt(dealerCard.split(",")[0])){
+            var addPoints = 2;
+            youScore+=parseInt(addPoints);
+            //alert("you: " + youScore);
+            document.querySelector("#youScore").innerHTML = youScore;
+            document.querySelector("#youLabel").style.backgroundColor = "yellow";
+            document.querySelector("#dealerLabel").style.backgroundColor = "white";
+        }
+        //if dealer card > you card, +2 dealer
+        else if(parseInt(youCard.split(",")[0]) < parseInt(dealerCard.split(",")[0])){
+            var addPoints = 2;
+            dealerScore+=parseInt(addPoints);
+            //alert("dealer: " + dealerScore);
+            document.querySelector("#dealerScore").innerHTML = dealerScore;
+            document.querySelector("#youLabel").style.backgroundColor = "white";
+            document.querySelector("#dealerLabel").style.backgroundColor = "yellow";
+        }
+        //if dealer card = you card, flip again without adjusting score (once tie broken, score of winner increased by total number cards flipped since tie began). //WORK ON THIS CONDITION
+        else{
+            //alert("there is a tie");
+            document.querySelector("#youLabel").style.backgroundColor = "white";
+            document.querySelector("#dealerLabel").style.backgroundColor = "white";
+            score();
+        }
+    }
+        
+    //display a play again button -- clear screen in prep for a new game //CODE THIS LATER
+    function playWarAgain(){    
+    }
+</script>  
+    </div>
+
 </body>
 </html>
