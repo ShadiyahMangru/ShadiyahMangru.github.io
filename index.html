@@ -61,11 +61,13 @@
     color: #5C246E;
     margin-left: .25em;
 }
+
 #subtitle{
     font-family: Tahoma;
     margin-bottom: 1.75em;
     margin-left: .25em;
 }   
+
 .fibB{
     color: white;
     background-color: cornflowerblue;
@@ -86,12 +88,13 @@
     margin-top: 1em;
 }
 
-#divTabOne, #divTabTwo, #divTabThree, #divTabFour{
+#divCalcSubTabOne, #divCalcSubTabTwo, #divTabTwo, #divGamesSubTabOne, #divGamesSubTabTwo, #gcdE{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
     padding: 1em;
 }
+
 #developerCredit{
     font-size:18pt; 
     margin-top:60px; 
@@ -100,12 +103,18 @@
     font-family: "Vladimir Script";
     font-weight: 600;
 }
+
+#spanGamesSubTabOne, #divGamesSubTabOne, #divGamesSubTabTwo, #spanCalcSubTabOne, #divCalcSubTabOne, #divCalcSubTabTwo{
+    margin-left: 1em
+}
+    
 body{
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
     width:1000px;             /*IE*/
 }
 </style>
+
 </head>
     
 <body>
@@ -116,23 +125,23 @@ body{
         </div>
         <p id="subtitle">Explore the sample content under the tabs below.</p>
 		<!-- Div containing the tabs -->
-		<div class="divTabs">
-			<span id="spanTabOne" class="tab active">
-				Calculate Fibonacci Numbers
-			</span>
-			<span id="spanTabTwo" class="tab">
-				Bubble Sort Your Data Set
-			</span>
-            		<span id="spanTabThree" class="tab">
-				Let's Play Hangman!
-			</span>
-            		<span id="spanTabFour" class="tab">
-                		Let's Play War!
-			</span>
-            		<span id="spanTabFive" class="tab">
-                		Tab Five (Coming Soon!)
-	    		</span>
-		</div>
+	<div class="divTabs">
+		<span id="spanTabOne" class="tab active">
+			Mathematical Calculations
+		</span>
+		<span id="spanTabTwo" class="tab">
+			Data Set Sorter(s)
+		</span>
+            	<span id="spanTabThree" class="tab">
+			Let's Play A Game!
+		</span>
+            	<span id="spanTabFour" class="tab">
+                	Tab Four (Coming Soon!)
+		</span>
+            	<span id="spanTabFive" class="tab">
+                	Tab Five (Coming Soon!)
+		</span>
+	</div>
 		<div class="divTabSpacer">&nbsp;</div>
 
 
@@ -143,10 +152,21 @@ body{
 
         <div id="divTabOne">
             
+            <!-- sub calculator tabs -->
+            <div class="divTabs">
+                <span id="spanCalcSubTabOne" class="tab active" style="background-color: #F0E68C">
+                    Calculate Fibonacci Numbers
+                </span>
+                <span id="spanCalcSubTabTwo" class="tab" style="background-color: #F0E68C">
+                    Calculate GCD (By Euclidean Algorithm)
+                </span>
+		    </div>
+            <div class="divTabSpacer">&nbsp;</div>   
+            <div id="divCalcSubTabOne">    
             <div class="pageHeader">Calculate Fibonacci Numbers</div>
-                
-            <div><img src="Images/goldenSpiral.svg" style="width: 30%; min-width: 220px; float: right; margin-top: -1em; margin-right: 4em; transform: rotate(5deg)"></div>	
-		
+              
+            <div><img src="Images/goldenSpiral.svg" style="width: 30%; min-width: 220px; float: right; margin-top: -1em; margin-right: 4em; transform: rotate(5deg)"></div>
+            
             <div class="tabContents" style="line-height: 170%">
             The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, ....  
             <br>
@@ -155,10 +175,10 @@ body{
                 
         <!--sub tabs-->
          <div class="divTabs">
-			<span id="spanSubTabOne" class="tab active" style="background-color: #EED2EE">
+			<span id="spanSubTabOne" class="tab active" style="background-color: #EE82EE">
                 nth Term Calculator
 			</span>
-			<span id="spanSubTabTwo" class="tab" style="background-color: #EED2EE">
+			<span id="spanSubTabTwo" class="tab" style="background-color: #EE82EE">
 				First n Terms Calculator
 			</span>
 		</div>
@@ -178,15 +198,44 @@ body{
             <br><br>
         </div>
             </div>
-				
+        </div> <!-- End of divCalcSubTabOne -->
+            
+        <div id="divCalcSubTabTwo" style="display: none">
+            <div class="pageHeader">Greatest Common Divisor Calculator</div>
+            
+            <div class="tabContents" style="line-height: 170%"><br>
+                <div id="gcdE" style="width: 25em">
+                <label>Enter a natural number: </label>
+                <input class="fibI" TYPE="number" id="entry1" Size="16"><br>
+                <label>Enter another natural number: </label>
+                <input class="fibI" TYPE="number" id="entry2" Size="16"><br><br>
+                <label>gcd = <input class = "fibI" type="number" id="theResult"></label>
+                <button class="fibB" onclick="EuclidGCD();">Calculate GCD</button>
+                </div>
+                <br>
+                <div style="margin-top: -12.5em; margin-left: 33em"> 
+                <p>Euclid's Algorithm:<br>
+                    We can calculate any greatest common divisor (gcd) by the Euclidean Algorithm:
+                      <ol>
+                        <li>Denote the larger of the two numbers by <em>L</em> and the smaller by <em>S</em>.</li>
+                        <li>Divide <em>S</em> into <em>L</em>.</li>
+                        <li>Let the remainder be denoted by <em>R</em>.</li>
+                        <li>Replace <em>L</em> by <em>S</em> and <em>S</em> by <em>R</em>.</li>
+                        <li>Repeat procedure until <em>R=0</em>, in which case the gcd is the last value of <em>S</em>.</li>
+                      </ol>
+                </p>
+                </div>
+            </div>
+        </div>
+            
         </div> <!-- End divTabOne -->
         
         <div id="divTabTwo" style="display: none;">
 
             <div class="pageHeader">Bubble Sort Your Data Set</div>
             
-	    <div><img src="Images/Bubble.svg" style="width: 20%; min-width: 220px; float: right; margin-top: -1.8em"></div>	
-		
+            <div><img src="Images/Bubble.svg" style="width: 20%; min-width: 220px; float: right; margin-top: -1.8em"></div>
+            
             <div class="tabContents" style="line-height: 170%">
             Create a data set:<br>    
             <strong style="color: deepskyblue;">Enter a number to add to data set:</strong> <input class="fibI" id="dsCreate" type="text" value="">
@@ -199,11 +248,23 @@ body{
             <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
             </div>
 	
-		</div> <!-- End divTabTwo -->
+	</div> <!-- End divTabTwo -->
         
         
         <div id="divTabThree" style="display:none;">
             
+            <!-- sub calculator tabs -->
+            <div class="divTabs">
+                <span id="spanGamesSubTabOne" class="tab active" style="background-color: silver">
+                    Hangman
+                </span>
+                <span id="spanGamesSubTabTwo" class="tab" style="background-color: silver">
+                    War
+                </span>
+		    </div>
+            <div class="divTabSpacer">&nbsp;</div>   
+            <div id="divGamesSubTabOne">
+        
             <div class="pageHeader">Let's Play Hangman!</div>
                 
             <div class="tabContents">Select Difficulty Level: 
@@ -221,13 +282,10 @@ body{
                 <div id="sad" style="display: none;"><img src="Images/sad.svg" style="width: 20%;"></div>
             <button class="fibB" id="playAgain" style="display: none;" onclick="playAgain();">Play Again!</button>
             </div>
-				
-        </div> <!-- End divTabThree -->
-        
-        
-        <div id="divTabFour" style="display:none;">
-
-		    <div class="pageHeader">Let's Play War!</div>             
+            </div>
+            
+            <div id="divGamesSubTabTwo" style="display: none">
+                <div class="pageHeader">Let's Play War!</div>             
             <div>
                 <div style="width: 73%; margin-left: 17em; margin-top: -2.5em; font-family: 'Verdana'">In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to start a round; this flips a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</div>
                 <div id="results" style="margin-top: 1em; margin-left: 30em; font-size: 26px; color: crimson; font-weight: 600; font-family: Arial;"></div>
@@ -260,104 +318,175 @@ body{
             <p id="dealerLabel" style="width: 6em">The Dealer: </p>
             <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumD1"style="font-size: 36px; padding-left: .3em">K</div><img id="dealerCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/clubs.png"><div id="cardNumD2" style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px">K</div></div>
             </div>
+            </div>        
             </div>
+                
+        </div> <!-- End divTabThree -->
+        
+        
+        <div id="divTabFour" style="display:none;">
+
+		    
         </div><!-- End divTabFour -->
+         
+            
+        <div id="divTabFive" style="display: none;">
+            
+	
+	</div> <!-- End divTabFive -->    
             
     </div>
 		
 
 
         <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com" title="A Website By Shadiyah Mangru">Shadiyah Mangru</a></div>
-	<p style="float: right; font-family: Tahoma;  margin-right: 1.5em;" id="SiteBrowser">Recommended Browser:  <span style="color: rgb(66, 133, 244);">G</span><span style="color: rgb(234, 67, 53);">o</span><span style="color: rgb(251, 188, 5);">o</span><span style="color: rgb(66, 133, 244);">g</span><span style="color: rgb(52, 168, 83);">l</span><span style="color: rgb(234, 67, 53);">e</span> <span style="color: rgb(66, 133, 244);">C</span><span style="color: rgb(234, 67, 53);">h</span><span style="color: rgb(251, 188, 5);">r</span><span style="color: rgb(66, 133, 244);">o</span><span style="color: rgb(52, 168, 83);">m</span><span style="color: rgb(234, 67, 53);">e</span></p>
+        <p style="float: right; font-family: Tahoma;  margin-right: 1.5em;" id="SiteBrowser">Recommended Browser:  <span style="color: rgb(66, 133, 244);">G</span><span style="color: rgb(234, 67, 53);">o</span><span style="color: rgb(251, 188, 5);">o</span><span style="color: rgb(66, 133, 244);">g</span><span style="color: rgb(52, 168, 83);">l</span><span style="color: rgb(234, 67, 53);">e</span> <span style="color: rgb(66, 133, 244);">C</span><span style="color: rgb(234, 67, 53);">h</span><span style="color: rgb(251, 188, 5);">r</span><span style="color: rgb(66, 133, 244);">o</span><span style="color: rgb(52, 168, 83);">m</span><span style="color: rgb(234, 67, 53);">e</span></p>
 </div>
-
+    
     <script type="text/javascript">
 
 	
 	$(document).ready( function() {
         
-        
-		$(".dt-buttons span").addClass("btn");
-
 		////////////////////////////////////////////////////////////
 		// The following block handles the toggling of the tabs
 		////////////////////////////////////////////////////////////
 
         $("#spanTabOne").click( function() {
-			$("#divTabOne").css("display", "block");
-			$("#spanTabOne").addClass("active");
+		$("#divTabOne").css("display", "block");
+		$("#spanTabOne").addClass("active");
 			
-			$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
+		$("#divTabTwo").css("display", "none");
+		$("#spanTabTwo").removeClass("active");
             
-            $("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
+            	$("#divTabThree").css("display", "none");
+		$("#spanTabThree").removeClass("active");
             
-            $("#divTabFour").css("display", "none");
-			$("#spanTabFour").removeClass("active");
-		});
+            	//$("#divTabFour").css("display", "none");
+		//$("#spanTabFour").removeClass("active");
+            
+            	//$("#divTabFive").css("display", "none");
+		//$("#spanTabFive").removeClass("active");
+	});
 		
-		$("#spanTabTwo").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
+	$("#spanTabTwo").click( function() {
+		$("#divTabOne").css("display", "none");
+		$("#spanTabOne").removeClass("active");
 
-			$("#divTabTwo").css("display", "block");
-			$("#spanTabTwo").addClass("active");
+		$("#divTabTwo").css("display", "block");
+		$("#spanTabTwo").addClass("active");
             
-            $("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
+            	$("#divTabThree").css("display", "none");
+		$("#spanTabThree").removeClass("active");
             
-            $("#divTabFour").css("display", "none");
-			$("#spanTabFour").removeClass("active");
-		});
+            	//$("#divTabFour").css("display", "none");
+		//$("#spanTabFour").removeClass("active");
+            
+            	//$("#divTabFive").css("display", "none");
+		//$("#spanTabFive").removeClass("active");
+	});
         
         $("#spanTabThree").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
+		$("#divTabOne").css("display", "none");
+		$("#spanTabOne").removeClass("active");
 
-            $("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
+            	$("#divTabTwo").css("display", "none");
+		$("#spanTabTwo").removeClass("active");
             
-			$("#divTabThree").css("display", "block");
-			$("#spanTabThree").addClass("active");
+		$("#divTabThree").css("display", "block");
+		$("#spanTabThree").addClass("active");
             
-            $("#divTabFour").css("display", "none");
-			$("#spanTabFour").removeClass("active");
-		});
-        
+            	//$("#divTabFour").css("display", "none");
+		//$("#spanTabFour").removeClass("active");
+            
+            	//$("#divTabFive").css("display", "none");
+		//$("#spanTabFive").removeClass("active");
+	});
+        /*
         $("#spanTabFour").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
+		$("#divTabOne").css("display", "none");
+		$("#spanTabOne").removeClass("active");
 			
-			$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
+		$("#divTabTwo").css("display", "none");
+		$("#spanTabTwo").removeClass("active");
             
-            $("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
+            	$("#divTabThree").css("display", "none");
+		$("#spanTabThree").removeClass("active");
             
-            $("#divTabFour").css("display", "block");
-			$("#spanTabFour").addClass("active");
-		});
+            	$("#divTabFour").css("display", "block");
+		$("#spanTabFour").addClass("active");
+            
+            	$("#divTabFive").css("display", "none");
+		$("#spanTabFive").removeClass("active");
+	});
+        
+        $("#spanTabFive").click( function() {
+		$("#divTabOne").css("display", "none");
+		$("#spanTabOne").removeClass("active");
+			
+		$("#divTabTwo").css("display", "none");
+		$("#spanTabTwo").removeClass("active");
+            
+            	$("#divTabThree").css("display", "none");
+		$("#spanTabThree").removeClass("active");
+            
+            	$("#divTabFour").css("display", "none");
+		$("#spanTabFour").removeClass("active");
+            
+            	$("#divTabFive").css("display", "block");
+		$("#spanTabFive").addClass("active");
+	});
+        */
+        $("#spanCalcSubTabOne").click( function() {
+		$("#divCalcSubTabOne").css("display", "block");
+		$("#spanCalcSubTabOne").addClass("active");
+			
+		$("#divCalcSubTabTwo").css("display", "none");
+		$("#spanCalcSubTabTwo").removeClass("active");
+	});
+		
+	$("#spanCalcSubTabTwo").click( function() {
+		$("#divCalcSubTabOne").css("display", "none");
+		$("#spanCalcSubTabOne").removeClass("active");
+
+		$("#divCalcSubTabTwo").css("display", "block");
+		$("#spanCalcSubTabTwo").addClass("active");
+	});
         
         
         
         $("#spanSubTabOne").click( function() {
-			$("#divSubTabOne").css("display", "block");
-			$("#spanSubTabOne").addClass("active");
+		$("#divSubTabOne").css("display", "block");
+		$("#spanSubTabOne").addClass("active");
 			
-			$("#divSubTabTwo").css("display", "none");
-			$("#spanSubTabTwo").removeClass("active");
-		});
+		$("#divSubTabTwo").css("display", "none");
+		$("#spanSubTabTwo").removeClass("active");
+	});
 		
-		$("#spanSubTabTwo").click( function() {
-			$("#divSubTabOne").css("display", "none");
-			$("#spanSubTabOne").removeClass("active");
+	$("#spanSubTabTwo").click( function() {
+		$("#divSubTabOne").css("display", "none");
+		$("#spanSubTabOne").removeClass("active");
 
-			$("#divSubTabTwo").css("display", "block");
-			$("#spanSubTabTwo").addClass("active");
-		});
+		$("#divSubTabTwo").css("display", "block");
+		$("#spanSubTabTwo").addClass("active");
+	});
         
         
+        $("#spanGamesSubTabOne").click( function() {
+		$("#divGamesSubTabOne").css("display", "block");
+		$("#spanGamesSubTabOne").addClass("active");
+			
+		$("#divGamesSubTabTwo").css("display", "none");
+		$("#spanGamesSubTabTwo").removeClass("active");
+	});
+		
+	$("#spanGamesSubTabTwo").click( function() {
+		$("#divGamesSubTabOne").css("display", "none");
+		$("#spanGamesSubTabOne").removeClass("active");
+
+		$("#divGamesSubTabTwo").css("display", "block");
+		$("#spanGamesSubTabTwo").addClass("active");
+	});
         
 		////////////////////////////////////////////////////////////
 	});
@@ -753,7 +882,30 @@ function playAgain(){
     //display a play again button -- clear screen in prep for a new game //CODE THIS LATER
     function playWarAgain(){    
     }
-</script>  
+</script> 
+    
+<script>
+    //GCD by Euclidean Algorithm!
+    function EuclidGCD(){
+        var a = parseInt(document.querySelector("#entry1").value);
+        var b = parseInt(document.querySelector("#entry2").value);
+        if(a>b){
+            var L = a;
+            var S = b;
+        }
+        else{
+            var L = b;
+            var S = a;
+        }
+        var R = 1;
+          while(R!==0){
+            R=L%S;
+            L=S;
+            S=R;
+          }
+        document.querySelector("#theResult").value = L;
+    }
+</script>
     </div>
 
 </body>
