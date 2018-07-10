@@ -88,7 +88,7 @@
     margin-top: 1em;
 }
 
-#divCalcSubTabOne, #divCalcSubTabTwo, #divTabTwo, #divGamesSubTabOne, #divGamesSubTabTwo, #gcdE{
+#divCalcSubTabOne, #divCalcSubTabTwo, #divCalcSubTabThree, #divTabTwo, #divGamesSubTabOne, #divGamesSubTabTwo, #gcdE{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -124,7 +124,7 @@ body{
             <p>My Demo Website</p>
         </div>
         <p id="subtitle">Explore the sample content under the tabs below.</p>
-		<!-- Div containing the tabs -->
+	<!-- Div containing the tabs -->
 	<div class="divTabs">
 		<span id="spanTabOne" class="tab active">
 			Mathematical Calculations
@@ -132,7 +132,7 @@ body{
 		<span id="spanTabTwo" class="tab">
 			Data Set Sorter(s)
 		</span>
-            	<span id="spanTabThree" class="tab">
+        	<span id="spanTabThree" class="tab">
 			Let's Play A Game!
 		</span>
             	<span id="spanTabFour" class="tab">
@@ -142,7 +142,7 @@ body{
                 	Tab Five (Coming Soon!)
 		</span>
 	</div>
-		<div class="divTabSpacer">&nbsp;</div>
+	<div class="divTabSpacer">&nbsp;</div>
 
 
 
@@ -159,6 +159,9 @@ body{
                 </span>
                 <span id="spanCalcSubTabTwo" class="tab" style="background-color: #F0E68C">
                     Calculate GCD (By Euclidean Algorithm)
+                </span>
+                <span id="spanCalcSubTabThree" class="tab" style="background-color: #F0E68C">
+                    Calculate 1 + 2 + ... + n (By Gauss)
                 </span>
 		    </div>
             <div class="divTabSpacer">&nbsp;</div>   
@@ -228,6 +231,32 @@ body{
             </div>
         </div>
             
+        <div id="divCalcSubTabThree" style="display: none">
+            <div class="pageHeader">Calculate Sum of First n Natural Numbers</div>
+            
+            <div><img src="Images/GaussSum.png" style="width: 26%; min-width: 220px; float: right; margin-top: 1em; margin-right: 4em; transform: rotate(5deg)"></div>
+            
+            <div class="tabContents" style="line-height: 170%">
+                
+                <label>n= </label> 
+                <input class="fibI" type="number" id="nValue" placeholder="n">
+	            <button class="fibB" onclick="gaussSum();">Get Sum</button>
+                <br>
+	            <div id="ShowSum" style="font-weight: 600; display: inline-block; margin-left: 30em; margin-top: -1em; color: crimson"></div> 
+                
+                <p>Gauss' method to easily sum the first n natural numbers:<br>
+                    <strong>Step 1:</strong> Choose a number <em>n</em>.<br>
+                    <strong>Step 2:</strong> Add 1 to the number from Step 1.<br>
+                    <strong>Step 3:</strong> Multiply <em>n</em> by the sum from Step 2.<br>
+                    <strong>Step 4:</strong> Divide the product from Step 3 by 2.<br>
+                    <strong>This gives the sum of 1 + 2 + 3 + . . . + <em>n</em>.</strong>
+                </p>
+                <br>  
+            </div>
+                        
+         </div>
+        
+        
         </div> <!-- End divTabOne -->
         
         <div id="divTabTwo" style="display: none;">
@@ -333,9 +362,9 @@ body{
         <div id="divTabFive" style="display: none;">
             
 	
-	</div> <!-- End divTabFive -->    
+		</div> <!-- End divTabFive -->    
             
-    </div>
+    	</div>
 		
 
 
@@ -351,142 +380,156 @@ body{
 		////////////////////////////////////////////////////////////
 		// The following block handles the toggling of the tabs
 		////////////////////////////////////////////////////////////
-
-        $("#spanTabOne").click( function() {
-		$("#divTabOne").css("display", "block");
-		$("#spanTabOne").addClass("active");
+        	$("#spanTabOne").click( function() {
+			$("#divTabOne").css("display", "block");
+			$("#spanTabOne").addClass("active");
 			
-		$("#divTabTwo").css("display", "none");
-		$("#spanTabTwo").removeClass("active");
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
             
-            	$("#divTabThree").css("display", "none");
-		$("#spanTabThree").removeClass("active");
+            		$("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
             
-            	//$("#divTabFour").css("display", "none");
-		//$("#spanTabFour").removeClass("active");
+            		//$("#divTabFour").css("display", "none");
+			//$("#spanTabFour").removeClass("active");
             
-            	//$("#divTabFive").css("display", "none");
-		//$("#spanTabFive").removeClass("active");
-	});
+            		//$("#divTabFive").css("display", "none");
+			//$("#spanTabFive").removeClass("active");
+		});
 		
-	$("#spanTabTwo").click( function() {
-		$("#divTabOne").css("display", "none");
-		$("#spanTabOne").removeClass("active");
+		$("#spanTabTwo").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
 
-		$("#divTabTwo").css("display", "block");
-		$("#spanTabTwo").addClass("active");
+			$("#divTabTwo").css("display", "block");
+			$("#spanTabTwo").addClass("active");
             
-            	$("#divTabThree").css("display", "none");
-		$("#spanTabThree").removeClass("active");
+           		$("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
             
-            	//$("#divTabFour").css("display", "none");
-		//$("#spanTabFour").removeClass("active");
+            		//$("#divTabFour").css("display", "none");
+			//$("#spanTabFour").removeClass("active");
             
-            	//$("#divTabFive").css("display", "none");
-		//$("#spanTabFive").removeClass("active");
-	});
+            		//$("#divTabFive").css("display", "none");
+			//$("#spanTabFive").removeClass("active");
+		});
         
-        $("#spanTabThree").click( function() {
-		$("#divTabOne").css("display", "none");
-		$("#spanTabOne").removeClass("active");
+        	$("#spanTabThree").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
 
-            	$("#divTabTwo").css("display", "none");
-		$("#spanTabTwo").removeClass("active");
+            		$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
             
-		$("#divTabThree").css("display", "block");
-		$("#spanTabThree").addClass("active");
+			$("#divTabThree").css("display", "block");
+			$("#spanTabThree").addClass("active");
             
-            	//$("#divTabFour").css("display", "none");
-		//$("#spanTabFour").removeClass("active");
+            		//$("#divTabFour").css("display", "none");
+			//$("#spanTabFour").removeClass("active");
             
-            	//$("#divTabFive").css("display", "none");
-		//$("#spanTabFive").removeClass("active");
-	});
+            		//$("#divTabFive").css("display", "none");
+			//$("#spanTabFive").removeClass("active");
+		});
         /*
-        $("#spanTabFour").click( function() {
-		$("#divTabOne").css("display", "none");
-		$("#spanTabOne").removeClass("active");
+       		 $("#spanTabFour").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
 			
-		$("#divTabTwo").css("display", "none");
-		$("#spanTabTwo").removeClass("active");
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
             
-            	$("#divTabThree").css("display", "none");
-		$("#spanTabThree").removeClass("active");
+            		$("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
             
-            	$("#divTabFour").css("display", "block");
-		$("#spanTabFour").addClass("active");
+            		$("#divTabFour").css("display", "block");
+			$("#spanTabFour").addClass("active");
             
-            	$("#divTabFive").css("display", "none");
-		$("#spanTabFive").removeClass("active");
-	});
+            		$("#divTabFive").css("display", "none");
+			$("#spanTabFive").removeClass("active");
+		});
         
-        $("#spanTabFive").click( function() {
-		$("#divTabOne").css("display", "none");
-		$("#spanTabOne").removeClass("active");
+       		 $("#spanTabFive").click( function() {
+			$("#divTabOne").css("display", "none");
+			$("#spanTabOne").removeClass("active");
 			
-		$("#divTabTwo").css("display", "none");
-		$("#spanTabTwo").removeClass("active");
+			$("#divTabTwo").css("display", "none");
+			$("#spanTabTwo").removeClass("active");
             
-            	$("#divTabThree").css("display", "none");
-		$("#spanTabThree").removeClass("active");
+            		$("#divTabThree").css("display", "none");
+			$("#spanTabThree").removeClass("active");
             
-            	$("#divTabFour").css("display", "none");
-		$("#spanTabFour").removeClass("active");
+            		$("#divTabFour").css("display", "none");
+			$("#spanTabFour").removeClass("active");
             
-            	$("#divTabFive").css("display", "block");
-		$("#spanTabFive").addClass("active");
-	});
+            		$("#divTabFive").css("display", "block");
+			$("#spanTabFive").addClass("active");
+		});
         */
-        $("#spanCalcSubTabOne").click( function() {
-		$("#divCalcSubTabOne").css("display", "block");
-		$("#spanCalcSubTabOne").addClass("active");
+        	$("#spanCalcSubTabOne").click( function() {
+			$("#divCalcSubTabOne").css("display", "block");
+			$("#spanCalcSubTabOne").addClass("active");
 			
-		$("#divCalcSubTabTwo").css("display", "none");
-		$("#spanCalcSubTabTwo").removeClass("active");
-	});
+			$("#divCalcSubTabTwo").css("display", "none");
+			$("#spanCalcSubTabTwo").removeClass("active");
+            
+            		$("#divCalcSubTabThree").css("display", "none");
+			$("#spanCalcSubTabThree").removeClass("active");
+		});
 		
-	$("#spanCalcSubTabTwo").click( function() {
-		$("#divCalcSubTabOne").css("display", "none");
-		$("#spanCalcSubTabOne").removeClass("active");
+		$("#spanCalcSubTabTwo").click( function() {
+			$("#divCalcSubTabOne").css("display", "none");
+			$("#spanCalcSubTabOne").removeClass("active");
 
-		$("#divCalcSubTabTwo").css("display", "block");
-		$("#spanCalcSubTabTwo").addClass("active");
-	});
+			$("#divCalcSubTabTwo").css("display", "block");
+			$("#spanCalcSubTabTwo").addClass("active");
+            
+            		$("#divCalcSubTabThree").css("display", "none");
+			$("#spanCalcSubTabThree").removeClass("active");
+		});
         
+        	$("#spanCalcSubTabThree").click( function() {
+			$("#divCalcSubTabOne").css("display", "none");
+			$("#spanCalcSubTabOne").removeClass("active");
+
+			$("#divCalcSubTabTwo").css("display", "none");
+			$("#spanCalcSubTabTwo").removeClass("active");
+            
+            		$("#divCalcSubTabThree").css("display", "block");
+			$("#spanCalcSubTabThree").addClass("active");
+		});
         
-        
-        $("#spanSubTabOne").click( function() {
-		$("#divSubTabOne").css("display", "block");
-		$("#spanSubTabOne").addClass("active");
+        	$("#spanSubTabOne").click( function() {
+			$("#divSubTabOne").css("display", "block");
+			$("#spanSubTabOne").addClass("active");
 			
-		$("#divSubTabTwo").css("display", "none");
-		$("#spanSubTabTwo").removeClass("active");
-	});
+			$("#divSubTabTwo").css("display", "none");
+			$("#spanSubTabTwo").removeClass("active");
+		});
 		
-	$("#spanSubTabTwo").click( function() {
-		$("#divSubTabOne").css("display", "none");
-		$("#spanSubTabOne").removeClass("active");
+		$("#spanSubTabTwo").click( function() {
+			$("#divSubTabOne").css("display", "none");
+			$("#spanSubTabOne").removeClass("active");
 
-		$("#divSubTabTwo").css("display", "block");
-		$("#spanSubTabTwo").addClass("active");
-	});
+			$("#divSubTabTwo").css("display", "block");
+			$("#spanSubTabTwo").addClass("active");
+		});
         
         
-        $("#spanGamesSubTabOne").click( function() {
-		$("#divGamesSubTabOne").css("display", "block");
-		$("#spanGamesSubTabOne").addClass("active");
+        	$("#spanGamesSubTabOne").click( function() {
+			$("#divGamesSubTabOne").css("display", "block");
+			$("#spanGamesSubTabOne").addClass("active");
 			
-		$("#divGamesSubTabTwo").css("display", "none");
-		$("#spanGamesSubTabTwo").removeClass("active");
-	});
+			$("#divGamesSubTabTwo").css("display", "none");
+			$("#spanGamesSubTabTwo").removeClass("active");
+		});
 		
-	$("#spanGamesSubTabTwo").click( function() {
-		$("#divGamesSubTabOne").css("display", "none");
-		$("#spanGamesSubTabOne").removeClass("active");
+		$("#spanGamesSubTabTwo").click( function() {
+			$("#divGamesSubTabOne").css("display", "none");
+			$("#spanGamesSubTabOne").removeClass("active");
 
-		$("#divGamesSubTabTwo").css("display", "block");
-		$("#spanGamesSubTabTwo").addClass("active");
-	});
+			$("#divGamesSubTabTwo").css("display", "block");
+			$("#spanGamesSubTabTwo").addClass("active");
+		});
         
 		////////////////////////////////////////////////////////////
 	});
@@ -497,14 +540,14 @@ body{
     //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
     
     function fibCalc(Num){
-        fibArray = [];
+        var fibArray = [];
         Num = parseInt(Num);
         if(Num==1){
-            fibNew = 1;
+            var fibNew = 1;
             return fibNew;
         }
         if(Num==2){
-            fibNew = 1;
+            var fibNew = 1;
             return fibNew;
         }
         if(Num>=3){
@@ -512,7 +555,7 @@ body{
             fibArray.push(1);
             fibArray.push(1);
             while(i<=Num){
-                fibNew = fibArray[i-2] + fibArray[(i-3)];
+                var fibNew = fibArray[i-2] + fibArray[(i-3)];
                 fibNew = parseInt(fibNew);
                 fibArray.push(fibNew);
                 i++;
@@ -906,6 +949,21 @@ function playAgain(){
         document.querySelector("#theResult").value = L;
     }
 </script>
+    
+    
+<script>
+function gaussSum() {
+	var Num = parseInt(document.querySelector("#nValue").value);
+	var sum = (Num*(Num+1))/2;
+	if(Num >= 0 & Num < 6){
+		document.querySelector("#ShowSum").innerHTML = "SOLUTION: <br>" + "Sum of first " + Num + " natural numbers = " + parseInt(sum);
+	}
+	else{
+		var nMinusOne = Num-1;
+	document.querySelector("#ShowSum").innerHTML = "SOLUTION: <br>" + Num + " + " + nMinusOne + " + " +"... + " + "3 + 2 + 1<br>= "+parseInt(sum) + "<br>= " +parseInt(sum).toExponential();
+	}
+}
+</script>   
     </div>
 
 </body>
