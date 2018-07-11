@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Demo Website</title>
+<title>Shadiyah's Demo Website</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 
@@ -25,7 +25,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-        font-family: "Arial Narrow";
+    	font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -88,7 +88,7 @@
     margin-top: 1em;
 }
 
-#divCalcSubTabOne, #divCalcSubTabTwo, #divCalcSubTabThree, #divTabTwo, #divGamesSubTabOne, #divGamesSubTabTwo, #gcdE{
+#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #gcdE{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -104,9 +104,44 @@
     font-weight: 600;
 }
 
-#spanGamesSubTabOne, #divGamesSubTabOne, #divGamesSubTabTwo, #spanCalcSubTabOne, #divCalcSubTabOne, #divCalcSubTabTwo{
+#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4{
     margin-left: 1em
 }
+ 
+.tr, #PTriangle{
+	text-align: center; /*centers buttons in form*/
+}
+.tr{/*formats squares of pascal's triangle*/
+	width: 4%;
+	font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lavender;
+    border: solid black 1px;
+}   
+
+#PTriangle{
+    margin-top: .5em;
+}    
+ 
+.column1 {
+    float: right;
+    width: 63%;
+    padding: .5px;
+}
+
+.column2 {
+    float: right;
+    width: 32%;
+    padding: .5px;
+}    
+    
+/* clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}    
     
 body{
     min-width:1000px; /*minimun width of 1000px */
@@ -124,25 +159,25 @@ body{
             <p>My Demo Website</p>
         </div>
         <p id="subtitle">Explore the sample content under the tabs below.</p>
-	<!-- Div containing the tabs -->
-	<div class="divTabs">
-		<span id="spanTabOne" class="tab active">
-			Mathematical Calculations
-		</span>
-		<span id="spanTabTwo" class="tab">
-			Data Set Sorter(s)
-		</span>
-        	<span id="spanTabThree" class="tab">
-			Let's Play A Game!
-		</span>
-            	<span id="spanTabFour" class="tab">
-                	Tab Four (Coming Soon!)
-		</span>
-            	<span id="spanTabFive" class="tab">
-                	Tab Five (Coming Soon!)
-		</span>
-	</div>
-	<div class="divTabSpacer">&nbsp;</div>
+		<!-- Div containing the tabs -->
+		<div class="divTabs">
+			<span id="spanTab1" class="tab active" onclick="toggleTabs(mainID, 1, numberMainTabs);">
+				Perform Mathematical Calculations
+			</span>
+			<span id="spanTab2" class="tab" onclick="toggleTabs(mainID, 2, numberMainTabs);">
+				Data Set Sorter(s)
+			</span>
+            		<span id="spanTab3" class="tab" onclick="toggleTabs(mainID, 3, numberMainTabs);">
+				Let's Play A Game!
+			</span>
+            		<span id="spanTab4" class="tab">
+                		Tab Four (Coming Soon!)
+			</span>
+            		<span id="spanTab5" class="tab">
+                		Tab Five (Coming Soon!)
+			</span>
+		</div>
+		<div class="divTabSpacer">&nbsp;</div>
 
 
 
@@ -150,22 +185,25 @@ body{
     <!-- Divs containing the tab contents -->
     <div class="tab-content clearfix" style="padding-top:20px;">
 
-        <div id="divTabOne">
+        <div id="divTab1">
             
             <!-- sub calculator tabs -->
             <div class="divTabs">
-                <span id="spanCalcSubTabOne" class="tab active" style="background-color: #F0E68C">
+                <span id="spanCalcSubTab1" class="tab active" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 1, numberMathTabs);">
                     Calculate Fibonacci Numbers
                 </span>
-                <span id="spanCalcSubTabTwo" class="tab" style="background-color: #F0E68C">
+                <span id="spanCalcSubTab2" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 2, numberMathTabs);">
                     Calculate GCD (By Euclidean Algorithm)
                 </span>
-                <span id="spanCalcSubTabThree" class="tab" style="background-color: #F0E68C">
+                <span id="spanCalcSubTab3" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 3, numberMathTabs);">
                     Calculate 1 + 2 + ... + n (By Gauss)
+                </span>
+                <span id="spanCalcSubTab4" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 4, numberMathTabs);">
+                    Calculate Row Sums of Pascal's Triangle
                 </span>
 		    </div>
             <div class="divTabSpacer">&nbsp;</div>   
-            <div id="divCalcSubTabOne">    
+            <div id="divCalcSubTab1">    
             <div class="pageHeader">Calculate Fibonacci Numbers</div>
               
             <div><img src="Images/goldenSpiral.svg" style="width: 30%; min-width: 220px; float: right; margin-top: -1em; margin-right: 4em; transform: rotate(5deg)"></div>
@@ -178,22 +216,22 @@ body{
                 
         <!--sub tabs-->
          <div class="divTabs">
-			<span id="spanSubTabOne" class="tab active" style="background-color: #EE82EE">
-                nth Term Calculator
+			<span id="spanSubTab1" class="tab active" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 1, numberFibTabs);">
+                		nth Term Calculator
 			</span>
-			<span id="spanSubTabTwo" class="tab" style="background-color: #EE82EE">
+			<span id="spanSubTab2" class="tab" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 2, numberFibTabs);">
 				First n Terms Calculator
 			</span>
 		</div>
 		<div class="divTabSpacer">&nbsp;</div>   
-        <div id="divSubTabOne">    
-		    Find the nth term of the Fibonacci Sequence<br><br>
+        <div id="divSubTab1">    
+	    Find the nth term of the Fibonacci Sequence<br><br>
             <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nth" type="text" value="">
             <button class="fibB" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
             <div id="nthTerm" class="fibO"></div>
             <br><br>
         </div>
-        <div id="divSubTabTwo" style="display: none">
+        <div id="divSubTab2" style="display: none">
             Print the first n terms of the Fibonacci Sequence<br><br>
             <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nVal" type="text" value="">
             <button class="fibB" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
@@ -203,7 +241,7 @@ body{
             </div>
         </div> <!-- End of divCalcSubTabOne -->
             
-        <div id="divCalcSubTabTwo" style="display: none">
+        <div id="divCalcSubTab2" style="display: none">
             <div class="pageHeader">Greatest Common Divisor Calculator</div>
             
             <div class="tabContents" style="line-height: 170%"><br>
@@ -231,7 +269,7 @@ body{
             </div>
         </div>
             
-        <div id="divCalcSubTabThree" style="display: none">
+        <div id="divCalcSubTab3" style="display: none">
             <div class="pageHeader">Calculate Sum of First n Natural Numbers</div>
             
             <div><img src="Images/GaussSum.png" style="width: 26%; min-width: 220px; float: right; margin-top: 1em; margin-right: 4em; transform: rotate(5deg)"></div>
@@ -254,12 +292,62 @@ body{
                 <br>  
             </div>
                         
-         </div>
+        </div>
         
         
-        </div> <!-- End divTabOne -->
         
-        <div id="divTabTwo" style="display: none;">
+        <div id="divCalcSubTab4" style="display: none">
+            <div class="pageHeader">Calculate Row Sums of Pascal's Triangle</div>
+            
+            <div class="tabContents" style="line-height: 170%">
+            Row 0 of Pascal's Triangle consists of a 1.  A 1 flanks each row of Pascal's Triangle with 2 or more entries.  For each entry of Pascal's Triangle that is > 1, we add the two entries diagonally above.  Below is a diagram of the first few rows of Pascal's Triangle.
+                
+<!-- begin Pascal's Triangle -->
+<div class="row">
+<div id="PTriangle" class="column1">
+<INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="2"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="3"><INPUT class="tr" VALUE="3"><INPUT class="tr" VALUE="1"><br>    
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="4"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="4"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="5"><INPUT class="tr" VALUE="10"><INPUT class="tr" VALUE="10"><INPUT class="tr" VALUE="5"><INPUT class="tr" VALUE="1"><br>    
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="15"><INPUT class="tr" VALUE="20"><INPUT class="tr" VALUE="15"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="7"><INPUT class="tr" VALUE="21"><INPUT class="tr" VALUE="35"><INPUT class="tr" VALUE="35"><INPUT class="tr" VALUE="21"><INPUT class="tr" VALUE="7"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="8"><INPUT class="tr" VALUE="28"><INPUT class="tr" VALUE="56"><INPUT class="tr" VALUE="70"><INPUT class="tr" VALUE="56"><INPUT class="tr" VALUE="28"><INPUT class="tr" VALUE="8"><INPUT class="tr" VALUE="1"><br>
+<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="9"><INPUT class="tr" VALUE="36"><INPUT class="tr" VALUE="84"><INPUT class="tr" VALUE="126"><INPUT class="tr" VALUE="126"><INPUT class="tr" VALUE="84"><INPUT class="tr" VALUE="36"><INPUT class="tr" VALUE="9"><INPUT class="tr" VALUE="1"><br>
+<span class="ellipsis">&#8942;</span>
+</div>
+<!-- end Pascal's Triangle -->
+<br>
+    <div id="PTSum" class="column2">
+    Row Summation Calculator:<br>
+    <sup>*</sup>remember Pascal's Triangle begins with Row 0.<br>
+    <label>Enter row number: </label>
+    <input class="fibI" type="number" id="rowNum" Size="16"><br>
+    <!--outputs row summation-->
+    <input class="fibI" type="number" id="ShowSumPT" placeholder="Row Sum">
+	<button id="FindSum" class="fibB" onclick="RowSum();">Find Row Sum</button><br><br>
+    <br>
+    <div id="PTPattern">
+        _______________________________________________<br><br>
+        SEE IF YOU RECOGNIZE A PATTERN IN THE ROW SUMS!<br>
+		<button id="pattern" class="fibB" onclick="showHide();">Show/Hide Pattern</button><br>
+		<p id="patternKey" style="display: none; color: crimson">sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p>
+		<br> 
+    </div>
+    
+    </div>
+<div><!-- end row -->
+    
+    
+        </div>
+                        
+        </div>
+    </div>
+    </div>
+  	</div> <!-- End divTabOne -->
+        
+        <div id="divTab2" style="display: none;">
 
             <div class="pageHeader">Bubble Sort Your Data Set</div>
             
@@ -280,19 +368,19 @@ body{
 	</div> <!-- End divTabTwo -->
         
         
-        <div id="divTabThree" style="display:none;">
+        <div id="divTab3" style="display:none;">
             
-            <!-- sub calculator tabs -->
+            <!-- sub game tabs -->
             <div class="divTabs">
-                <span id="spanGamesSubTabOne" class="tab active" style="background-color: silver">
+                <span id="spanGamesSubTab1" class="tab active" style="background-color: silver" onclick="toggleTabs(gamesID, 1, numberGSTabs);">
                     Hangman
                 </span>
-                <span id="spanGamesSubTabTwo" class="tab" style="background-color: silver">
+                <span id="spanGamesSubTab2" class="tab" style="background-color: silver" onclick="toggleTabs(gamesID, 2, numberGSTabs);">
                     War
                 </span>
 		    </div>
             <div class="divTabSpacer">&nbsp;</div>   
-            <div id="divGamesSubTabOne">
+            <div id="divGamesSubTab1">
         
             <div class="pageHeader">Let's Play Hangman!</div>
                 
@@ -313,7 +401,7 @@ body{
             </div>
             </div>
             
-            <div id="divGamesSubTabTwo" style="display: none">
+            <div id="divGamesSubTab2" style="display: none">
                 <div class="pageHeader">Let's Play War!</div>             
             <div>
                 <div style="width: 73%; margin-left: 17em; margin-top: -2.5em; font-family: 'Verdana'">In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to start a round; this flips a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</div>
@@ -353,18 +441,14 @@ body{
         </div> <!-- End divTabThree -->
         
         
-        <div id="divTabFour" style="display:none;">
-
-		    
+        <div id="divTab4" style="display:none;">
         </div><!-- End divTabFour -->
          
             
-        <div id="divTabFive" style="display: none;">
+        <div id="divTab5" style="display: none;">
+	</div> <!-- End divTabFive -->    
             
-	
-		</div> <!-- End divTabFive -->    
-            
-    	</div>
+    </div>
 		
 
 
@@ -373,167 +457,45 @@ body{
 </div>
     
     <script type="text/javascript">
-
-	
-	$(document).ready( function() {
+    //*********************
+    // toggling of tabs
+    //*********************
+        var spanPrefix = "#span";
+        var divPrefix = "#div";
         
-		////////////////////////////////////////////////////////////
-		// The following block handles the toggling of the tabs
-		////////////////////////////////////////////////////////////
-        	$("#spanTabOne").click( function() {
-			$("#divTabOne").css("display", "block");
-			$("#spanTabOne").addClass("active");
-			
-			$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
-            
-            		$("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
-            
-            		//$("#divTabFour").css("display", "none");
-			//$("#spanTabFour").removeClass("active");
-            
-            		//$("#divTabFive").css("display", "none");
-			//$("#spanTabFive").removeClass("active");
-		});
-		
-		$("#spanTabTwo").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
-
-			$("#divTabTwo").css("display", "block");
-			$("#spanTabTwo").addClass("active");
-            
-           		$("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
-            
-            		//$("#divTabFour").css("display", "none");
-			//$("#spanTabFour").removeClass("active");
-            
-            		//$("#divTabFive").css("display", "none");
-			//$("#spanTabFive").removeClass("active");
-		});
+        function toggleTabs(tabID, tabNum, tabsTotal){
+            for(var j = 1; j <= tabsTotal; j++){
+               if(tabNum==j){
+                        $(divPrefix+tabID+j).css("display", "block");
+                        $(spanPrefix+tabID+j).addClass("active");
+                }
+                else{
+                    $(divPrefix+tabID+j).css("display", "none");
+                    $(spanPrefix+tabID+j).removeClass("active"); 
+                } 
+            }
+        }
         
-        	$("#spanTabThree").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
+        //**************** toggling of tabs variables for main nav ******************
+        var mainID = "Tab";
+        var numberMainTabs = 3;
 
-            		$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
-            
-			$("#divTabThree").css("display", "block");
-			$("#spanTabThree").addClass("active");
-            
-            		//$("#divTabFour").css("display", "none");
-			//$("#spanTabFour").removeClass("active");
-            
-            		//$("#divTabFive").css("display", "none");
-			//$("#spanTabFive").removeClass("active");
-		});
-        /*
-       		 $("#spanTabFour").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
-			
-			$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
-            
-            		$("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
-            
-            		$("#divTabFour").css("display", "block");
-			$("#spanTabFour").addClass("active");
-            
-            		$("#divTabFive").css("display", "none");
-			$("#spanTabFive").removeClass("active");
-		});
+        //***************** toggling of tabs variables for Math Calculations tab ******************
+        var mathID = "CalcSubTab";
+        var numberMathTabs = 4;
         
-       		 $("#spanTabFive").click( function() {
-			$("#divTabOne").css("display", "none");
-			$("#spanTabOne").removeClass("active");
-			
-			$("#divTabTwo").css("display", "none");
-			$("#spanTabTwo").removeClass("active");
-            
-            		$("#divTabThree").css("display", "none");
-			$("#spanTabThree").removeClass("active");
-            
-            		$("#divTabFour").css("display", "none");
-			$("#spanTabFour").removeClass("active");
-            
-            		$("#divTabFive").css("display", "block");
-			$("#spanTabFive").addClass("active");
-		});
-        */
-        	$("#spanCalcSubTabOne").click( function() {
-			$("#divCalcSubTabOne").css("display", "block");
-			$("#spanCalcSubTabOne").addClass("active");
-			
-			$("#divCalcSubTabTwo").css("display", "none");
-			$("#spanCalcSubTabTwo").removeClass("active");
-            
-            		$("#divCalcSubTabThree").css("display", "none");
-			$("#spanCalcSubTabThree").removeClass("active");
-		});
-		
-		$("#spanCalcSubTabTwo").click( function() {
-			$("#divCalcSubTabOne").css("display", "none");
-			$("#spanCalcSubTabOne").removeClass("active");
+        //********************* toggling of tabs variables for Fibonacci page *********************
+        var fibID = "SubTab";
+        var numberFibTabs = 2;
 
-			$("#divCalcSubTabTwo").css("display", "block");
-			$("#spanCalcSubTabTwo").addClass("active");
+        //******************** toggling of tabs variables for Game page **********************
+        var gamesID = "GamesSubTab";
+        var numberGSTabs = 2;
             
-            		$("#divCalcSubTabThree").css("display", "none");
-			$("#spanCalcSubTabThree").removeClass("active");
-		});
+    //*********************
+    // end toggling of tabs
+    //*********************    
         
-        	$("#spanCalcSubTabThree").click( function() {
-			$("#divCalcSubTabOne").css("display", "none");
-			$("#spanCalcSubTabOne").removeClass("active");
-
-			$("#divCalcSubTabTwo").css("display", "none");
-			$("#spanCalcSubTabTwo").removeClass("active");
-            
-            		$("#divCalcSubTabThree").css("display", "block");
-			$("#spanCalcSubTabThree").addClass("active");
-		});
-        
-        	$("#spanSubTabOne").click( function() {
-			$("#divSubTabOne").css("display", "block");
-			$("#spanSubTabOne").addClass("active");
-			
-			$("#divSubTabTwo").css("display", "none");
-			$("#spanSubTabTwo").removeClass("active");
-		});
-		
-		$("#spanSubTabTwo").click( function() {
-			$("#divSubTabOne").css("display", "none");
-			$("#spanSubTabOne").removeClass("active");
-
-			$("#divSubTabTwo").css("display", "block");
-			$("#spanSubTabTwo").addClass("active");
-		});
-        
-        
-        	$("#spanGamesSubTabOne").click( function() {
-			$("#divGamesSubTabOne").css("display", "block");
-			$("#spanGamesSubTabOne").addClass("active");
-			
-			$("#divGamesSubTabTwo").css("display", "none");
-			$("#spanGamesSubTabTwo").removeClass("active");
-		});
-		
-		$("#spanGamesSubTabTwo").click( function() {
-			$("#divGamesSubTabOne").css("display", "none");
-			$("#spanGamesSubTabOne").removeClass("active");
-
-			$("#divGamesSubTabTwo").css("display", "block");
-			$("#spanGamesSubTabTwo").addClass("active");
-		});
-        
-		////////////////////////////////////////////////////////////
-	});
-
 </script>
     
 <script>
@@ -620,7 +582,7 @@ body{
 		while(ctr<set.length);
 		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
 		return set;
-	}
+    }
     
 </script>
 
@@ -963,7 +925,30 @@ function gaussSum() {
 	document.querySelector("#ShowSum").innerHTML = "SOLUTION: <br>" + Num + " + " + nMinusOne + " + " +"... + " + "3 + 2 + 1<br>= "+parseInt(sum) + "<br>= " +parseInt(sum).toExponential();
 	}
 }
+</script> 
+    
+ <script>
+//find row sum of Pascal's Triangle
+function RowSum(){
+	var row = parseInt(document.querySelector("#rowNum").value);
+	var sum = Math.pow(2, row);
+        document.querySelector("#ShowSumPT").value = sum;
+}
+    
+var counter=0;
+function showHide(){
+	if(counter%2==0){
+        	document.querySelector("#patternKey").style.display = "block";
+            	counter++;
+        }
+        else{
+            	document.querySelector("#patternKey").style.display = "none";
+            	counter++;
+        }
+} 
+     
 </script>   
+    
     </div>
 
 </body>
