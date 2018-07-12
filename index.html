@@ -372,14 +372,7 @@ body{
         <div id="divTab3" style="display:none;">
             
             <!-- ********** begin tabs to subdivide Games page ********** -->
-            <div class="divTabs">
-                <span id="spanGamesSubTab1" class="tab active" style="background-color: silver" onclick="toggleTabs(gamesID, 1, numberGSTabs);">
-                    Hangman
-                </span>
-                <span id="spanGamesSubTab2" class="tab" style="background-color: silver" onclick="toggleTabs(gamesID, 2, numberGSTabs);">
-                    War
-                </span>
-		    </div>
+            <div id="gamesNav" class="divTabs"></div>
             <div class="divTabSpacer">&nbsp;</div>  
             <!-- ********** end tabs to subdivide Games page ********** -->
             
@@ -508,6 +501,19 @@ $('#mathNav').displayMathNav();
 })( jQuery );
    
 $('#fibNav').displayFibNav();  
+
+//**************************
+//display Games Page Nav
+//**************************
+(function( $ ){
+   $.fn.displayGamesNav = function() {
+        $("#gamesNav").append("<span id='spanGamesSubTab1' class='tab active' style='background-color: silver' onclick='toggleTabs(gamesID, 1, numberGSTabs);'>Hangman</span>" +
+        "<span id='spanGamesSubTab2' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 2, numberGSTabs);'>War</span>");
+   }; 
+})( jQuery );
+   
+$('#gamesNav').displayGamesNav();        
+
 	
 </script>	
 <script>
