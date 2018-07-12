@@ -9,6 +9,10 @@
 <script type="text/javascript" src="scripts/SiteTabs.js"></script>       
 <!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/EuclidGCD.js"></script>   
+<!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/FibonacciSeq.js"></script>
+	
+	
 <style type="text/css">
 
 .divTabSpacer {
@@ -456,47 +460,6 @@ body{
 <!-- **************************************************** -->
 <!-- ********** begin jQuery / JavaScript code ********** -->
 
-<script>
-    //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
-    
-    function fibCalc(Num){
-        var fibArray = [];
-        Num = parseInt(Num);
-        if(Num==1){
-            var fibNew = 1;
-            return fibNew;
-        }
-        if(Num==2){
-            var fibNew = 1;
-            return fibNew;
-        }
-        if(Num>=3){
-            var i = 3;
-            fibArray.push(1);
-            fibArray.push(1);
-            while(i<=Num){
-                var fibNew = fibArray[i-2] + fibArray[(i-3)];
-                fibNew = parseInt(fibNew);
-                fibArray.push(fibNew);
-                i++;
-            }
-            return fibNew;
-        }
-    }
-    
-    function nthFibCalc(Num){
-        document.querySelector('#nthTerm').innerHTML = "The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num));
-    }
-    
-    function nFibCalc(Num){
-        var firstN =[];
-        for(var i = 1; i<parseInt(Num)+1; i++){
-            firstN[i-1] = fibCalc(i);
-        }
-        document.querySelector("#nTerms").innerHTML = "The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", ");
-    }
-</script>
-    
 <script>
 function gaussSum() {
 	var Num = parseInt(document.querySelector("#nValue").value);
