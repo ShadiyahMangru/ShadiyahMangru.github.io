@@ -181,23 +181,7 @@ body{
         <p id="subtitle">Explore the sample content under the tabs below.</p>
 		
         <!-- ********** begin Main site navigation tabs ********** -->
-	<div class="divTabs">
-	    <span id="spanTab1" class="tab active" onclick="toggleTabs(mainID, 1, numberMainTabs);">
-		Perform Mathematical Calculations
-	    </span>
-	    <span id="spanTab2" class="tab" onclick="toggleTabs(mainID, 2, numberMainTabs);">
-	         Data Set Sorter(s)
-	    </span>
-            <span id="spanTab3" class="tab" onclick="toggleTabs(mainID, 3, numberMainTabs);">
-		Let's Play A Game!
-	    </span>
-            <span id="spanTab4" class="tab">
-                Tab Four (Coming Soon!)
-	    </span>
-            <span id="spanTab5" class="tab">
-                Tab Five (Coming Soon!)
-       	    </span>
-	</div>
+	<div id="mainNav" class="divTabs"></div>
 	<div class="divTabSpacer">&nbsp;</div>
         <!-- ********** end Main site navigation tabs ********** -->
 
@@ -503,7 +487,19 @@ body{
     
     <!-- **************************************************** -->
     <!-- ********** begin jQuery / JavaScript code ********** -->
-    
+<script> 
+(function( $ ){
+   $.fn.displayMainNav = function() {
+        $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
+        "<span id='spanTab2' class='tab' onclick='toggleTabs(mainID, 2, numberMainTabs);'>Data Set Sorter(s)</span>" +
+        "<span id='spanTab3' class='tab' onclick='toggleTabs(mainID, 3, numberMainTabs);'>Let's Play A Game!</span>" +
+        "<span id='spanTab4' class='tab'>Tab Four (Coming Soon!)</span>" +
+        "<span id='spanTab5' class='tab'>Tab Five (Coming Soon!)</span>");
+   }; 
+})( jQuery );
+   
+$('#mainNav').displayMainNav(); 
+</script>	
 <script>
     //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
     
