@@ -50,7 +50,9 @@
    }; 
 })( jQuery );
    
-$('#mainNav').displayMainNav(); 
+$(document).ready(function(){
+	$('#mainNav').displayMainNav();
+});
 	
 //*********************
 //display Math Page Nav
@@ -63,9 +65,10 @@ $('#mainNav').displayMainNav();
         "<span id='spanCalcSubTab4' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 4, numberMathTabs);'>Calculate Row Sums of Pascal's Triangle</span>");
    }; 
 })( jQuery );
-   
-$('#mathNav').displayMathNav();    	
-	
+$(document).ready(function(){ 
+	$('#mathNav').displayMathNav();    	
+});
+
 //**************************
 //display Fibonacci Page Nav
 //**************************
@@ -75,8 +78,10 @@ $('#mathNav').displayMathNav();
         "<span id='spanSubTab2' class='tab' style='background-color: #EE82EE' onclick='toggleTabs(fibID, 2, numberFibTabs);'>First n Terms Calculator</span>");
    }; 
 })( jQuery );
-   
-$('#fibNav').displayFibNav();  
+
+$(document).ready(function(){
+	$('#fibNav').displayFibNav();  
+});
 
 //**************************
 //display Games Page Nav
@@ -87,5 +92,7 @@ $('#fibNav').displayFibNav();
         "<span id='spanGamesSubTab2' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 2, numberGSTabs);'>War</span>");
    }; 
 })( jQuery );
-   
-$('#gamesNav').displayGamesNav();        
+ 
+$(document).ready(function(){
+	$('#gamesNav').displayGamesNav();        
+});
