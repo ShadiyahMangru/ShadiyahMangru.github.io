@@ -194,20 +194,7 @@ body{
     <div id="divTab1">
             
         <!-- ********** begin tabs to subdivide Math Calculations page ********** -->
-        <div class="divTabs">
-            <span id="spanCalcSubTab1" class="tab active" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 1, numberMathTabs);">
-                    Calculate Fibonacci Numbers
-            </span>
-            <span id="spanCalcSubTab2" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 2, numberMathTabs);">
-                    Calculate GCD (By Euclidean Algorithm)
-            </span>
-            <span id="spanCalcSubTab3" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 3, numberMathTabs);">
-                    Calculate 1 + 2 + ... + n (By Gauss)
-            </span>
-            <span id="spanCalcSubTab4" class="tab" style="background-color: #F0E68C" onclick="toggleTabs(mathID, 4, numberMathTabs);">
-                    Calculate Row Sums of Pascal's Triangle
-            </span>
-        </div>
+        <div id="mathNav" class="divTabs"></div>
         <div class="divTabSpacer">&nbsp;</div> 
         <!-- end tabs to subdivide Math Calculations page -->
             
@@ -488,6 +475,9 @@ body{
     <!-- **************************************************** -->
     <!-- ********** begin jQuery / JavaScript code ********** -->
 <script> 
+//*********************
+//display Main Site Nav
+//*********************	
 (function( $ ){
    $.fn.displayMainNav = function() {
         $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
@@ -499,6 +489,23 @@ body{
 })( jQuery );
    
 $('#mainNav').displayMainNav(); 
+	
+//*********************
+//display Math Page Nav
+//*********************
+(function( $ ){
+   $.fn.displayMathNav = function() {
+        $("#mathNav").append("<span id='spanCalcSubTab1' class='tab active' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 1, numberMathTabs);'>Calculate Fibonacci Numbers</span>" +
+        "<span id='spanCalcSubTab2' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 2, numberMathTabs);'>Calculate GCD (By Euclidean Algorithm)</span>" +
+        "<span id='spanCalcSubTab3' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 3, numberMathTabs);'>Calculate 1 + 2 + ... + n (By Gauss)</span>" +
+        "<span id='spanCalcSubTab4' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 4, numberMathTabs);'>Calculate Row Sums of Pascal's Triangle</span>");
+   }; 
+})( jQuery );
+   
+$('#mathNav').displayMathNav();    	
+	
+	
+	
 </script>	
 <script>
     //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
