@@ -39,7 +39,7 @@ $(document).ready(function(){
 //**************************************************               
 // function to calculate GCD by Euclidean Algorithm!
 //**************************************************
-(function( $ ){
+$(document).ready(function(){
    $("#getGCD").click(function() {
         var a = parseInt($("#entry1").val());
         var b = parseInt($("#entry2").val());
@@ -59,4 +59,4 @@ $(document).ready(function(){
           }
         $("#theResult").val(L);
     }); 
-})( jQuery );
+});
