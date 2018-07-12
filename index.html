@@ -211,14 +211,7 @@ body{
         <br><br>
                 
         <!-- ********** begin tabs to subdivide Fibonacci Calculations page ********** -->
-        <div class="divTabs">
-		<span id="spanSubTab1" class="tab active" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 1, numberFibTabs);">
-                	nth Term Calculator
-		</span>
-		<span id="spanSubTab2" class="tab" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 2, numberFibTabs);">
-			First n Terms Calculator
-		</span>
-	</div>
+        <div id="fibNav" class="divTabs"></div>
 	<div class="divTabSpacer">&nbsp;</div> 
         <!-- ********** end tabs to subdivide Fibonacci Calculations page ********** -->   
         
@@ -504,7 +497,17 @@ $('#mainNav').displayMainNav();
    
 $('#mathNav').displayMathNav();    	
 	
-	
+//**************************
+//display Fibonacci Page Nav
+//**************************
+(function( $ ){
+   $.fn.displayFibNav = function() {
+        $("#fibNav").append("<span id='spanSubTab1' class='tab active' style='background-color: #EE82EE' onclick='toggleTabs(fibID, 1, numberFibTabs);'>nth Term Calculator</span>" +
+        "<span id='spanSubTab2' class='tab' style='background-color: #EE82EE' onclick='toggleTabs(fibID, 2, numberFibTabs);'>First n Terms Calculator</span>");
+   }; 
+})( jQuery );
+   
+$('#fibNav').displayFibNav();  
 	
 </script>	
 <script>
