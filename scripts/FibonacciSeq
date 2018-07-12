@@ -1,0 +1,38 @@
+    //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
+    
+    function fibCalc(Num){
+        var fibArray = [];
+        Num = parseInt(Num);
+        if(Num==1){
+            var fibNew = 1;
+            return fibNew;
+        }
+        if(Num==2){
+            var fibNew = 1;
+            return fibNew;
+        }
+        if(Num>=3){
+            var i = 3;
+            fibArray.push(1);
+            fibArray.push(1);
+            while(i<=Num){
+                var fibNew = fibArray[i-2] + fibArray[(i-3)];
+                fibNew = parseInt(fibNew);
+                fibArray.push(fibNew);
+                i++;
+            }
+            return fibNew;
+        }
+    }
+    
+    function nthFibCalc(Num){
+        $('#nthTerm').html("The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num)));
+    }
+    
+    function nFibCalc(Num){
+        var firstN =[];
+        for(var i = 1; i<parseInt(Num)+1; i++){
+            firstN[i-1] = fibCalc(i);
+        }
+        $("#nTerms").html("The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", "));
+    }
