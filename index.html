@@ -3,7 +3,8 @@
 <head>
 <title>Shadiyah's Demo Website</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
+<!--link to my Hangman JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Hangman.js"></script>   
 
 <style type="text/css">
 
@@ -25,7 +26,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-	font-family: "Arial Narrow";
+    	font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -68,7 +69,7 @@
     margin-left: .25em;
 }   
 
-.fibB{
+.siteButton{
     color: white;
     background-color: cornflowerblue;
     padding: 3px 5px 3px 5px;
@@ -88,6 +89,23 @@
     margin-top: 1em;
 }
 
+#HMguessed{
+    font-weight: 600; 
+    font-size: 18px; 
+    border: 1px solid black; 
+    border-radius: 6px; 
+    padding: 1em; 
+    width: 30%; 
+    display: none; 
+    color: mediumblue;
+}   
+    
+#HMfeedback{
+    color: purple; 
+    font-weight: 600; 
+    font-size: 18px;
+}
+    
 #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #gcdE{
     max-width: 90%;
     border: 1px solid black;
@@ -166,7 +184,7 @@ body{
 		Perform Mathematical Calculations
 	    </span>
 	    <span id="spanTab2" class="tab" onclick="toggleTabs(mainID, 2, numberMainTabs);">
-		Data Set Sorter(s)
+	         Data Set Sorter(s)
 	    </span>
             <span id="spanTab3" class="tab" onclick="toggleTabs(mainID, 3, numberMainTabs);">
 		Let's Play A Game!
@@ -221,21 +239,21 @@ body{
                 
         <!-- ********** begin tabs to subdivide Fibonacci Calculations page ********** -->
         <div class="divTabs">
-			<span id="spanSubTab1" class="tab active" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 1, numberFibTabs);">
-                nth Term Calculator
-			</span>
-			<span id="spanSubTab2" class="tab" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 2, numberFibTabs);">
-				First n Terms Calculator
-			</span>
-		</div>
-		<div class="divTabSpacer">&nbsp;</div> 
+		<span id="spanSubTab1" class="tab active" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 1, numberFibTabs);">
+                	nth Term Calculator
+		</span>
+		<span id="spanSubTab2" class="tab" style="background-color: #EE82EE" onclick="toggleTabs(fibID, 2, numberFibTabs);">
+			First n Terms Calculator
+		</span>
+	</div>
+	<div class="divTabSpacer">&nbsp;</div> 
         <!-- ********** end tabs to subdivide Fibonacci Calculations page ********** -->   
         
         <!-- ********** begin Fibonacci sub tab one contents ********** -->   
         <div id="divSubTab1">    
 		    Find the nth term of the Fibonacci Sequence<br><br>
             <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nth" type="text" value="">
-            <button class="fibB" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
+            <button class="siteButton" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
             <div id="nthTerm" class="fibO"></div>
             <br><br>
         </div><!-- ********** end Fibonacci sub tab one contents ********** -->
@@ -243,7 +261,7 @@ body{
         <div id="divSubTab2" style="display: none">
             Print the first n terms of the Fibonacci Sequence<br><br>
             <strong style="color: deepskyblue;">Enter n value:</strong> <input class="fibI" id="nVal" type="text" value="">
-            <button class="fibB" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
+            <button class="siteButton" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
             <div id="nTerms" class="fibO"></div>
             <br><br>
         </div><!-- ********** end Fibonacci sub tab two contents ********** -->
@@ -262,7 +280,7 @@ body{
                 <label>Enter another natural number: </label>
                 <input class="fibI" TYPE="number" id="entry2" Size="16"><br><br>
                 <label>gcd = <input class = "fibI" type="number" id="theResult"></label>
-                <button class="fibB" onclick="EuclidGCD();">Calculate GCD</button>
+                <button class="siteButton" onclick="EuclidGCD();">Calculate GCD</button>
             </div>
             <br>
             <div style="margin-top: -12.5em; margin-left: 33em"> 
@@ -290,7 +308,7 @@ body{
         <div class="tabContents" style="line-height: 170%">
             <label>n= </label> 
             <input class="fibI" type="number" id="nValue" placeholder="n">
-	        <button class="fibB" onclick="gaussSum();">Get Sum</button>
+	        <button class="siteButton" onclick="gaussSum();">Get Sum</button>
             <br>
 	        <div id="ShowSum" style="font-weight: 600; display: inline-block; margin-left: 30em; margin-top: -1em; color: crimson"></div> 
                 
@@ -337,12 +355,12 @@ body{
     <input class="fibI" type="number" id="rowNum" Size="16"><br>
     <!--outputs row summation-->
     <input class="fibI" type="number" id="ShowSumPT" placeholder="Row Sum">
-	<button id="FindSum" class="fibB" onclick="RowSum();">Find Row Sum</button><br><br>
+	<button id="FindSum" class="siteButton" onclick="RowSum();">Find Row Sum</button><br><br>
     <br>
     <div id="PTPattern">
         _______________________________________________<br><br>
         SEE IF YOU RECOGNIZE A PATTERN IN THE ROW SUMS!<br>
-		<button id="pattern" class="fibB" onclick="showHide();">Show/Hide Pattern</button><br>
+		<button id="pattern" class="siteButton" onclick="showHide();">Show/Hide Pattern</button><br>
 		<p id="patternKey" style="display: none; color: crimson">sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p>
 		<br> 
     </div>
@@ -369,23 +387,23 @@ body{
         <div class="tabContents" style="line-height: 170%">
             Create a data set:<br>    
             <strong style="color: deepskyblue;">Enter a number to add to data set:</strong> <input class="fibI" id="dsCreate" type="text" value="">
-            <button class="fibB" onclick="setDataSet(document.querySelector('#dsCreate').value);">Add to Data Set</button>
-            <button class="fibB" onclick="undo();">Undo</button>
+            <button class="siteButton" onclick="setDataSet(document.querySelector('#dsCreate').value);">Add to Data Set</button>
+            <button class="siteButton" onclick="undo();">Undo</button>
             <br>
             <div id="dataSet" class="fibO"></div>
             <br><br>  
 
-            <button class="fibB" onclick="bubbleSort(ds);">Bubble Sort</button><br><br>
+            <button class="siteButton" onclick="bubbleSort(ds);">Bubble Sort</button><br><br>
             <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
         </div>
 	
-     </div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
-     <!-- ******************************************************************* --> 
+       </div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
+              <!-- ******************************************************************* --> 
         
     
-     <!-- ********************************************************************** -->   
-     <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
-     <div id="divTab3" style="display:none;">
+        <!-- ********************************************************************** -->   
+        <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
+        <div id="divTab3" style="display:none;">
             
             <!-- ********** begin tabs to subdivide Games page ********** -->
             <div class="divTabs">
@@ -404,19 +422,19 @@ body{
             <div class="pageHeader">Let's Play Hangman!</div>
                 
             <div class="tabContents">Select Difficulty Level: 
-            <button id="easy" class="fibB" onclick="playGame(1);">Easy</button>
-            <button id="medium" class="fibB" onclick="playGame(2);">Medium</button>
-            <button id="hard" class="fibB" onclick="playGame(3);">Hard</button><br><br>
+            <button id="easy" class="siteButton" onclick="playGame(1);">Easy</button>
+            <button id="medium" class="siteButton" onclick="playGame(2);">Medium</button>
+            <button id="hard" class="siteButton" onclick="playGame(3);">Hard</button><br><br>
             
             <div id="HangmanPic"><img src="Images/stickman.png" style="width: 25%"></div>
             <div id="answerFormat" style="font-weight: 600; font-size: 24px"></div><br>
-            <div id="guessed" style="font-weight: 600; font-size: 18px; border: 1px solid black; border-radius: 6px; padding: 1em; width: 30%; display: none; color: mediumblue"></div><br>
+            <div id="HMguessed"></div><br>
             <strong id="getLetter" style="color: deepskyblue; display: none">Enter a letter:</strong> <input class="fibI" id="letterGuess" style="display: none; font-weight: 600; font-size: 16px" type="text" value="">
-            <button class="fibB" id="submit" style="display: none;" onclick="guessLetter(document.querySelector('#letterGuess').value);">Submit</button><Br><br>
-            <div id="feedback" style="color: purple; font-weight: 600; font-size: 18px"></div>
+            <button class="siteButton" id="submit" style="display: none;" onclick="guessLetter(document.querySelector('#letterGuess').value);">Submit</button><Br><br>
+            <div id="HMfeedback"></div>
                 <div id="celebrate" style="display: none; margin-top: -4.5em"><img src="Images/celebrate.gif"></div>
                 <div id="sad" style="display: none;"><img src="Images/sad.svg" style="width: 20%;"></div>
-            <button class="fibB" id="playAgain" style="display: none;" onclick="playAgain();">Play Again!</button>
+            <button class="siteButton" id="playAgain" style="display: none;" onclick="playAgain();">Play Again!</button>
             </div>
             </div><!-- ********** end contents of Hangman tab ********** --> 
             
@@ -426,8 +444,8 @@ body{
             <div>
                 <div style="width: 73%; margin-left: 17em; margin-top: -2.5em; font-family: 'Verdana'">In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to start a round; this flips a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</div>
                 <div id="results" style="margin-top: 1em; margin-left: 30em; font-size: 26px; color: crimson; font-weight: 600; font-family: Arial;"></div>
-                <button class="fibB" id="playAgn" style="margin-left: .5em; margin-top: 1em; display: none" onclick="playWarAgain();">Play Again!</button>
-                <button class="fibB" id="war" style="margin-left: 30em;" onclick="flipCard();">War!</button>
+                <button class="siteButton" id="playAgn" style="margin-left: .5em; margin-top: 1em; display: none" onclick="playWarAgain();">Play Again!</button>
+                <button class="siteButton" id="war" style="margin-left: 30em;" onclick="flipCard();">War!</button>
             </div>
             <div class="tabContents">
             <div style="margin-left: 14em; margin-top: -2.5em">
@@ -669,126 +687,10 @@ function showHide(){
 		while(ctr<set.length);
 		document.querySelector("#bubbleSorted").innerHTML = "Bubble Sorted Data Set: | " + set.join(" | ") + " | ";
 		return set;
-    }
+     }
     
 </script>
-
-<script>
-//Methods to play hangman!
-    
-var easyWords = ["flower", "cake", "rain", "tree", "bee", "frozen", "snow", "leaf", "hot", "apple", "star", "four", "cat", "zoo", "car", "train", "jump", "bag", "store", "heart", "hat", "sun"];
-    
-var mediumWords = ["January", "computer", "television", "soccer", "dinosaur", "shovel", "garden", "cucumber", "parade", "watermelon", "cupcake", "pizza", "tiger", "giant", "unicorn", "octopus", "volcano", "meteor", "ocean", "beach", "cloud", "elephant", "bakery"];
-
-var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut"];    
-    
-var mysteryWord; 
-var answerFormat = [];
-var alreadyGuess;
-var lives;
-    
-function playGame(num){
-    document.querySelector("#HangmanPic").style.display = "none";
-    lives=7;
-    alreadyGuess = [];
-    document.querySelector("#getLetter").style.display = "inline-block";
-    document.querySelector("#letterGuess").style.display = "inline-block";
-    document.querySelector("#submit").style.display="inline-block";
-    if(num==3){
-        mysteryWord = hardWords[Math.floor(Math.random() * hardWords.length)];
-    }
-    else if(num==2){
-        mysteryWord = mediumWords[Math.floor(Math.random() * mediumWords.length)];
-    }
-    else{
-        mysteryWord = easyWords[Math.floor(Math.random() * easyWords.length)];
-    }
-    mysteryWord = mysteryWord.toUpperCase();
-    for(var i=0; i<mysteryWord.length; i++){
-        answerFormat[i] = "_ "
-    }
-    document.querySelector("#answerFormat").innerHTML = "ANSWER FORMAT: " + answerFormat.join("");
-    document.querySelector("#easy").disabled = true;
-    document.querySelector("#medium").disabled = true;
-    document.querySelector("#hard").disabled = true;
-    return mysteryWord;
-}              
-
-function guessLetter(guess){
-    guess = guess.toUpperCase();
-    if(guess.length==1){
-        //if current letter has already been guessed during this round, retrieve another guess from user
-        if(alreadyGuess.includes(guess)==true){
-            document.querySelector("#feedback").innerHTML="You have already guessed " + guess + ".  Try again!" 
-            document.querySelector("#letterGuess").value = "";
-        }
-        //if current letter guess is in word, update mystery word format key and reveal to user
-        else if(mysteryWord.includes(guess)==true & alreadyGuess.indexOf(guess)==-1){
-            alreadyGuess.unshift(guess);
-            for(var i=0; i < mysteryWord.length; i++){
-						if(mysteryWord.charAt(i)==guess.charAt(0)){
-							answerFormat[i] = guess + " ";	
-						}
-					}
-            document.querySelector("#answerFormat").innerHTML = "ANSWER FORMAT: " + answerFormat.join("");
-            document.querySelector("#letterGuess").value = "";
-            document.querySelector("#guessed").style.display = "block";
-            document.querySelector("#guessed").innerHTML = "ALREADY GUESSED: " + alreadyGuess.join(", ");
-        
-        //ask user for another letter guess, if answer key still contains dashes
-            if(answerFormat.includes("_ ")==true){
-                    document.querySelector("#feedback").innerHTML="Good Work!  Guess Again!";
-            }
-        //output winner message if no dashes remain in answer key and load a new round of game
-            else{
-                document.querySelector("#feedback").innerHTML = "  YOU WON!!!";
-                document.querySelector("#celebrate").style.display = "block";
-                document.querySelector("#playAgain").style.display = "block";
-                document.querySelector("#answerFormat").innerHTML = "ANSWER: " + answerFormat.join("");
-            }
-        }   
-        //if current letter guess not in word, decrease 'lives' by one
-        else if(mysteryWord.includes(guess)==false){
-            alreadyGuess.unshift(guess);
-            lives--;
-            document.querySelector("#guessed").style.display = "block";
-            document.querySelector("#guessed").innerHTML = "ALREADY GUESSED: " + alreadyGuess.join(", ");
-             
-            //retrieve another letter guess from user if 'lives' remain
-            if(lives>0){
-                document.querySelector("#feedback").innerHTML = guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining";
-                 document.querySelector("#letterGuess").value = "";
-            }
-            else{
-            //output mystery word and a game over message to user if no 'lives' remain; load another round of game
-                document.querySelector("#feedback").innerHTML = "  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!";
-                document.querySelector("#sad").style.display = "block";
-                document.querySelector("#playAgain").style.display = "block";
-            }
-        }
-} 
-}
-
-function playAgain(){
-    document.querySelector("#HangmanPic").style.display = "block";
-    document.querySelector("#getLetter").style.display = "none";
-    document.querySelector("#letterGuess").style.display = "none";
-    document.querySelector("#letterGuess").value = "";
-    document.querySelector("#submit").style.display="none";
-    document.querySelector("#answerFormat").innerHTML = "";
-    document.querySelector("#feedback").innerHTML = "";
-    document.querySelector("#playAgain").style.display = "none";
-    document.querySelector("#celebrate").style.display = "none";
-    document.querySelector("#sad").style.display = "none";
-    document.querySelector("#easy").disabled = false;
-    document.querySelector("#medium").disabled = false;
-    document.querySelector("#hard").disabled = false;
-    document.querySelector("#guessed").style.display = "none";
-    answerFormat = [];
-}
-    
-</script>
-  
+      
 <script>
     //methods to play war!
     
