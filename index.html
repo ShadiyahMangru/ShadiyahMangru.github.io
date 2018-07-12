@@ -4,7 +4,9 @@
 <title>Shadiyah's Demo Website</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <!--link to my Hangman JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Hangman.js"></script>   
+<script type="text/javascript" src="scripts/Hangman.js"></script> 
+<!--link to my JavaScript/jQuery source code for Site Tabs-->
+<script type="text/javascript" src="scripts/SiteTabs.js"></script> 
 
 <style type="text/css">
 
@@ -501,47 +503,6 @@ body{
     
     <!-- **************************************************** -->
     <!-- ********** begin jQuery / JavaScript code ********** -->
-    <script type="text/javascript">
-    //*********************
-    // toggling of tabs
-    //*********************
-        var spanPrefix = "#span";
-        var divPrefix = "#div";
-        
-        function toggleTabs(tabID, tabNum, tabsTotal){
-            for(var j = 1; j <= tabsTotal; j++){
-               if(tabNum==j){
-                        $(divPrefix+tabID+j).css("display", "block");
-                        $(spanPrefix+tabID+j).addClass("active");
-                }
-                else{
-                    $(divPrefix+tabID+j).css("display", "none");
-                    $(spanPrefix+tabID+j).removeClass("active"); 
-                } 
-            }
-        }
-        
-        //**************** toggling of tabs variables for main nav ******************
-        var mainID = "Tab";
-        var numberMainTabs = 3;
-
-        //***************** toggling of tabs variables for Math Calculations tab ******************
-        var mathID = "CalcSubTab";
-        var numberMathTabs = 4;
-        
-        //********************* toggling of tabs variables for Fibonacci page *********************
-        var fibID = "SubTab";
-        var numberFibTabs = 2;
-
-        //******************** toggling of tabs variables for Game page **********************
-        var gamesID = "GamesSubTab";
-        var numberGSTabs = 2;
-            
-    //*********************
-    // end toggling of tabs
-    //*********************    
-        
-</script>
     
 <script>
     //Methods to calculate and return (i) the nth term of the Fibonacci sequence, and (ii) the first n terms of the Fibonacci sequence
