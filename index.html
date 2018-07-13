@@ -479,7 +479,7 @@ function showHide(){
    $.fn.displayFibNthCalc = function() {
         $("#fibNthCalc").html("Find the nth term of the Fibonacci Sequence");
         $("#fibNthCalc").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='siteInput' id='nth' type='text' value=''>");
-        $("#fibNthCalc").append("<button class='siteButton' onclick='nthFibCalc(document.querySelector('#nth').value);'>Get nth term</button><br>" +
+        $("#fibNthCalc").append("<button class='siteButton' onclick='nthFibCalc($('#nth').val());'>Get nth term</button><br>" +
         "<div id='nthTerm' class='fibO'></div><br><br>");
    }; 
 })( jQuery );
