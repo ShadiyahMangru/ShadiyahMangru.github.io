@@ -50,3 +50,43 @@
 $(document).ready(function(){
     $('#fibIntro').displayFibIntro();
 });
+
+//************************************************
+//display Fibonacci nth term Calculator in sub tab
+//************************************************
+(function( $ ){
+   $.fn.displayFibNthCalc = function() {
+        $("#fibNthCalc").html("Find the nth term of the Fibonacci Sequence");
+        $("#fibNthCalc").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='siteInput' id='nth' type='text' value=''>");
+        $("#fibNthCalc").append("<button class='siteButton' id='fB'>Get nth term</button><br>" +
+        "<div id='nthTerm' class='fibO'></div><br><br>");
+   }; 
+})( jQuery );
+ 
+$(document).ready(function(){
+    $('#fibNthCalc').displayFibNthCalc();
+    $( "#fB" ).click(function() {
+       nthFibCalc($('#nth').val()); 
+    });
+}); 
+    
+ 
+ 
+//************************************************
+//display Fibonacci Sequence Calculator in sub tab
+//************************************************
+(function( $ ){
+   $.fn.displayFibSeqPrint = function() {
+        $("#fibSeqPrint").html("Print the first n terms of the Fibonacci Sequence");
+        $("#fibSeqPrint").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='siteInput' id='nVal' type='text' value=''>" +
+        "<button class='siteButton' id='fBp'>Get first n terms</button><br>" +
+        "<div id='nTerms' class='fibO'></div><br><br>");
+   }; 
+})( jQuery );
+ 
+$(document).ready(function(){
+    $('#fibSeqPrint').displayFibSeqPrint();
+    $( "#fBp" ).click(function() {
+       nFibCalc($('#nVal').val());
+    });
+}); 
