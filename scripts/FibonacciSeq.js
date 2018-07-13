@@ -26,7 +26,7 @@
     }
     
     function nthFibCalc(Num){
-        $('#nthTerm').html("The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num)));
+        document.querySelector('#nthTerm').innerHTML = "The Fibonacci Sequence term at position " + Num + " is: " + fibCalc(parseInt(Num));
     }
     
     function nFibCalc(Num){
@@ -34,18 +34,19 @@
         for(var i = 1; i<parseInt(Num)+1; i++){
             firstN[i-1] = fibCalc(i);
         }
-        $("#nTerms").html("The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", "));
+        document.querySelector("#nTerms").innerHTML = "The first " + Num + " terms of the Fibonacci sequence are: " + firstN.join(", ");
     }
-
+   
 //******************************************
 //display intro to Fibonacci Sequence in tab
 //******************************************
 (function( $ ){
    $.fn.displayFibIntro = function() {
-        $("#fibIntro").html("The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, .... \nEach number in the sequence (starting from the third term) is the sum of the two preceding numbers.\n\n");
+        $("#fibIntro").html("The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, .... \nEach number in the sequence (starting from the third term) is the sum of the two preceding numbers.");
+       $("#fibIntro").append("<br><br>");
    }; 
 })( jQuery );
  
 $(document).ready(function(){
     $('#fibIntro').displayFibIntro();
-});    
+});
