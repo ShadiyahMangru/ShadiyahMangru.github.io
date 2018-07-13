@@ -23,7 +23,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-    	font-family: "Arial Narrow";
+        font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -103,12 +103,29 @@
 }    
 #FibPic{
     width: 30%; 
-    min-width: 220px; 
-    float: right; 
     margin-top: -1em; 
-    margin-right: 4em; 
-    transform: rotate(5deg);
-}    
+} 
+    .mathPics{
+        min-width: 220px; 
+        float: right; 
+        margin-right: 4em; 
+        transform: rotate(5deg);
+    }    
+    #GSumPic{
+       width: 26%; 
+       margin-top: 1em; 
+    }
+    #ShowSum{
+        font-weight: 600; 
+        display: inline-block; 
+        margin-left: 30em; 
+        margin-top: -1em; 
+        color: crimson;
+    }
+    #patternKey{
+        display: none; 
+        color: crimson;
+    }
 #HMguessed{
     font-weight: 600; 
     font-size: 18px; 
@@ -232,7 +249,7 @@ body{
         <div id="divCalcSubTab1">    
         <div class="pageHeader">Calculate Fibonacci Numbers</div>
               
-        <div><img src="Images/goldenSpiral.svg" id="FibPic"></div>
+        <div><img src="Images/goldenSpiral.svg" id="FibPic" class="mathPics"></div>
             
         <div class="tabContents" style="line-height: 170%">
         <div id="fibIntro"></div>
@@ -240,17 +257,19 @@ body{
         <!-- ********** Fibonacci Calculations page tabs ********** -->
         <div id="fibNav" class="divTabs"></div> 
         <div class="divTabSpacer">&nbsp;</div> 
-       <!-- ********** begin Fibonacci sub tab one contents ********** -->   
+        <!-- ********** begin Fibonacci sub tab one contents ********** -->   
         <div id="divSubTab1">  
-            	<div id="fibNthCalc"></div>
+            <div id="fibNthCalc"></div>
         </div><!-- ********** end Fibonacci sub tab one contents ********** -->
         <!-- ********** begin Fibonacci sub tab two contents ********** -->
         <div id="divSubTab2" class="aTab">
-		<div id="fibSeqPrint"></div>  
+            <div id="fibSeqPrint"></div>
+            
         </div><!-- ********** end Fibonacci sub tab two contents ********** -->
         </div>
         </div> <!-- ********** end contents of Fibonacci tab ********** -->   
-                
+            
+            
         <!-- ********** begin contents of Euclid tab ********** -->   
         <div id="divCalcSubTab2" class="aTab">
         <div class="pageHeader">Greatest Common Divisor Calculator</div>
@@ -262,31 +281,33 @@ body{
         </div>
         </div><!-- ********** end contents of Euclid tab ********** -->
         
+        
         <!-- ********** begin contents of Gauss tab ********** -->
         <div id="divCalcSubTab3" class="aTab">
         <div class="pageHeader">Calculate Sum of First n Natural Numbers</div>
             
-        <div><img src="Images/GaussSum.png" style="width: 26%; min-width: 220px; float: right; margin-top: 1em; margin-right: 4em; transform: rotate(5deg)"></div>
+        <div><img src="Images/GaussSum.png" id="GSumPic" class="mathPics"></div>
             
         <div class="tabContents" style="line-height: 170%">
             <label>n= </label> 
             <input class="siteInput" type="number" id="nValue" placeholder="n">
 	        <button class="siteButton" onclick="gaussSum();">Get Sum</button>
             <br>
-	        <div id="ShowSum" style="font-weight: 600; display: inline-block; margin-left: 30em; margin-top: -1em; color: crimson"></div> 
-                
-             <div id="GaussAlg"></div>    
-             <br>  
+	        <div id="ShowSum"></div> 
+            
+            <div id="GaussAlg"></div>    
+            <br>  
         </div>
                         
         </div><!-- ********** end contents of Gauss tab ********** -->
+        
         
         <!-- ********** begin contents of Pascal tab ********** -->
         <div id="divCalcSubTab4" class="aTab">
         <div class="pageHeader">Calculate Row Sums of Pascal's Triangle</div>
             
         <div class="tabContents" style="line-height: 170%">
-        Row 0 of Pascal's Triangle consists of a 1.  A 1 flanks each row of Pascal's Triangle with 2 or more entries.  For each entry of Pascal's Triangle that is > 1, we add the two entries diagonally above.  Below is a diagram of the first few rows of Pascal's Triangle.
+        <div id="PTIntro"></div>
                 
 <!-- begin Pascal's Triangle -->
 <div class="row">
@@ -305,23 +326,10 @@ body{
 </div>
 <!-- end Pascal's Triangle -->
 <br>
-    <div id="PTSum" class="column2">
-    Row Summation Calculator:<br>
-    <sup>*</sup>remember Pascal's Triangle begins with Row 0.<br>
-    <label>Enter row number: </label>
-    <input class="siteInput" type="number" id="rowNum" Size="16"><br>
-    <!--outputs row summation-->
-    <input class="siteInput" type="number" id="ShowSumPT" placeholder="Row Sum">
-	<button id="FindSum" class="siteButton" onclick="RowSum();">Find Row Sum</button><br><br>
-    <br>
-    <div id="PTPattern">
-        _______________________________________________<br><br>
-        SEE IF YOU RECOGNIZE A PATTERN IN THE ROW SUMS!<br>
-		<button id="pattern" class="siteButton" onclick="showHide();">Show/Hide Pattern</button><br>
-		<p id="patternKey" style="display: none; color: crimson">sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p>
-		<br> 
-    </div>
-    
+    <div class="column2">
+    <div id="PTSum"></div>
+        
+    <div id="PTPattern"></div>
     </div>
     </div><!-- end row -->
     
@@ -449,28 +457,7 @@ body{
     
 <!-- **************************************************** -->
 <!-- ********** begin jQuery / JavaScript code ********** -->
-<script>
-//find row sum of Pascal's Triangle
-function RowSum(){
-	var row = parseInt(document.querySelector("#rowNum").value);
-	var sum = Math.pow(2, row);
-    document.querySelector("#ShowSumPT").value = sum;
-}
-    
-var counter=0;
-function showHide(){
-    if(counter%2==0){
-        document.querySelector("#patternKey").style.display = "block";
-        counter++;
-    }
-    else{
-        document.querySelector("#patternKey").style.display = "none";
-        counter++;
-    }
-} 
 
-</script> 
-	
 <!--link to my Hangman JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Hangman.js"></script> 
 <!--link to my JavaScript/jQuery source code for Site Tabs-->
@@ -485,6 +472,9 @@ function showHide(){
 <script type="text/javascript" src="scripts/BubbleSort.js"></script>  
 <!--link to my Sums by Gauss JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/GaussSums.js"></script>  
+<!--link to my Pascal's Triangle Row Summation JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/PascalRowSums.js"></script> 
+	
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
