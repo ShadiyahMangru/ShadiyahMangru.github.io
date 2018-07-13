@@ -15,6 +15,8 @@
 <script type="text/javascript" src="scripts/WarCardGame.js"></script>  
 <!--link to my Bubble Sort JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/BubbleSort.js"></script>  
+<!--link to my Sums by Gauss JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/GaussSums.js"></script>  
 	
 <style type="text/css">
 .divTabSpacer {
@@ -431,20 +433,6 @@ body{
     
 <!-- **************************************************** -->
 <!-- ********** begin jQuery / JavaScript code ********** -->
-<script>
-function gaussSum() {
-	var Num = parseInt(document.querySelector("#nValue").value);
-	var sum = (Num*(Num+1))/2;
-	if(Num >= 0 & Num < 6){
-		document.querySelector("#ShowSum").innerHTML = "SOLUTION: <br>" + "Sum of first " + Num + " natural numbers = " + parseInt(sum);
-	}
-	else{
-		var nMinusOne = Num-1;
-	document.querySelector("#ShowSum").innerHTML = "SOLUTION: <br>" + Num + " + " + nMinusOne + " + " +"... + " + "3 + 2 + 1<br>= "+parseInt(sum) + "<br>= " +parseInt(sum).toExponential();
-	}
-}
-</script> 
-    
 <script>
 //find row sum of Pascal's Triangle
 function RowSum(){
