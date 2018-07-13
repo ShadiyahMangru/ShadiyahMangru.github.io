@@ -502,6 +502,7 @@ function showHide(){
    $.fn.displayFibIntro = function() {
         $("#fibIntro").html("The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, .... \nEach number in the sequence (starting from the third term) is the sum of the two preceding numbers.\n\n");
    }; 
+	$(#fibIntro).append("<br><br>");
 })( jQuery );
  
 $(document).ready(function(){
