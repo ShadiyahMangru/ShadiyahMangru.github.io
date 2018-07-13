@@ -98,7 +98,15 @@
 #EuclidAlg{
     margin-top: -12.5em; 
     margin-left: 33em;
-}       
+}  
+#FibPic{
+    width: 30%; 
+    min-width: 220px; 
+    float: right; 
+    margin-top: -1em; 
+    margin-right: 4em; 
+    transform: rotate(5deg);
+} 	
 #HMguessed{
     font-weight: 600; 
     font-size: 18px; 
@@ -200,13 +208,10 @@ body{
         <div id="divCalcSubTab1">    
         <div class="pageHeader">Calculate Fibonacci Numbers</div>
               
-        <div><img src="Images/goldenSpiral.svg" style="width: 30%; min-width: 220px; float: right; margin-top: -1em; margin-right: 4em; transform: rotate(5deg)"></div>
+        <div><img src="Images/goldenSpiral.svg" id="FibPic"></div>
             
         <div class="tabContents" style="line-height: 170%">
-        The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, ....  
-        <br>
-        Each number in the sequence (starting from the third term) is the sum of the two preceding numbers.
-        <br><br>
+        <div id="fibIntro"></div>
                 
         <!-- ********** Fibonacci Calculations page tabs ********** -->
         <div id="fibNav" class="divTabs"></div> 
