@@ -25,9 +25,11 @@
 	margin-top:-1px;
 	z-index:900;
 }
+
 .divTabs {
 	padding-bottom:3px;
 }
+
 .divTabs .tab {
 	background-color: #8fe8e8;
 	border:1px silver solid;
@@ -35,31 +37,37 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-        font-family: "Arial Narrow";
+    	font-family: "Arial Narrow";
 }
+
 .divTabs .spacer {
 	width:100%;
 	border-bottom:1px silver solid;
 }
+
 .divTabs .active {
 	background-color:white!important;
 	border-bottom:1px white solid;
 	font-weight:bold;
 }
+
 .tabContents{
     margin-top: 1em;
     font-family: Tahoma;
     margin-left: .5em;        
 }
+ 
 .aTab{
     display: none;
-}       
+}    
+    
 .pageHeader{
     font-size:24pt; 
     font-family: "Verdana";
     margin-left: .25em;
     text-shadow: 1px 2px 2px grey;
 }
+    
 #title{
     font-weight: 600;
     font-family: "Forte";
@@ -69,18 +77,21 @@
     color: #5C246E;
     margin-left: .25em;
 }
+
 #subtitle{
     font-family: Tahoma;
     margin-bottom: 1.75em;
     margin-left: .25em;
 }   
+
 .siteButton{
     color: white;
     background-color: cornflowerblue;
     padding: 3px 5px 3px 5px;
     border-radius: 10px;
     font-weight: 600;
-}    
+}
+    
 .siteInput{
     border-radius: 6px;
     padding: 2px 5px 2px 5px;
@@ -90,15 +101,20 @@
         font-weight: 600; 
         font-size: 16px;
     }
+    .siteLabel{
+        color: deepskyblue;
+        font-weight: 600;
+    }
 .fibO{
     color: dodgerblue; 
     font-weight: 600; 
     margin-top: 1em;
 }
+
 #EuclidAlg{
     margin-top: -12.5em; 
     margin-left: 33em;
-}  
+}    
 #FibPic{
     width: 30%; 
     min-width: 220px; 
@@ -106,7 +122,7 @@
     margin-top: -1em; 
     margin-right: 4em; 
     transform: rotate(5deg);
-} 	
+}    
 #HMguessed{
     font-weight: 600; 
     font-size: 18px; 
@@ -116,24 +132,39 @@
     width: 30%; 
     display: none; 
     color: mediumblue;
-}      
+}   
+    
 #HMfeedback{
     color: purple; 
     font-weight: 600; 
     font-size: 18px;
 }
+
 #WRules{
     width: 65%; 
     margin-left: 17em; 
     margin-top: -2.5em; 
     font-family: 'Verdana';
-}       
+}    
+    #warResults{
+        margin-top: 1em; 
+        margin-left: 30em; 
+        font-size: 26px; 
+        color: crimson; 
+        font-weight: 600; 
+        font-family: Arial;
+    }  
+    .cardPics{
+        width: 150%; 
+        margin-top: .2em; 
+    }
 #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #gcdE{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
     padding: 1em;
 }
+
 #developerCredit{
     font-size:18pt; 
     margin-top:60px; 
@@ -142,9 +173,11 @@
     font-family: "Vladimir Script";
     font-weight: 600;
 }
+
 #spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4{
     margin-left: 1em
 }
+ 
 .tr, #PTriangle{
     text-align: center; /*centers buttons in form*/
 }
@@ -156,25 +189,30 @@
     background-color: lavender;
     border: solid black 1px;
 }   
+
 #PTriangle{
     margin-top: .5em;
 }    
+ 
 .column1 {
     float: right;
     width: 63%;
     padding: .5px;
 }
+
 .column2 {
     float: right;
     width: 32%;
     padding: .5px;
-}       
+}    
+    
 /* clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }    
+    
 body{
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
@@ -216,21 +254,13 @@ body{
         <!-- ********** Fibonacci Calculations page tabs ********** -->
         <div id="fibNav" class="divTabs"></div> 
         <div class="divTabSpacer">&nbsp;</div> 
-        <!-- ********** begin Fibonacci sub tab one contents ********** -->   
-        <div id="divSubTab1">    
-	Find the nth term of the Fibonacci Sequence<br><br>
-            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="siteInput" id="nth" type="text" value="">
-            <button class="siteButton" onclick="nthFibCalc(document.querySelector('#nth').value);">Get nth term</button><br>
-            <div id="nthTerm" class="fibO"></div>
-            <br><br>
+       <!-- ********** begin Fibonacci sub tab one contents ********** -->   
+        <div id="divSubTab1">  
+            	<div id="fibNthCalc"></div>
         </div><!-- ********** end Fibonacci sub tab one contents ********** -->
         <!-- ********** begin Fibonacci sub tab two contents ********** -->
         <div id="divSubTab2" class="aTab">
-            Print the first n terms of the Fibonacci Sequence<br><br>
-            <strong style="color: deepskyblue;">Enter n value:</strong> <input class="siteInput" id="nVal" type="text" value="">
-            <button class="siteButton" onclick="nFibCalc(document.querySelector('#nVal').value);">Get first n terms</button><br>
-            <div id="nTerms" class="fibO"></div>
-            <br><br>
+		<div id="fibSeqPrint"></div>  
         </div><!-- ********** end Fibonacci sub tab two contents ********** -->
         </div>
         </div> <!-- ********** end contents of Fibonacci tab ********** -->   
@@ -454,6 +484,43 @@ function showHide(){
 } 
 
 </script> 
+	
+<script>
+//************************************************
+//display Fibonacci nth term Calculator in sub tab
+//************************************************
+(function( $ ){
+   $.fn.displayFibNthCalc = function() {
+        $("#fibNthCalc").html("Find the nth term of the Fibonacci Sequence");
+        $("#fibNthCalc").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='siteInput' id='nth' type='text' value=''>" +
+        "<button class='siteButton' onclick='nthFibCalc(document.querySelector('#nth').value);'>Get nth term</button><br>" +
+        "<div id='nthTerm' class='fibO'></div><br><br>");
+   }; 
+})( jQuery );
+ 
+$(document).ready(function(){
+    $('#fibNthCalc').displayFibNthCalc();
+}); 
+    
+ 
+ 
+//************************************************
+//display Fibonacci Sequence Calculator in sub tab
+//************************************************
+(function( $ ){
+   $.fn.displayFibSeqPrint = function() {
+        $("#fibSeqPrint").html("Print the first n terms of the Fibonacci Sequence");
+        $("#fibSeqPrint").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='siteInput' id='nVal' type='text' value=''>" +
+        "<button class='siteButton' onclick='nFibCalc(document.querySelector('#nVal').value);'>Get first n terms</button><br>" +
+        "<div id='nTerms' class='fibO'></div><br><br>");
+   }; 
+})( jQuery );
+ 
+$(document).ready(function(){
+    $('#fibSeqPrint').displayFibSeqPrint();
+});   
+    
+</script>	
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
