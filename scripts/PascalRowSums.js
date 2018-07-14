@@ -11,7 +11,32 @@ $(document).ready(function(){
     $('#PTIntro').displayPTIntro();
 });  
 
- 
+
+//*************************************************************
+//function to create first few rows of Pascal's Triangle
+//*************************************************************
+(function( $ ){
+   $.fn.buildPT = function() {
+       var PTR = ["1", "1,1", "1,2,1", "1,3,3,1", "1,4,6,4,1", "1,5,10,10,5,1", "1,6,15,20,15,6,1", "1,7,21,35,35,21,7,1", "1,8,28,56,70,56,28,8,1"];
+
+       var buildTr = "";
+    
+        for(var i = 0; i<PTR.length; i++){
+            PTrow = PTR[i].split(",");
+            for(var k = 0; k<PTrow.length; k++){
+                buildTr += "<label>" + PTrow[k] + "</label>"
+            }
+            buildTr +="<br>"
+        }
+       $("#PTriangle").append(buildTr+"<span class='ellipsis'>&#8942;</span>");     
+   }; 
+})( jQuery );     
+     
+$(document).ready(function(){
+    $('#PTriangle').buildPT();
+});           
+
+
      
 //*******************
 //Row Sum Calculator
