@@ -24,7 +24,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-        font-family: "Arial Narrow";
+    font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -41,9 +41,14 @@
 .tabContents{
     margin-top: 1em;
     font-family: Tahoma;
-    margin-left: .5em;        
+    margin-left: .5em;  
+    line-height: 170%;
 }
- 
+
+.tab-content clearfix {
+    padding-top:20px;
+}     
+    
 .aTab{
     display: none;
 }    
@@ -92,16 +97,29 @@
         color: deepskyblue;
         font-weight: 600;
     }
-.fibO{
+.siteOutput{
     color: dodgerblue; 
     font-weight: 600; 
     margin-top: 1em;
 }
-
-#EuclidAlg{
+    
+#EuclidAlg {
     margin-top: -12.5em; 
     margin-left: 33em;
-}    
+} 
+    #GCalc{
+        border: 1px solid black; 
+        padding: 1.5em; 
+        border-radius: 6px;
+        width: 32%;
+    }
+    
+    #GaussAlg{
+        position: absolute;
+        margin-left: 33.5em;
+        margin-top: -13em;
+    }   
+
 #FibPic{
     width: 30%; 
     margin-top: -1em; 
@@ -112,20 +130,22 @@
         margin-right: 4em; 
         transform: rotate(5deg);
     }    
-    #GSumPic{
-       width: 26%; 
-       margin-top: 1em; 
-    }
     #ShowSum{
         font-weight: 600; 
         display: inline-block; 
-        margin-left: 30em; 
-        margin-top: -1em; 
         color: crimson;
+        height: 6em;
+        padding-top: 1em;
     }
     #patternKey{
         display: none; 
         color: crimson;
+    }
+    #BubblePic{
+        width: 20%; 
+        min-width: 220px; 
+        float: right; 
+        margin-top: -1.8em;
     }
 #HMguessed{
     font-weight: 600; 
@@ -169,6 +189,10 @@
     padding: 1em;
 }
 
+    #gcdE{
+        width: 25em;
+    }    
+    
 #developerCredit{
     font-size:18pt; 
     margin-top:60px; 
@@ -189,7 +213,7 @@
 
     #PTriangle >label{
     width: 6%;
-    font-size: 1em;
+	font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
@@ -214,7 +238,7 @@
     content: "";
     display: table;
     clear: both;
-}    
+}     
     
 body{
     min-width:1000px; /*minimun width of 1000px */
@@ -233,11 +257,11 @@ body{
         </div>
         <p id="subtitle">Explore the sample content under the tabs below.</p>
         <!-- ********** Main site navigation tabs ********** -->
-	<div id="mainNav" class="divTabs"></div>
-        <div class="divTabSpacer">&nbsp;</div> 
+		<div id="mainNav" class="divTabs"></div>
+        <div class="divTabSpacer">&nbsp;</div>
         
     <!-- Divs containing the tab contents -->
-    <div class="tab-content clearfix" style="padding-top:20px;">
+    <div class="tab-content clearfix">
     <!-- ******************************************************************** -->   
     <!-- ********** begin Math Calculations tab contents (Tab One) ********** -->
     <div id="divTab1">
@@ -251,7 +275,7 @@ body{
               
         <div><img src="Images/goldenSpiral.svg" id="FibPic" class="mathPics"></div>
             
-        <div class="tabContents" style="line-height: 170%">
+        <div class="tabContents">
             <div id="fibIntro"></div>
 
             <!-- ********** Fibonacci Calculations page tabs ********** -->
@@ -272,8 +296,8 @@ body{
         <div id="divCalcSubTab2" class="aTab">
         <div class="pageHeader">Greatest Common Divisor Calculator</div>
             
-        <div class="tabContents" style="line-height: 170%"><br>
-            <div id="gcdE" style="width: 25em"></div>
+        <div class="tabContents"><br>
+            <div id="gcdE"></div>
             <br>
             <div id="EuclidAlg"></div>
         </div>
@@ -282,43 +306,28 @@ body{
         
         <!-- ********** begin contents of Gauss tab ********** -->
         <div id="divCalcSubTab3" class="aTab">
-        <div class="pageHeader">Calculate Sum of First n Natural Numbers</div>
-            
-        <div><img src="Images/GaussSum.png" id="GSumPic" class="mathPics"></div>
-            
-        <div class="tabContents" style="line-height: 170%">
-            <label>n= </label> 
-            <input class="siteInput" type="number" id="nValue" placeholder="n">
-	        <button class="siteButton" onclick="gaussSum();">Get Sum</button>
-            <br>
-	        <div id="ShowSum"></div> 
-            
-            <div id="GaussAlg"></div>    
-            <br>  
-        </div>
-                        
+        <div class="pageHeader">Calculate Sum of First n Natural Numbers</div>   
+        <div class="tabContents">
+                <div id="GCalc"></div>
+                <div id="GaussAlg"></div><br> 
+        </div>                
         </div><!-- ********** end contents of Gauss tab ********** -->
         
         
         <!-- ********** begin contents of Pascal tab ********** -->
         <div id="divCalcSubTab4" class="aTab">
         <div class="pageHeader">Calculate Row Sums of Pascal's Triangle</div>
-            
-        <div class="tabContents" style="line-height: 170%">
-        <div id="PTIntro"></div>
-                
-        <!-- begin Pascal's Triangle -->
-        <div class="row">
-        <div id="PTriangle" class="column1"></div>
-        <!-- end Pascal's Triangle -->
-            <br>
-        <div class="column2">
-            <div id="PTSum"></div>
-            <div id="PTPattern"></div>
-        </div>
-        </div><!-- end row -->
-        </div>
-                        
+        <div class="tabContents">
+            <div id="PTIntro"></div>
+            <div class="row">
+                <div id="PTriangle" class="column1"></div><!-- create Pascal's Triangle -->
+                <br>
+                <div class="column2">
+                    <div id="PTSum"></div>
+                    <div id="PTPattern"></div>
+                </div>
+            </div><!-- end row -->
+        </div>                    
         </div><!-- ********** end contents of Pascal tab ********** -->
     
     </div> <!-- ********** end Math Calculations tab contents (Tab One) ********** -->
@@ -330,22 +339,16 @@ body{
     <div id="divTab2" class="aTab">
         <div class="pageHeader">Bubble Sort Your Data Set</div>
             
-        <div><img src="Images/Bubble.svg" style="width: 20%; min-width: 220px; float: right; margin-top: -1.8em"></div>
+        <div><img src="Images/Bubble.svg" id="BubblePic"></div>
             
-        <div class="tabContents" style="line-height: 170%">
-            Create a data set:<br>    
-            <strong style="color: deepskyblue;">Enter a number to add to data set:</strong> <input class="siteInput" id="dsCreate" type="text" value="">
-            <button class="siteButton" onclick="setDataSet(document.querySelector('#dsCreate').value);">Add to Data Set</button>
-            <button class="siteButton" onclick="undo();">Undo</button>
-            <br>
-            <div id="dataSet" class="fibO"></div>
-            <br><br>  
-
-            <button class="siteButton" onclick="bubbleSort(ds);">Bubble Sort</button><br><br>
-            <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
+        <div class="tabContents">
+            <div id="inputDataSet"></div><br>
+            <div id='dataSet' class='siteOutput'></div>
+             <br><br><button class='siteButton' onclick='bubbleSort(ds);'>Bubble Sort</button><br><br>
+            <div id="bubbleSorted" class="siteOutput"></div>
         </div>
 	
-	</div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
+		</div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
                <!-- ******************************************************************* --> 
         
     
@@ -442,23 +445,22 @@ body{
         
 <!-- **************************************************** -->
 <!-- ********** begin jQuery / JavaScript code ********** --> 
-<!--link to my Hangman JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Hangman.js"></script> 
 <!--link to my JavaScript/jQuery source code for Site Tabs-->
-<script type="text/javascript" src="scripts/SiteTabs.js"></script>       
-<!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/EuclidGCD.js"></script>   
+<script type="text/javascript" src="scripts/SiteTabs.js"></script>
 <!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/FibonacciSeq.js"></script>  
-<!--link to my War Card Game JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/WarCardGame.js"></script>      
-<!--link to my Bubble Sort JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/BubbleSort.js"></script>  
+<!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/EuclidGCD.js"></script>
 <!--link to my Sums by Gauss JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/GaussSums.js"></script>  
 <!--link to my Pascal's Triangle Row Summation JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/PascalRowSums.js"></script> 
-        
+<!--link to my Bubble Sort JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/BubbleSort.js"></script>  
+<!--link to my Hangman JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Hangman.js"></script> 
+<!--link to my War Card Game JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/WarCardGame.js"></script>      
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
