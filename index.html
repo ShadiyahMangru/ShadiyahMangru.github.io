@@ -3,8 +3,9 @@
 <head>
 <title>Shadiyah's Demo Website</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	
+
 <style type="text/css">
+
 .divTabSpacer {
 	border-top:1px silver solid;
 	width:100%;
@@ -180,23 +181,22 @@
 #spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4{
     margin-left: 1em
 }
- 
-.tr, #PTriangle{
-    text-align: center; /*centers buttons in form*/
-}
-.tr{/*formats squares of pascal's triangle*/
-    width: 4%;
+
+#PTriangle{
+    margin-top: .5em;
+    text-align: center;
+}    
+
+    #PTriangle >label{
+    width: 6%;
     font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
     border: solid black 1px;
-}   
-
-#PTriangle{
-    margin-top: .5em;
-}    
- 
+    text-align: center;
+    padding: .5em;
+    }    
 .column1 {
     float: right;
     width: 63%;
@@ -222,6 +222,7 @@ body{
     width:1000px;             /*IE*/
 }
 </style>
+
 </head>
     
 <body>
@@ -231,7 +232,6 @@ body{
             <p>My Demo Website</p>
         </div>
         <p id="subtitle">Explore the sample content under the tabs below.</p>
-		
         <!-- ********** Main site navigation tabs ********** -->
 	<div id="mainNav" class="divTabs"></div>
         <div class="divTabSpacer">&nbsp;</div> 
@@ -252,20 +252,18 @@ body{
         <div><img src="Images/goldenSpiral.svg" id="FibPic" class="mathPics"></div>
             
         <div class="tabContents" style="line-height: 170%">
-        <div id="fibIntro"></div>
-                
-        <!-- ********** Fibonacci Calculations page tabs ********** -->
-        <div id="fibNav" class="divTabs"></div> 
-        <div class="divTabSpacer">&nbsp;</div> 
-        <!-- ********** begin Fibonacci sub tab one contents ********** -->   
-        <div id="divSubTab1">  
-            <div id="fibNthCalc"></div>
-        </div><!-- ********** end Fibonacci sub tab one contents ********** -->
-        <!-- ********** begin Fibonacci sub tab two contents ********** -->
-        <div id="divSubTab2" class="aTab">
-            <div id="fibSeqPrint"></div>
-            
-        </div><!-- ********** end Fibonacci sub tab two contents ********** -->
+            <div id="fibIntro"></div>
+
+            <!-- ********** Fibonacci Calculations page tabs ********** -->
+            <div id="fibNav" class="divTabs"></div> 
+            <div class="divTabSpacer">&nbsp;</div> 
+
+            <div id="divSubTab1">  
+                <div id="fibNthCalc"></div><!-- ********** Fibonacci sub tab one contents ********** -->  
+            </div>
+            <div id="divSubTab2" class="aTab">
+                <div id="fibSeqPrint"></div><!-- ********** Fibonacci sub tab two contents ********** -->
+            </div>
         </div>
         </div> <!-- ********** end contents of Fibonacci tab ********** -->   
             
@@ -309,31 +307,16 @@ body{
         <div class="tabContents" style="line-height: 170%">
         <div id="PTIntro"></div>
                 
-<!-- begin Pascal's Triangle -->
-<div class="row">
-<div id="PTriangle" class="column1">
-<INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="2"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="3"><INPUT class="tr" VALUE="3"><INPUT class="tr" VALUE="1"><br>    
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="4"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="4"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="5"><INPUT class="tr" VALUE="10"><INPUT class="tr" VALUE="10"><INPUT class="tr" VALUE="5"><INPUT class="tr" VALUE="1"><br>    
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="15"><INPUT class="tr" VALUE="20"><INPUT class="tr" VALUE="15"><INPUT class="tr" VALUE="6"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="7"><INPUT class="tr" VALUE="21"><INPUT class="tr" VALUE="35"><INPUT class="tr" VALUE="35"><INPUT class="tr" VALUE="21"><INPUT class="tr" VALUE="7"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="8"><INPUT class="tr" VALUE="28"><INPUT class="tr" VALUE="56"><INPUT class="tr" VALUE="70"><INPUT class="tr" VALUE="56"><INPUT class="tr" VALUE="28"><INPUT class="tr" VALUE="8"><INPUT class="tr" VALUE="1"><br>
-<INPUT class="tr" VALUE="1"><INPUT class="tr" VALUE="9"><INPUT class="tr" VALUE="36"><INPUT class="tr" VALUE="84"><INPUT class="tr" VALUE="126"><INPUT class="tr" VALUE="126"><INPUT class="tr" VALUE="84"><INPUT class="tr" VALUE="36"><INPUT class="tr" VALUE="9"><INPUT class="tr" VALUE="1"><br>
-<span class="ellipsis">&#8942;</span>
-</div>
-<!-- end Pascal's Triangle -->
-<br>
-    <div class="column2">
-    <div id="PTSum"></div>
-        
-    <div id="PTPattern"></div>
-    </div>
-    </div><!-- end row -->
-    
-    
+        <!-- begin Pascal's Triangle -->
+        <div class="row">
+        <div id="PTriangle" class="column1"></div>
+        <!-- end Pascal's Triangle -->
+            <br>
+        <div class="column2">
+            <div id="PTSum"></div>
+            <div id="PTPattern"></div>
+        </div>
+        </div><!-- end row -->
         </div>
                         
         </div><!-- ********** end contents of Pascal tab ********** -->
@@ -362,8 +345,8 @@ body{
             <div id="bubbleSorted" style="color: royalblue; font-weight: 600"></div>
         </div>
 	
-       </div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
-              <!-- ******************************************************************* --> 
+	</div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
+               <!-- ******************************************************************* --> 
         
     
         <!-- ********************************************************************** -->   
@@ -400,7 +383,7 @@ body{
             <div class="pageHeader">Let's Play War!</div>             
             <div>
                 <div id="WRules"></div>
-                <div id="results" style="margin-top: 1em; margin-left: 30em; font-size: 26px; color: crimson; font-weight: 600; font-family: Arial;"></div>
+                <div id="warResults"></div>
                 <button class="siteButton" id="playAgn" style="margin-left: .5em; margin-top: 1em; display: none" onclick="playWarAgain();">Play Again!</button>
                 <button class="siteButton" id="war" style="margin-left: 30em;" onclick="flipCard();">War!</button>
             </div>
@@ -419,13 +402,13 @@ body{
                 </tr>
                 </table>
             </div>
-            <div id="Kpic" style="display: inline-block"><img style="width: 150%; margin-top: .2em" src="Images/KofS.svg"></div>
+            <div id="Kpic" style="display: inline-block"><img class="cardPics" src="Images/KofS.svg"></div>
             <div id="youCPic" style="display: none; margin-top: -.5em">
             <p id="youLabel" style="width: 6em">You: </p>
             <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumY1" style="font-size: 36px; padding-left: .3em; color: red">Q</div><img id = "youCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/diamonds.png"><div id="cardNumY2"style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px; color: red">Q</div></div>
             </div>
               
-            <div id="Qpic" style="display: inline-block; margin-left: 15em"><img style="width: 150%; margin-top: .2em" src="Images/QofH.svg"></div>  
+            <div id="Qpic" style="display: inline-block; margin-left: 15em"><img class="cardPics" src="Images/QofH.svg"></div>  
             <div id="dealerCPic" style="display: none; margin-left: 11em; margin-top: -.5em">  
             <p id="dealerLabel" style="width: 6em">The Dealer: </p>
             <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumD1"style="font-size: 36px; padding-left: .3em">K</div><img id="dealerCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/clubs.png"><div id="cardNumD2" style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px">K</div></div>
@@ -451,13 +434,14 @@ body{
     </div>
 		
 
+
 <div id="developerCredit">A Website By <a href="mailto:shadiyahmangru@gmail.com" title="A Website By Shadiyah Mangru">Shadiyah Mangru</a></div>
 <p style="float: right; font-family: Tahoma;  margin-right: 1.5em;" id="SiteBrowser">Recommended Browser:  <span style="color: rgb(66, 133, 244);">G</span><span style="color: rgb(234, 67, 53);">o</span><span style="color: rgb(251, 188, 5);">o</span><span style="color: rgb(66, 133, 244);">g</span><span style="color: rgb(52, 168, 83);">l</span><span style="color: rgb(234, 67, 53);">e</span> <span style="color: rgb(66, 133, 244);">C</span><span style="color: rgb(234, 67, 53);">h</span><span style="color: rgb(251, 188, 5);">r</span><span style="color: rgb(66, 133, 244);">o</span><span style="color: rgb(52, 168, 83);">m</span><span style="color: rgb(234, 67, 53);">e</span></p>
-</div>
-    
-<!-- **************************************************** -->
-<!-- ********** begin jQuery / JavaScript code ********** -->
+</div>        
 
+        
+<!-- **************************************************** -->
+<!-- ********** begin jQuery / JavaScript code ********** --> 
 <!--link to my Hangman JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Hangman.js"></script> 
 <!--link to my JavaScript/jQuery source code for Site Tabs-->
@@ -465,16 +449,16 @@ body{
 <!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/EuclidGCD.js"></script>   
 <!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/FibonacciSeq.js"></script>
+<script type="text/javascript" src="scripts/FibonacciSeq.js"></script>  
 <!--link to my War Card Game JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/WarCardGame.js"></script>  
+<script type="text/javascript" src="scripts/WarCardGame.js"></script>      
 <!--link to my Bubble Sort JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/BubbleSort.js"></script>  
 <!--link to my Sums by Gauss JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/GaussSums.js"></script>  
 <!--link to my Pascal's Triangle Row Summation JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/PascalRowSums.js"></script> 
-	
+        
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
