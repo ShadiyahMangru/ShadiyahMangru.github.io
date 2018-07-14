@@ -1,8 +1,21 @@
-    //Methods to (i) create a user-defined data set, (ii) undo last data set entry, (iii) output the data set, (iv) bubble sort the data set
+//*************************************************************
+//code to create Bubble Sort Your Data Set tab
+//*************************************************************
+
+$(document).ready(function(){
+    //get data set input from user
+    $("#inputDataSet").html("Create a data set:");
+    $("#inputDataSet").append("<br><label class='siteLabel'>Enter a number to add to data set:</label> <input class='siteInput' id='dsCreate' type='text' value=''><button class='siteButton'                    onclick='setDataSet()'>Add to Data Set</button><button class='siteButton' onclick='undo();'>Undo</button><br>");
+});
+
+
+//Methods to (i) create a user-defined data set, (ii) undo last data set entry, (iii) output the data set, (iv) bubble sort the data set
     
     var ds = [];
     
     function setDataSet(Num){
+        Num = $('#dsCreate').val();
+        parseInt(Num);
         if((Num!="" && isNaN(Num)!=true)){
             ds.unshift(Num);
             output();
