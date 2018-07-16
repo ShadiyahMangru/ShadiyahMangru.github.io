@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shadiyah's Demo Website</title>
+<title>Shadiyah's Test/Dev Website</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <style type="text/css">
@@ -24,7 +24,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-  font-family: "Arial Narrow";
+        font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -185,7 +185,7 @@
         width: 150%; 
         margin-top: .2em; 
     }
-#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE{
+#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE, #divTab4{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -216,7 +216,7 @@
 
     #PTriangle >label{
     width: 6%;
-	  font-size: 1em;
+    font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
@@ -242,7 +242,15 @@
     display: table;
     clear: both;
 }     
-    
+    #studyCard, #showDef{
+        border: 1px solid midnightblue;
+        border-radius: 6px;
+        padding: 2em;
+        font-weight: 600;
+    } 
+    #cardCounter{
+        padding: .4em;
+    }
 body{
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
@@ -256,11 +264,11 @@ body{
 	<div>
         <!-- site header -->
         <div id="title">
-            <p>My Demo Website</p>
+            <p>My Test / Development Website</p>
         </div>
-        <p id="subtitle">Explore the sample content under the tabs below.</p>
+        <p id="subtitle">Explore the works in progress under the tabs below.</p>
         <!-- ********** Main site navigation tabs ********** -->
-		    <div id="mainNav" class="divTabs"></div>
+	<div id="mainNav" class="divTabs"></div>
         <div class="divTabSpacer">&nbsp;</div>
         
     <!-- Divs containing the tab contents -->
@@ -351,8 +359,8 @@ body{
             <div id="bubbleSorted" class="siteOutput"></div>
         </div>
 	
-		</div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
-            <!-- ******************************************************************* --> 
+     </div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
+     <!-- ******************************************************************* --> 
         
     
         <!-- ********************************************************************** -->   
@@ -434,13 +442,19 @@ body{
             </div><!-- ********** end contents of Guess My Number tab ********** -->     
                 
         </div> <!-- ********** end Let's Play a Game tab contents (Tab Three) ********** -->
-               <!-- ******************************************************************** --> 
+        <!-- ******************************************************************** --> 
         
         <!-- *********************************************** -->   
-        <!-- ********** begin contents (Tab Four) ********** -->
+        <!-- ********** begin Create Study Cards tab contents (Tab Four) ********** -->
         <div id="divTab4" class="aTab">
-        </div><!-- ********** end contents (Tab Four) ********** -->
-              <!-- ********************************************* --> 
+        <div class="pageHeader">Create Study Cards</div>
+            
+        <div class="tabContents">
+            <div id="deckContents"></div>
+            <div id="userDeck" style="display: none"></div>
+        </div>    
+        </div><!-- ********** end Create Study Cards tab contents (Tab Four) ********** -->
+        <!-- ********************************************* --> 
          
         <!-- *********************************************** -->   
         <!-- ********** begin contents (Tab Five) ********** -->  
@@ -458,7 +472,7 @@ body{
 
         
 <!-- **************************************************** -->
-<!-- ********** begin jQuery / JavaScript code ********** --> 
+<!-- ********** begin jQuery / JavaScript code ********** -->        
 <!--link to my JavaScript/jQuery source code for Site Tabs-->
 <script type="text/javascript" src="scripts/SiteTabs.js"></script>
 <!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
@@ -476,8 +490,9 @@ body{
 <!--link to my War Card Game JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Games/WarCardGame.js"></script> 
 <!--link to my Number Guess Game JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Games/NumberGuess.js"></script>         
- 
+<script type="text/javascript" src="scripts/Games/NumberGuess.js"></script> 
+<!--link to my User-Defined Study Cards Generator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/StudyCards/StudyCards.js"></script>   
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
