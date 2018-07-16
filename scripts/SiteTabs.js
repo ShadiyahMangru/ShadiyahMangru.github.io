@@ -6,7 +6,7 @@ $(document).ready(function(){
     $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
         "<span id='spanTab2' class='tab' onclick='toggleTabs(mainID, 2, numberMainTabs);'>Data Set Sorter(s)</span>" +
         "<span id='spanTab3' class='tab' onclick='toggleTabs(mainID, 3, numberMainTabs);'>Let's Play A Game!</span>" +
-        "<span id='spanTab4' class='tab'>Tab Four (Coming Soon!)</span>" +
+        "<span id='spanTab4' class='tab' onclick='toggleTabs(mainID, 4, numberMainTabs);'>Create Study Cards</span>" +
         "<span id='spanTab5' class='tab'>Tab Five (Coming Soon!)</span>");
     
     
@@ -51,7 +51,7 @@ var divPrefix = "#div";
         
 //**************** toggling of tabs variables for main nav ******************
 var mainID = "Tab";
-var numberMainTabs = 3;
+var numberMainTabs = 4;
 
 //***************** toggling of tabs variables for Math Calculations tab ******************
 var mathID = "CalcSubTab";
