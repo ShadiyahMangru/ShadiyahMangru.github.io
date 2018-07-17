@@ -24,7 +24,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-        font-family: "Arial Narrow";
+    font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -88,7 +88,7 @@
     border-radius: 6px;
     padding: 2px 5px 2px 5px;
 }
-    .siteInput #letterGuess{
+    .siteInput #HMLetterGuess{
         display: none; 
         font-weight: 600; 
         font-size: 16px;
@@ -147,6 +147,14 @@
         float: right; 
         margin-top: -1.8em;
     }
+    #smileyPic{
+        width: 20%; 
+        min-width: 220px; 
+        float: right; 
+        margin-top: -1.9em;
+        display: none;
+    }
+    
 #HMguessed{
     font-weight: 600; 
     font-size: 18px; 
@@ -167,10 +175,28 @@
         font-weight: 600; 
         font-size: 24px;
     }
+    #HMPic{
+        width: 25%;
+    }
+    #HMGetLetter{
+        color: deepskyblue; 
+        display: none;
+    }
+    #HMSubmit, #HMPlayAgain{
+        display: none;
+    }
+    #HMCelebrate{
+        display: none; 
+        margin-top: -4.5em;
+    }
+    #HMSad{
+        display: none; 
+        width: 20%;
+    }
 #WRules{
-    width: 65%; 
+    width: 70%; 
     margin-left: 17em; 
-    margin-top: -2.5em; 
+    margin-top: -3.7em; 
     font-family: 'Verdana';
 }    
     #warResults{
@@ -181,6 +207,78 @@
         font-weight: 600; 
         font-family: Arial;
     }  
+    #WScore{
+        margin-left: 3em; 
+    }
+    #WScore > table{
+        border: 1px solid black; 
+        border-radius: 6px; 
+        padding: .4em;
+    }
+    #WScore > table > td{
+        padding-left: 1em;
+    }
+    #war{
+        margin-left: 14em;
+        padding: 1em;
+    }
+    #WARplayAgain{
+        margin-left: .5em; 
+        margin-top: 1em; 
+        display: none;
+    }
+    #Kpic{
+        display: inline-block;
+    }
+    #Qpic{
+        display: inline-block; 
+        margin-left: 15em;
+    }
+    #youCPic{
+        display: none; 
+        margin-top: -.5em;
+    }
+    #dealerCPic{
+        display: none; 
+        margin-left: 11em; 
+        margin-top: -.5em;
+    }
+    #youLabel, #dealerLabel{
+        width: 6em;
+    }
+    #youCBorder, #dealerCBorder{
+        height: 300px; 
+        width: 200px; 
+        border: 1px solid black; 
+        border-radius: 8px; 
+        box-shadow: 4px 4px 4px darkgrey;
+    }
+    #cardNumY1{
+        font-size: 36px; 
+        padding-left: .3em; 
+        color: red;
+    }
+    #cardNumY2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 65px; 
+        color: red;
+    }
+    #cardNumD1{
+        font-size: 36px; 
+        padding-left: .3em;
+    }
+    #cardNumD2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 65px;
+    }
+    #youCardDisplay, #dealerCardDisplay{
+        margin-top: 65px; 
+        margin-left: 55px;
+    }
     .cardPics{
         width: 150%; 
         margin-top: .2em; 
@@ -216,7 +314,7 @@
 
     #PTriangle >label{
     width: 6%;
-    font-size: 1em;
+	font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
@@ -268,7 +366,7 @@ body{
         </div>
         <p id="subtitle">Explore the works in progress under the tabs below.</p>
         <!-- ********** Main site navigation tabs ********** -->
-	<div id="mainNav" class="divTabs"></div>
+		<div id="mainNav" class="divTabs"></div>
         <div class="divTabSpacer">&nbsp;</div>
         
     <!-- Divs containing the tab contents -->
@@ -359,8 +457,8 @@ body{
             <div id="bubbleSorted" class="siteOutput"></div>
         </div>
 	
-     </div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
-     <!-- ******************************************************************* --> 
+		</div> <!-- ********** end Data Set Sorter(s) tab contents (Tab Two) ********** -->
+               <!-- ******************************************************************* --> 
         
     
         <!-- ********************************************************************** -->   
@@ -375,57 +473,38 @@ body{
             <div id="divGamesSubTab1">
             <div class="pageHeader">Let's Play Hangman!</div>
                 
-            <div class="tabContents">Select Difficulty Level: 
-            <button id='easy' class='siteButton' onclick='playGame(1);'>Easy</button>
-            <button id='medium' class='siteButton' onclick='playGame(2);'>Medium</button>
-            <button id='hard' class='siteButton' onclick='playGame(3);'>Hard</button><br><br>
-            
-            <div id="HangmanPic"><img src="Images/stickman.png" style="width: 25%"></div>
-            <div id='HMAnswerFormat'></div><br>
-            <div id="HMguessed"></div><br>
-            <strong id="getLetter" style="color: deepskyblue; display: none">Enter a letter:</strong> <input class="siteInput" id="letterGuess" type="text" value="" style="display: none">
-            <button class="siteButton" id="submit" style="display: none;" onclick="guessLetter(document.querySelector('#letterGuess').value);">Submit</button><Br><br>
-            <div id="HMfeedback"></div>
-                <div id="celebrate" style="display: none; margin-top: -4.5em"><img src="Images/celebrate.gif"></div>
-                <div id="sad" style="display: none;"><img src="Images/sad.svg" style="width: 20%;"></div>
-            <button class="siteButton" id="playAgain" style="display: none;" onclick="playAgain();">Play Again!</button>
+            <div class="tabContents"> 
+                <div id="HMButtons"></div>
+                <div id="HMPic"></div>
+                <div id='HMAnswerFormat'></div><br>
+                <div id="HMguessed"></div><br>
+                <div id="HMgetLDiv"></div>
+                <div id="HMfeedback"></div>
+                <div id="HMEnd"></div>
             </div>
             </div><!-- ********** end contents of Hangman tab ********** --> 
             
             <!-- ********** begin contents of War tab ********** --> 
             <div id="divGamesSubTab2" class="aTab">
             <div class="pageHeader">Let's Play War!</div>             
-            <div>
-                <div id="WRules"></div>
-                <div id="warResults"></div>
-                <button class="siteButton" id="playAgn" style="margin-left: .5em; margin-top: 1em; display: none" onclick="playWarAgain();">Play Again!</button>
-                <button class="siteButton" id="war" style="margin-left: 30em;" onclick="flipCard();">War!</button>
-            </div>
+            
             <div class="tabContents">
-            <div style="margin-left: 14em; margin-top: -2.5em">
-                <table style="border: 1px solid black; border-radius: 6px; padding: .4em">
-                <tr>
-                    <thead>Score: </thead>    
-                </tr>
-                <tr>
-                    <td>You: </td><td><div id="youScore" style="padding-left: 1em">0</div></td>    
-                </tr>
-                <tr>
-                    <td>Dealer: </td><td><div id="dealerScore" style="padding-left: 1em">0</div></td>
-                    
-                </tr>
-                </table>
-            </div>
-            <div id="Kpic" style="display: inline-block"><img class="cardPics" src="Images/KofS.svg"></div>
-            <div id="youCPic" style="display: none; margin-top: -.5em">
-            <p id="youLabel" style="width: 6em">You: </p>
-            <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumY1" style="font-size: 36px; padding-left: .3em; color: red">Q</div><img id = "youCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/diamonds.png"><div id="cardNumY2"style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px; color: red">Q</div></div>
+                <div id='WRules'></div>
+                <div id='WScore'></div>
+                <button class='siteButton' id='war' onclick='flipCard();'>War!</button>
+                <div id='warResults'></div>
+                <button class='siteButton' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>
+                
+            <div id='Kpic'><img class='cardPics' src='Images/KofS.svg'></div>
+            <div id='youCPic'>
+                <p id='youLabel'>You: </p>
+                <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
             </div>
               
-            <div id="Qpic" style="display: inline-block; margin-left: 15em"><img class="cardPics" src="Images/QofH.svg"></div>  
-            <div id="dealerCPic" style="display: none; margin-left: 11em; margin-top: -.5em">  
-            <p id="dealerLabel" style="width: 6em">The Dealer: </p>
-            <div style="height: 300px; width: 200px; border: 1px solid black; border-radius: 8px; box-shadow: 4px 4px 4px darkgrey;"><div id="cardNumD1"style="font-size: 36px; padding-left: .3em">K</div><img id="dealerCardDisplay" style="margin-top: 65px; margin-left: 55px" src="Images/clubs.png"><div id="cardNumD2" style="font-size: 36px; padding-right: .25em; margin-left: 162px; padding-top: 65px">K</div></div>
+            <div id='Qpic'><img class='cardPics' src='Images/QofH.svg'></div>  
+            <div id='dealerCPic'>  
+                <p id='dealerLabel'>The Dealer: </p>
+                <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
             </div>
             </div>        
             </div><!-- ********** end contents of War tab ********** --> 
@@ -434,6 +513,9 @@ body{
             <!-- ********** begin contents of Guess My Number tab ********** --> 
             <div id="divGamesSubTab3" class="aTab">
             <div class="pageHeader">Let's Play Guess My Number!</div>
+                
+                <div><img src="Images/smiley.png" id="smileyPic"></div>
+                
             <div class="tabContents">
             <div id="guessN"></div>
             <div id="aGuessed"></div>
@@ -442,7 +524,7 @@ body{
             </div><!-- ********** end contents of Guess My Number tab ********** -->     
                 
         </div> <!-- ********** end Let's Play a Game tab contents (Tab Three) ********** -->
-        <!-- ******************************************************************** --> 
+               <!-- ******************************************************************** --> 
         
         <!-- *********************************************** -->   
         <!-- ********** begin Create Study Cards tab contents (Tab Four) ********** -->
