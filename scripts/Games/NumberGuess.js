@@ -38,6 +38,7 @@ var tries;
 		var remGuess = 11-tries;
 		if(playerGuess == computerNumber && tries < 11){
 			$("#feedback").html("<br>Correct! The number was " + computerNumber + " and it only took you " + tries + " tries!");
+            $("#smileyPic").css("display", "block");
 		}
 		else if(playerGuess !== computerNumber && tries < 11){
 			if(playerGuess > computerNumber){
