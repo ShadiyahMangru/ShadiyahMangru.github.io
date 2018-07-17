@@ -1,4 +1,4 @@
-    //methods to play war!
+//methods to play war!
     
     var deck;
     var dealerDeck;
@@ -81,10 +81,10 @@ $(document).ready(function(){
     
     //'flip' 1 card from each deck
     function flipCard(){
-        document.querySelector("#Kpic").style.display = "none";
-        document.querySelector("#Qpic").style.display = "none";
-        document.querySelector("#youCPic").style.display = "inline-block";
-        document.querySelector("#dealerCPic").style.display = "inline-block";
+        $("#Kpic").css("display", "none");
+        $("#Qpic").css("display", "none");
+        $("#youCPic").css("display", "inline-block");
+        $("#dealerCPic").css("display", "inline-block");
         youCard = youDeck[26-cardsLeft];
         //alert(typeof youCard.split(",")[1]);
         cardImage(youCard, "#youCardDisplay", "#cardNumY1", "#cardNumY2");
@@ -97,15 +97,15 @@ $(document).ready(function(){
         if(cardsLeft===0){
             //disable war button when each 26 card pile has no cards remaining
             //display a results message -- congrats to winner
-            document.querySelector("#war").disabled = true;
+            $("#war").prop("disabled", true);
             if(youScore > dealerScore){
-                document.querySelector("#results").innerHTML = "YOU WIN!!!"
+                $("#warResults").html("YOU WIN!!!");
             }
             else if(youScore < dealerScore){
-                document.querySelector("#results").innerHTML = "DEALER WINS!!!"
+                $("#warResults").html("DEALER WINS!!!");
             }
             else{
-                document.querySelector("#results").innerHTML = "IT IS A TIE!!!"
+                $("#warResults").html("IT IS A TIE!!!");
             }
             //document.querySelector("#playAgn").style.display = "block";
         }
@@ -116,50 +116,50 @@ $(document).ready(function(){
         if(cardType.split(",")[1]=="h"){
             var pic = document.querySelector(imgID);
             pic.src="Images/hearts.png";
-            document.querySelector(divID1).style.color = "red";
-            document.querySelector(divID2).style.color = "red";
+            $(divID1).css("color", "red");
+            $(divID2).css("color", "red");
         }
         else if(cardType.split(",")[1]=="d"){
             var pic = document.querySelector(imgID);
             pic.src="Images/diamonds.png";
-            document.querySelector(divID1).style.color = "red";
-            document.querySelector(divID2).style.color = "red";
+            $(divID1).css("color", "red");
+            $(divID2).css("color", "red");
         }
         else if(cardType.split(",")[1]=="c"){
             var pic = document.querySelector(imgID);
             pic.src="Images/clubs.png";
-            document.querySelector(divID1).style.color = "black";
-            document.querySelector(divID2).style.color = "black";
+            $(divID1).css("color", "black");
+            $(divID2).css("color", "black");
         }
         else if(cardType.split(",")[1]=="s"){
             var pic = document.querySelector(imgID);
             pic.src="Images/spades.png";
-            document.querySelector(divID1).style.color = "black";
-            document.querySelector(divID2).style.color = "black";
+            $(divID1).css("color", "black");
+            $(divID2).css("color", "black");
         }
     }
     
     //function to determine if a number or K, Q, J, A displayed on screen
     function cardNumber(cardNum, divID1, divID2){
         if(cardNum.split(",")[0]==="13"){
-            document.querySelector(divID1).innerHTML = "K";
-            document.querySelector(divID2).innerHTML = "K";
+            $(divID1).html("K");
+            $(divID2).html("K");
         }
         else if(cardNum.split(",")[0]==="12"){
-            document.querySelector(divID1).innerHTML = "Q";
-            document.querySelector(divID2).innerHTML = "Q";
+            $(divID1).html("Q");
+            $(divID2).html("Q");
         }
         else if(cardNum.split(",")[0]==="11"){
-            document.querySelector(divID1).innerHTML = "J";
-            document.querySelector(divID2).innerHTML = "J";
+            $(divID1).html("J");
+            $(divID2).html("J");
         }
         else if(cardNum.split(",")[0]==="1"){
-            document.querySelector(divID1).innerHTML = "A";
-            document.querySelector(divID2).innerHTML = "A";
+            $(divID1).html("A");
+            $(divID2).html("A");
         }
         else{
-            document.querySelector(divID1).innerHTML = cardNum.split(",")[0].toString();
-            document.querySelector(divID2).innerHTML = cardNum.split(",")[0].toString();
+            $(divID1).html(cardNum.split(",")[0].toString());
+            $(divID2).html(cardNum.split(",")[0].toString());
         }
     }
     
@@ -170,24 +170,24 @@ $(document).ready(function(){
             var addPoints = 2;
             youScore+=parseInt(addPoints);
             //alert("you: " + youScore);
-            document.querySelector("#youScore").innerHTML = youScore;
-            document.querySelector("#youLabel").style.backgroundColor = "yellow";
-            document.querySelector("#dealerLabel").style.backgroundColor = "white";
+            $("#youScore").html(youScore);
+            $("#youLabel").css("backgroundColor", "yellow");
+            $("#dealerLabel").css("backgroundColor", "white");
         }
         //if dealer card > you card, +2 dealer
         else if(parseInt(youCard.split(",")[0]) < parseInt(dealerCard.split(",")[0])){
             var addPoints = 2;
             dealerScore+=parseInt(addPoints);
             //alert("dealer: " + dealerScore);
-            document.querySelector("#dealerScore").innerHTML = dealerScore;
-            document.querySelector("#youLabel").style.backgroundColor = "white";
-            document.querySelector("#dealerLabel").style.backgroundColor = "yellow";
+            $("#dealerScore").html(dealerScore);
+            $("#youLabel").css("backgroundColor", "white");
+            $("#dealerLabel").css("backgroundColor", "yellow");
         }
         //if dealer card = you card, flip again without adjusting score (once tie broken, score of winner increased by total number cards flipped since tie began). //WORK ON THIS CONDITION
         else{
             //alert("there is a tie");
-            document.querySelector("#youLabel").style.backgroundColor = "white";
-            document.querySelector("#dealerLabel").style.backgroundColor = "white";
+            $("#youLabel").css("backgroundColor", "white");
+            $("#dealerLabel").css("backgroundColor", "white");
             score();
         }
     }
