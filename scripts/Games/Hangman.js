@@ -10,7 +10,7 @@ var mysteryWord;
 var answerFormat = [];
 var alreadyGuess;
 var lives;
-    
+
 //******************************************
 //function to get random element of an array
 //******************************************
@@ -22,12 +22,12 @@ function randArrayE(arr){
 //function to load a new mystery word based on user's E/M/H selection
 //*******************************************************************
 function playGame(num){
-    $("#HangmanPic").css("display", "none");
+    $("#HMPic").css("display", "none");
     lives=7;
     alreadyGuess = [];
-    $("#getLetter").css("display", "inline-block");
-    $("#letterGuess").css("display", "inline-block");
-    $("#submit").css("display", "inline-block");
+    $("#HMGetLetter").css("display", "inline-block");
+    $("#HMLetterGuess").css("display", "inline-block");
+    $("#HMSubmit").css("display", "inline-block");
     if(num==3){
         mysteryWord = randArrayE(hardWords);
     }
@@ -51,13 +51,14 @@ function playGame(num){
 //*************************************************************************
 //function to get letter guess from user and output feedback based on guess
 //*************************************************************************
-function guessLetter(guess){
+function guessLetter(){
+    var guess = $("#HMLetterGuess").val();
     guess = guess.toUpperCase();
     if(guess.length==1){
         //if current letter has already been guessed during this round, retrieve another guess from user
         if(alreadyGuess.includes(guess)==true){
             $("#HMfeedback").html("You have already guessed " + guess + ".  Try again!"); 
-            $("#letterGuess").val("");
+            $("#HMLetterGuess").val("");
         }
         //if current letter guess is in word, update mystery word format key and reveal to user
         else if(mysteryWord.includes(guess)==true & alreadyGuess.indexOf(guess)==-1){
@@ -68,7 +69,7 @@ function guessLetter(guess){
 						}
 					}
             $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
-            $("#letterGuess").val("");
+            $("#HMLetterGuess").val("");
             $("#HMguessed").css("display", "block");
             $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
         
@@ -79,8 +80,8 @@ function guessLetter(guess){
         //output winner message if no dashes remain in answer key and load a new round of game
             else{
                 $("#HMfeedback").html("  YOU WON!!!");
-                $("#celebrate").css("display", "block");
-                $("#playAgain").css("display", "block");
+                $("#HMCelebrate").css("display", "block");
+                $("#HMPlayAgain").css("display", "block");
                 $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
             }
         }   
@@ -94,13 +95,13 @@ function guessLetter(guess){
             //retrieve another letter guess from user if 'lives' remain
             if(lives>0){
                 $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining");
-                $("#letterGuess").val("");
+                $("#HMLetterGuess").val("");
             }
             else{
             //output mystery word and a game over message to user if no 'lives' remain; load another round of game
                 $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
-                $("#sad").css("display", "block");
-                $("#playAgain").css("display", "block");
+                $("#HMSad").css("display", "block");
+                $("#HMPlayAgain").css("display", "block");
             }
         }
 } 
@@ -110,19 +111,32 @@ function guessLetter(guess){
 //function that returns user to word difficulty selection that precedes a new game
 //********************************************************************************
 function playAgain(){
-    $("#HangmanPic").css("display", "block");
-    $("#getLetter").css("display", "none");
-    $("#letterGuess").css("display", "none");
-    $("#letterGuess").val("");
-    $("#submit").css("display", "none");
+    $("#HMPic").css("display", "block");
+    $("#HMGetLetter").css("display", "none");
+    $("#HMLetterGuess").css("display", "none");
+    $("#HMLetterGuess").val("");
+    $("#HMSubmit").css("display", "none");
     $("#HMAnswerFormat").html("");
     $("#HMfeedback").html("");
-    $("#playAgain").css("display", "none");
-    $("#celebrate").css("display", "none");
-    $("#sad").css("display", "none");
+    $("#HMPlayAgain").css("display", "none");
+    $("#HMCelebrate").css("display", "none");
+    $("#HMSad").css("display", "none");
     $("#easy").prop("disabled", false);
     $("#medium").prop("disabled", false);
     $("#hard").prop("disabled", false);
     $("#HMguessed").css("display", "none");
     answerFormat = [];
 }
+
+
+$(document).ready(function(){
+//display select difficulty level choice buttons
+$("#HMButtons").html("Select Difficulty Level:");
+$('#HMButtons').append("<br><button id='easy' class='siteButton' onclick='playGame(1);'>Easy</button><button id='medium' class='siteButton' onclick='playGame(2);'>Medium</button><button id='hard' class='siteButton' onclick='playGame(3);'>Hard</button><br><br>");
+//display initial image
+$("#HMPic").append("<img src='Images/stickman.png'>");
+//display means to get letter guess from user
+$("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input class='siteInput' id='HMLetterGuess' type='text' value=''><button class='siteButton' id='HMSubmit' onclick='guessLetter();'>Submit</button><Br><br>");
+//display win/lose image; display play again button
+$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.gif'></div><div id='HMSad'><img src='Images/sad.svg'></div><button class='siteButton' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button>");
+});
