@@ -1,4 +1,4 @@
-//methods to play war!
+    //methods to play war!
     
     var deck;
     var dealerDeck;
@@ -15,12 +15,13 @@
 //*************************
 (function( $ ){
    $.fn.displayRules = function() {
-      $("#WRules").html(" In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to start a round; this flips a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!")
+      $("#WRules").html("In this game, a standard 52-card deck is split between you and the dealer.  Press 'War!' to flip a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!")
    }; 
 })( jQuery );
 
 $(document).ready(function(){
     $('#WRules').displayRules();
+    $("#WScore").append("<table><tr><th>Score: </th></tr><tr><td>You: </td><td><div id='youScore'>0</div></td></tr><tr><td>Dealer: </td><td><div id='dealerScore'>0</div></td></tr></table>"); 
 });
     
     function loadGame(){
@@ -107,7 +108,7 @@ $(document).ready(function(){
             else{
                 $("#warResults").html("IT IS A TIE!!!");
             }
-            //document.querySelector("#playAgn").style.display = "block";
+            //document.querySelector("#WARplayAgain").style.display = "block";
         }
     }
     
