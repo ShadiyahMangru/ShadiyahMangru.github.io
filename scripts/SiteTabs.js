@@ -6,7 +6,7 @@ $(document).ready(function(){
     $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
         "<span id='spanTab2' class='tab' onclick='toggleTabs(mainID, 2, numberMainTabs);'>Data Set Sorter(s)</span>" +
         "<span id='spanTab3' class='tab' onclick='toggleTabs(mainID, 3, numberMainTabs);'>Let's Play A Game!</span>" +
-        "<span id='spanTab4' class='tab' onclick='toggleTabs(mainID, 4, numberMainTabs);'>Create Study Cards</span>" +
+        "<span id='spanTab4' class='tab' onclick='toggleTabs(mainID, 4, numberMainTabs);'>Study Tools</span>" +
         "<span id='spanTab5' class='tab'>Tab Five (Coming Soon!)</span>");
     
     
@@ -28,8 +28,14 @@ $(document).ready(function(){
         $("#gamesNav").append("<span id='spanGamesSubTab1' class='tab active' style='background-color: silver' onclick='toggleTabs(gamesID, 1, numberGSTabs);'>Hangman</span>" +
         "<span id='spanGamesSubTab2' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 2, numberGSTabs);'>War</span>" +
         "<span id='spanGamesSubTab3' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 3, numberGSTabs);'>Guess The Number</span>");       
-});
 
+
+
+
+//display Study Tools Page Nav
+        $("#StudyCardsNav").append("<span id='spanStudyCardsSubTab1' class='tab active' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 1, numberSCTabs);'>User-Defined Vocab Study Cards</span>" +
+        "<span id='spanStudyCardsSubTab2' class='tab' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 2, numberSCTabs);'>Binary-Decimal Conversions Review</span>");    
+});
 //*********************
 // toggling of tabs
 //*********************
@@ -64,7 +70,11 @@ var numberFibTabs = 2;
 //******************** toggling of tabs variables for Game page **********************
 var gamesID = "GamesSubTab";
 var numberGSTabs = 3;
-            
+ 
+//******************** toggling of tabs variables for Study Cards page **********************
+var StudyCardsID = "StudyCardsSubTab";
+var numberSCTabs = 2;
+
 //*********************
 // end toggling of tabs
 //*********************    
