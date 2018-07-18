@@ -1,4 +1,4 @@
-.divTabSpacer {
+..divTabSpacer {
 	border-top:1px silver solid;
 	width:100%;
 	margin-top:-1px;
@@ -16,7 +16,7 @@
 	color:black;
 	padding:4px 20px 4px 20px;
 	cursor:pointer;
-  font-family: "Arial Narrow";
+        font-family: "Arial Narrow";
 }
 
 .divTabs .spacer {
@@ -275,7 +275,7 @@
         width: 150%; 
         margin-top: .2em; 
     }
-#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE, #divTab4{
+#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -295,7 +295,7 @@
     font-weight: 600;
 }
 
-#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4{
+#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #spanStudyCardsSubTab1, #divStudyCardsSubTab1{
     margin-left: 1em
 }
 
@@ -306,7 +306,7 @@
 
     #PTriangle >label{
     width: 6%;
-	  font-size: 1em;
+	font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
@@ -340,6 +340,25 @@
     } 
     #cardCounter{
         padding: .4em;
+    }
+.column{
+    float: left;
+    width: 30%;
+    padding: 10px;
+    }   
+    .BDtable{
+        border: 1px solid black;
+    }
+    #binToDec, #decToBin, #dToBPractice, #bToDPractice, #dbPractice{
+        display: none;
+    }
+    .highlight{
+        color: rebeccapurple;
+        font-weight: 600;
+    }
+    #isBToDCorrect, #isDToBCorrect{
+        color: crimson;
+        font-weight: 600;
     }
 body{
     min-width:1000px; /*minimun width of 1000px */
