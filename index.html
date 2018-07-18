@@ -14,7 +14,7 @@
         </div>
         <p id="subtitle">Explore the works in progress under the tabs below.</p>
         <!-- ********** Main site navigation tabs ********** -->
-		<div id="mainNav" class="divTabs"></div>
+	<div id="mainNav" class="divTabs"></div>
         <div class="divTabSpacer">&nbsp;</div>
         
     <!-- Divs containing the tab contents -->
@@ -109,9 +109,9 @@
      <!-- ******************************************************************* --> 
         
     
-        <!-- ********************************************************************** -->   
-        <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
-        <div id="divTab3" class="aTab">
+     <!-- ********************************************************************** -->   
+     <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
+     <div id="divTab3" class="aTab">
             
             <!-- ********** begin tabs to subdivide Games page ********** -->
             <div id="gamesNav" class="divTabs"></div> 
@@ -175,15 +175,46 @@
                <!-- ******************************************************************** --> 
         
         <!-- *********************************************** -->   
-        <!-- ********** begin Create Study Cards tab contents (Tab Four) ********** -->
+        <!-- ********** begin Study Tools tab contents (Tab Four) ********** -->
         <div id="divTab4" class="aTab">
-        <div class="pageHeader">Create Study Cards</div>
             
-        <div class="tabContents">
-            <div id="deckContents"></div>
-            <div id="userDeck" style="display: none"></div>
-        </div>    
-        </div><!-- ********** end Create Study Cards tab contents (Tab Four) ********** -->
+            <!-- ********** begin tabs to subdivide Study Cards page ********** -->
+            <div id="StudyCardsNav" class="divTabs"></div> 
+            <div class="divTabSpacer">&nbsp;</div> 
+            
+            <!-- ********** begin contents of Vocab Study Cards tab ********** --> 
+            <div id="divStudyCardsSubTab1">
+             <div class="pageHeader">Create User-Defined Vocab Study Cards</div>
+            
+            <div class="tabContents">
+                <div id="deckContents"></div>
+                <div id="userDeck" style="display: none"></div>
+            </div>    
+            </div><!-- ********** end contents of Vocab Study Cards tab ********** --> 
+            
+            <!-- ********* begin contents of Binary-Decimal Conversions Review tab ********* --> 
+            <div id="divStudyCardsSubTab2" class="aTab">
+            <div class="pageHeader">Binary-Decimal Conversions Interactive Review</div>
+            <div class="tabContents">
+                <div id='BinDecOptions'></div>
+                <div id='binToDec'></div>
+                <div id='decToBin'></div>        
+                <div id='bToDPractice'></div> 
+                <div id='dToBPractice'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
+                    <label>Enter a Decimal Number: </label>
+                    <input type='number' id='dec' class='siteInput' placeholder='Decimal'>
+                    <br>
+                    <label>Enter the Binary Equivalent: </label>
+                    <input type='text' id='dToBResult' class='siteInput'>
+                    <button class='siteButton' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><Br>
+                    <div id='isDToBCorrect'></div>
+                </div>       
+
+            </div>    
+            </div><!-- ********** end contents of Binary-Decimal Conversions Review tab ********** --> 
+            
+       
+        </div><!-- ********** end Study Tools tab contents (Tab Four) ********** -->
         <!-- ********************************************* --> 
          
         <!-- *********************************************** -->   
@@ -202,7 +233,7 @@
 
         
 <!-- **************************************************** -->
-<!-- ********** begin jQuery / JavaScript code ********** -->        
+<!-- ********** begin jQuery / JavaScript code ********** -->  
 <!--link to my JavaScript/jQuery source code for Site Tabs-->
 <script type="text/javascript" src="scripts/SiteTabs.js"></script>
 <!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
@@ -223,6 +254,8 @@
 <script type="text/javascript" src="scripts/Games/NumberGuess.js"></script> 
 <!--link to my User-Defined Study Cards Generator JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/StudyCards/StudyCards.js"></script>   
+<!--link to my Binary-Decimal Conversions Interactive Review JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/StudyCards/DecimalBinary.js"></script>  
 <!-- ********** end jQuery / JavaScript code ********** -->
 <!-- ************************************************************ -->
 </body>
