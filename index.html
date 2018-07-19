@@ -21,7 +21,7 @@
     <div class="tab-content clearfix">
     <!-- ******************************************************************** -->   
     <!-- ********** begin Math Calculations tab contents (Tab One) ********** -->
-    <div id="divTab1">
+    <div id="divTab4" class="aTab">
             
         <!-- ********** Math Calculations page tabs ********** -->
         <div id="mathNav" class="divTabs"></div> 
@@ -109,9 +109,9 @@
      <!-- ******************************************************************* --> 
         
     
-     <!-- ********************************************************************** -->   
-     <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
-     <div id="divTab3" class="aTab">
+        <!-- ********************************************************************** -->   
+        <!-- ********** begin Let's Play a Game tab contents (Tab Three) ********** -->
+        <div id="divTab3" class="aTab">
             
             <!-- ********** begin tabs to subdivide Games page ********** -->
             <div id="gamesNav" class="divTabs"></div> 
@@ -176,14 +176,14 @@
         
         <!-- *********************************************** -->   
         <!-- ********** begin Study Tools tab contents (Tab Four) ********** -->
-        <div id="divTab4" class="aTab">
+        <div id="divTab1">
             
             <!-- ********** begin tabs to subdivide Study Cards page ********** -->
             <div id="StudyCardsNav" class="divTabs"></div> 
             <div class="divTabSpacer">&nbsp;</div> 
             
             <!-- ********** begin contents of Vocab Study Cards tab ********** --> 
-            <div id="divStudyCardsSubTab1">
+            <div id="divStudyCardsSubTab2" class="aTab">
              <div class="pageHeader">Create User-Defined Vocab Study Cards</div>
             
             <div class="tabContents">
@@ -193,12 +193,10 @@
             </div><!-- ********** end contents of Vocab Study Cards tab ********** --> 
             
             <!-- ********* begin contents of Binary-Decimal Conversions Review tab ********* --> 
-            <div id="divStudyCardsSubTab2" class="aTab">
+            <div id="divStudyCardsSubTab1">
             <div class="pageHeader">Binary-Decimal Conversions Interactive Review</div>
             <div class="tabContents">
-                <div id='BinDecOptions'></div>
-                <div id='binToDec'></div>
-                <div id='decToBin'></div>        
+                <div id='BinDecOptions'></div>      
                 <div id='bToDPractice'></div> 
                 <div id='dToBPractice'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
                     <label>Enter a Decimal Number: </label>
@@ -208,7 +206,9 @@
                     <input type='text' id='dToBResult' class='siteInput'>
                     <button class='siteButton' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><Br>
                     <div id='isDToBCorrect'></div>
-                </div>       
+                </div>  
+                <div id='binToDec'></div>
+                <div id='decToBin'></div>
 
             </div>    
             </div><!-- ********** end contents of Binary-Decimal Conversions Review tab ********** --> 
@@ -220,8 +220,8 @@
         <!-- *********************************************** -->   
         <!-- ********** begin contents (Tab Five) ********** -->  
         <div id="divTab5" class="aTab">
-	</div> <!-- ********** end contents (Tab Five) ********** -->
-        <!-- ********************************************* -->     
+		</div> <!-- ********** end contents (Tab Five) ********** -->
+               <!-- ********************************************* -->     
             
     </div>
 		
