@@ -3,10 +3,10 @@
 //*********************************************
 $(document).ready(function(){
 	//display Main Site Nav
-    $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
+    $("#mainNav").append("<span id='spanTab1' class='tab active' onclick='toggleTabs(mainID, 1, numberMainTabs);'>Study Tools</span>" +
         "<span id='spanTab2' class='tab' onclick='toggleTabs(mainID, 2, numberMainTabs);'>Data Set Sorter(s)</span>" +
         "<span id='spanTab3' class='tab' onclick='toggleTabs(mainID, 3, numberMainTabs);'>Let's Play A Game!</span>" +
-        "<span id='spanTab4' class='tab' onclick='toggleTabs(mainID, 4, numberMainTabs);'>Study Tools</span>" +
+        "<span id='spanTab4' class='tab' onclick='toggleTabs(mainID, 4, numberMainTabs);'>Perform Mathematical Calculations</span>" + 
         "<span id='spanTab5' class='tab'>Tab Five (Coming Soon!)</span>");
     
     
@@ -33,8 +33,8 @@ $(document).ready(function(){
 
 
 //display Study Tools Page Nav
-        $("#StudyCardsNav").append("<span id='spanStudyCardsSubTab1' class='tab active' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 1, numberSCTabs);'>User-Defined Vocab Study Cards</span>" +
-        "<span id='spanStudyCardsSubTab2' class='tab' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 2, numberSCTabs);'>Binary-Decimal Conversions Review</span>");    
+        $("#StudyCardsNav").append("<span id='spanStudyCardsSubTab1' class='tab active' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 1, numberSCTabs);'>Binary-Decimal Conversions Review</span>" +
+        "<span id='spanStudyCardsSubTab2' class='tab' style='background-color: thistle' onclick='toggleTabs(StudyCardsID, 2, numberSCTabs);'>User-Defined Vocab Study Cards</span>");    
 });
 //*********************
 // toggling of tabs
