@@ -1,4 +1,4 @@
-..divTabSpacer {
+.divTabSpacer {
 	border-top:1px silver solid;
 	width:100%;
 	margin-top:-1px;
@@ -306,7 +306,7 @@
 
     #PTriangle >label{
     width: 6%;
-	font-size: 1em;
+    font-size: 1em;
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
@@ -340,12 +340,7 @@
     } 
     #cardCounter{
         padding: .4em;
-    }
-.column{
-    float: left;
-    width: 30%;
-    padding: 10px;
-    }   
+    }  
     .BDtable{
         border: 1px solid black;
     }
@@ -359,6 +354,15 @@
     #isBToDCorrect, #isDToBCorrect{
         color: crimson;
         font-weight: 600;
+    }
+    .dispOpt{
+        padding: .4em;
+        background-color: #CCD6DF;
+        font-weight: 600;
+        border-radius: 4px;
+    }
+    .dispOpt:focus{
+        background-color: ghostwhite;
     }
 body{
     min-width:1000px; /*minimun width of 1000px */
