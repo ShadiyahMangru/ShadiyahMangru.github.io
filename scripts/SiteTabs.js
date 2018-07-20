@@ -27,7 +27,8 @@ $(document).ready(function(){
 //display Games Page Nav
         $("#gamesNav").append("<span id='spanGamesSubTab1' class='tab active' style='background-color: silver' onclick='toggleTabs(gamesID, 1, numberGSTabs);'>Hangman</span>" +
         "<span id='spanGamesSubTab2' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 2, numberGSTabs);'>War</span>" +
-        "<span id='spanGamesSubTab3' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 3, numberGSTabs);'>Guess The Number</span>");       
+        "<span id='spanGamesSubTab3' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 3, numberGSTabs);'>Guess The Number</span>" +
+        "<span id='spanGamesSubTab4' class='tab' style='background-color: silver' onclick='toggleTabs(gamesID, 4, numberGSTabs);'>Add It Up!</span>");       
 
 
 
@@ -69,7 +70,7 @@ var numberFibTabs = 2;
 
 //******************** toggling of tabs variables for Game page **********************
 var gamesID = "GamesSubTab";
-var numberGSTabs = 3;
+var numberGSTabs = 4;
  
 //******************** toggling of tabs variables for Study Cards page **********************
 var StudyCardsID = "StudyCardsSubTab";
