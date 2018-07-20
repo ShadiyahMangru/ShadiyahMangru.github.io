@@ -14,7 +14,7 @@ $(document).ready(function(){
     $("#mathNav").append("<span id='spanCalcSubTab1' class='tab active' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 1, numberMathTabs);'>Calculate Fibonacci Numbers</span>" +
         "<span id='spanCalcSubTab2' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 2, numberMathTabs);'>Calculate GCD (By Euclidean Algorithm)</span>" +
         "<span id='spanCalcSubTab3' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 3, numberMathTabs);'>Calculate 1 + 2 + ... + n (By Gauss)</span>" +
-        "<span id='spanCalcSubTab4' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 4, numberMathTabs);'>Calculate Row Sums of Pascal's Triangle</span>");
+        "<span id='spanCalcSubTab4' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 4, numberMathTabs);'>Calculate Row Sums of Pascal's Triangle</span>" + "<span id='spanCalcSubTab5' class='tab' style='background-color: #F0E68C' onclick='toggleTabs(mathID, 5, numberMathTabs);'>Calculate Factorials</span>");
 
 
 
@@ -61,7 +61,7 @@ var numberMainTabs = 4;
 
 //***************** toggling of tabs variables for Math Calculations tab ******************
 var mathID = "CalcSubTab";
-var numberMathTabs = 4;
+var numberMathTabs = 5;
         
 //********************* toggling of tabs variables for Fibonacci page *********************
 var fibID = "SubTab";
