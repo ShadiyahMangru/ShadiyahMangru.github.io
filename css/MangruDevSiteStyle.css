@@ -275,7 +275,7 @@
         width: 150%; 
         margin-top: .2em; 
     }
-#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
+#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divCalcSubTab5, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #gcdE, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
     max-width: 90%;
     border: 1px solid black;
     border-radius: 6px;
@@ -295,7 +295,7 @@
     font-weight: 600;
 }
 
-#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #spanStudyCardsSubTab1, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
+#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divCalcSubTab5, #spanStudyCardsSubTab1, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
     margin-left: 1em
 }
 
