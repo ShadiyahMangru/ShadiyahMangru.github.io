@@ -14,9 +14,12 @@ var tries;
         //disable 'select secret number' button
         $("#begin").prop("disabled", true);
         //style previous guesses div
-        $("#aGuessed").css("color", "#7f06d6");
+        $("#aGuessed").css("color", "#AC0090");
+        $("#aGuessed").css("font-size", "110%")
         $("#aGuessed").css("font-weight", "600");
         $("#aGuessed").css("padding-top", ".75em");
+        $("#feedback").css("font-size", "110%");
+        $("#feedback").css("color", "#0047B3");
 	
 		
 	//function to generate a random integer between two values
@@ -37,8 +40,8 @@ var tries;
 		++tries;
 		var remGuess = 11-tries;
 		if(playerGuess == computerNumber && tries < 11){
-			$("#feedback").html("<br>Correct! The number was " + computerNumber + " and it only took you " + tries + " tries!");
-            $("#smileyPic").css("display", "block");
+			$("#feedback").html("<br>Me-wow!  That is correct! The number was " + computerNumber + " and it only took you " + tries + " tries!");
+            $("#feedback").append("<br><br><img src='Images/cat.png'>");
 		}
 		else if(playerGuess !== computerNumber && tries < 11){
 			if(playerGuess > computerNumber){
