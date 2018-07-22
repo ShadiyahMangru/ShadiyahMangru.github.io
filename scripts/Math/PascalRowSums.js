@@ -30,8 +30,7 @@ $(document).ready(function(){
     });
     
     //create button to show/hide Pascal's Triangle row sums pattern
-    $("#PTPattern").html("_______________________________________________\n\nSEE IF YOU RECOGNIZE A PATTERN IN THE ROW SUMS!");
-       $("#PTPattern").append("<br><button id='pattern' class='siteButton'>Show/Hide Pattern</button><br><p id='patternKey'>sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p><br>");
+       $("#PTPattern").append("<br><button id='pattern' class='siteButton'>Show/Hide Row Sums Pattern</button><br><p id='patternKey'>sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p><br>");
     
     //shows/hides Pascal's Triangle row sums pattern w/button click
     $( "#pattern" ).click(function() {
