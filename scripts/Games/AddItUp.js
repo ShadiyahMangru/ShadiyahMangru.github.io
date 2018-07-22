@@ -5,14 +5,14 @@
     createGameBoard();     
     
     $(document).ready(function(){
-       $("#rules").append("RULES: (i) Populate each gamboard square with numbers 1-5, (ii) Do NOT repeat a number in any row or column, (iii) Use the color-coded KEY to facilitate input.");
+       $("#rules").append("<span style='color: #003399; font-size: 120%; font-weight: 600'><u>RULES:</u></span> (i) Populate each gamboard square with numbers 1-5, (ii) Do NOT repeat a number in any row or column, (iii) Use the color-coded KEY to facilitate input.");
     });
 
     var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
         
     function showKey(){
         var rbyg = ["10", "27", "16", "22"];
-        var key = "KEY: \n\nThe sum of: (i) the red squares is " + rbyg[0] + ", (ii) the blue squares is " + rbyg[1] + ", (iii) the yellow squares is " + rbyg[2] + ", (iv) the green squares is " + rbyg[3]; 
+        var key = "<span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#DD0040'>red</span> squares is " + rbyg[0] + ", (ii) the <span style='color: #1674B1'>blue</span> squares is " + rbyg[1] + ", (iii) the <span style='color: #F9AB13'>yellow</span> squares is " + rbyg[2] + ", (iv) the <span style='color: #53904E'>green</span> squares is " + rbyg[3]; 
         $("#key").html(key);
         $("#key").append("<br><br>")
     }
@@ -24,16 +24,16 @@
         while(counter < 5){
             for(var i = 0; i < 5; i++){
                 if(answerKeyC[counter].charAt(i)==='r'){
-                    setStyle = "style='background-color: red'";
+                    setStyle = "style='background-color: #DD0040'";
                 }
                 else if(answerKeyC[counter].charAt(i)==='b'){
-                    setStyle = "style='background-color: dodgerblue'";
+                    setStyle = "style='background-color: #1674B1'";
                 }
                 else if(answerKeyC[counter].charAt(i)==='y'){
-                    setStyle = "style='background-color: yellow'";
+                    setStyle = "style='background-color: #F9AB13'";
                 }    
                 else if(answerKeyC[counter].charAt(i)==='g'){
-                    setStyle = "style='background-color: lime'";
+                    setStyle = "style='background-color: #53904E'";
                 }     
                 $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
             }
