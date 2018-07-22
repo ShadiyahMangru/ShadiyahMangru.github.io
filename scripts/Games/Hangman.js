@@ -113,7 +113,7 @@ function guessLetter(){
 function playAgain(){
     $("#HMPic").css("display", "block");
     $("#HMGetLetter").css("display", "none");
-    $("#HMLetterGuess").css("display", "none");
+    $("#HMLetterGuess").css("visibility", "hidden");
     $("#HMLetterGuess").val("");
     $("#HMSubmit").css("display", "none");
     $("#HMAnswerFormat").html("");
