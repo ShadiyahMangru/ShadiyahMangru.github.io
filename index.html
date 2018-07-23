@@ -28,7 +28,7 @@
 	font-size: 52px;
 	color: midnightblue;
 	text-align: center;
-        text-shadow: 4px 2px 2px silver;
+    text-shadow: 4px 2px 2px silver;
  }
  #main{
 	padding-top: 30px;
@@ -36,7 +36,7 @@
  
  h1, h2{
 	color: #693880;
-        font-weight: 600;
+    font-weight: 600;
  }
     h4{
         color: #4E4B51;
@@ -454,17 +454,7 @@
         height: 6em;
         padding-top: 1em;
     }
-    #GCalc{
-        border: 1px solid black; 
-        padding: 1.5em; 
-        border-radius: 6px;
-        width: 44%;
-        height: 14em;
-    }
-    
     #GaussAlg{
-        margin-left: 33.5em;
-        margin-top: -12em;
         font-size: 110%;
         line-height: 170%;
     }  
@@ -486,7 +476,7 @@ body{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.html">Homepage</a>
+      <a class="navbar-brand" href="webpageTemplate.html">Homepage</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -576,9 +566,21 @@ body{
 <div id="GaussPage" class="subPage">
     <h1>Sum of First n Natural Numbers Interactive Review</h1><br>   
     <div class="pageContents">
-        <div id="GCalc"></div>
-        <div id="GaussAlg"></div><br> 
-    </div>                
+    <!-- ********** Binary-Decimal Conversions page tabs ********** -->
+    <div id="GaussNav" class="divTabs"></div> 
+    <div class="divTabSpacer">&nbsp;</div> 
+                
+    <div id="divGaussTab1"> 
+        <div id='GCalc' style="display: block">
+        Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
+        <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label><br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' type="number"><button class='siteButton' onclick="sumCorrect()">Correct?</button><br>
+        <div id='ShowSum'></div>
+        </div>
+    </div>
+    <div id="divGaussTab2" class="aTab">
+        <div id="GaussAlg"></div>
+    </div>
+</div>
 </div><!-- ********** end contents of Gauss tab ********** -->    
     
 <!-- ********** begin contents of Pascal tab ********** -->
