@@ -16,9 +16,9 @@ $(document).ready(function(){
     $("#gcdE").append("<label>Enter a natural number: </label>"+
         "<input class='siteInput' TYPE='number' id='entry1' Size='16'><br>" +
         "<label>Enter another natural number: </label>" +
-        "<input class='siteInput' TYPE='number' id='entry2' Size='16'><br><br>" +
-        "<label>gcd = <input class = 'siteInput' type='number' id='theResult'></label>" +
-        "<button id='getGCD' class='siteButton' onclick='EuclidGCD();'>Calculate GCD</button>");
+        "<input class='siteInput' TYPE='number' id='entry2' Size='16'><br>" +
+        "<button id='getGCD' class='siteButton' onclick='EuclidGCD();'>Calculate GCD</button><br><br>" +
+        "<label>gcd = <input class = 'siteInput' type='number' id='theResult'></label>");
                        
     //function to calculate GCD by Euclidean Algorithm!
     $("#getGCD").click(function() {
