@@ -12,7 +12,8 @@ function sumCorrect() {
         var nMinusOne = Num-1;
         $("#ShowSum").html("Me-wow!  That is correct!");
         $("#ShowSum").append("<br><br><img src='Images/cat.png'><br>");
-        $("#ShowSum").append("<br>" + Num + " + " + nMinusOne + " + " +"... + " + "2 + 1<br>= "+parseInt(sum) + "<br>= " +parseInt(sum).toExponential());    
+        $("#ShowSum").append("<br>" + Num + " + " + nMinusOne + " + " +"... + " + "2 + 1<br>= "+parseInt(sum) + "<br>= " +parseInt(sum).toExponential());  
+        $("#newN").css("display", "block");
     }
     else{
         $("#ShowSum").html("Incorrect.  Try Again!");
@@ -30,6 +31,9 @@ function getRandNVal(){
     n = getRandomInt(3, 101);
     $(".nRandVal").html(n);
     $("#nMinus1").html(n-1);
+    $("#newN").css("display", "none");
+    $("#ShowSum").html("");
+    $("#userGSum").val("");
 }
 
  
