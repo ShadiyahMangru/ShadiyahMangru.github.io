@@ -20,4 +20,5 @@ function getFactorial(){
 
 $(document).ready(function(){
 $("#Factorial").append("Remember, <span class='highlight'><em>n</em>! = n x (n-1) x (n-2) x ... x 2 x 1</span><br><label class='siteLabel'>Enter a Natural Number: <input id='Fnum' class='siteInput' type='number'></label><button onclick='getFactorial()' class='siteButton'>!</button><label> = </label><span id='outputFactorial' class='highlight'></span>");
+$("#Factorial").css("font-size", "108%");
 });
