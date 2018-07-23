@@ -9,6 +9,9 @@ $("#BDNav").append("<span id='spanBDTab1' class='tab active' style='background-c
 "<span id='spanBDTab3' class='tab' style='background-color: #F9DE87' onclick='toggleTabs(BDID, 3, numberBDTabs);'>Review Binary to Decimal Conversions</span>" +
 "<span id='spanBDTab4' class='tab' style='background-color: #F9DE87' onclick='toggleTabs(BDID, 4, numberBDTabs);'>Review Decimal to Binary Conversions</span>");
 
+//display Gauss Page Nav
+$("#GaussNav").append("<span id='spanGaussTab1' class='tab active' style='background-color: #F9DE87' onclick='toggleTabs(GaussID, 1, numberGaussTabs);'>1+2+...+ (n-1) + n Practice</span>" +
+"<span id='spanGaussTab2' class='tab' style='background-color: #F9DE87' onclick='toggleTabs(GaussID, 2, numberGaussTabs);'>Review Gauss' Method</span>");
 
 //display Fibonacci Page Nav
 $("#fibNav").append("<span id='spanSubTab1' class='tab active' style='background-color: thistle' onclick='toggleTabs(fibID, 1, numberFibTabs);'>nth Term Calculator</span>" +
@@ -41,6 +44,11 @@ var numberBDTabs = 4;
 //********************* toggling of tabs variables for Fibonacci page *********************
 var fibID = "SubTab";
 var numberFibTabs = 2;
+
+//********************* toggling of tabs variables for Gauss page *********************
+var GaussID = "GaussTab";
+var numberGaussTabs = 2;
+
 
 //*********************
 // end toggling of tabs
