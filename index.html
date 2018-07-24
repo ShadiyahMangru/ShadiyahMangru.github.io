@@ -15,7 +15,7 @@
   body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
-      color: darkslategrey;
+      color: darkslategray;
       background-color: #FFFBFC;
   }
     a{
@@ -285,35 +285,19 @@
     }    
     #HMLetterGuess{
         display: none;
-    }
- #WRules{
-    width: 70%; 
-    margin-left: 17em; 
-    margin-top: -3.7em; 
-    font-family: 'Verdana';
-}    
+    }   
     #warResults{
-        margin-top: 1em; 
-        margin-left: 30em; 
+        margin-top: 1em;  
         font-size: 26px; 
         color: crimson; 
         font-weight: 600; 
         font-family: Arial;
     }  
     #WScore{
-        margin-left: 3em; 
-    }
-    #WScore > table{
-        border: 1px solid black; 
-        border-radius: 6px; 
-        padding: 4em;
-    }
-    #WScore > table > td{
-        padding-left: 1em;
+        width: 30%;
     }
     #war{
-        margin-left: 14em;
-        padding: 1em;
+        padding: .5em;
     }
     #WARplayAgain{
         margin-left: .5em; 
@@ -340,11 +324,13 @@
         width: 6em;
     }
     #youCBorder, #dealerCBorder{
-        height: 300px; 
+        height: 280px; 
         width: 200px; 
         border: 1px solid black; 
         border-radius: 8px; 
         box-shadow: 4px 4px 4px darkgrey;
+        padding-top: .4em;
+        padding-right: .2em;
     }
     #cardNumY1{
         font-size: 36px; 
@@ -495,10 +481,10 @@ body{
     <span id="one" style="float: left; width: 40%; margin-left: 2.5em; font-size: 115%">
 	<ul>
 	<h2>Study Tools</h2>
-    	<span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span><br>
-    	<span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span><br>
-    	<span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span><br>
-    	<span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span><br>
+    <span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span><br>
+    <span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span><br>
+    <span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span><br>
+    <span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span><br>
 	</ul>
     <br>
 	<ul>
@@ -512,7 +498,7 @@ body{
 	<ul>
 	<h2>Let's Play a Game!</h2>
         <span onclick="displayPage('#Game1')"><a>Hangman</a></span><br>
-        <!--<span onclick="displayPage('#Game2')"><a>-->War<!--</a></span>--><br>
+        <span onclick="displayPage('#Game2')"><a>War</a></span><br>
         <span onclick="displayPage('#Game3')"><a>Guess the Number</a></span><br>
         <span onclick="displayPage('#Game4')"><a>Add It Up!</a></span><br>
 	</ul>
@@ -564,7 +550,7 @@ body{
 
 <!-- ********** begin contents of Gauss tab ********** -->
 <div id="GaussPage" class="subPage">
-    <h1>Sum of First n Natural Numbers Interactive Review</h1><br>   
+    <h1>Easily Sum the First n Natural Numbers</h1><br>   
     <div class="pageContents">
     <!-- ********** Binary-Decimal Conversions page tabs ********** -->
     <div id="GaussNav" class="divTabs"></div> 
@@ -586,7 +572,7 @@ body{
     
 <!-- ********** begin contents of Pascal tab ********** -->
 <div id="PascalPage" class="subPage">
-    <h1>Row Sums of Pascal's Triangle Interactive Review</h1><br>
+    <h1>Row Sums of Pascal's Triangle Pattern Recognition</h1><br>
     <div class="pageContents">
             
     <div class="row">
@@ -645,26 +631,36 @@ body{
             
 <!-- ********** begin contents of War tab ********** --> 
 <div id="Game2" class="subPage">
-    <h1>Let's Play War!</h1>             
-            
+    <h1>Let's Play War!</h1><br>   
     <div class="pageContents">
-        <div id='WRules'></div>
-        <div id='WScore'></div>
-        <button class='siteButton' id='war' onclick='flipCard();'>War!</button>
-        <div id='warResults'></div>
-        <button class='siteButton' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>
+    <!-- **********  War page tabs ********** -->
+    <div id="WarNav" class="divTabs"></div> 
+    <div class="divTabSpacer">&nbsp;</div> 
                 
-    <div id='Kpic'><img class='cardPics' src='Images/KofS.svg'></div>
+    <div id="divWarTab1">     
+    <div class="row"> 
+    <div class="column1">
     <div id='youCPic'>
     <p id='youLabel'>You: </p>
     <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
     </div>
               
-    <div id='Qpic'><img class='cardPics' src='Images/QofH.svg'></div>  
     <div id='dealerCPic'>  
     <p id='dealerLabel'>The Dealer: </p>
     <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
     </div>
+    </div>    
+    <div class="column2">
+    <button class='siteButton' id='war' onclick='flipCard();'>Play War!</button>
+    <div id='WScore'></div>
+    <div id='warResults'></div>
+    <button class='siteButton' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
+    </div>
+    </div>    
+    </div>    
+     <div id="divWarTab2" class="aTab"> 
+        <div id='WRules'></div>
+    </div>    
     </div>        
 </div><!-- ********** end contents of War tab ********** --> 
         
@@ -729,7 +725,8 @@ body{
 <!-- *********** begin contents of Calculate Factorials tab ********** -->
 <div id="Factorial" class="subPage">
     <h1>Calculate Factorials!</h1><br>
-    <div id="Factorial" class="pageContents"></div>
+    <div id="Factorial" class="pageContents">
+    </div>
 </div><!-- ********** end contents of Calculate Factorials tab ********** -->        
         
     
