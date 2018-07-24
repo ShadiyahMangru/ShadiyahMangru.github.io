@@ -19,6 +19,7 @@
       background-color: #FFFBFC;
   }
     a{
+        color: #3e77e9;
         font-weight: 600;
         font-stretch: expanded;
         font-size: 1.1em;
@@ -31,7 +32,7 @@
     text-shadow: 4px 2px 2px silver;
  }
  #main{
-	padding-top: 30px;
+	padding-top: 20px;
  }
  
  h1, h2{
@@ -43,53 +44,6 @@
         text-align: center;
         margin-top: -2em;
     }
-   line-height: 1.375em;
-      color: #303030;
-      font-weight: 400;
-      margin-bottom: 30px;
-  }
-  .bg-grey {
-      background-color: gainsboro;
-  }
-  .item h4 {
-      font-size: 19px;
-      line-height: 1.375em;
-      font-weight: 400;
-      font-style: italic;
-      margin: 70px 0;
-  }
-  .item span {
-      font-style: normal;
-  }
-  .panel {
-      border: 1px solid #f4511e; 
-      border-radius:0 !important;
-      transition: box-shadow 0.5s;
-  }
-  .panel:hover {
-      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
-  .panel-footer .btn:hover {
-      border: 1px solid #f4511e;
-      background-color: #fff !important;
-      color: #f4511e;
-  }
-  
-  .panel-footer {
-      background-color: white !important;
-  }
-  .panel-footer h3 {
-      font-size: 32px;
-  }
-  .panel-footer h4 {
-      color: #aaa;
-      font-size: 14px;
-  }
-  .panel-footer .btn {
-      margin: 15px 0;
-      background-color: #f4511e;
-      color: #fff;
-  }
   .navbar {
       margin-bottom: 0;
       background-color: black;
@@ -116,10 +70,7 @@
       font-size: 20px;
       margin-bottom: 20px;
       color: darkslategrey;
-  }
-    
-    
-    
+  }    
  .divTabSpacer {
 	border-top:1px silver solid;
 	width:100%;
@@ -152,29 +103,13 @@
 	font-weight:bold;
 }
 
-.tabContents{
-    margin-top: 1em;
-    font-family: Tahoma;
-    margin-left: .5em;  
-    line-height: 170%;
-}
-
 .tab-content clearfix {
     padding-top:20px;
-}     
-    
-.aTab{
-    display: none;
-}       
-       
+}        
   @media screen and (max-width: 768px) {
     .col-sm-4 {
       text-align: center;
       margin: 25px 0;
-    }
-    .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
     }
   }
       .siteInput{
@@ -268,7 +203,7 @@
         color: deepskyblue; 
         display: none;
     }
-    #HMSubmit, #HMPlayAgain{
+    #HMSubmit, #HMPlayAgain, #HMLetterGuess, .aTab{
         display: none;
     }
     #HMCelebrate{
@@ -278,10 +213,7 @@
     #HMSad{
         display: none; 
         width: 20%;
-    }    
-    #HMLetterGuess{
-        display: none;
-    }   
+    }      
     #warResults{
         margin-top: 1em;  
         font-size: 26px; 
@@ -299,13 +231,6 @@
         margin-left: .5em; 
         margin-top: 1em; 
         display: none;
-    }
-    #Kpic{
-        display: inline-block;
-    }
-    #Qpic{
-        display: inline-block; 
-        margin-left: 15em;
     }
     #youCPic{
         display: none; 
@@ -399,6 +324,8 @@
     height: 3.5em;
     width: 3.5em;
     font-weight: 600;
+    border-radius: 6px;
+    text-shadow: 4px 2px 2px black;
 }
 #winLose{
         margin-top: 1em; 
@@ -439,7 +366,13 @@
     #GaussAlg{
         font-size: 110%;
         line-height: 170%;
-    }  
+    }
+    .hp{
+        border: 1px solid black; 
+        padding: .5em; 
+        background-color: #F4EEF4; 
+        box-shadow: 6px 6px 4px silver;
+    }
 body{
     font-weight: 600;
     min-width:1000px; /*minimun width of 1000px */
@@ -473,37 +406,45 @@ body{
     <h4>Explore the works in progress below</h4>
 	</div>
 	
-    <div id="mainNav" class="row" style="border: 1px solid black; padding: 1em; margin-left: 6em; margin-right: 6em; box-shadow: 6px 6px 4px silver; background-color: #F4EEF4">
-    <span id="one" style="float: left; width: 40%; margin-left: 2.5em; font-size: 115%">
-	<ul>
-	<h2>Study Tools</h2>
-    <span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span><br>
-    <span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span><br>
-    <span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span><br>
-    <span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span><br>
+    <div id="mainNav" class="row" style="padding: .5em; margin-left: 6em; margin-right: 6em; font-size: 85%">
+    <span id="one" style="float: left; width: 40%; margin-left: 6em; font-size: 115%">
+	<ul class="hp">
+    <ul class="list-group list-group-flush">
+        <h2>Study Tools</h2>
+    <li class="list-group-item"><span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span></li>
 	</ul>
+    </ul>
     <br>
-	<ul>
-	<h2>Data Set Sorter(s)</h2>
-        <span onclick="displayPage('#BSort')"><a>Bubble Sort your Data Set</a></span><br>
+	<ul class="hp">
+    <ul class="list-group list-group-flush">
+    <h2>Data Set Sorter(s)</h2>
+    <li class="list-group-item"><span onclick="displayPage('#BSort')"><a>Bubble Sort your Data Set</a></span></li>
+    </ul>
     </ul>
     <br>
 	</span>
     
     <span id="three" style="float:left; width: 40%; margin-left: 4em; font-size: 115%">
-	<ul>
-	<h2>Let's Play a Game!</h2>
-        <span onclick="displayPage('#Game1')"><a>Hangman</a></span><br>
-        <span onclick="displayPage('#Game2')"><a>War</a></span><br>
-        <span onclick="displayPage('#Game3')"><a>Guess the Number</a></span><br>
-        <span onclick="displayPage('#Game4')"><a>Add It Up!</a></span><br>
+	<ul class="hp">
+    <ul class="list-group list-group-flush">
+    <h2>Let's Play a Game!</h2>
+    <li class="list-group-item"><span onclick="displayPage('#Game1')"><a>Hangman</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#Game2')"><a>War</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#Game3')"><a>Guess the Number</a></span></li>
+    <li class="list-group-item"><span onclick="displayPage('#Game4')"><a>Add It Up!</a></span></li>
 	</ul>
+    </ul>
     <br>
-	<ul>
-	<h2>Calculators</h2>
-        <span onclick="displayPage('#Fib')"><a>Calculate Fibonacci Numbers</a></span><br>
-        <span onclick="displayPage('#Euclid')"><a>Calculate GCD (by Euclidean Algorithm)</a></span><br>
-        <span onclick="displayPage('#Factorial')"><a>Calculate Factorials</a></span><br>
+	<ul class="hp">
+    <ul class="list-group list-group-flush">
+    <h2>Calculators</h2>
+        <li class="list-group-item"><span onclick="displayPage('#Fib')"><a>Calculate Fibonacci Numbers</a></span></li>
+        <li class="list-group-item"><span onclick="displayPage('#Euclid')"><a>Calculate GCD (by Euclidean Algorithm)</a></span></li>
+        <li class="list-group-item"><span onclick="displayPage('#Factorial')"><a>Calculate Factorials</a></span></li>
+        </ul>
 	</ul>
     <br>
 	</span>
