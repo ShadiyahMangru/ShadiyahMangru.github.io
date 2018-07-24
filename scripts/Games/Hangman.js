@@ -113,7 +113,7 @@ function guessLetter(){
 function playAgain(){
     $("#HMPic").css("display", "block");
     $("#HMGetLetter").css("display", "none");
-    $("#HMLetterGuess").css("visibility", "hidden");
+    $("#HMLetterGuess").css("display", "none");
     $("#HMLetterGuess").val("");
     $("#HMSubmit").css("display", "none");
     $("#HMAnswerFormat").html("");
@@ -132,11 +132,11 @@ function playAgain(){
 $(document).ready(function(){
 //display select difficulty level choice buttons
 $("#HMButtons").html("Select Difficulty Level:");
-$('#HMButtons').append("<br><button id='easy' class='siteButton' onclick='playGame(1);'>Easy</button><button id='medium' class='siteButton' onclick='playGame(2);'>Medium</button><button id='hard' class='siteButton' onclick='playGame(3);'>Hard</button><br><br>");
+$('#HMButtons').append("<br><button class='siteButton' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='siteButton' onclick='playGame(1);'>Easy</button><button id='medium' class='siteButton' onclick='playGame(2);'>Medium</button><button id='hard' class='siteButton' onclick='playGame(3);'>Hard</button><br><br>");
 //display initial image
 $("#HMPic").append("<img src='Images/stickman.png'>");
 //display means to get letter guess from user
 $("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input class='siteInput' id='HMLetterGuess' type='text' value=''><button class='siteButton' id='HMSubmit' onclick='guessLetter();'>Submit</button><Br><br>");
 //display win/lose image; display play again button
-$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.gif'></div><div id='HMSad'><img src='Images/sad.svg'></div><button class='siteButton' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button>");
+$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.gif'></div><div id='HMSad'><img src='Images/sad.svg'></div>");
 });
