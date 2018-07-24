@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Shadiyah's Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       
+<style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: darkslategray;
+      background-color: #FFFBFC;
+  }
+    a{
+        font-weight: 600;
+        font-stretch: expanded;
+        font-size: 1.1em;
+    }
+	#mainTitle{
+	padding-top: 30px;
+	font-size: 52px;
+	color: midnightblue;
+	text-align: center;
+    text-shadow: 4px 2px 2px silver;
+ }
+ #main{
+	padding-top: 30px;
+ }
+ 
+ h1, h2{
+	color: #693880;
+    font-weight: 600;
+ }
+    h4{
+        color: #4E4B51;
+        text-align: center;
+        margin-top: -2em;
+    }
+   line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }
+  .bg-grey {
+      background-color: gainsboro;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #f4511e; 
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: #f4511e;
+  }
+  
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #f4511e;
+      color: #fff;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: darkmagenta !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #darkslategrey !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: darkslategrey;
+  }
+    
+    
+    
+ .divTabSpacer {
+	border-top:1px silver solid;
+	width:100%;
+	margin-top:-1px;
+	z-index:900;
+}
+
+.divTabs {
+	padding-bottom:3px;
+}
+
+.divTabs .tab {
+	background-color: #8fe8e8;
+	border:1px silver solid;
+	border-radius:4px 4px 0 0;	
+	color:black;
+	padding:4px 20px 4px 20px;
+	cursor:pointer;
+        font-family: "Arial Narrow";
+}
+
+.divTabs .spacer {
+	width:100%;
+	border-bottom:1px silver solid;
+}
+
+.divTabs .active {
+	background-color:white!important;
+	border-bottom:1px white solid;
+	font-weight:bold;
+}
+
+.tabContents{
+    margin-top: 1em;
+    font-family: Tahoma;
+    margin-left: .5em;  
+    line-height: 170%;
+}
+
+.tab-content clearfix {
+    padding-top:20px;
+}     
+    
+.aTab{
+    display: none;
+}       
+       
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+      .siteButton{
+          font-weight: 600;
+          background-color: steelblue;
+          color: white;
+      }
+      .siteInput{
+          padding-left: .3em;
+      }
+      .subPage{
+          display: none; 
+          margin-left: auto; 
+          margin-right: auto; 
+          border: 1.5px solid midnightblue; 
+          border-radius: 4px; 
+          width: 80%; 
+          padding: 2em; 
+          background-color: white; 
+          margin-top: 2em; 
+          margin-bottom: 2em;
+      }
+      .pageContents{
+          line-height: 170%; 
+          color: darkslategrey;
+          font-size: 108%;
+      }
+    #PTriangle{
+    margin-top: .5em;
+    text-align: center;
+}    
+
+    #PTriangle >label{
+    width: 6%;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lavender;
+    border: solid black 1px;
+    text-align: center;
+    padding: .5em;
+    }  
+    #patternKey{
+        display: none; 
+        color: crimson;
+        padding-top: .75em;
+    }
+    
+.column1 {
+    float: right;
+    width: 63%;
+    padding: .5px;
+}
+
+.column2 {
+    float: right;
+    width: 32%;
+    padding: .5px;
+}    
+    
+/* clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+    
+#HMguessed{
+    font-weight: 600; 
+    font-size: 18px; 
+    border: 1px solid black; 
+    border-radius: 6px; 
+    padding: 1em; 
+    width: 30%; 
+    display: none; 
+    color: mediumblue;
+}   
+    
+#HMfeedback{
+    color: purple; 
+    font-weight: 600; 
+    font-size: 18px;
+}
+    #HMAnswerFormat{
+        font-weight: 600; 
+        font-size: 24px;
+    }
+    #HMPic{
+        width: 180px;
+        float: right;
+        margin-top: -11em;
+        margin-right: 5em;
+    }
+    #HMGetLetter{
+        color: deepskyblue; 
+        display: none;
+    }
+    #HMSubmit, #HMPlayAgain{
+        display: none;
+    }
+    #HMCelebrate{
+        display: none; 
+        margin-top: -4.5em;
+    }
+    #HMSad{
+        display: none; 
+        width: 20%;
+    }    
+    #HMLetterGuess{
+        display: none;
+    }   
+    #warResults{
+        margin-top: 1em;  
+        font-size: 26px; 
+        color: crimson; 
+        font-weight: 600; 
+        font-family: Arial;
+    }  
+    #WScore{
+        width: 30%;
+    }
+    #war{
+        padding: .5em;
+    }
+    #WARplayAgain{
+        margin-left: .5em; 
+        margin-top: 1em; 
+        display: none;
+    }
+    #Kpic{
+        display: inline-block;
+    }
+    #Qpic{
+        display: inline-block; 
+        margin-left: 15em;
+    }
+    #youCPic{
+        display: none; 
+        margin-top: -.5em;
+    }
+    #dealerCPic{
+        display: none; 
+        margin-left: 11em; 
+        margin-top: -.5em;
+    }
+    #youLabel, #dealerLabel{
+        width: 6em;
+    }
+    #youCBorder, #dealerCBorder{
+        height: 280px; 
+        width: 200px; 
+        border: 1px solid black; 
+        border-radius: 8px; 
+        box-shadow: 4px 4px 4px darkgrey;
+        padding-top: .4em;
+        padding-right: .2em;
+    }
+    #cardNumY1{
+        font-size: 36px; 
+        padding-left: .3em; 
+        color: red;
+    }
+    #cardNumY2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 65px; 
+        color: red;
+    }
+    #cardNumD1{
+        font-size: 36px; 
+        padding-left: .3em;
+    }
+    #cardNumD2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 65px;
+    }
+    #youCardDisplay, #dealerCardDisplay{
+        margin-top: 65px; 
+        margin-left: 55px;
+    }
+    .cardPics{
+        width: 150%; 
+        margin-top: .2em; 
+    }  
+    
+    #studyCard, #showDef{
+        border: 1px solid midnightblue;
+        border-radius: 6px;
+        padding: 2em;
+        font-weight: 600;
+    } 
+    #cardCounter{
+        padding: .4em;
+    }  
+    .BDtable{
+        border: 1px solid black;
+    }
+    #binToDec, #decToBin, #dToBPractice, #bToDPractice, #dbPractice{
+        display: none;
+    }
+    .highlight{
+        color: rebeccapurple;
+        font-weight: 600;
+    }
+    #isBToDCorrect, #isDToBCorrect{
+        color: crimson;
+        font-weight: 600;
+    }
+    .dispOpt{
+        padding: .4em;
+        background-color: #CCD6DF;
+        font-weight: 600;
+        border-radius: 4px;
+    }
+    .dispOpt:focus{
+        background-color: ghostwhite;
+    }
+#gb{
+    line-height: 100%; 
+    color: white;
+}
+.clickButton{
+    height: 3.5em;
+    width: 3.5em;
+    font-weight: 600;
+}
+#winLose{
+        margin-top: 1em; 
+        margin-left: 20em; 
+        font-size: 26px; 
+        color: purple;
+        font-weight: 600; 
+        font-family: Arial;
+    }  
+    
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+    .siteLabel{
+        padding-right: .3em;
+        color: navy;
+        font-weight: 600;
+    }
+.siteOutput{
+    color: dodgerblue; 
+    font-weight: 600; 
+    margin-top: 1em;
+}
+    
+#EuclidAlg {
+    margin-top: -13.75em; 
+    margin-left: 33em;
+} 
+    #ShowSum{
+        font-weight: 700; 
+        display: inline-block; 
+        color: #993366;
+        height: 6em;
+        padding-top: 1em;
+    }
+    #GaussAlg{
+        font-size: 110%;
+        line-height: 170%;
+    }  
+body{
+    font-weight: 600;
+    min-width:1000px; /*minimun width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+    width:1000px;             /*IE*/
+}
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="mailto:shadiyahmangru@gmail.com">By Shadiyah Mangru</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main">
+	<div><h1 id="mainTitle"><img src="Images/atComputer.png" width="80px"> My Code Development Website</h1>
+    <h4>Explore the works in progress below</h4>
+	</div>
+	
+    <div id="mainNav" class="row" style="border: 1px solid black; padding: 1em; margin-left: 6em; margin-right: 6em; box-shadow: 6px 6px 4px silver; background-color: #F4EEF4">
+    <span id="one" style="float: left; width: 40%; margin-left: 2.5em; font-size: 115%">
+	<ul>
+	<h2>Study Tools</h2>
+    <span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span><br>
+    <span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span><br>
+    <span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span><br>
+    <span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span><br>
+	</ul>
+    <br>
+	<ul>
+	<h2>Data Set Sorter(s)</h2>
+        <span onclick="displayPage('#BSort')"><a>Bubble Sort your Data Set</a></span><br>
+    </ul>
+    <br>
+	</span>
+    
+    <span id="three" style="float:left; width: 40%; margin-left: 4em; font-size: 115%">
+	<ul>
+	<h2>Let's Play a Game!</h2>
+        <span onclick="displayPage('#Game1')"><a>Hangman</a></span><br>
+        <span onclick="displayPage('#Game2')"><a>War</a></span><br>
+        <span onclick="displayPage('#Game3')"><a>Guess the Number</a></span><br>
+        <span onclick="displayPage('#Game4')"><a>Add It Up!</a></span><br>
+	</ul>
+    <br>
+	<ul>
+	<h2>Calculators</h2>
+        <span onclick="displayPage('#Fib')"><a>Calculate Fibonacci Numbers</a></span><br>
+        <span onclick="displayPage('#Euclid')"><a>Calculate GCD (by Euclidean Algorithm)</a></span><br>
+        <span onclick="displayPage('#Factorial')"><a>Calculate Factorials</a></span><br>
+	</ul>
+    <br>
+	</span>
+</div>
+</div>
+    
+    
+<!-- ********* begin contents of Binary-Decimal Conversions Review tab ********* --> 
+<div id="BDPage" class="subPage">
+    <h1>Binary-Decimal Conversions Interactive Review</h1><br>
+    <div class="pageContents">
+            
+    <!-- ********** Binary-Decimal Conversions page tabs ********** -->
+    <div id="BDNav" class="divTabs"></div> 
+    <div class="divTabSpacer">&nbsp;</div> 
+                
+    <div id="divBDTab1"> 
+        <div id='bToDPractice' style="display: block">
+        </div> 
+    </div>
+    <div id="divBDTab2" class="aTab">
+        <div id='dToBPractice'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
+            <label>Enter a Decimal Number: </label>
+            <input type='number' id='dec' class='siteInput' placeholder='Decimal'>
+            <br>
+            <label>Enter the Binary Equivalent: </label>
+            <input type='text' id='dToBResult' class='siteInput'>
+            <button class='siteButton' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
+            <div id='isDToBCorrect'></div>
+        </div>
+    </div>
+    <div id="divBDTab3" class="aTab">
+        <div id='binToDec'></div>
+    </div>
+    <div id="divBDTab4" class="aTab">
+        <div id='decToBin'></div>
+    </div>
+    </div>    
+</div><!-- ********** end contents of Binary-Decimal Conversions Review tab ********** -->     
+
+<!-- ********** begin contents of Gauss tab ********** -->
+<div id="GaussPage" class="subPage">
+    <h1>Easily Sum the First n Natural Numbers</h1><br>   
+    <div class="pageContents">
+    <!-- ********** Binary-Decimal Conversions page tabs ********** -->
+    <div id="GaussNav" class="divTabs"></div> 
+    <div class="divTabSpacer">&nbsp;</div> 
+                
+    <div id="divGaussTab1"> 
+        <div id='GCalc' style="display: block">
+        Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
+        <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
+        <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
+        <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
+        <div id='ShowSum'></div>
+        </div>
+    </div>
+    <div id="divGaussTab2" class="aTab">
+        <div id="GaussAlg"></div>
+    </div>
+</div>
+</div><!-- ********** end contents of Gauss tab ********** -->    
+    
+<!-- ********** begin contents of Pascal tab ********** -->
+<div id="PascalPage" class="subPage">
+    <h1>Row Sums of Pascal's Triangle Pattern Recognition</h1><br>
+    <div class="pageContents">
+            
+    <div class="row">
+        <div id="PTIntro"></div>
+        <div id="PTriangle" class="column1" style="line-height: 80%"></div><!-- create Pascal's Triangle -->
+        <br>
+        <div class="column2">
+        <div id="PTSum"></div>
+        <div id="PTPattern"></div>
+        </div>
+    </div><!-- end row -->
+    </div>
+</div><!-- ********** end contents of Pascal tab ********** -->   
+    
+<!-- ********** begin contents of Vocab Study Cards tab ********** --> 
+<div id="VocabPage" class="subPage">
+    <h1>Create User-Defined Vocab Study Cards</h1><br>
+            
+    <div class="pageContents">
+        <div id="deckContents"></div>
+        <div id="userDeck" style="display: none"></div>
+    </div>    
+</div><!-- ********** end contents of Vocab Study Cards tab ********** -->     
+
+    
+  
+<!-- ********** begin Data Set Sorter(s) tab contents ********** -->
+<div id="BSort" class="subPage">
+    <h1>Bubble Sort Your Data Set</h1><br>
+            
+    <div><img src="Images/Bubble.svg" id="BubblePic" width="280px" style="float:right; margin-right: 2em; margin-top: -4em"></div>
+            
+    <div class="pageContents">
+        <div id="inputDataSet"></div><br>
+        <div id='dataSet' class='siteOutput'></div>
+         <br><br><button class='siteButton' onclick='bubbleSort(ds);'>Bubble Sort</button><br><br>
+        <div id="bubbleSorted" class="siteOutput"></div>
+    </div>
+</div> <!-- ********** end Data Set Sorter(s) tab contents ********** -->
+ 
+    
+<!-- ********** begin contents of Hangman tab ********** --> 
+<div id="Game1" class="subPage">
+    <h1>Let's Play Hangman!</h1>
+    
+    <div class="pageContents"> 
+        <div id="HMButtons"></div>
+        <div id="HMPic"></div>
+        <div id='HMAnswerFormat'></div><br>
+        <div id="HMguessed"></div><br>
+        <div id="HMgetLDiv"></div>
+        <div id="HMfeedback"></div>
+        <div id="HMEnd"></div>
+    </div>
+</div><!-- ********** end contents of Hangman tab ********** --> 
+            
+<!-- ********** begin contents of War tab ********** --> 
+<div id="Game2" class="subPage">
+    <h1>Let's Play War!</h1><br>   
+    <div class="pageContents">
+    <!-- **********  War page tabs ********** -->
+    <div id="WarNav" class="divTabs"></div> 
+    <div class="divTabSpacer">&nbsp;</div> 
+                
+    <div id="divWarTab1">     
+    <div class="row"> 
+    <div class="column1">
+    <div id='youCPic'>
+    <p id='youLabel'>You: </p>
+    <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
+    </div>
+              
+    <div id='dealerCPic'>  
+    <p id='dealerLabel'>The Dealer: </p>
+    <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
+    </div>
+    </div>    
+    <div class="column2">
+    <button class='siteButton' id='war' onclick='flipCard();'>Play War!</button>
+    <div id='WScore'></div>
+    <div id='warResults'></div>
+    <button class='siteButton' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
+    </div>
+    </div>    
+    </div>    
+     <div id="divWarTab2" class="aTab"> 
+        <div id='WRules'></div>
+    </div>    
+    </div>        
+</div><!-- ********** end contents of War tab ********** --> 
+        
+<!-- ********** begin contents of Guess My Number tab ********** --> 
+<div id="Game3" class="subPage">
+    <h1>Let's Play Guess The Number!</h1>
+    <!--
+    <div><img src="Images/smiley.png" id="smileyPic"></div>
+    -->
+    <div class="pageContents">
+    <div id="guessN"></div>
+    <div id="aGuessed"></div>
+    <div id="feedback" class="siteOutput"></div><br>  
+    </div>
+</div><!-- ********** end contents of Guess My Number tab ********** -->  
+            
+<!-- ********** begin contents of Add It Up! tab ********** --> 
+<div id="Game4" class="subPage">
+    <h1>Let's Play Add it Up!</h1>
+                
+    <div class="pageContents">
+    <div id="rules"></div>
+    <div id="key"></div>
+    <div id="winLose"></div>
+    <div id="gb"></div>
+    <div id="mySolution"></div><br>  
+    </div>
+</div><!-- ********** end contents of Add It Up! tab ********** -->    
+    
+<!-- ********** begin contents of Fibonacci tab ********** -->   
+<div id="Fib" class="subPage">    
+    <h1>Calculate Fibonacci Numbers</h1>
+              
+    <div><img src="Images/goldenSpiral.svg" id="FibPic" style="width: 30%; float: right; margin-right: 1em"></div>
+            
+    <div class="pageContents">
+        <div id="fibIntro"></div>
+        <!-- ********** Fibonacci Calculations page tabs ********** -->
+        <div id="fibNav" class="divTabs"></div> 
+        <div class="divTabSpacer">&nbsp;</div> 
+        <div id="divSubTab1">  
+        <div id="fibNthCalc"></div><!-- ********** Fibonacci sub tab one contents ********** -->  
+        </div>
+        <div id="divSubTab2" class="aTab">
+        <div id="fibSeqPrint"></div><!-- ********** Fibonacci sub tab two contents ********** -->
+        </div>
+    </div>
+</div> <!-- ********** end contents of Fibonacci tab ********** -->   
+            
+            
+<!-- ********** begin contents of Euclid tab ********** -->   
+<div id="Euclid" class="subPage">
+    <h1>Greatest Common Divisor Calculator</h1>
+            
+    <div class="pageContents"><br>
+        <div id="gcdE"></div>
+        <br><br>
+        <div id="EuclidAlg"></div>
+    </div>
+</div><!-- ********** end contents of Euclid tab ********** -->    
+    
+<!-- *********** begin contents of Calculate Factorials tab ********** -->
+<div id="Factorial" class="subPage">
+    <h1>Calculate Factorials!</h1><br>
+    <div id="Factorial" class="pageContents">
+    </div>
+</div><!-- ********** end contents of Calculate Factorials tab ********** -->        
+        
+    
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top"><br>
+    <span class="glyphicon glyphicon-chevron-up" style="font-size: 150%; font-weight: 700; color: #431E54"></span>
+  </a>
+	<br>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+      // Store hash
+      var hash = this.hash;
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+<script>
+function displayPage(pageId){
+    $("#mainNav").css("display", "none");
+    $(pageId).css("display", "block");
+}        
+</script>  
+<!--link to my JavaScript/jQuery source code for Site Tabs-->
+<script type="text/javascript" src="scripts/SiteTabs.js"></script>
+<!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/FibonacciSeq.js"></script>  
+<!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/EuclidGCD.js"></script>
+<!--link to my Sums by Gauss JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/GaussSums.js"></script>  
+<!--link to my Pascal's Triangle Row Summation JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/PascalRowSums.js"></script> 
+<!--link to my Factorial Calculator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/FactorialCalc.js"></script>  
+<!--link to my Bubble Sort JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Sort/BubbleSort.js"></script>  
+<!--link to my Hangman JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/Hangman.js"></script> 
+<!--link to my War Card Game JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/WarCardGame.js"></script> 
+<!--link to my Number Guess Game JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/NumberGuess.js"></script>
+<!--link to my Add it Up! JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/AddItUp.js"></script> 
+<!--link to my User-Defined Study Cards Generator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/StudyCards/StudyCards.js"></script>   
+<!--link to my Binary-Decimal Conversions Interactive Review JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/StudyCards/DecimalBinary.js"></script>       
+</body>
+</html>
