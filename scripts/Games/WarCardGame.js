@@ -1,4 +1,4 @@
-    //methods to play war!
+//methods to play war!
     
     var deck;
     var dealerDeck;
@@ -21,10 +21,10 @@
 
 $(document).ready(function(){
     $('#WRules').displayRules();
-    $("#WScore").append("<table><tr><th>Score: </th></tr><tr><td>You: </td><td><div id='youScore'>0</div></td></tr><tr><td>Dealer: </td><td><div id='dealerScore'>0</div></td></tr></table>"); 
+    $("#WScore").append("<br>Score: <br>You:<span id='youScore' style='float: right'>0</span><br>Dealer: <span id='dealerScore' style='float: right'>0</span>"); 
 });
     
-    function loadGame(){
+function loadGame(){
         makeDeck();
         shuffleDeck();
         shuffleDeck();
@@ -79,6 +79,7 @@ $(document).ready(function(){
         youDeck = [];
         youDeck = deck.slice(26, 52);
     }
+
     
     //'flip' 1 card from each deck
     function flipCard(){
