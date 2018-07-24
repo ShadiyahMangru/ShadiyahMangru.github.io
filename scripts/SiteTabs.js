@@ -16,7 +16,14 @@ $("#GaussNav").append("<span id='spanGaussTab1' class='tab active' style='backgr
 //display Fibonacci Page Nav
 $("#fibNav").append("<span id='spanSubTab1' class='tab active' style='background-color: thistle' onclick='toggleTabs(fibID, 1, numberFibTabs);'>nth Term Calculator</span>" +
 "<span id='spanSubTab2' class='tab' style='background-color: thistle' onclick='toggleTabs(fibID, 2, numberFibTabs);'>First n Terms Calculator</span>");     
-         
+
+//display War Page Nav
+$("#WarNav").append("<span id='spanWarTab1' class='tab active' style='background-color: #F9DE87' onclick='toggleTabs(WarID, 1, numberWarTabs);'>Play War!</span>" +
+"<span id='spanWarTab2' class='tab' style='background-color: #F9DE87' onclick='toggleTabs(WarID, 2, numberWarTabs);'>Rules</span>");
+    
+    
+    
+    
 });
 //*********************
 // toggling of tabs
@@ -49,6 +56,9 @@ var numberFibTabs = 2;
 var GaussID = "GaussTab";
 var numberGaussTabs = 2;
 
+//********************* toggling of tabs variables for War page *********************
+var WarID = "WarTab";
+var numberWarTabs = 2;
 
 //*********************
 // end toggling of tabs
