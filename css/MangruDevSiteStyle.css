@@ -48,10 +48,6 @@ body {
       color: darkmagenta !important;
       background-color: #fff !important;
   }
-  .navbar-default .navbar-toggle {
-      border-color: transparent;
-      color: #darkslategrey !important;
-  }
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
@@ -261,7 +257,7 @@ body {
     .BDtable{
         border: 1px solid black;
     }
-    #binToDec, #decToBin, #dToBPractice, #bToDPractice, #dbPractice{
+    #binToDec, #decToBin{
         display: none;
     }
     .highlight{
@@ -271,15 +267,6 @@ body {
     #isBToDCorrect, #isDToBCorrect{
         color: crimson;
         font-weight: 600;
-    }
-    .dispOpt{
-        padding: .4em;
-        background-color: #CCD6DF;
-        font-weight: 600;
-        border-radius: 4px;
-    }
-    .dispOpt:focus{
-        background-color: ghostwhite;
     }
 #gb{
     line-height: 100%; 
