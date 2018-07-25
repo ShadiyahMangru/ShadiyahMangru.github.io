@@ -13,9 +13,9 @@ body {
 	#mainTitle{
 	padding-top: 30px;
 	font-size: 52px;
-	color: midnightblue;
+	color: #223F75;
 	text-align: center;
-    text-shadow: 4px 2px 2px silver;
+    	text-shadow: 4px 2px 2px silver;
  }
  #main{
 	padding-top: 30px;
@@ -358,7 +358,7 @@ body {
         padding: .5em; 
         background-color: #F4EEF4; 
         box-shadow: 6px 6px 4px silver;
-        border-top: 30px solid #424A54;
+        border-top: 30px solid #9F5D7B;
     }
 body{
     font-weight: 600;
