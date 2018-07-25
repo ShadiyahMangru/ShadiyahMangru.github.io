@@ -247,7 +247,6 @@ body {
     
     #studyCard, #showDef{
         border: 1px solid midnightblue;
-        border-radius: 6px;
         padding: 2em;
         font-weight: 600;
     } 
