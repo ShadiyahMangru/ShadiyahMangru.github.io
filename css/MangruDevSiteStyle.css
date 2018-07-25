@@ -18,7 +18,7 @@ body {
     text-shadow: 4px 2px 2px silver;
  }
  #main{
-	padding-top: 20px;
+	padding-top: 30px;
  }
  
  h1, h2{
@@ -354,10 +354,11 @@ body {
         line-height: 170%;
     }
     .hp{
-        border: 1px solid black; 
+        border: 1px solid #424A54; 
         padding: .5em; 
         background-color: #F4EEF4; 
         box-shadow: 6px 6px 4px silver;
+        border-top: 30px solid #424A54;
     }
 body{
     font-weight: 600;
