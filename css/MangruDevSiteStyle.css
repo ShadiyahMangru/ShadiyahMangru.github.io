@@ -15,7 +15,7 @@ body {
 	font-size: 52px;
 	color: #223F75;
 	text-align: center;
-    	text-shadow: 4px 2px 2px silver;
+    text-shadow: 4px 2px 2px silver;
  }
  #main{
 	padding-top: 30px;
@@ -56,42 +56,7 @@ body {
       font-size: 20px;
       margin-bottom: 20px;
       color: darkslategrey;
-  }    
- .divTabSpacer {
-	border-top:1px silver solid;
-	width:100%;
-	margin-top:-1px;
-	z-index:900;
-}
-
-.divTabs {
-	padding-bottom:3px;
-}
-
-.divTabs .tab {
-	background-color: #8fe8e8;
-	border:1px silver solid;
-	border-radius:4px 4px 0 0;	
-	color:black;
-	padding:4px 20px 4px 20px;
-	cursor:pointer;
-        font-family: "Arial Narrow";
-}
-
-.divTabs .spacer {
-	width:100%;
-	border-bottom:1px silver solid;
-}
-
-.divTabs .active {
-	background-color:white!important;
-	border-bottom:1px white solid;
-	font-weight:bold;
-}
-
-.tab-content clearfix {
-    padding-top:20px;
-}        
+  }            
   @media screen and (max-width: 768px) {
     .col-sm-4 {
       text-align: center;
@@ -105,18 +70,19 @@ body {
           display: none; 
           margin-left: auto; 
           margin-right: auto; 
-          border: 1.5px solid midnightblue; 
-          border-radius: 4px; 
+          border: 1.5px solid #223F75; 
           width: 80%; 
           padding: 2em; 
           background-color: white; 
           margin-top: 2em; 
           margin-bottom: 2em;
+          box-shadow: 6px 6px 4px silver;
       }
       .pageContents{
           line-height: 170%; 
           color: darkslategrey;
           font-size: 108%;
+          padding: .4em;
       }
     #PTriangle{
     margin-top: .5em;
@@ -151,7 +117,20 @@ body {
     width: 32%;
     padding: .5px;
 }    
-    
+
+.columnR{
+    float: right;
+    width: 40%;
+    padding: .5px;
+}
+.columnL{
+    float: left;
+    width: 54%;
+    padding: .5px;
+    border-right: 1px solid black;
+    padding-right: 5em;
+}
+
 /* clear floats after the columns */
 .row:after {
     content: "";
@@ -337,21 +316,12 @@ body {
     font-weight: 600; 
     margin-top: 1em;
 }
-    
-#EuclidAlg {
-    margin-top: -13.75em; 
-    margin-left: 33em;
-} 
     #ShowSum{
         font-weight: 700; 
         display: inline-block; 
         color: #993366;
         height: 6em;
         padding-top: 1em;
-    }
-    #GaussAlg{
-        font-size: 110%;
-        line-height: 170%;
     }
     .hp{
         border: 1px solid #424A54; 
