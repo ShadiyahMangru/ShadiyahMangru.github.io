@@ -88,22 +88,21 @@
 </div>
 </div>
     
-    
+<div class="text-left">   
 <!-- ********* begin contents of Binary-Decimal Conversions Review tab ********* --> 
 <div id="BDPage" class="subPage">
     <h1>Binary-Decimal Conversions Interactive Review</h1><br>
     <div class="pageContents">
-            
-    <!-- ********** Binary-Decimal Conversions page tabs ********** -->
-    <div id="BDNav" class="divTabs"></div> 
-    <div class="divTabSpacer">&nbsp;</div> 
                 
-    <div id="divBDTab1"> 
-        <div id='bToDPractice' style="display: block">
-        </div> 
-    </div>
-    <div id="divBDTab2" class="aTab">
-        <div id='dToBPractice'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
+        <div class='row'>
+        <div class='columnL'>
+        <span class='highlight'>Binary to Decimal Conversions Practice</span><br>
+        <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
+        <label>Enter the Decimal Equivalent: </label><input type='number' id='bToDResult' class='form-control' style='width: 20%; display: inline' placeholder='Decimal'><button class='btn btn-primary' id='bToDConvert'>Correct?</button><br><div id='isBToDCorrect'></div>
+        <br><br>
+        <button id="Revbd" class='btn btn-primary'>Hide/Show Decimal to Binary Conversions Review</button>
+        </div>
+        <div class='columnR'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
             <label>Enter a Decimal Number: </label>
             <input type='number' id='dec' class="form-control" style="width: 20%; display: inline" placeholder='Decimal'>
             <br>
@@ -111,14 +110,15 @@
             <input type='text' id='dToBResult' class="form-control" style="width: 20%; display: inline" placeholder="Binary">
             <button class='btn btn-primary' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
             <div id='isDToBCorrect'></div>
+            <br><br>
+            <button id="Revdb" class='btn btn-primary'>Hide/Show Binary to Decimal Conversions Review</button>
         </div>
-    </div>
-    <div id="divBDTab3" class="aTab">
-        <div id='binToDec'></div>
-    </div>
-    <div id="divBDTab4" class="aTab">
-        <div id='decToBin'></div>
-    </div>
+        </div>
+        
+        <div id='binToDec' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
+    
+        <div id='decToBin' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
+    
     </div>    
 </div><!-- ********** end contents of Binary-Decimal Conversions Review tab ********** -->     
 
@@ -126,21 +126,18 @@
 <div id="GaussPage" class="subPage">
     <h1>Easily Sum the First n Natural Numbers</h1><br>   
     <div class="pageContents">
-    <!-- ********** Binary-Decimal Conversions page tabs ********** -->
-    <div id="GaussNav" class="divTabs"></div> 
-    <div class="divTabSpacer">&nbsp;</div> 
-                
-    <div id="divGaussTab1"> 
-        <div id='GCalc' style="display: block">
+    <div class='row'>       
+        <div id='GCalc' class='columnL'>
         Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
         <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
         <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
         <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
         <div id='ShowSum'></div>
         </div>
-    </div>
-    <div id="divGaussTab2" class="aTab">
-        <div id="GaussAlg"></div>
+        <div class='columnR'>
+        <button id='GaussButton' class='btn btn-primary'>Review Gauss' Method</button><br><br>
+        <div id="GaussAlg" style="display: none"></div>
+        </div>
     </div>
 </div>
 </div><!-- ********** end contents of Gauss tab ********** -->    
@@ -207,35 +204,27 @@
 <!-- ********** begin contents of War tab ********** --> 
 <div id="Game2" class="subPage">
     <h1>Let's Play War!</h1><br>   
-    <div class="pageContents">
-    <!-- **********  War page tabs ********** -->
-    <div id="WarNav" class="divTabs"></div> 
-    <div class="divTabSpacer">&nbsp;</div> 
-                
-    <div id="divWarTab1">     
-    <div class="row"> 
-    <div class="column1">
-    <div id='youCPic'>
-    <p id='youLabel'>You: </p>
-    <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
-    </div>
-              
-    <div id='dealerCPic'>  
-    <p id='dealerLabel'>The Dealer: </p>
-    <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
-    </div>
-    </div>    
-    <div class="column2">
-    <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
-    <div id='WScore'></div>
-    <div id='warResults'></div>
-    <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
-    </div>
-    </div>    
-    </div>    
-     <div id="divWarTab2" class="aTab"> 
-        <div id='WRules'></div>
-    </div>    
+    <div class="pageContents">          
+        <div id='WRules'></div> 
+        <div class="row"> 
+        <div class="column1">
+        <div id='youCPic'>
+        <p id='youLabel'>You: </p>
+        <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
+        </div>
+
+        <div id='dealerCPic'>  
+        <p id='dealerLabel'>The Dealer: </p>
+        <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
+        </div>
+        </div>    
+        <div class="column2">
+        <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
+        <div id='WScore'></div>
+        <div id='warResults'></div>
+        <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
+        </div>
+        </div>        
     </div>        
 </div><!-- ********** end contents of War tab ********** --> 
         
@@ -267,33 +256,19 @@
     
 <!-- ********** begin contents of Fibonacci tab ********** -->   
 <div id="Fib" class="subPage">    
-    <h1>Calculate Fibonacci Numbers</h1>
-              
-    <div><img src="Images/goldenSpiral.svg" id="FibPic" style="width: 30%; float: right; margin-right: 1em"></div>
-            
+    <h1>Calculate Fibonacci Numbers</h1>            
     <div class="pageContents">
         <div id="fibIntro"></div>
-        <!-- ********** Fibonacci Calculations page tabs ********** -->
-        <div id="fibNav" class="divTabs"></div> 
-        <div class="divTabSpacer">&nbsp;</div> 
-        <div id="divSubTab1">  
-        <div id="fibNthCalc"></div><!-- ********** Fibonacci sub tab one contents ********** -->  
-        </div>
-        <div id="divSubTab2" class="aTab">
-        <div id="fibSeqPrint"></div><!-- ********** Fibonacci sub tab two contents ********** -->
-        </div>
+        <div id="fibNthCalc"></div>
     </div>
 </div> <!-- ********** end contents of Fibonacci tab ********** -->   
             
             
 <!-- ********** begin contents of Euclid tab ********** -->   
 <div id="Euclid" class="subPage">
-    <h1>Greatest Common Divisor Calculator</h1>
-            
+    <h1>Greatest Common Divisor Calculator</h1>      
     <div class="pageContents"><br>
         <div id="gcdE"></div>
-        <br><br>
-        <div id="EuclidAlg"></div>
     </div>
 </div><!-- ********** end contents of Euclid tab ********** -->    
     
@@ -303,7 +278,11 @@
     <div id="Factorial" class="pageContents">
     </div>
 </div><!-- ********** end contents of Calculate Factorials tab ********** -->        
-        
+
+    
+    
+    
+</div>        
     
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top"><br>
@@ -352,8 +331,6 @@ function displayPage(pageId){
     $(pageId).css("display", "block");
 }        
 </script>  
-<!--link to my JavaScript/jQuery source code for Site Tabs-->
-<script type="text/javascript" src="scripts/SiteTabs.js"></script>
 <!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Math/FibonacciSeq.js"></script>  
 <!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
@@ -380,4 +357,3 @@ function displayPage(pageId){
 <script type="text/javascript" src="scripts/StudyCards/DecimalBinary.js"></script>       
 </body>
 </html>
-
