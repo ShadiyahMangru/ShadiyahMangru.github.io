@@ -70,11 +70,13 @@ $("#binToDec").append("<div class='row'><span class='highlight'>Binary to Decima
 $("#decToBin").append("<div class='row'><span class='highlight'>Decimal to Binary Conversions Review:</span> <br><div class='columnL'>EXAMPLE: Convert the <span class='highlight'>Decimal</span> number 100 to its Binary equivalent.<br>100 &#247 2 = 50 R0<br>50 &#247 2 = 25 R0<br>25 &#247 2 = 12 R1<br>12 &#247 2 = 6 R0<br>6 &#247 2 = 3 R0<br>3 &#247 2 = 1 R1<br>1 &#247 2 = 0 R1<br>Therefore 100 (decimal) = 1100100 (binary)</div><div class='columnR'>GENERALIZED STEPS TO SOLVE:<br><ol><li>Given a number, <em>n</em>, divide by 2 and record the quotient, <em>q</em>, and the remainder, <em>r</em> (<em>r</em> will equal 1 or 0).</li><li>While <em>q</em> &#8805 1, divide <em>q</em> by 2 and record the new <em>q</em> and the new <em>r</em>.</li><li>Listing the remainders (in order from last one found to first one found) gives the binary equivalent to the original decimal number.</li></ol></div></div>");        
 
 $("#Revdb").click(function(){    
-    $('#decToBin').toggle();     
+    $('#decToBin').toggle();
+    $('#binToDec').css("display", "none");
 });    
 $("#Revbd").click(function(){    
-    $('#binToDec').toggle();     
-});     
+    $('#binToDec').toggle();
+    $('#decToBin').css("display", "none");
+});   
     
      
 });
