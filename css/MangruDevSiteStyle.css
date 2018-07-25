@@ -1,4 +1,63 @@
-.divTabSpacer {
+body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: darkslategray;
+      background-color: #FFFBFC;
+  }
+    a{
+        color: #3e77e9;
+        font-weight: 600;
+        font-stretch: expanded;
+        font-size: 1.1em;
+    }
+	#mainTitle{
+	padding-top: 30px;
+	font-size: 52px;
+	color: midnightblue;
+	text-align: center;
+    text-shadow: 4px 2px 2px silver;
+ }
+ #main{
+	padding-top: 20px;
+ }
+ 
+ h1, h2{
+	color: #693880;
+    font-weight: 600;
+ }
+    h4{
+        color: #4E4B51;
+        text-align: center;
+        margin-top: -2em;
+    }
+  .navbar {
+      margin-bottom: 0;
+      background-color: black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: darkmagenta !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #darkslategrey !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: darkslategrey;
+  }    
+ .divTabSpacer {
 	border-top:1px silver solid;
 	width:100%;
 	margin-top:-1px;
@@ -30,122 +89,75 @@
 	font-weight:bold;
 }
 
-.tabContents{
-    margin-top: 1em;
-    font-family: Tahoma;
-    margin-left: .5em;  
-    line-height: 170%;
-}
-
 .tab-content clearfix {
     padding-top:20px;
-}     
-    
-.aTab{
-    display: none;
+}        
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+      .siteInput{
+          padding-left: .3em;
+      }
+      .subPage{
+          display: none; 
+          margin-left: auto; 
+          margin-right: auto; 
+          border: 1.5px solid midnightblue; 
+          border-radius: 4px; 
+          width: 80%; 
+          padding: 2em; 
+          background-color: white; 
+          margin-top: 2em; 
+          margin-bottom: 2em;
+      }
+      .pageContents{
+          line-height: 170%; 
+          color: darkslategrey;
+          font-size: 108%;
+      }
+    #PTriangle{
+    margin-top: .5em;
+    text-align: center;
 }    
-    
-.pageHeader{
-    font-size:24pt; 
-    font-family: "Verdana";
-    margin-left: .25em;
-    text-shadow: 1px 2px 2px grey;
-}
-    
-#title{
-    font-weight: 600;
-    font-family: "Forte";
-    font-size: 48px;
-    margin-top: -.5em;
-    margin-bottom: -.4em;
-    color: #5C246E;
-    margin-left: .25em;
-}
 
-#subtitle{
-    font-family: Tahoma;
-    margin-bottom: 1.75em;
-    margin-left: .25em;
-}   
-
-.siteButton{
-    color: white;
-    background-color: cornflowerblue;
-    padding: 3px 5px 3px 5px;
-    border-radius: 10px;
-    font-weight: 600;
-}
-    
-.siteInput{
-    border-radius: 6px;
-    padding: 2px 5px 2px 5px;
-}
-    #HMLetterGuess{
-        display: none; 
-        font-weight: 600; 
-        font-size: 16px;
-    }
-    .siteLabel{
-        color: deepskyblue;
-        font-weight: 600;
-    }
-.siteOutput{
-    color: dodgerblue; 
-    font-weight: 600; 
-    margin-top: 1em;
-}
-    
-#EuclidAlg {
-    margin-top: -12.5em; 
-    margin-left: 33em;
-} 
-    #GCalc{
-        border: 1px solid black; 
-        padding: 1.5em; 
-        border-radius: 6px;
-        width: 32%;
-    }
-    
-    #GaussAlg{
-        position: absolute;
-        margin-left: 33.5em;
-        margin-top: -13em;
-    }   
-
-#FibPic{
-    width: 30%; 
-    margin-top: -1em; 
-} 
-    .mathPics{
-        min-width: 220px; 
-        float: right; 
-        margin-right: 4em; 
-        transform: rotate(5deg);
-    }    
-    #ShowSum{
-        font-weight: 600; 
-        display: inline-block; 
-        color: crimson;
-        height: 6em;
-        padding-top: 1em;
-    }
+    #PTriangle >label{
+    width: 6%;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F8ECEC;
+    border: solid black 1px;
+    text-align: center;
+    padding: .5em;
+    }  
     #patternKey{
         display: none; 
-        color: crimson;
+        color: #B74271;
+        font-weight: 600;
+        padding-top: .75em;
     }
-    #BubblePic{
-        width: 20%; 
-        min-width: 220px; 
-        float: right; 
-        margin-top: -1.8em;
-    }
-    #smileyPic{
-        width: 20%; 
-        min-width: 220px; 
-        float: right; 
-        margin-top: -1.9em;
-        display: none;
-    }
+    
+.column1 {
+    float: right;
+    width: 63%;
+    padding: .5px;
+}
+
+.column2 {
+    float: right;
+    width: 32%;
+    padding: .5px;
+}    
+    
+/* clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
     
 #HMguessed{
     font-weight: 600; 
@@ -168,13 +180,16 @@
         font-size: 24px;
     }
     #HMPic{
-        width: 25%;
+        width: 180px;
+        float: right;
+        margin-top: -11em;
+        margin-right: 5em;
     }
     #HMGetLetter{
         color: deepskyblue; 
         display: none;
     }
-    #HMSubmit, #HMPlayAgain{
+    #HMSubmit, #HMPlayAgain, #HMLetterGuess, .aTab{
         display: none;
     }
     #HMCelebrate{
@@ -184,47 +199,24 @@
     #HMSad{
         display: none; 
         width: 20%;
-    }
-#WRules{
-    width: 70%; 
-    margin-left: 17em; 
-    margin-top: -3.7em; 
-    font-family: 'Verdana';
-}    
+    }      
     #warResults{
-        margin-top: 1em; 
-        margin-left: 30em; 
+        margin-top: 1em;  
         font-size: 26px; 
         color: crimson; 
         font-weight: 600; 
         font-family: Arial;
     }  
     #WScore{
-        margin-left: 3em; 
-    }
-    #WScore > table{
-        border: 1px solid black; 
-        border-radius: 6px; 
-        padding: .4em;
-    }
-    #WScore > table > td{
-        padding-left: 1em;
+        width: 30%;
     }
     #war{
-        margin-left: 14em;
-        padding: 1em;
+        padding: .5em;
     }
     #WARplayAgain{
         margin-left: .5em; 
         margin-top: 1em; 
         display: none;
-    }
-    #Kpic{
-        display: inline-block;
-    }
-    #Qpic{
-        display: inline-block; 
-        margin-left: 15em;
     }
     #youCPic{
         display: none; 
@@ -239,11 +231,13 @@
         width: 6em;
     }
     #youCBorder, #dealerCBorder{
-        height: 300px; 
+        height: 280px; 
         width: 200px; 
         border: 1px solid black; 
         border-radius: 8px; 
         box-shadow: 4px 4px 4px darkgrey;
+        padding-top: .4em;
+        padding-right: .2em;
     }
     #cardNumY1{
         font-size: 36px; 
@@ -274,64 +268,8 @@
     .cardPics{
         width: 150%; 
         margin-top: .2em; 
-    }
-#divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divCalcSubTab5, #divTab2, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #divGamesSubTab4, #gcdE, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
-    max-width: 90%;
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 1em;
-}
-
-    #gcdE{
-        width: 25em;
-    }    
+    }  
     
-#developerCredit{
-    font-size:18pt; 
-    margin-top:60px; 
-    text-align: right; 
-    margin-right: 1em;
-    font-family: "Vladimir Script";
-    font-weight: 600;
-}
-
-#spanGamesSubTab1, #divGamesSubTab1, #divGamesSubTab2, #divGamesSubTab3, #divGamesSubTab4, #spanCalcSubTab1, #divCalcSubTab1, #divCalcSubTab2, #divCalcSubTab3, #divCalcSubTab4, #divCalcSubTab5, #spanStudyCardsSubTab1, #divStudyCardsSubTab1, #divStudyCardsSubTab2{
-    margin-left: 1em
-}
-
-#PTriangle{
-    margin-top: .5em;
-    text-align: center;
-}    
-
-    #PTriangle >label{
-    width: 6%;
-    font-size: 1em;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: lavender;
-    border: solid black 1px;
-    text-align: center;
-    padding: .5em;
-    }    
-.column1 {
-    float: right;
-    width: 63%;
-    padding: .5px;
-}
-
-.column2 {
-    float: right;
-    width: 32%;
-    padding: .5px;
-}    
-    
-/* clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}     
     #studyCard, #showDef{
         border: 1px solid midnightblue;
         border-radius: 6px;
@@ -366,11 +304,14 @@
     }
 #gb{
     line-height: 100%; 
+    color: white;
 }
 .clickButton{
     height: 3.5em;
     width: 3.5em;
     font-weight: 600;
+    border-radius: 6px;
+    text-shadow: 4px 2px 2px black;
 }
 #winLose{
         margin-top: 1em; 
@@ -380,7 +321,46 @@
         font-weight: 600; 
         font-family: Arial;
     }  
+    
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+    .siteLabel{
+        padding-right: .3em;
+        color: navy;
+        font-weight: 600;
+    }
+.siteOutput{
+    color: dodgerblue; 
+    font-weight: 600; 
+    margin-top: 1em;
+}
+    
+#EuclidAlg {
+    margin-top: -13.75em; 
+    margin-left: 33em;
+} 
+    #ShowSum{
+        font-weight: 700; 
+        display: inline-block; 
+        color: #993366;
+        height: 6em;
+        padding-top: 1em;
+    }
+    #GaussAlg{
+        font-size: 110%;
+        line-height: 170%;
+    }
+    .hp{
+        border: 1px solid black; 
+        padding: .5em; 
+        background-color: #F4EEF4; 
+        box-shadow: 6px 6px 4px silver;
+    }
 body{
+    font-weight: 600;
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
     width:1000px;             /*IE*/
