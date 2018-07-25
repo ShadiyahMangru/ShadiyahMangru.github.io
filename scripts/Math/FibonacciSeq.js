@@ -47,23 +47,19 @@ $(document).ready(function(){
     $("#fibIntro").append("<br><br>");
     
     
-    //display Fibonacci nth term Calculator in sub tab
-    $("#fibNthCalc").html("Find the nth term of the Fibonacci Sequence");
-        $("#fibNthCalc").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nth' type='text' value=''>");
-        $("#fibNthCalc").append("<button class='btn btn-primary' id='fB'>Get nth term</button><br>" +
-        "<div id='nthTerm' class='siteOutput'></div><br><br>");
+    //display Fibonacci nth term and sequence calculators
+    $("#fibNthCalc").append("<div class='row'><div class='columnL'>Find the nth term of the Fibonacci Sequence<br><br><label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nth' type='text' value=''>" + 
+    "<button class='btn btn-primary' id='fB'>Get nth term</button><br>" +
+    "<div id='nthTerm' class='siteOutput'></div></div>" +
+    "<div class='columnR'>Print the first n terms of the Fibonacci Sequence<br><br><label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''>" +
+    "<button class='btn btn-primary' id='fBp'>Get first n terms</button><br>" +
+    "<div id='nTerms' class='siteOutput'></div><br></div></div>");
     
     //press button to get nth term
     $( "#fB" ).click(function() {
        nthFibCalc($('#nth').val()); 
     });
-  
-
-    //display Fibonacci Sequence Calculator in sub tab
-    $("#fibSeqPrint").html("Print the first n terms of the Fibonacci Sequence");
-    $("#fibSeqPrint").append("<br><br><label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''>" +
-    "<button class='btn btn-primary' id='fBp'>Get first n terms</button><br>" +
-    "<div id='nTerms' class='siteOutput'></div><br><br>");
+   
  
     //press button to get first n terms
     $( "#fBp" ).click(function() {
