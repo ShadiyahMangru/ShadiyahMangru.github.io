@@ -11,14 +11,14 @@
     var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
         
     function showKey(){
-        var rbpg = ["10", "27", "16", "22"];
+        rbpg = ["10", "27", "16", "22"];
         var key = "<span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #006bff'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: #b825df'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3]; 
         $("#key").html(key);
         $("#key").append("<br><br>")
     }
         
     function createGameBoard(){
-    var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
+    answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
     var counter = 0;
     var setStyle;
         while(counter < 5){
@@ -43,6 +43,14 @@
         $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary'>Submit My Solution</button>");
     }   
           
+    var solValid;
+    var redSum=0;
+    var blueSum=0;
+    var purpleSum=0;
+    var greenSum=0;
+    var sumsCorrect;
+
+
    $( "#submitSolution" ).click(function() {
         var ys = [];
         var sol = "";
@@ -54,16 +62,82 @@
                 sol += $("" + id + "").html();
             }
         ys[counter] = sol;
-        counter++;
+        counter++;    
         }
-        if(ys.join(", ")===aSolution.join(", ")){
-            $("#winLose").html("YOU WIN!!!")
+        //check if 1,2,3,4,5 only used once per row
+        for(var i=0; i<5; i++){
+            if(ys[i].includes(i+1)===false){
+                solValid=false;
+            }
+        }
+        //check if 1,2,3,4,5 only used once per column
+        var colArray = [];
+        var colString = '';
+        for(var a=0; a<5; a++){
+            for(var b=0; b<5; b++){
+            var columnVal = ys[b].charAt(a);
+            colString += columnVal;
+            }
+            colArray.unshift(colString);
+            colString='';
+        }
+        //alert(colArray);
+        for(var i=0; i<5; i++){
+            if(colArray[i].includes(i+1)===false){
+                solValid=false;
+            }
+        }
+        //check if each color-coded region sums to specified values
+        for(var c=0; c<5; c++){
+            for(var d=0; d<5; d++){
+            if(answerKeyC[d].charAt(c)=='r'){
+                redSum += parseInt(ys[d].charAt(c));
+            }
+            else if(answerKeyC[d].charAt(c)=='b'){
+                blueSum += parseInt(ys[d].charAt(c));
+            }
+            else if(answerKeyC[d].charAt(c)=='p'){
+                purpleSum += parseInt(ys[d].charAt(c));    
+            }
+            else if(answerKeyC[d].charAt(c)=='g'){
+                greenSum += parseInt(ys[d].charAt(c));    
+            }
+        }
+       }
+       //alert("r" + redSum);
+       //alert("b" + blueSum);
+       //alert("p" + purpleSum);
+       //alert("p" + greenSum);
+       if(redSum!=rbpg[0]){
+           sumsCorrect=false;
+       }
+       if(blueSum!=rbpg[1]){
+           sumsCorrect=false;
+       }
+       if(purpleSum!=rbpg[2]){
+           sumsCorrect=false;
+       }
+       if(greenSum!=rbpg[3]){
+           sumsCorrect=false;
+       }
+       if(solValid===false){
+            $("#winLose").html("Not quite; 1,2,3,4,5 may only be used once per row/column");
+       }
+        //else if(ys.join(", ")===aSolution.join(", ")){
+        //    $("#winLose").html("YOU WIN!!!")
+        //}
+        if(sumsCorrect===false){
+            $("#winLose").append("<br><br>Sums of color-coded regions do not match key.  Try again!");
         }
         else{
-            $("#winLose").html("Try Again!");
+            $("#winLose").html("YOU WIN!!!");
             ys = [];
             sol = "";
             counter = 0;
+            redSum=0;
+            blueSum=0;
+            purpleSum=0;
+            greenSum=0;
         }
     });
     $( ".clickButton" ).click(function() {
