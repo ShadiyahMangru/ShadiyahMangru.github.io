@@ -47,15 +47,7 @@ $(document).ready(function(){
             "<strong>Step 4:</strong> Divide the product from Step 3 by 2.<br>" +
             "<strong>This gives the sum of 1 + 2 + 3 + . . . + <em>n</em>.</strong>"); 
     
-    
-$("#spanGaussTab1").click(function() {
-    $("#GaussAlg").css("display", "none");
-    $("#GCalc").css("display", "block");
-});    
-    
-$("#spanGaussTab2").click(function() {
-    $("#GaussAlg").css("display", "block");
-    $("#GCalc").css("display", "none"); 
-});     
-    
+$("#GaussButton").click(function(){    
+    $('#GaussAlg').toggle();     
+});
 });
