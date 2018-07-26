@@ -1,4 +1,4 @@
-       //methods to play war!
+//methods to play war!
     
     var deck;
     var dealerDeck;
@@ -83,8 +83,7 @@ function loadGame(){
     
     //'flip' 1 card from each deck
     function flipCard(){
-        $("#Kpic").css("display", "none");
-        $("#Qpic").css("display", "none");
+        $("#WGamePic").css("display", "none");
         $("#youCPic").css("display", "inline-block");
         $("#dealerCPic").css("display", "inline-block");
         youCard = youDeck[26-cardsLeft];
