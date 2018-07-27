@@ -24,16 +24,13 @@ $(document).ready(function(){
     
     //find row sums of Pascal's Triangle w/button click
     $('#FindSum').click(function()  {
-	   var row = parseInt($("#rowNum").val());
-	   var sum = Math.pow(2, row);
-       $("#ShowSumPT").val(sum);
-    });
-    
-    //create button to show/hide Pascal's Triangle row sums pattern
-       $("#PTPattern").append("<br><button id='pattern' class='btn btn-primary'>Show/Hide Row Sums Pattern</button><br><p id='patternKey'>sum of row <em>n</em> entries = 2<sup><em>n</em></sup></p><br>");
-    
-    //shows/hides Pascal's Triangle row sums pattern w/button click
-    $( "#pattern" ).click(function() {
-        $('#patternKey').toggle();  
+       if($("#rowNum").val()===""){
+           alert("Row Number field cannot be left blank.");
+       }
+       else{
+	       var row = parseInt($("#rowNum").val());
+	       var sum = Math.pow(2, row);
+           $("#ShowSumPT").val(sum);
+       }
     });
 });
