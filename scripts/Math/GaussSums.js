@@ -39,15 +39,4 @@ function getRandNVal(){
  
 $(document).ready(function(){ 
     getRandNVal();
-    //display Gauss' Algorithm in tab
-    $("#GaussAlg").html("<span style='color: #D08334'>Gauss' method to easily sum the first <em>n</em> natural numbers:</span>\n");
-        $("#GaussAlg").append("<br><strong>Step 1:</strong> Choose a number <em>n</em>.<br>" + 
-            "<strong>Step 2:</strong> Add 1 to the number from Step 1.<br>" +
-            "<strong>Step 3:</strong> Multiply <em>n</em> by the sum from Step 2.<br>" +
-            "<strong>Step 4:</strong> Divide the product from Step 3 by 2.<br>" +
-            "<strong>This gives the sum of 1 + 2 + 3 + . . . + <em>n</em>.</strong>"); 
-    
-$("#GaussButton").click(function(){    
-    $('#GaussAlg').toggle();     
-});
 });
