@@ -122,20 +122,37 @@
 <!-- ********** begin contents of Gauss tab ********** -->
 <div id="GaussPage" class="subPage">
     <h1>Easily Sum the First n Natural Numbers</h1><br>   
-    <div class="pageContents">
-    <div class='row'>       
-        <div id='GCalc' class='columnL'>
+    <div class="pageContents"> 
+        <button type="button" class="btn btn-primary" style="background-color: rebeccapurple" data-toggle="modal" data-target="#GaussModal">Review Gauss' Method</button><br><br>   
+        <div id='GCalc'>
         Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
         <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
         <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
         <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
         <div id='ShowSum'></div>
         </div>
-        <div class='columnR'>
-        <button id='GaussButton' class='btn btn-primary'>Review Gauss' Method</button><br><br>
-        <div id="GaussAlg" style="display: none"></div>
+            
+    <!-- Gauss Modal -->
+    <div class="modal fade" id="GaussModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rebeccapurple; color: white">
+            <h3 class="modal-title" id="exampleModalLabel" style="color: white">Easily Sum the First <em>n</em> Natural Numbers</h3>
+          </div>
+          <div class="modal-body">
+            <span style='color: #D08334'>Step 1:</span> Choose a number <em>n</em>.<br> 
+            <span style='color: #D08334'>Step 2:</span> Add 1 to the number from Step 1.<br>
+            <span style='color: #D08334'>Step 3:</span> Multiply <em>n</em> by the sum from Step 2.<br>
+            <span style='color: #D08334'>Step 4:</span> Divide the product from Step 3 by 2.<br>
+            <strong>This gives the sum of 1 + 2 + 3 + . . . + <em>n</em>.</strong></strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
-    </div>
+      </div>
+    </div>          
 </div>
 </div><!-- ********** end contents of Gauss tab ********** -->    
     
