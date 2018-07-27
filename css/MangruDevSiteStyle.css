@@ -5,7 +5,7 @@ body {
       background-color: #FFFBFC;
   }
     a{
-        color: #3e77e9;
+        color: #1674b1;
         font-weight: 600;
         font-stretch: expanded;
         font-size: 1.1em;
@@ -95,13 +95,6 @@ body {
     text-align: center;
     padding: .5em;
     }  
-    #patternKey{
-        display: none; 
-        color: #B74271;
-        font-weight: 600;
-        padding-top: .75em;
-    }
-    
 .column1 {
     float: right;
     width: 63%;
@@ -310,11 +303,15 @@ body {
     .hp{
         border: 1px solid #424A54; 
         padding: .5em; 
-        background-color: #F4EEF4; 
+        background-color: #fbfbf8; 
         box-shadow: 6px 6px 4px silver;
-        border-top: 30px solid #9F5D7B;
+        border-top: 30px solid #993366;
     }
 body{
+    background-image: url('Images/background.jpg');
+    height: 100%; 
+    background-position: center;
+    background-size: cover;
     font-weight: 600;
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
