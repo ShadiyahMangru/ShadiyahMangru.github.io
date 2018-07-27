@@ -308,10 +308,6 @@ body {
         border-top: 30px solid #993366;
     }
 body{
-    background-image: url('Images/background.jpg');
-    height: 100%; 
-    background-position: center;
-    background-size: cover;
     font-weight: 600;
     min-width:1000px; /*minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
