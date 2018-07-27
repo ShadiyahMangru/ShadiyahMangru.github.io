@@ -77,9 +77,7 @@
 	<ul class="hp">
     <ul class="list-group list-group-flush">
     <h2>Calculators</h2>
-        <li class="list-group-item"><span onclick="displayPage('#Fib')"><a>Calculate Fibonacci Numbers</a></span></li>
-        <li class="list-group-item"><span onclick="displayPage('#Euclid')"><a>Calculate GCD (by Euclidean Algorithm)</a></span></li>
-        <li class="list-group-item"><span onclick="displayPage('#Factorial')"><a>Calculate Factorials</a></span></li>
+        <li class="list-group-item"><span onclick="displayPage('#Calculator')"><a>Fibonacci, GCD, and Factorial Calculator</a></span></li>
         </ul>
 	</ul>
     <br>
@@ -152,7 +150,32 @@
         <br>
         <div class="column2">
         <div id="PTSum"></div>
-        <div id="PTPattern"></div>
+        <div id="PTPattern">
+        <!-- Modal -->
+        <div class="modal fade" id="PTPatternModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <br><br>
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: rebeccapurple; color: white">
+                <h3 class="modal-title" id="exampleModalLabel" style="color: white">Row Sums Pattern</h3>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>-->
+              </div>
+              <div class="modal-body">
+                <strong>sum of row <em>n</em> entries = 2<sup><em>n</em></sup></strong>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>    
+            
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PTPatternModal">
+         Reveal Row Sums Pattern</button>    
+            
+        </div>
         </div>
     </div><!-- end row -->
     </div>
@@ -204,26 +227,26 @@
 <div id="Game2" class="subPage">
     <h1>Let's Play War!</h1><br>   
     <div class="pageContents"> 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <br><br>
-	    <div class="modal-content">
-	      <div class="modal-header" style="background-color: rebeccapurple; color: white">
-		<h3 class="modal-title" id="exampleModalLabel" style="color: white">Rules</h3>
-		<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		  <span aria-hidden="true">&times;</span>
-		</button>-->
-	      </div>
-	      <div class="modal-body">
-		<strong>In this game, a standard 52-card deck is split between you and the dealer.  Press 'Play War!' to flip a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</strong>
-	      </div>
-	      <div class="modal-footer">
-		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+<!-- Modal -->
+<div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <br><br>
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rebeccapurple; color: white">
+        <h3 class="modal-title" id="exampleModalLabel" style="color: white">Rules</h3>
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>-->
+      </div>
+      <div class="modal-body">
+        <strong>In this game, a standard 52-card deck is split between you and the dealer.  Press 'Play War!' to flip a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         
         <!--<div id='WRules'></div>--> 
         <div class="row"> 
@@ -239,7 +262,7 @@
         <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
         </div>
         </div>    
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rulesModal">
          Show Rules</button>
         <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
         <div id='WScore'></div>
@@ -247,8 +270,7 @@
         <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
         </div>
         </div>        
-    </div>        
-</div><!-- ********** end contents of War tab ********** --> 
+    </div><!-- ********** end contents of War tab ********** --> 
         
 <!-- ********** begin contents of Guess My Number tab ********** --> 
 <div id="Game3" class="subPage">
@@ -281,32 +303,96 @@
 </div><!-- ********** end contents of Add It Up! tab ********** -->    
     
 <!-- ********** begin contents of Fibonacci tab ********** -->   
-<div id="Fib" class="subPage">    
-    <h1>Calculate Fibonacci Numbers</h1>            
+<div id="Calculator" class="subPage">    
+    
+    <h1>Calculate</h1>            
     <div class="pageContents">
-        <div id="fibIntro"></div>
-        <div id="fibNthCalc"></div>
-    </div>
-</div> <!-- ********** end contents of Fibonacci tab ********** -->   
-            
-            
-<!-- ********** begin contents of Euclid tab ********** -->   
-<div id="Euclid" class="subPage">
-    <h1>Greatest Common Divisor Calculator</h1>      
-    <div class="pageContents"><br>
-        <div id="gcdE"></div>
-    </div>
-</div><!-- ********** end contents of Euclid tab ********** -->    
+    <h2 style="color: #993366">Fibonacci Numbers</h2>
+        
+    <!-- Fibonacci Modal -->
+    <div class="modal fade" id="FibonacciModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rebeccapurple; color: white">
+            <h3 class="modal-title" id="exampleModalLabel" style="color: white">Fibonacci Sequence Review</h3>
+          </div>
+          <div class="modal-body">
+            <strong>The Fibonacci Sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, .... <br>Each number in the sequence (starting from the third term) is the sum of the two preceding numbers.</strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+        
+    <button type="button" class="btn btn-primary" style="background-color: rebeccapurple" data-toggle="modal" data-target="#FibonacciModal">Review Fibonacci Sequence</button><br><br>  
+    <label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''> 
+    <button class='btn btn-primary' id='fB'>Get nth term</button><button class='btn btn-primary' id='fBp'>Get first n terms</button>
+    <div id='nthTerm' class='siteOutput'></div>
+    <div id='nTerms' class='siteOutput'></div>     
+    <br><br>
+        
+        
+        
+    <h2 style="color: #993366">Greatest Common Divisor</h2>      
     
-<!-- *********** begin contents of Calculate Factorials tab ********** -->
-<div id="Factorial" class="subPage">
-    <h1>Calculate Factorials!</h1><br>
-    <div id="Factorial" class="pageContents">
+    <!-- GCD Modal -->
+    <div class="modal fade" id="GCDModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rebeccapurple; color: white">
+            <h3 class="modal-title" id="exampleModalLabel" style="color: white">Euclid's Algorithm Review</h3>
+          </div>
+          <div class="modal-body">
+            <strong>We can calculate any greatest common divisor (gcd) by the Euclidean Algorithm:<ol>
+        <li>Denote the larger of the two numbers by <em>L</em> and the smaller by <em>S</em>.</li>
+        <li>Divide <em>S</em> into <em>L</em>.</li>
+        <li>Let the remainder be denoted by <em>R</em>.</li>
+        <li>Replace <em>L</em> by <em>S</em> and <em>S</em> by <em>R</em>.</li>
+        <li>Repeat procedure until <em>R=0</em>, in which case the gcd is the last value of <em>S</em>.</li>
+        </ol></strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+        
+    <button type="button" class="btn btn-primary" style="background-color: rebeccapurple" data-toggle="modal" data-target="#GCDModal">Review Euclid's Algorithm</button><br>  
+        
+    <div id="gcdE"></div>
+    <br><br>
+    <h2 style="color: #993366">Factorials!</h2>
+        
+    <!-- Factorial Modal -->
+    <div class="modal fade" id="FactorialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rebeccapurple; color: white">
+            <h3 class="modal-title" id="exampleModalLabel" style="color: white">Factorials Review</h3>
+          </div>
+          <div class="modal-body">
+            <strong>Remember, <em>n</em>! = n x (n-1) x (n-2) x ... x 2 x 1</strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+        
+    <button type="button" class="btn btn-primary" style="background-color: rebeccapurple" data-toggle="modal" data-target="#FactorialModal">Review Factorials</button><br><br>      
+        
+        
+    <label class='siteLabel'>Enter a Natural Number: <input id='Fnum' class='form-control' style='width: 50%; display: inline' type='number'></label><button onclick='getFactorial()' class='btn btn-primary'>!</button><label> = </label><span id='outputFactorial' class='highlight'></span>
     </div>
-</div><!-- ********** end contents of Calculate Factorials tab ********** -->        
-
-    
-    
+        
+    </div><!-- ********** end contents of Calculators tab ********** -->         
     
 </div>        
     
@@ -357,16 +443,12 @@ function displayPage(pageId){
     $(pageId).css("display", "block");
 }        
 </script>  
-<!--link to my Fibonacci Sequence Calculator JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Math/FibonacciSeq.js"></script>  
-<!--link to my GCD by Euclidean Algorithm JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Math/EuclidGCD.js"></script>
+<!--link to my Fibonacci, GCD, and Factorial Calculator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Math/Calculator.js"></script>  
 <!--link to my Sums by Gauss JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Math/GaussSums.js"></script>  
 <!--link to my Pascal's Triangle Row Summation JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Math/PascalRowSums.js"></script> 
-<!--link to my Factorial Calculator JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Math/FactorialCalc.js"></script>  
+<script type="text/javascript" src="scripts/Math/PascalRowSums.js"></script>  
 <!--link to my Bubble Sort JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Sort/BubbleSort.js"></script>  
 <!--link to my Hangman JavaScript/jQuery source code-->
