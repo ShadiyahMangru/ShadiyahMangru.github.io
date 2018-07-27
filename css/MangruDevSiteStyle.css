@@ -5,7 +5,6 @@ body {
       background-color: #FFFBFC;
   }
     a{
-        color: #1674b1;
         font-weight: 600;
         font-stretch: expanded;
         font-size: 1.1em;
@@ -302,11 +301,14 @@ body {
     }
     .hp{
         border: 1px solid #424A54; 
-        padding: .5em; 
-        background-color: #fbfbf8; 
+        border-radius: 6px;
+        padding: .2em; 
+        background-color: #993366; 
         box-shadow: 6px 6px 4px silver;
-        border-top: 30px solid #993366;
     }
+.hp a{
+    color: white;
+}
 body{
     font-weight: 600;
     min-width:1000px; /*minimun width of 1000px */
