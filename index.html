@@ -48,46 +48,29 @@
 	</div>
 	
     <div id="mainNav" class="row" style="padding: .5em; margin-left: 1em; margin-right: 1em; font-size: 85%; padding-top: 8em; border-top: 2px solid black; width: 90%; margin-right: auto; margin-left: auto; margin-top: 4em;">
-    <span id="one" style="float: left; width: 23.2%; margin-left: 1em; font-size: 115%; margin-top: -3em">
+    <br><br><br>
+    <span id="one" style="float: left; width: 20%; margin-left: 6em; margin-top: -3em">
 	<ul class="hp">
-    <ul class="list-group list-group-flush">
-        <h2>Study Tools</h2>
-    <li class="list-group-item"><span onclick="displayPage('#BDPage')"><a>Binary-Decimal Conversions</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#GaussPage')"><a>Easily Sum 1+2+...+(n-1)+n</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#PascalPage')"><a>Row Sums of Pascal's Triangle Pattern Recognition</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#VocabPage')"><a>Create User-Defined Vocab Study Cards</a></span></li>
-	</ul>
+        <h2 style="text-align: center"><span onclick="displayPage('#StudyPage')"><a>Study</a></span></h2>
     </ul>
     <br>
     </span>
-    <span id="two" style="float: left; width: 23.2%; margin-left: 1em; font-size: 115%; margin-top: -3em">
+    <span id="two" style="float: left; width: 20%; margin-left: 2em; margin-top: -3em">
 	<ul class="hp">
-    <ul class="list-group list-group-flush">
-    <h2>Data Set Sorter(s)</h2>
-    <li class="list-group-item"><span onclick="displayPage('#BSort')"><a>Bubble Sort your Data Set</a></span></li>
-    </ul>
+        <h2 style="text-align: center"><span onclick="displayPage('#BSort')"><a>Sort</a></span></h2>
     </ul>
     <br>
 	</span>
     
-    <span id="three" style="float:left; width: 23.2%; margin-left: 1em; font-size: 115%; margin-top: -3em">
+    <span id="three" style="float:left; width: 20%; margin-left: 2em; margin-top: -3em">
 	<ul class="hp">
-    <ul class="list-group list-group-flush">
-    <h2>Let's Play a Game!</h2>
-    <li class="list-group-item"><span onclick="displayPage('#Game1')"><a>Hangman</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#Game2')"><a>War</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#Game3')"><a>Guess the Number</a></span></li>
-    <li class="list-group-item"><span onclick="displayPage('#Game4')"><a>Add It Up!</a></span></li>
-	</ul>
+        <h2 style="text-align: center"><span onclick="displayPage('#Game')"><a>Play</a></span></h2>
     </ul>
     <br>
-        </span>
-        <span id="four" style="float:left; width: 23.2%; margin-left: 1em; font-size: 115%; margin-top: -3em"> 
+    </span>
+    <span id="four" style="float:left; width: 20%; margin-left: 2em; margin-top: -3em"> 
 	<ul class="hp">
-    <ul class="list-group list-group-flush">
-    <h2>Calculators</h2>
-        <li class="list-group-item"><span onclick="displayPage('#Calculator')"><a>Fibonacci Numbers, GCD, and Factorial Calculator</a></span></li>
-        </ul>
+        <h2 style="text-align: center"><span onclick="displayPage('#Calculator')"><a>Calculate</a></span></h2>
 	</ul>
     <br>
 	</span>
@@ -95,12 +78,12 @@
 </div>
     
 <div class="text-left">   
-<!-- ********* begin contents of Binary-Decimal Conversions Review tab ********* --> 
-<div id="BDPage" class="subPage">
-    <h1>Binary-Decimal Conversions Interactive Review</h1><br>
+<!-- ********* begin contents of Study tab ********* --> 
+<div id="StudyPage" class="subPage">
+    <h1>Study</h1><br>
     <div class="pageContents">
-                
-        <div class='row'>
+        <h2 style="color: #993366">Binary-Decimal Conversions Interactive Review</h2>        
+        <div class='row' style="margin-left: 1em">
         <div class='columnL'>
         <span class='highlight'>Binary to Decimal Conversions Practice</span><br>
         <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
@@ -125,13 +108,9 @@
     
         <div id='decToBin' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
     
-    </div>    
-</div><!-- ********** end contents of Binary-Decimal Conversions Review tab ********** -->     
+    <br><br>        
 
-<!-- ********** begin contents of Gauss tab ********** -->
-<div id="GaussPage" class="subPage">
-    <h1>Easily Sum the First n Natural Numbers</h1><br>   
-    <div class="pageContents"> 
+    <h2 style="color: #993366">Easily Sum the First n Natural Numbers</h2><br>   
         <button type="button" class="btn btn-primary" style="background-color: rebeccapurple" data-toggle="modal" data-target="#GaussModal">Review Gauss' Method</button><br><br>   
         <div id='GCalc'>
         Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
@@ -162,16 +141,13 @@
         </div>
       </div>
     </div>          
-</div>
-</div><!-- ********** end contents of Gauss tab ********** -->    
+<br><br>  
     
-<!-- ********** begin contents of Pascal tab ********** -->
-<div id="PascalPage" class="subPage">
-    <h1>Row Sums of Pascal's Triangle Pattern Recognition</h1><br>
-    <div class="pageContents">
+    
+    <h2 style="color: #993366">Row Sums of Pascal's Triangle Pattern Recognition</h2><br>
             
     <div class="row">
-        <div id="PTIntro"></div>
+        <div id="PTIntro" style="margin-left: 1em"></div>
         <div id="PTriangle" class="column1" style="line-height: 80%"></div><!-- create Pascal's Triangle -->
         <br>
         <div class="column2">
@@ -204,18 +180,14 @@
         </div>
         </div>
     </div><!-- end row -->
-    </div>
-</div><!-- ********** end contents of Pascal tab ********** -->   
     
-<!-- ********** begin contents of Vocab Study Cards tab ********** --> 
-<div id="VocabPage" class="subPage">
-    <h1>Create User-Defined Vocab Study Cards</h1><br>
+
+    <h2 style="color: #993366">Create User-Defined Vocab Study Cards</h2><br>
             
-    <div class="pageContents">
         <div id="deckContents"></div>
         <div id="userDeck" style="display: none"></div>
     </div>    
-</div><!-- ********** end contents of Vocab Study Cards tab ********** -->     
+</div><!-- ********** end contents of Study tab ********** -->     
 
     
   
@@ -234,10 +206,11 @@
  
     
 <!-- ********** begin contents of Hangman tab ********** --> 
-<div id="Game1" class="subPage">
-    <h1>Let's Play Hangman!</h1>
+<div id="Game" class="subPage">
+    <h1>Play</h1>
     
     <div class="pageContents"> 
+    <h2 style="color: #993366">Hangman</h2>
         <div id="HMButtons"></div>
         <div id="HMPic"></div>
         <div id='HMAnswerFormat'></div><br>
@@ -245,13 +218,10 @@
         <div id="HMgetLDiv"></div>
         <div id="HMfeedback"></div>
         <div id="HMEnd"></div>
-    </div>
-</div><!-- ********** end contents of Hangman tab ********** --> 
+ <br><br>
             
-<!-- ********** begin contents of War tab ********** --> 
-<div id="Game2" class="subPage">
-    <h1>Let's Play War!</h1><br>   
-    <div class="pageContents"> 
+
+    <h2 style="color: #993366">War</h2><br>   
 <!-- Modal -->
 <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -294,27 +264,18 @@
         <div id='warResults'></div>
         <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
         </div>
-        </div>        
-    </div><!-- ********** end contents of War tab ********** --> 
         
-<!-- ********** begin contents of Guess My Number tab ********** --> 
-<div id="Game3" class="subPage">
-    <h1>Let's Play Guess The Number!</h1>
-    <!--
-    <div><img src="Images/smiley.png" id="smileyPic"></div>
-    -->
-    <div class="pageContents">
+    <br><br> 
+        
+        
+        
+    <h2 style="color: #993366">Guess The Number!</h2>
     <div id="guessN"></div>
     <div id="aGuessed"></div>
     <div id="feedback" class="siteOutput"></div><br>  
-    </div>
-</div><!-- ********** end contents of Guess My Number tab ********** -->  
-            
-<!-- ********** begin contents of Add It Up! tab ********** --> 
-<div id="Game4" class="subPage">
-    <h1>Let's Play Add it Up!</h1>
-                
-    <div class="pageContents">
+    
+<br><br>
+    <h2 style="color: #993366">Add it Up!</h2>
     <div id="rules"></div>
     <div id="key"></div>
     <div class="row">
@@ -324,8 +285,9 @@
     <div id="mySolution"></div><br>
     </div>
     </div>
+        
     </div>
-</div><!-- ********** end contents of Add It Up! tab ********** -->    
+</div><!-- ********** end contents of Play tab ********** -->    
     
 <!-- ********** begin contents of Fibonacci tab ********** -->   
 <div id="Calculator" class="subPage">    
@@ -418,9 +380,10 @@
     </div>
         
     </div><!-- ********** end contents of Calculators tab ********** -->         
-    
-</div>        
-    
+       
+</div> 
+
+<br><br><br><br>   
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top"><br>
     <span class="glyphicon glyphicon-chevron-up" style="font-size: 150%; font-weight: 700; color: #431E54"></span>
