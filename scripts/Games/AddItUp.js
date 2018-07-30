@@ -5,7 +5,7 @@
     createGameBoard();     
     
     $(document).ready(function(){
-       $("#rules").append("<span style='color: #003399; font-size: 120%; font-weight: 600'><u>RULES:</u></span> (i) Populate each gamboard square with numbers 1-5, (ii) Do NOT repeat a number in any row or column, (iii) Use the color-coded KEY to facilitate input.");
+    newModal("#rules", "AddItUpRules", "Add It Up! Rules", "<ol><li>Populate each gamboard square with numbers 1-5.</li><li>Do NOT repeat a number in any row or column.</li><li>Use the color-coded KEY to facilitate input.</li></ol>", "#ModalB", "Show Rules");      
     });
 
     var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
