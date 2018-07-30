@@ -32,23 +32,35 @@ var tries;
     var alreadyG = [];
     //checks if guess is correct and provides user with feedback
     $("#submitG").click(function() {
+        var repeat=false;
 		var playerGuess = $("#guess").val();
 		playerGuess = parseInt(playerGuess);
+        if(alreadyG.includes(playerGuess)==true){
+            repeat=true;
+        }
+        else{
         alreadyG.unshift(playerGuess);
         $("#aGuessed").html("Previous Guesses: " + alreadyG.join(", "));
-		computerNumber = parseInt(computerNumber);
 		++tries;
-		var remGuess = 11-tries;
+        }
+        computerNumber = parseInt(computerNumber);
+		var remGuess = 10-tries;
 		if(playerGuess == computerNumber && tries < 11){
 			$("#feedback").html("<br>Me-wow!  That is correct! The number was " + computerNumber + " and it only took you " + tries + " tries!");
             $("#feedback").append("<br><br><img src='Images/cat.png'>");
 		}
+        else if(repeat==true){
+           $("#feedback").html("<br><span style='color: #d70000'>You have already guessed " + playerGuess + ".  You still have " + remGuess + " guesses remaining.  Try Again!</span>"); 
+           $("#guess").val("");
+        }
 		else if(playerGuess !== computerNumber && tries < 11){
 			if(playerGuess > computerNumber){
-			$("#feedback").html("<br>Lower... " + remGuess + " guesses remaining!"); 
+			$("#feedback").html("<br><span style='color: #118140'>LOWER than " + playerGuess + "...</span><br>" + remGuess + " guesses remaining!"); 
+            $("#guess").val("");
 			}
 			else if(playerGuess < computerNumber){
-				$("#feedback").html("<br>Higher... " + remGuess + " guesses remaining!");
+				$("#feedback").html("<br><span style='color: #DB6F34'>HIGHER than " + playerGuess + "... </span><br>" + remGuess + " guesses remaining!");
+                $("#guess").val("");
 			}
 		}
 		else if(tries>10){
