@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shadiyah's Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel='stylesheet' href="css/MangruDevSiteStyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    body{
+        background-image: url('Images/background.jpg');
+        height: 100%; 
+        background-position: center;
+        background-size: cover;
+    }     
+</style>
+    
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="mailto:shadiyahmangru@gmail.com">By Shadiyah Mangru</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>      
+    
+<div id="main">
+	<div><h1 id="mainTitle"><img src="Images/atComputer.png" width="80px">My Code Development Website</h1>
+        <h4><strong>Explore the works in progress below</strong></h4>
+	</div>
+	
+    <div id="mainNav" class="row" style="padding: .5em; margin-left: 4em; margin-right: 1em; padding-top: 8em; border-top: 2px solid black; width: 90%; margin-right: auto; margin-left: auto; margin-top: 4em;">
+    <br><br>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 5em' onclick="displayPage('#Game')">Play</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#StudyPage')">Study</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#Calculator')">Calculate</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#BSort')">Sort</button>    
+    </div>
+</div>
+    
+<div class="text-left">   
+<!-- ********* begin contents of Study tab ********* --> 
+<div id="StudyPage" class="subPage">
+    <h1>Study</h1><br>
+    <div class="pageContents">
+        <h2 style="color: #993366">Convert between Binary and Decimal</h2>        
+        <div class='row' style="margin-left: 1em">
+        <div class='columnL'>
+        <span class='highlight'>Binary to Decimal Conversions Practice</span><br>
+        <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
+        <label>Enter the Decimal Equivalent: </label><input type='number' id='bToDResult' class='form-control' style='width: 20%; display: inline' placeholder='Decimal'><button class='btn btn-primary' id='bToDConvert'>Correct?</button><br><div id='isBToDCorrect'></div>
+        <br><br>
+        <button id="Revbd" class='btn btn-primary'>Review Binary-Decimal Conversions</button>
+        </div>
+        <div class='columnR'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
+            <label>Enter a Decimal Number: </label>
+            <input type='number' id='dec' class="form-control" style="width: 20%; display: inline" placeholder='Decimal'>
+            <br>
+            <label>Enter the Binary Equivalent: </label>
+            <input type='text' id='dToBResult' class="form-control" style="width: 20%; display: inline" placeholder="Binary">
+            <button class='btn btn-primary' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
+            <div id='isDToBCorrect'></div>
+            <br><br>
+            <button id="Revdb" class='btn btn-primary'>Review Binary-Decimal Conversions</button>
+        </div>
+        </div>
+        
+        <div id='binToDec' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
+    
+        <div id='decToBin' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
+    
+    <br><br><br><br>        
+
+    <h2 style="color: #993366">Sum the First n Natural Numbers</h2><br> 
+        <div id='GaussModalButton'></div> 
+        <div id="GaussModalDiv"></div>
+        <div id='GCalc'>
+        Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
+        <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
+        <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
+        <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
+        <div id='ShowSum'></div>
+        </div>
+    
+    <h2 style="color: #993366">Sum Rows of Pascal's Triangle</h2><br>
+            
+    <div class="row">
+        <div id="PTIntro" style="margin-left: 1em"></div>
+        <div id="PTriangle" class="column1" style="line-height: 80%"></div><!-- create Pascal's Triangle -->
+        <br>
+        <div class="column2">
+        <div id="PTSum"></div>
+        <div id="PTPattern">
+            
+        <div id="PascalModalDiv"></div>
+        <div id="PascalModalButton"></div>   
+        </div>
+        </div>
+    </div><!-- end row -->
+    
+<br><br><br>
+    <h2 style="color: #993366">Create Vocab Study Cards</h2><br>
+            
+        <div id="deckContents"></div>
+        <div id="userDeck" style="display: none"></div>
+    </div>    
+</div><!-- ********** end contents of Study tab ********** -->     
+
+    
+  
+<!-- ********** begin Data Set Sorter(s) tab contents ********** -->
+<div id="BSort" class="subPage">
+    <h1>Sort</h1>
+            
+    <div class="pageContents">
+    <h2 style="color: #993366">Bubble Sort Your Data Set</h2>
+        <div id="inputDataSet"></div><br>
+        <div id='dataSet' class='siteOutput'></div>
+         <br><br><button class='btn btn-primary' onclick='bubbleSort(ds);'>Bubble Sort</button><br><br>
+        <div id="bubbleSorted" class="siteOutput"></div>
+    </div>
+</div> <!-- ********** end Data Set Sorter(s) tab contents ********** -->
+ 
+    
+<!-- ********** begin contents of Hangman tab ********** --> 
+<div id="Game" class="subPage">
+    <h1>Play</h1>
+    
+    <div class="pageContents"> 
+    <h2 style="color: #993366">Hangman</h2>
+        <div id="HMButtons"></div>
+        <div id="HMPic"></div>
+        <div id='HMAnswerFormat'></div><br>
+        <div id="HMguessed"></div><br>
+        <div id="HMgetLDiv"></div>
+        <div id="HMfeedback"></div>
+        <div id="HMEnd"></div>
+ <br><br>
+            
+
+    <h2 style="color: #993366">War</h2><br>   
+        <!--<div id='WRules'></div>--> 
+        <div class="row"> 
+        <div class="column1">
+        <span id="WGamePic"><img src="Images/cardDeck.png"></span>
+        <div id='youCPic'>
+        <p id='youLabel'>You: </p>
+        <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
+        </div>
+
+        <div id='dealerCPic'>  
+        <p id='dealerLabel'>The Dealer: </p>
+        <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
+        </div>
+        </div>
+            
+        <div id="WarModalDiv"></div>
+        <div id="WarModalButton"></div>
+
+        <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
+        <div id='WScore'></div>
+        <div id='warResults'></div>
+        <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Play Again!</button>    
+        </div>
+    <br><br> 
+        
+    <h2 style="color: #993366">Guess The Number!</h2>
+    <div id="guessN"></div>
+    <div id="aGuessed"></div>
+    <div id="feedback" class="siteOutput"></div><br>  
+    
+<br><br>
+    <h2 style="color: #993366">Add it Up!</h2>
+    <div id="rules"></div>
+    <div id="key"></div>
+    <div class="row">
+    <div id="winLose" class="columnR"></div>
+    <div class="columnL">
+    <div id="gb"></div>
+    <div id="mySolution"></div><br>
+    </div>
+    </div>
+        
+    </div>
+</div><!-- ********** end contents of Play tab ********** -->    
+    
+<!-- ********** begin contents of Calculate tab ********** -->   
+<div id="Calculator" class="subPage">    
+    
+    <h1>Calculate</h1>            
+    <div class="pageContents">
+    <h2 style="color: #993366">Fibonacci Numbers</h2>
+     
+    <!--fibonacci modal and modal button-->
+    <div id='FibModal'></div> 
+    <div id='FibModalButton'></div>
+        
+    <label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''> 
+    <button class='btn btn-primary' id='fB'>Get nth term</button><button class='btn btn-primary' id='fBp'>Get first n terms</button>
+    <div id='nthTerm' class='siteOutput'></div>
+    <div id='nTerms' class='siteOutput'></div>     
+    <br><br>
+        
+    <h2 style="color: #993366">Greatest Common Divisor</h2>      
+    
+    <!--GCD modal and modal button-->
+        <div id="GCDModalDiv"></div>
+        <div id="GCDModalButton"></div>
+        
+    <div id="gcdE"></div>
+    <br><br>
+        
+    <h2 style="color: #993366">Factorials!</h2>
+    
+        <!--factorials modal and modal button-->
+        <div id="facModal"></div>
+        <div id='facModalButton'></div>       
+        
+        <label class='siteLabel'>Enter a Natural Number: </label><input id='Fnum' class='form-control' style='width: 40%; display: inline' type='number'><button onclick='getFactorial()' class='btn btn-primary'>!</button><label> = </label><span id='outputFactorial' class='highlight'></span>
+    </div>
+        
+    </div><!-- ********** end contents of Calculators tab ********** -->         
+       
+</div> 
+
+<br><br><br><br>   
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top"><br>
+    <span class="glyphicon glyphicon-chevron-up" style="font-size: 150%; font-weight: 700; color: #431E54"></span>
+  </a>
+	<br>
+</footer>
+
+  
+<script type="text/javascript" src="scripts/functions.js"></script>    
+     
+<!--link to my Fibonacci, GCD, and Factorial Calculator JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Calculator.js"></script>  
+<!--link to my (Bubble) Sort JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Sort.js"></script>  
+<!--link to my Hangman JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/Hangman.js"></script> 
+<!--link to my War Card Game JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/WarCardGame.js"></script> 
+<!--link to my Number Guess Game JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/NumberGuess.js"></script>
+<!--link to my Add it Up! JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Games/AddItUp.js"></script>    
+<!--link to my Binary-Decimal, Gauss, Pascal, Vocab JavaScript/jQuery source code-->
+<script type="text/javascript" src="scripts/Study.js"></script>       
+</body>
+</html>
