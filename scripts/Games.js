@@ -1,12 +1,14 @@
+//**************************
 //Methods to play hangman!    
-    
-var easyWords = ["flower", "cake", "rain", "tree", "bee", "frozen", "snow", "leaf", "hot", "apple", "star", "four", "cat", "zoo", "car", "train", "jump", "bag", "store", "heart", "hat", "sun", "bye", "egg", "joy", "eye"];
-    
-var mediumWords = ["January", "computer", "television", "soccer", "dinosaur", "shovel", "garden", "cucumber", "parade", "watermelon", "cupcake", "pizza", "tiger", "giant", "unicorn", "octopus", "volcano", "meteor", "ocean", "beach", "cloud", "elephant", "bakery", "forest"];
+//**************************
 
-var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut", "restaurant"];    
+var easyWords = ["flower", "cake", "rain", "tree", "bee", "frozen", "snow", "leaf", "hot", "apple", "star", "four", "cat", "zoo", "car", "train", "jump", "bag", "store", "heart", "hat", "sun", "bye", "egg", "joy", "eye", "owl", "sky", "cow", "mall"];
     
-var mysteryWord; 
+var mediumWords = ["January", "computer", "television", "soccer", "dinosaur", "shovel", "garden", "cucumber", "parade", "watermelon", "cupcake", "pizza", "tiger", "giant", "unicorn", "octopus", "volcano", "meteor", "ocean", "beach", "cloud", "elephant", "bakery", "forest", "wizard", "drum", "couch", "rainbow", "glitter", "window", "wand", "potato"];
+
+var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut", "restaurant", "baseball", "cylinder", "country"];    
+    
+var mysteryWord;  
 var answerFormat = [];
 var alreadyGuess;
 var lives;
@@ -192,7 +194,7 @@ function shuffle(array) { //adapted from Fisher-Yates shuffle
         array[counter] = array[index];
         array[index] = temp;
     }
-
+    
     return array;
 }
 
