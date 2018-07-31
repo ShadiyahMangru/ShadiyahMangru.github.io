@@ -10,13 +10,64 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
     body{
         background-image: url('Images/background.jpg');
         height: 100%; 
         background-position: center;
         background-size: cover;
-    }     
+    } 
+    
+    
+.scroll-up {
+ height: 200px;	
+ overflow: hidden;
+ position: relative;
+ color: black;
+ border: 1px solid black;
+}
+.scroll-up p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateY(100%);
+ -webkit-transform:translateY(100%);	
+ transform:translateY(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-up 7s linear infinite;
+ -webkit-animation: scroll-up 7s linear infinite;
+ animation: scroll-up 7s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-up {
+ 0%   { -moz-transform: translateY(100%); }
+ 100% { -moz-transform: translateY(-100%); }
+}
+@-webkit-keyframes scroll-up {
+ 0%   { -webkit-transform: translateY(100%); }
+ 100% { -webkit-transform: translateY(-100%); }
+}
+@keyframes scroll-up {
+ 0%   { 
+ -moz-transform: translateY(100%); /* Browser bug fix */
+ -webkit-transform: translateY(100%); /* Browser bug fix */
+ transform: translateY(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateY(-100%); /* Browser bug fix */
+ -webkit-transform: translateY(-100%); /* Browser bug fix */
+ transform: translateY(-100%); 
+ }
+}
+    
+    
+    
+    
 </style>
     
 </head>
@@ -47,10 +98,11 @@
 	
     <div id="mainNav" class="row" style="padding: .5em; margin-left: 4em; margin-right: 1em; padding-top: 8em; border-top: 2px solid black; width: 90%; margin-right: auto; margin-left: auto; margin-top: 4em;">
     <br><br>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 5em' onclick="displayPage('#Game')">Play</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#StudyPage')">Study</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#Calculator')">Calculate</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 17%; border: 1px solid white; padding: .3em; margin-left: 1em' onclick="displayPage('#BSort')">Sort</button>    
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: 2em' onclick="displayPage('#Game')">Play</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#StudyPage')">Study</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#Calculator')">Calculate</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#BSort')">Sort</button>
+        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#UTube')">Amaze</button>
     </div>
 </div>
     
@@ -66,7 +118,9 @@
         <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
         <label>Enter the Decimal Equivalent: </label><input type='number' id='bToDResult' class='form-control' style='width: 20%; display: inline' placeholder='Decimal'><button class='btn btn-primary' id='bToDConvert'>Correct?</button><br><div id='isBToDCorrect'></div>
         <br><br>
-        <button id="Revbd" class='btn btn-primary'>Review Binary-Decimal Conversions</button>
+        <div id="bdModal"></div>
+        <div id="bdModalButton"></div>
+            
         </div>
         <div class='columnR'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
             <label>Enter a Decimal Number: </label>
@@ -77,15 +131,13 @@
             <button class='btn btn-primary' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
             <div id='isDToBCorrect'></div>
             <br><br>
-            <button id="Revdb" class='btn btn-primary'>Review Binary-Decimal Conversions</button>
+            <div id="dbModal"></div>
+            <div id="dbModalButton"></div>
+            
         </div>
         </div>
-        
-        <div id='binToDec' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
     
-        <div id='decToBin' style="border-top: 1px solid black; margin-top: 1.5em; padding-top: 1em"></div>
-    
-    <br><br><br><br>        
+    <br><br><br>        
 
     <h2 style="color: #993366">Sum the First n Natural Numbers</h2><br> 
         <div id='GaussModalButton'></div> 
@@ -138,7 +190,7 @@
 </div> <!-- ********** end Data Set Sorter(s) tab contents ********** -->
  
     
-<!-- ********** begin contents of Hangman tab ********** --> 
+<!-- ********** begin contents of Play tab ********** --> 
 <div id="Game" class="subPage">
     <h1>Play</h1>
     
@@ -175,8 +227,8 @@
 
         <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
         <div id='WScore'></div>
-        <div id='warResults'></div>
-        <button class='btn btn-primary' id='WARplayAgain' onclick='playWarAgain();'>Load A New Game</button>    
+        <div id='warResults' style='color: #3335B2'></div>
+        <button class='btn btn-primary' id='WARplayAgain' style='background-color: #A3206F' onclick='playWarAgain();'>Load A New Game</button>    
         </div>
     <br><br> 
         
@@ -237,7 +289,30 @@
     </div>
         
     </div><!-- ********** end contents of Calculators tab ********** -->         
-       
+   
+    
+<!-- ********** begin UTube tab contents ********** -->
+<div id="UTube" class="subPage">
+    <h1>UTube</h1>
+          
+    <div class="pageContents">
+    <h2 style="color: #993366">So this is Awesome...</h2>
+        <div class="scroll-up">
+            <p>On a rooftop in Brooklyn<br>
+		    At one in the morning<br>
+		    Watching the lights flash<br>
+		    In Manhattan<br>
+		    I see five bridges<br>
+		    The Empire State Building<br>
+		    And you said something<br>
+		    That I've never forgotten<br>
+                ...<br>
+            </p>
+          </div>  
+    </div>
+</div> <!-- ********** end UTube tab contents ********** -->    
+    
+    
 </div> 
 
 <br><br><br><br>   
@@ -247,7 +322,6 @@
   </a>
 	<br>
 </footer>
-
   
 <script type="text/javascript" src="scripts/functions.js"></script>    
      
