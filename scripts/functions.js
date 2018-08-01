@@ -10,7 +10,36 @@ function newModal(divID, modalID, modalTitle, modalContent, buttonID, buttonText
 function displayPage(pageId){
     $("#mainNav").css("display", "none");
     $(pageId).css("display", "block");
+    if(pageId==="#StudyPage"){
+        pageN = 2;
+        subNav(pageN);
+    }
+    else if(pageId==="#Game"){
+        pageN = 1;
+        subNav(pageN);
+    }
+    else if(pageId==="#Calculator"){
+        pageN = 3;
+        subNav(pageN);
+    }
 }        
+
+var pageN = 0;
+//display a subnav for subdivided subpages
+function subNav(pN){
+    //Play
+    if(pN===1){
+        $("#subN").append("<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'>Play<span class='caret'></span></a><ul class='dropdown-menu' style='background-color: #bebbd8'><li><a href='#Game'>Hangman</a></li><li><a href='#HMEnd'>War</a></li><li><a href='#warResults'>Number Guess</a></li><li><a href='#feedback'>Add It Up!</a></li></ul>");
+    }
+    //Train
+    else if(pN===2){
+        $("#subN").append("<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'>Train<span class='caret'></span></a><ul class='dropdown-menu' style='background-color: #bebbd8'><li><a href='#decBin'>Decimal-Binary</a></li><li><a href='#dbModalButton'>1+2+...+(n-1)+n</a></li><li><a href='#ShowSum'>Row Sums</a></li>               <li><a href='#PTSum'>Review Cards</a></li></ul>");
+    }
+    //Calculate
+    else if(pN===3){
+        $("#subN").append("<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'>Calculate<span class='caret'></span></a><ul class='dropdown-menu' style='background-color: #bebbd8'><li><a href='#Calculator'>Fibonacci Numbers</a></li><li><a href='#nTerms'>GCD</a></li><li><a href='#gcdE'>Factorials!</a></li></ul>");
+    }    
+}
 
 
 //functions to add smooth scrolling
