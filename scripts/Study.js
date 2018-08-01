@@ -135,10 +135,21 @@ $(document).ready(function(){
 //*************************************************************
 //function to create Row Summation of Pascal's Triangle Tab
 //*************************************************************
-$(document).ready(function(){
-    //display intro to Pascal's Triangle in tab
-    $("#PTIntro").html("Row 0 of Pascal's Triangle consists of a 1.  A 1 flanks each row of Pascal's Triangle with 2 or more entries.  For each entry of Pascal's Triangle that is > 1, we add the two entries diagonally above.  Below is a diagram of the first few rows of Pascal's Triangle.");
+var rowNumber;
+function getRandRowVal(){
+    rowNumber = getRandomInt(0, 20);
+    $("#rowNum").html(rowNumber);
+    $("#newNRow").css("display", "none");
+    $("#PTFeedback").html("");
+    $("#RowSumPT").val("");
+}
 
+$(document).ready(function(){
+   
+    //display intro to Pascal's Triangle in modal
+    newModal("#PascalReviewModalDiv", "PascalReviewModal", "Pascal's Triangle Review", "Row 0 of Pascal's Triangle consists of a 1.  A 1 flanks each row of Pascal's Triangle with 2 or more entries.  For each entry of Pascal's Triangle that is > 1, we add the two entries diagonally above.  Below is a diagram of the first few rows of Pascal's Triangle.<div id='PTriangle' style='line-height: 80%'></div>", "#PascalReviewButton", "Pascal's Triangle Review");     
+    
+    
     //build first few rows of Pascal's Triangle
     var PTR = ["1", "1,1", "1,2,1", "1,3,3,1", "1,4,6,4,1", "1,5,10,10,5,1", "1,6,15,20,15,6,1", "1,7,21,35,35,21,7,1", "1,8,28,56,70,56,28,8,1"];
 
@@ -153,23 +164,32 @@ $(document).ready(function(){
        $("#PTriangle").append(buildTr+"<span class='ellipsis'>&#8942;</span>"); 
    
     //create row sum calculator
-    $("#PTSum").html("Row Summation Calculator:");
-       $("#PTSum").append("<br><sup>*</sup>remember Pascal's Triangle begins with Row 0.<br><label>Enter row #: <input class='form-control' style='width: 60%; display: inline; color: #B74271' type='number' placeholder='Row Number' id='rowNum'></label><button id='FindSum' class='btn btn-primary'>Find Row Sum</button><br><input class='form-control' style='width: 70%; display: inline; color: #B74271' type='number' id='ShowSumPT' placeholder='Row Sum'><br><br><br>");
+    $("#PTSum").html("Row Summation Practice:");
+       $("#PTSum").append("<br><sup>*</sup>remember Pascal's Triangle begins with Row 0.<br><button id='newNRow' class='btn btn-success' style='background-color: #A3206F; display: none' onclick='getRandRowVal()'>Reset n value</button><label>Let row number = <span id='rowNum' style='color: #147610'></span>.  </label><br><label>Enter row sum: </label> <input class='form-control' style='width: 40%; display: inline; color: #B74271' type='number' id='RowSumPT' placeholder='Row Sum'><button id='CheckPTSum' class='btn btn-primary'>Correct?</button><br><div id='PTFeedback' class='StyleSum'></div><br>");
+    
+     getRandRowVal();
     
     //find row sums of Pascal's Triangle w/button click
-    $('#FindSum').click(function()  {
-       if($("#rowNum").val()===""){
-           alert("Row Number field cannot be left blank.");
+    $('#CheckPTSum').click(function()  {
+       if($("#RowSumPT").val()===""){
+           alert("Please enter a Row Sum value.");
        }
        else{
-	       var row = parseInt($("#rowNum").val());
-	       var sum = Math.pow(2, row);
-           $("#ShowSumPT").val(sum);
+	       var sum = Math.pow(2, rowNumber);
+           if(Number($("#RowSumPT").val())==sum){
+               $("#PTFeedback").html("Me-wow!  That is correct!");
+               $("#PTFeedback").append("<br><br><img src='Images/cat.png'><br><br>");
+               $("#newNRow").css("display", "block");
+           }
+           else{
+               $("#PTFeedback").html("Incorrect.  Try Again!")
+           }
+           
        }
     });
     
     //create Row Sums Pattern modal
-    newModal("#PascalModalDiv", "PTPatternModal", "Row Sums Pattern", "sum of row <em>n</em> entries = 2<sup><em>n</em></sup>", "#PascalModalButton", "Reveal Row Sums Pattern");
+    newModal("#PascalModalDiv", "PTPatternModal", "Row Sums Pattern", "sum of row <em>n</em> entries = 2<sup><em>n</em></sup>", "#PascalModalButton", "Review Row Sums Pattern");
 
 });
 
