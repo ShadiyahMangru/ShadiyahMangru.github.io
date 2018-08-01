@@ -292,7 +292,7 @@ body {
     font-weight: 600; 
     margin-top: 1em;
 }
-    #ShowSum{
+    .StyleSum{
         font-weight: 700; 
         display: inline-block; 
         color: #993366;
