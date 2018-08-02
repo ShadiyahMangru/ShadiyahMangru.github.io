@@ -193,7 +193,10 @@
         font-size: 150px;
     }
   }
-      
+  .highlight{
+        color: rebeccapurple;
+        font-weight: 600;
+    }    
     .scroll-up {
  background-color: black;
  height: 400px;	
@@ -531,19 +534,15 @@
         <div class="col-md-6 mb-6">
           <div class="card h-100" style="border: 1px solid black; padding: 1em">
             <div class="card-body">
-              <h2 class="card-title">Decimal-Binary Conversions</h2>
-              <p class="card-text">COMING SOON!</p>
+              <h2 class="card-title">Create Review Cards</h2>
+                <div id="deckContents"></div>
+                <div id="userDeck" style="display: none"></div>
             </div>
             <div class="card-footer">
-              <div id="bdModal"></div>
-              <div id="bdModalButton"></div>
-                
-              <div id="dbModal"></div>
-              <div id="dbModalButton"></div>
             </div>
           </div>
         </div>
-        <!-- /.col-md-4 -->
+        <!-- /.col-md-6 -->
         <div class="col-md-6 mb-6">
           <div class="card h-100" style="border: 1px solid black; padding: 1em">
             <div class="card-body">
@@ -583,15 +582,31 @@
             </div>
           </div>
         </div>
-        <!-- /.col-md-4 -->
+        <!-- /.col-md-6 -->
         <div class="col-md-6 mb-6">
           <div class="card h-100" style="border: 1px solid black; padding: 1em">
             <div class="card-body">
-              <h2 class="card-title">Create Review Cards</h2>
-                <div id="deckContents"></div>
-                <div id="userDeck" style="display: none"></div>
+              <h2 class="card-title">Decimal-Binary Conversions</h2>
+            <span class='highlight' style="float: left">Binary to Decimal Conversions Practice</span><br>
+        <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
+        <label>Enter the Decimal Equivalent: </label><input type='number' id='bToDResult' class='form-control' style='width: 20%; display: inline' placeholder='Decimal'><button class='btn btn-primary' id='bToDConvert'>Correct?</button><br><div id='isBToDCorrect'></div>
+
+        <span class='highlight' style="float: left">Decimal to Binary Conversions Practice</span><br>
+        <label>Enter a Decimal Number: </label>
+            <input type='number' id='dec' class="form-control" style="width: 20%; display: inline" placeholder='Decimal'>
+            <br>
+            <label>Enter the Binary Equivalent: </label>
+            <input type='text' id='dToBResult' class="form-control" style="width: 20%; display: inline" placeholder="Binary">
+            <button class='btn btn-primary' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
+            <div id='isDToBCorrect'></div>
+            <br>
             </div>
             <div class="card-footer">
+              <div id="bdModal"></div>
+              <div id="bdModalButton"></div>
+                
+              <div id="dbModal"></div>
+              <div id="dbModalButton"></div>
             </div>
           </div>
         </div>
