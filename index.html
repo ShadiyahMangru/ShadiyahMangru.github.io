@@ -1,29 +1,202 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Shadiyah's Website</title>
+  <title>Shadiyah's Development Site</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel='stylesheet' href="css/MangruDevSiteStyle.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<style>
-    body{
-        background-image: url('Images/background.jpg');
-        height: 100%; 
-        background-position: center;
-        background-size: cover;
+  <style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }  
+  .jumbotron {
+      background-image: url('Images/background.jpg');
+      height: 100%; 
+      background-position: center;
+      background-size: cover;
+      border-bottom: 1.2px solid black;
+      /*background-color: #812056;*/
+      color: black;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+      font-weight: 900;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #7f4e96;
+      font-size: 50px;
+  }
+  .logo {
+      color: #7f4e96;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #f4511e;
+  }
+  .carousel-indicators li {
+      border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+      background-color: #f4511e;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #812056; 
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #812056;
+      background-color: #fff !important;
+      color: #812056;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #7f1174!important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #812056;
+      color: #fff;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #812056 !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #812056;;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
     } 
-    .nav li a:hover{
-        background-color: #ffffff;
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
     }
-.scroll-up {
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+      
+    .scroll-up {
  background-color: black;
- height: 200px;	
+ height: 400px;	
  width: 100%;
  overflow: hidden;
  position: relative;
@@ -68,16 +241,32 @@
  transform: translateY(-100%); 
  }
 }
-    
-    
-    
-    
-</style>
-    
+      #calculate{
+      background-image: url('Images/background.jpg');
+      height: 100%; 
+      background-position: center;
+      background-size: cover;
+      }
+#PTriangle{
+    margin-top: .5em;
+    text-align: center;
+}    
+
+    #PTriangle >label{
+    width: 6%;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F8ECEC;
+    border: solid black 1px;
+    text-align: center;
+    padding: .5em;
+    }                 
+  </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
- <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -85,226 +274,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.html">Homepage</a>
+      <a class="navbar-brand" href="#myPage">HOME</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li id="subN" class="dropdown"></li>
-        <li><a href="mailto:shadiyahmangru@gmail.com">By Shadiyah Mangru</a></li>
+        <li><a href="#utube">WATCH</a></li>
+        <li><a href="#play">PLAY</a></li>
+        <li><a href="#calculate">CALCULATE</a></li>
+        <li><a href="#train">TRAIN</a></li>
+        <li><a href="#sort">SORT</a></li>
       </ul>
     </div>
   </div>
-</nav>      
-    
-<div id="main">
-	<div><h1 id="mainTitle"><img src="Images/atComputer.png" width="80px">My Code Development Website</h1>
-        <h4><strong>Explore the works in progress below</strong></h4>
-	</div>
-	
-    <div id="mainNav" class="row" style="padding: .5em; margin-left: 4em; margin-right: 1em; padding-top: 8em; border-top: 2px solid black; width: 90%; margin-right: auto; margin-left: auto; margin-top: 4em;">
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: 2.5em' onclick="displayPage('#UTube')">Watch</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#Game')">Play</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#StudyPage')">Train</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#Calculator')">Calculate</button>
-        <button class='btn btn-primary' style='text-align: center; font-size: 200%; float: left; background-color: #993366; box-shadow: 6px 6px 4px silver; width: 16%; border: 1px solid white; padding: .3em; margin-left: .75em' onclick="displayPage('#BSort')">Sort</button>
-        
-    </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1 style="font-weight: 900"><img src="Images/atComputer.png" width="80px">SHADIYAH'S CODING PROTOTYPES</h1> 
 </div>
-    
-<div class="text-left">   
-<!-- ********* begin contents of Study tab ********* --> 
-<div id="StudyPage" class="subPage">
-    <h1 id="decBin">Train</h1><br>    
-    <div class="pageContents">
-        <h2 style="color: #993366">Convert between Binary and Decimal</h2>        
-        <div class='row' style="margin-left: 1em">
-        <div class='columnL'>
-        <span class='highlight'>Binary to Decimal Conversions Practice</span><br>
-        <label>Enter a Binary Number: </label><input type='number' id='bin' class='form-control' style='width: 20%; display: inline' placeholder='Binary'><br>
-        <label>Enter the Decimal Equivalent: </label><input type='number' id='bToDResult' class='form-control' style='width: 20%; display: inline' placeholder='Decimal'><button class='btn btn-primary' id='bToDConvert'>Correct?</button><br><div id='isBToDCorrect'></div>
-        <br><br>
-        <div id="bdModal"></div>
-        <div id="bdModalButton"></div>
-            
-        </div>
-        <div class='columnR'><span class='highlight'>Decimal to Binary Conversions Practice</span><br>
-            <label>Enter a Decimal Number: </label>
-            <input type='number' id='dec' class="form-control" style="width: 20%; display: inline" placeholder='Decimal'>
-            <br>
-            <label>Enter the Binary Equivalent: </label>
-            <input type='text' id='dToBResult' class="form-control" style="width: 20%; display: inline" placeholder="Binary">
-            <button class='btn btn-primary' id='dToBConvert' onclick='decToBinary($("#dec").val())'>Correct?</button><br>
-            <div id='isDToBCorrect'></div>
-            <br><br>
-            <div id="dbModal"></div>
-            <div id="dbModalButton"></div>
-            
-        </div>
-        </div>
-    
-    <br><br><br>        
 
-    <h2 style="color: #993366">Sum the First n Natural Numbers</h2><br> 
-        <div id='GaussModalButton'></div> 
-        <div id="GaussModalDiv"></div>
-        <div id='GCalc'>
-        Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
-        <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
-        <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
-        <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
-        <div id='ShowSum' class='StyleSum'></div>
-        </div>
-    <br>
-    <h2 style="color: #993366">Sum Rows of Pascal's Triangle</h2><br>
-        <div id="PascalReviewModalDiv"></div>
-        <div id="PascalReviewButton"></div>
-        
-        <div id="PascalModalDiv"></div>
-        <div id="PascalModalButton"></div>
-        <br>
-        
-        <div id="PTSum"></div>
-    
-<br>
-    <h2 style="color: #993366">Create Review Cards</h2><br>
-            
-        <div id="deckContents"></div>
-        <div id="userDeck" style="display: none"></div>
-    </div>    
-</div><!-- ********** end contents of Study tab ********** -->     
-
-    
-  
-<!-- ********** begin Data Set Sorter(s) tab contents ********** -->
-<div id="BSort" class="subPage">
-    <h1>Sort</h1>
-            
-    <div class="pageContents">
-    <h2 style="color: #993366">Bubble Sort Your Data Set</h2>
-        <div id="inputDataSet"></div><br>
-        <div id='dataSet' class='siteOutput'></div>
-         <br><br><button class='btn btn-primary' onclick='bubbleSort(ds);'>Bubble Sort</button><br><br>
-        <div id="bubbleSorted" class="siteOutput"></div>
-    </div>
-</div> <!-- ********** end Data Set Sorter(s) tab contents ********** -->
- 
-    
-<!-- ********** begin contents of Play tab ********** --> 
-<div id="Game" class="subPage">
-    <h1>Play</h1>
-    
-    <div class="pageContents"> 
-    <h2 style="color: #993366">Hangman</h2>
-        <div id="HMButtons"></div>
-        <div id="HMPic"></div>
-        <div id='HMAnswerFormat'></div><br>
-        <div id="HMguessed"></div><br>
-        <div id="HMgetLDiv"></div>
-        <div id="HMfeedback"></div>
-        <div id="HMEnd"></div>
- <br><br>
-            
-
-    <h2 style="color: #993366">War</h2><br>   
-        <!--<div id='WRules'></div>--> 
-        <div class="row"> 
-        <div class="column1">
-        <span id="WGamePic"><img src="Images/cardDeck.png"></span>
-        <div id='youCPic'>
-        <p id='youLabel'>You: </p>
-        <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
-        </div>
-
-        <div id='dealerCPic'>  
-        <p id='dealerLabel'>The Dealer: </p>
-        <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
-        </div>
-        </div>
-            
-        <div id="WarModalDiv"></div>
-        <div id="WarModalButton"></div>
-
-        <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
-        <div id='WScore'></div>
-        <div id='warResults' style='color: #3335B2'></div>
-        <button class='btn btn-primary' id='WARplayAgain' style='background-color: #A3206F' onclick='playWarAgain();'>Load A New Game</button>    
-        </div>
-    <br><br> 
-        
-    <h2 style="color: #993366">Guess The Number!</h2>
-    <div id="guessN"></div>
-    <div id="aGuessed"></div>
-    <div id="feedback" class="siteOutput"></div><br>  
-    
-<br><br>
-    <h2 style="color: #993366">Add it Up!</h2>
-    <div id="rules"></div>
-    <br><div id="ModalB"></div>
-    <div id="key"></div>
-    <div class="row">
-    <div id="winLose" class="columnR"></div>
-    <div class="columnL">
-    <div id="gb"></div>
-    <div id="mySolution"></div><br>
-    </div>
-    </div>
-        
-    </div>
-</div><!-- ********** end contents of Play tab ********** -->    
-    
-<!-- ********** begin contents of Calculate tab ********** -->   
-<div id="Calculator" class="subPage">    
-    
-    <h1>Calculate</h1>            
-    <div class="pageContents">
-    <h2 style="color: #993366">Fibonacci Numbers</h2>
-     
-    <!--fibonacci modal and modal button-->
-    <div id='FibModal'></div> 
-    <div id='FibModalButton'></div>
-        
-    <label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''> 
-    <button class='btn btn-primary' id='fB'>Get nth term</button><button class='btn btn-primary' id='fBp'>Get first n terms</button>
-    <div id='nthTerm' class='siteOutput'></div>
-    <div id='nTerms' class='siteOutput'></div>     
-    <br><br>
-        
-    <h2 style="color: #993366">Greatest Common Divisor</h2>      
-    
-    <!--GCD modal and modal button-->
-        <div id="GCDModalDiv"></div>
-        <div id="GCDModalButton"></div>
-        
-    <div id="gcdE"></div>
-    <br><br>
-        
-    <h2 style="color: #993366">Factorials!</h2>
-    
-        <!--factorials modal and modal button-->
-        <div id="facModal"></div>
-        <div id='facModalButton'></div>       
-        
-        <label class='siteLabel'>Enter a Natural Number: </label><input id='Fnum' class='form-control' style='width: 40%; display: inline' type='number'><button onclick='getFactorial()' class='btn btn-primary'>!</button><label> = </label><span id='outputFactorial' class='highlight'></span>
-    </div>
-        
-    </div><!-- ********** end contents of Calculators tab ********** -->         
-   
-    
-<!-- ********** begin UTube tab contents ********** -->
-<div id="UTube" class="subPage">
-    <h1>UTube</h1>
-          
-    <div class="pageContents">
+<!-- Container (UTube Section) -->
+<div id="utube" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>UTube</h2>
     <h2 style="color: #993366">Lyrics Player</h2>
-        <div class="row">
-        <div class="columnL" style="padding-left: 1.5em"><br>
+        
         <div id="screen" class="scroll-up">
         </div>
         <br>
-        <button class='btn btn-primary' style='background-color: #5E2390; width: 20%' id="clear" >Clear</button><br>
-        </div>
-        <div class="columnR">
-            <h4 style="float: left">Select a Song Intro:</h4>
+        <button class='btn btn-primary' style='background-color: #336f0d; width: 20%' id="clear" >Clear</button><br>
+    </div>
+    <div class="col-sm-4">
+            <br><br><br><br>
+            <h4>Select a Song Intro:</h4>
             <button class='btn btn-primary' style='background-color: #7F1174' id="Weezer">My Name is Jonas by Weezer</button><br><br> 
             <button class='btn btn-primary' style='background-color: #7F1174' id="PJHarvey">You Said Something by PJ Harvey</button><br><br>    
             <button class='btn btn-primary' style='background-color: #7F1174' id="TalkingHeads">Once in a Lifetime by Talking Heads</button>
@@ -315,23 +317,243 @@
             <br><br>
             <button class='btn btn-primary' style='background-color: #7F1174' id="NewOrder">Bizarre Love Triangle by New Order</button>
             <br><br>
-            
-        </div>
-        </div><br><br>
     </div>
-</div> <!-- ********** end UTube tab contents ********** -->    
-    
-    
-</div> 
+  </div>
+</div>
 
-<br><br><br><br>   
-<footer class="container-fluid text-center">
-  <a href="#myPage" title="To Top"><br>
-    <span class="glyphicon glyphicon-chevron-up" style="font-size: 150%; font-weight: 700; color: #431E54"></span>
+
+
+<!-- Container (Play Section) -->
+<div id="play" class="container-fluid text-center" style="background-color: #f1f1f3">
+<br>
+  <h2>Play (COMING SOON!)</h2>
+  <h4>Select an educational game from the choices below</h4>
+<br><br><br>
+  <div class="row slideanim">
+    <div class="col-sm-3">
+      <span class="logo-small"><img src='Images/stickman.png' style="width: 25%"></span>
+      <h4>HANGMAN</h4>
+      <p>Try to guess the mystery word</p>
+    </div>
+    <div class="col-sm-3">
+      <span class="logo-small"><img src="Images/cardDeck.png" style="width: 25%"></span>
+      <h4>WAR</h4>
+      <p>Player with the most high cards wins</p>
+    </div>
+    <div class="col-sm-3">
+      <span class="logo-small"><img src="Images/guess.png" style="width: 13%"></span>
+      <h4 style="color:#303030;">NUMBER GUESS</h4>
+      <p>Try to guess the mystery number</p>
+    </div>
+    <div class="col-sm-3">
+      <span class="logo-small"><img src="Images/robot.png" style="width: 13%"></span>
+      <h4>ADD IT UP!</h4>
+      <p>Arrange the numbers in a winning combination</p>
+    </div>
+  </div>
+    <br><br><br>
+</div>
+
+
+<!-- Container (Calculate Section) -->
+<div id="calculate" class="container-fluid">
+  <div class="text-center">
+    <h2>Calculate</h2>
+    <h4>Choose from the options below</h4>
+  </div>
+  <div class="row slideanim">
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Factorials!</h1>
+        </div>
+        <div class="panel-body">
+         <!--factorials modal and modal button-->
+        <div id="facModal"></div>
+        <div id='facModalButton'></div>       
+        
+        <label class='siteLabel'>Enter a Natural Number: </label><input id='Fnum' class='form-control' style='width: 40%; display: inline' type='number'><button onclick='getFactorial()' class='btn btn-primary'>!</button><label> = </label><span id='outputFactorial' class='highlight'></span>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>      
+    </div>     
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Greatest Common Divisor</h1>
+        </div>
+        <div class="panel-body">
+          <!--GCD modal and modal button-->
+        <div id="GCDModalDiv"></div>
+        <div id="GCDModalButton"></div>
+        <div id="gcdE"></div>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>      
+    </div>       
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Fibonacci Numbers</h1>
+        </div>
+        <div class="panel-body">
+          <!--fibonacci modal and modal button-->
+    <div id='FibModal'></div> 
+    <div id='FibModalButton'></div>
+        
+    <label class='siteLabel'>Enter n value:</label> <input class='form-control' style='width: 20%; display: inline' id='nVal' type='text' value=''> 
+    <button class='btn btn-primary' id='fB'>Get nth term</button><button class='btn btn-primary' id='fBp'>Get first n terms</button><br><br>
+    <div id='nthTerm' class='siteOutput'></div>
+    <div id='nTerms' class='siteOutput'></div>   
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>      
+    </div>    
+  </div>
+</div>
+
+<!-- Container (Train Section) -->
+<div id="train" class="container-fluid text-center">
+  <h2>Train</h2>
+  <h4>Select a skill-development option from the choices below</h4>
+  <div class="row slideanim">
+    <div class="row">
+        <div class="col-md-6 mb-6">
+          <div class="card h-100" style="border: 1px solid black; padding: 1em">
+            <div class="card-body">
+              <h2 class="card-title">Decimal-Binary Conversions</h2>
+              <p class="card-text">COMING SOON!</p>
+            </div>
+            <div class="card-footer">
+              <div id="bdModal"></div>
+              <div id="bdModalButton"></div>
+                
+              <div id="dbModal"></div>
+              <div id="dbModalButton"></div>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-6 mb-6">
+          <div class="card h-100" style="border: 1px solid black; padding: 1em">
+            <div class="card-body">
+              <h2 class="card-title">Sum of First n Natural Numbers</h2>
+        <div id='GCalc'>
+        Practice summing the first n natural numbers, for a randomly generated n-value (2 < n < 101).<br> 
+        <button id="newN" class="btn btn-success" style="background-color: #A3206F; display: none" onclick="getRandNVal()">Reset n value</button>
+        <label class='siteLabel'>Let n = <span class='nRandVal'></span>.</label>
+        <br><label class='siteLabel'>1 + 2 + ... + <span id="nMinus1"></span> + <span class='nRandVal'></span> = </label><input id='userGSum' class="form-control" style="width: 20%; display: inline" type="number"><button class='btn btn-primary' onclick="sumCorrect()">Correct?</button><br>
+        <div id='ShowSum' class='StyleSum'></div>
+        </div>
+            </div><br>
+            <div class="card-footer">
+                
+                <div id="GaussModalDiv"></div>
+                <div id='GaussModalButton'></div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row slideanim">
+    <div class="row">
+        <div class="col-md-6 mb-6">
+          <div class="card h-100" style="border: 1px solid black; padding: 1em">
+            <div class="card-body">
+              <h2 class="card-title">Sum Rows of Pascal's Triangle</h2>
+                
+        <div id="PTSum"></div>
+            </div>
+            <div class="card-footer">
+                <div id="PascalReviewModalDiv"></div>
+                <div id="PascalReviewButton"></div>
+
+                <div id="PascalModalDiv"></div>
+                <div id="PascalModalButton"></div>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-6 mb-6">
+          <div class="card h-100" style="border: 1px solid black; padding: 1em">
+            <div class="card-body">
+              <h2 class="card-title">Create Review Cards</h2>
+                <div id="deckContents"></div>
+                <div id="userDeck" style="display: none"></div>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+    
+<div class="container-fluid bg" id="sort" style="background-color: ghostwhite">
+  <div class="row">
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-transfer logo-small slideanim"></span>
+    </div>
+    <div class="col-sm-10">
+      <h2>SORT</h2><br>    
+    <h2 style="color: #993366">Bubble Sort Your Data Set</h2>
+        <div id="inputDataSet"></div><br>
+        <div id='dataSet' class='siteOutput'></div>
+         <br><br><button class='btn btn-primary' onclick='bubbleSort(ds);'>Bubble Sort</button><br><br>
+        <div id="bubbleSorted" class="siteOutput"></div>
+
+    </div>
+  </div>
+<br><br>
+</div>
+
+<footer class="container-fluid text-center" style="background-color: black">
+  <a href="#myPage" title="To Top">
+    <span style="color: white; font-size: 200%" class="glyphicon glyphicon-chevron-up"></span>
   </a>
-	<br>
+  <p style="color: white">Website By <a style="color: white" href="mailto: shadiyahmangru@gmail.com" title="contact Shadiyah Mangru">Shadiyah Mangru</a></p>
 </footer>
- 
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 <script type="text/javascript" src="scripts/functions.js"></script>    
 <!--link to my UTube JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/UTube.js"></script>     
@@ -342,6 +564,6 @@
 <!--link to my Hangman, War, Number Guess, and Add It Up! JavaScript/jQuery source code-->
 <script type="text/javascript" src="scripts/Games.js"></script>    
 <!--link to my Binary-Decimal, Gauss, Pascal, Vocab JavaScript/jQuery source code-->
-<script type="text/javascript" src="scripts/Study.js"></script>       
+<script type="text/javascript" src="scripts/Study.js"></script>   
 </body>
 </html>
