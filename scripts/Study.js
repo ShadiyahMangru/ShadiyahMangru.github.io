@@ -165,7 +165,7 @@ $(document).ready(function(){
    
     //create row sum calculator
     $("#PTSum").html("Row Summation Practice:");
-       $("#PTSum").append("<br><sup>*</sup>remember Pascal's Triangle begins with Row 0.<br><button id='newNRow' class='btn btn-success' style='background-color: #A3206F; display: none' onclick='getRandRowVal()'>Reset n value</button><label>Let row number = <span id='rowNum' style='color: #147610'></span>.  </label><br><label>Enter row sum: </label> <input class='form-control' style='width: 40%; display: inline; color: #B74271' type='number' id='RowSumPT' placeholder='Row Sum'><button id='CheckPTSum' class='btn btn-primary'>Correct?</button><br><div id='PTFeedback' class='StyleSum'></div><br>");
+       $("#PTSum").append("<br><sup>*</sup>remember Pascal's Triangle begins with Row 0.<br><button id='newNRow' class='btn btn-success' style='background-color: #A3206F; display: none' onclick='getRandRowVal()'>Reset n value</button><br><label>Let row number = <span id='rowNum' style='color: #147610'></span>.<br><br>  </label><br><label>Enter row sum: </label> <input class='form-control' style='width: 40%; display: inline; color: #B74271' type='number' id='RowSumPT' placeholder='Row Sum'><button id='CheckPTSum' class='btn btn-primary'>Correct?</button><br><br><div id='PTFeedback' class='StyleSum'></div><br>");
     
      getRandRowVal();
     
@@ -245,14 +245,14 @@ function done(){
                 $("#studyCard").css("display", "block");
                 $("#studyCard").html("You have studied all of the terms and definitions entered!");
                 $("#studyCard").append("<br><br><button type='button' class='btn btn-primary' style='background-color: #dd8c10' onclick='repeatDeck()'>Review Again?</button>");
-                $("#studyCard").append("<br><br><button type='button' class='btn btn-primary' style='background-color: #dd8c10' onclick=''>Create Another Deck? (COMING SOON!)</button>");
+                $("#studyCard").append("<br><br><button type='button' class='btn btn-primary' style='background-color: #dd8c10' onclick=''>Create Another Deck? (COMING SOON!)</button><br><Br>");
                 $("#showDef").css("display", "none"); 
             }
         }    
 
 $(document).ready(function(){ 
    $("#deckContents").html("");
-   $("#deckContents").append("<label class='siteLabel'>Enter term: </label><input id='term' class='form-control' style='width: 20%; display: inline; color: #272A9D'><br><label class='siteLabel'>Enter definition: </label><input id='defn' class='form-control' style='width: 20%; display: inline; color: #272A9D'><br><br><button id='addToDeck' class='btn btn-primary'>Submit</button><div id='cardCounter'></div><div id='SCfeedback'></div>"); 
+   $("#deckContents").append("<label class='siteLabel'>Enter term: </label><input id='term' class='form-control' style='width: 20%; display: inline; color: #272A9D'><br><br><label class='siteLabel'>Enter definition: </label><input id='defn' class='form-control' style='width: 20%; display: inline; color: #272A9D'><br><br><button id='addToDeck' class='btn btn-primary'>Submit</button><br><br><div id='cardCounter'></div><div id='SCfeedback'></div>"); 
     
     $("#userDeck").html("");
     $("#userDeck").append("<div id='studyCard'></div><div id='showDef'></div>");
