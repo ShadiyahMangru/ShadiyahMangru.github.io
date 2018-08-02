@@ -194,7 +194,7 @@
     }
   }
       
-.scroll-up {
+    .scroll-up {
  background-color: black;
  height: 400px;	
  width: 100%;
@@ -261,7 +261,81 @@
     border: solid black 1px;
     text-align: center;
     padding: .5em;
-    }                 
+    } 
+      
+      
+      
+#warResults{
+        margin-top: 1em;  
+        font-size: 26px; 
+        color: crimson; 
+        font-weight: 600; 
+        font-family: Arial;
+    }  
+    #WScore{
+        width: 30%;
+    }
+    #war{
+        padding: .5em;
+    }
+    #WARplayAgain{
+        margin-left: .5em; 
+        margin-top: 1em; 
+        display: none;
+    }
+    #youCPic{
+        display: none; 
+        margin-top: -.5em;
+    }
+    #dealerCPic{
+        display: none; 
+        margin-left: 11em; 
+        margin-top: -.5em;
+    }
+    #youLabel, #dealerLabel{
+        width: 6em;
+    }
+    #youCBorder, #dealerCBorder{
+        height: 280px; 
+        width: 200px; 
+        border: 1px solid black; 
+        border-radius: 8px; 
+        box-shadow: 4px 4px 4px darkgrey;
+        padding-top: .4em;
+        padding-right: .2em;
+        background-color: white;
+    }
+    #cardNumY1{
+        font-size: 36px; 
+        padding-left: .3em; 
+        color: red;
+    }
+    #cardNumY2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 40px; 
+        color: red;
+    }
+    #cardNumD1{
+        font-size: 36px; 
+        padding-left: .3em;
+    }
+    #cardNumD2{
+        font-size: 36px; 
+        padding-right: .25em; 
+        margin-left: 162px; 
+        padding-top: 40px;
+    }
+    #youCardDisplay, #dealerCardDisplay{
+        margin-top: 30px; 
+        margin-left: 60px;
+    }
+    .cardPics{
+        width: 150%; 
+        margin-top: .2em; 
+    }        
+      
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -327,7 +401,7 @@
 <div id="play" class="container-fluid text-center" style="background-color: #f1f1f3">
 <br>
   <h2>Play (COMING SOON!)</h2>
-  <h4>Select an educational game from the choices below</h4>
+  <h4>Refocus with a game</h4>
 <br><br><br>
   <div class="row slideanim">
     <div class="col-sm-3">
@@ -337,7 +411,7 @@
     </div>
     <div class="col-sm-3">
       <span class="logo-small"><img src="Images/cardDeck.png" style="width: 25%"></span>
-      <h4>WAR</h4>
+      <h4><a onclick="$('#currentGame').toggle()";>WAR</a></h4>
       <p>Player with the most high cards wins</p>
     </div>
     <div class="col-sm-3">
@@ -352,6 +426,39 @@
     </div>
   </div>
     <br><br><br>
+    
+<div id="currentGame" style="text-align: left; border-top: 1px solid black">
+<h2 style="color: #993366">War</h2><br>    
+        <div class="row">
+        <div class="col-sm-8">
+        <span id="WGamePic"><img src="Images/cardDeck.png"></span>
+        <div id='youCPic'>
+        <p id='youLabel'>You: </p>
+        <div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div>
+        </div>
+
+        <div id='dealerCPic'>  
+        <p id='dealerLabel'>The Dealer: </p>
+        <div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div>
+        </div>
+        </div>
+        
+        <div class="col-sm-4">
+        <div id="WarModalDiv"></div>
+        <div id="WarModalButton"></div>
+
+        <button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button>
+        <div id='WScore'></div>
+        <div id='warResults' style='color: #3335B2'></div>
+        <button class='btn btn-primary' id='WARplayAgain' style='background-color: #A3206F' onclick='playWarAgain();'>Load A New Game</button>    
+        </div>
+        </div>
+    
+    
+</div>    
+    
+    
+    
 </div>
 
 
