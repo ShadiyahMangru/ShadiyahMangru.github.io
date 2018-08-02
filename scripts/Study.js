@@ -220,7 +220,7 @@ function createDeck(){
 
 function done(){
     $("#SCfeedback").html("");
-    $("#SCfeedback").append("<button onclick='createDeck()' class='btn btn-primary'>Create Study Deck?</button>");
+    $("#SCfeedback").append("<button onclick='createDeck()' class='btn btn-primary'>Create Study Deck?</button><button onclick='' class='btn btn-primary'>Create Shuffled Study Deck? (COMING SOON!)</button>");
 }  
 
         function revealDef(){
