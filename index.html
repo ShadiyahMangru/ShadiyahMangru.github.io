@@ -338,8 +338,48 @@
         width: 150%; 
         margin-top: .2em; 
     }        
-      
-  </style>
+
+#HMguessed{
+    font-weight: 600; 
+    font-size: 18px; 
+    border: 1px solid navy; 
+    border-radius: 6px; 
+    padding: 1em; 
+    display: none; 
+    color: mediumblue;
+    width: 80%;
+}       
+#HMfeedback{
+    color: purple; 
+    font-weight: 600; 
+    font-size: 18px;
+}
+#HMAnswerFormat{
+    font-weight: 600; 
+    font-size: 24px;
+}
+#HMPic{
+    width: 20%;
+    float: right;
+    margin-top: -11em;
+    margin-right: 5em;
+}
+#HMGetLetter{
+    color: navy;
+    display: none;
+}
+#HMSubmit, #HMPlayAgain, #HMLetterGuess, .aTab{
+    display: none;
+}
+#HMCelebrate{
+    display: none; 
+    margin-top: -4.5em;
+}
+#HMSad{
+    display: none; 
+    width: 20%;
+}       
+</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -409,7 +449,7 @@
   <div class="row slideanim">
     <div class="col-sm-3">
       <span class="logo-small"><img src='Images/stickman.png' style="width: 25%"></span>
-      <h4>HANGMAN</h4>
+        <h4><a onclick="$('#anotherGame').toggle()";>HANGMAN</a></h4>
       <p>Try to guess the mystery word</p>
     </div>
     <div class="col-sm-3">
@@ -462,8 +502,27 @@
     
     
     
-</div>
 
+
+    
+<div id="anotherGame" style="text-align: left; border-top: 1px solid black; display: none">
+<h2 style="color: #993366">Hangman</h2><br>    
+        <div class="row">
+        <div class="col-sm-5">
+        <div id="HMButtons"></div>
+        <div id="HMPic"></div>
+        <div id='HMAnswerFormat'></div><br>
+        <div id="HMguessed"></div><br>
+        </div>
+        <div class="col-sm-7">
+        <div id="HMgetLDiv"></div>
+        <div id="HMfeedback"></div>
+        <div id="HMEnd"></div>
+        </div>
+        </div>
+</div>
+      
+</div>      
 
 <!-- Container (Calculate Section) -->
 <div id="calculate" class="container-fluid">
