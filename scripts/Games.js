@@ -59,7 +59,7 @@ function guessLetter(){
     if(guess.length==1){
         //if current letter has already been guessed during this round, retrieve another guess from user
         if(alreadyGuess.includes(guess)==true){
-            $("#HMfeedback").html("You have already guessed " + guess + ".  Try again!"); 
+            $("#HMfeedback").html("You have already guessed " + guess + ".  You still have " + lives + " guesses remaining.  Try again!"); 
             $("#HMLetterGuess").val("");
         }
         //if current letter guess is in word, update mystery word format key and reveal to user
@@ -77,7 +77,7 @@ function guessLetter(){
         
         //ask user for another letter guess, if answer key still contains dashes
             if(answerFormat.includes("_ ")==true){
-                    $("#HMfeedback").html("Good Work!  Guess Again!");
+                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining");
             }
         //output winner message if no dashes remain in answer key and load a new round of game
             else{
