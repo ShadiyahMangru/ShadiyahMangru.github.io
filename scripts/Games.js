@@ -397,12 +397,12 @@ $(document).ready(function(){
 //Number Guess Game
 //*************************************
 var computerNumber;
-var tries;
-var alreadyG
+var remGuess;
+var alreadyG;
 	    //load a new game
     function loadGame(){
 		computerNumber = getRandomInt(1, 101);
-		tries = 0;
+        remGuess=10;
         alreadyG = [];
         $("#newGame").css("display", "none");
         $("#feedback").html("");
@@ -414,6 +414,7 @@ var alreadyG
         $("#aGuessed").css("padding-top", ".75em");
         $("#feedback").css("font-size", "110%");
         $("#feedback").css("color", "#0047B3");
+        $("#submitG").prop("disabled", false);
     }
 
     //function to generate a random integer between two values
@@ -422,58 +423,97 @@ var alreadyG
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min)) + min; //max is exclusive and the min is inclusive
 	}
+
+    //only accepts numbers as input
+    var aNumber;
+    function checkNGInp(){
+        aNumber = true;
+        var inp=$("#guess").val();
+        var regex=/^[0-9]+$/;
+        if (!inp.match(regex))
+        {
+            $("#feedback").html("Must input a number.  Try Again!");
+            return aNumber = false;
+        }
+    }
 //****************************************
 //jQuery function for Number Guessing Game
 //****************************************
 $(document).ready(function(){
+ newModal("#NGModalDiv", "NGModal", "Number Guess!", "<div id='guessN'></div><div id='aGuessed'></div><div id='feedback' class='siteOutput'></div>", "#NGModalButton", "Number Guess"); 
+$("#NGModalButton").click(function(){
+    loadGame();
+}); 
+    
 //display game directions, guess input area and 'correct?' button 
 $("#guessN").html("Directions: The computer is thinking of a number between 1 and 100, inclusive.  You have at most 10 guesses.");
 $("#guessN").append("<br><br><label class='siteLabel'>Guess: </label><input type='number' id='guess' class='form-control' style='width: 20%; display: inline'><button id='submitG' class='btn btn-primary'>Correct?</button><button id='newGame' onclick='loadGame()' class='btn btn-primary' style='background-color: #A3206F; display: none; margin-left: 1em'>Play Again!</button><br>"); 
+      
+
+//loadGame();    
     
-
-loadGame();	
-
-    //checks if guess is correct and provides user with feedback
+//checks if guess is correct and provides user with feedback
     $("#submitG").click(function() {
         var repeat=false;
 		var playerGuess = $("#guess").val();
 		playerGuess = parseInt(playerGuess);
+        computerNumber = parseInt(computerNumber);
+        checkNGInp();
         if(alreadyG.includes(playerGuess)==true){
             repeat=true;
+        }
+        else if(aNumber===false){
+           $("#feedback").html("<br><span style='color: #d70000'>You may only input numbers.  You still have " + remGuess + " guesses remaining.  Try Again!</span>"); 
+           $("#guess").val("");
         }
         else{
         alreadyG.unshift(playerGuess);
         $("#aGuessed").html("Previous Guesses: " + alreadyG.join(", "));
-		++tries;
+		remGuess--;
         }
-        computerNumber = parseInt(computerNumber);
-		var remGuess = 10-tries;
-		if(playerGuess == computerNumber && tries < 10){
-			$("#feedback").html("<br>Me-wow!  That is correct! The number was " + computerNumber + " and it only took you " + tries + " tries!");
+		if(playerGuess===computerNumber && remGuess > 0){
+			$("#feedback").html("<br>Me-wow!  That is correct! The number was " + computerNumber + " and it only took you " + (10-remGuess) + " tries!");
             $("#feedback").append("<br><br><img src='Images/cat.png'>");
             $("#newGame").css("display", "inline-block");
             $("#guess").val("");
+            $("#submitG").prop("disabled", true);
 		}
-        else if(repeat==true){
+        else if(repeat===true){
            $("#feedback").html("<br><span style='color: #d70000'>You have already guessed " + playerGuess + ".  You still have " + remGuess + " guesses remaining.  Try Again!</span>"); 
            $("#guess").val("");
         }
-		else if(playerGuess !== computerNumber && tries < 10){
+		else if(playerGuess !== computerNumber && remGuess > 0){
 			if(playerGuess > computerNumber){
+            if(remGuess===10){
+                remGuess--;
+            }
 			$("#feedback").html("<br><span style='color: #118140'>LOWER than " + playerGuess + "...</span><br>" + remGuess + " guesses remaining!"); 
             $("#guess").val("");
 			}
 			else if(playerGuess < computerNumber){
+                if(remGuess===10){
+                remGuess--;
+                }
 				$("#feedback").html("<br><span style='color: #DB6F34'>HIGHER than " + playerGuess + "... </span><br>" + remGuess + " guesses remaining!");
                 $("#guess").val("");
 			}
 		}
-		else if(tries>9){
+		else if(remGuess===0){
 			$("#feedback").html("<br>You are out of guesses! The correct number was " + computerNumber +".");
             $("#newGame").css("display", "inline-block");
             $("#guess").val("");
 		}
-    });
+    }); 
+    
+    
+//submit input upon pressing enter key   
+$("#guess").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#submitG").click();
+    }
+});  
+    
+    
 });
 
 
