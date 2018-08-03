@@ -320,7 +320,7 @@ function splitDeck(){
     }
 
 $(document).ready(function(){
-    newModal("#WarModalDiv", "rulesModal", "Rules", "In this game, a standard 52-card deck is split between you and the dealer.  Press 'Play War!' to flip a card for each player.  The player with the high card wins that round.  Repeat this process until no cards remain and a winner is determined.  In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!", "#WarModalButton", "Show Rules");
+    newModal("#WModalDiv", "WModal", "War!", "<p>In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</p><span id='WGamePic'><img src='Images/cardDeck.png'></span><div id='youCPic'><p id='youLabel'>You: </p><div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div></div><div id='dealerCPic'><p id='dealerLabel'>The Dealer: </p><div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div></div><br><br><button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button><div id='WScore'></div><div id='warResults' style='color: #3335B2'></div><button class='btn btn-primary' id='WARplayAgain' style='background-color: #A3206F' onclick='playWarAgain();'>Load A New Game</button>", "#WModalButton", "War"); 
     
     $("#WScore").append("<br>Score: <br>You:<span id='youScore' style='float: right'>0</span><br>Dealer: <span id='dealerScore' style='float: right'>0</span>"); 
 
