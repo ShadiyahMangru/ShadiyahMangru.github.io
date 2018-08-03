@@ -500,8 +500,9 @@ $("#guessN").append("<br><br><label class='siteLabel'>Guess: </label><input type
 		}
 		else if(remGuess===0){
 			$("#feedback").html("<br>You are out of guesses! The correct number was " + computerNumber +".");
-            $("#newGame").css("display", "inline-block");
-            $("#guess").val("");
+            		$("#newGame").css("display", "inline-block");
+            		$("#guess").val("");
+	    		$("#submitG").attr("disabled", true);
 		}
     }); 
     
