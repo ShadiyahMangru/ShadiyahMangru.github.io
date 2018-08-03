@@ -44,9 +44,9 @@ function playGame(num){
         answerFormat[i] = "_ "
     }
     $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
-    $("#easy").prop("disabled", true);
-    $("#medium").prop("disabled", true);
-    $("#hard").prop("disabled", true);
+    $("#easy").attr("disabled", true);
+    $("#medium").attr("disabled", true);
+    $("#hard").attr("disabled", true);
     return mysteryWord;
 }              
 
@@ -72,15 +72,15 @@ function playAgain(){
     $("#HMLetterGuess").css("display", "none");
     $("#HMLetterGuess").val("");
     $("#HMSubmit").css("display", "none");
-    $("#HMSubmit").prop("disabled", false);
+    $("#HMSubmit").attr("disabled", false);
     $("#HMAnswerFormat").html("");
     $("#HMfeedback").html("");
     $("#HMPlayAgain").css("display", "none");
     $("#HMCelebrate").css("display", "none");
     $("#HMSad").css("display", "none");
-    $("#easy").prop("disabled", false);
-    $("#medium").prop("disabled", false);
-    $("#hard").prop("disabled", false);
+    $("#easy").attr("disabled", false);
+    $("#medium").attr("disabled", false);
+    $("#hard").attr("disabled", false);
     $("#HMguessed").css("display", "none");
     answerFormat = [];
 }
@@ -135,7 +135,7 @@ $("#HMSubmit").click(function(){
                 $("#HMCelebrate").css("display", "block");
                 $("#HMPlayAgain").css("display", "block");
                 $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
-                $("#HMSubmit").prop("disabled", true);
+                $("#HMSubmit").attr("disabled", true);
             }
         }   
         //if current letter guess not in word, decrease 'lives' by one
@@ -154,7 +154,7 @@ $("#HMSubmit").click(function(){
             //output mystery word and a game over message to user if no 'lives' remain; load another round of game
                 $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
                 $("#HMSad").css("display", "block");
-                $("#HMSubmit").prop("disabled", true);
+                $("#HMSubmit").attr("disabled", true);
                 $("#HMPlayAgain").css("display", "block");
             }
         }
@@ -250,7 +250,7 @@ function splitDeck(){
         if(cardsLeft===0){
             //disable war button when each 26 card pile has no cards remaining
             //display a results message -- congrats to winner
-            $("#war").prop("disabled", true);
+            $("#war").attr("disabled", true);
             if(youScore > dealerScore){
                 $("#warResults").html("YOU WIN!!!");
             }
@@ -355,7 +355,7 @@ $(document).ready(function(){
         $("#youCPic").css("display", "none");
         $("#dealerCPic").css("display", "none");
         $("#WARplayAgain").css("display", "none");
-        $("#war").prop("disabled", false);
+        $("#war").attr("disabled", false);
         deck = [];
         dealerDeck = [];
         youDeck = [];
@@ -381,7 +381,7 @@ $(document).ready(function(){
         $("#youCPic").css("display", "none");
         $("#dealerCPic").css("display", "none");
         $("#WARplayAgain").css("display", "none");
-        $("#war").prop("disabled", false);
+        $("#war").attr("disabled", false);
         deck = [];
         dealerDeck = [];
         youDeck = [];
@@ -414,7 +414,7 @@ var alreadyG;
         $("#aGuessed").css("padding-top", ".75em");
         $("#feedback").css("font-size", "110%");
         $("#feedback").css("color", "#0047B3");
-        $("#submitG").prop("disabled", false);
+        $("#submitG").attr("disabled", false);
     }
 
     //function to generate a random integer between two values
@@ -459,7 +459,7 @@ $("#guessN").append("<br><br><label class='siteLabel'>Guess: </label><input type
 		playerGuess = parseInt(playerGuess);
         computerNumber = parseInt(computerNumber);
         checkNGInp();
-        if(alreadyG.includes(playerGuess)==true){
+        if(alreadyG.indexOf(playerGuess)!=-1){
             repeat=true;
         }
         else if(aNumber===false){
@@ -476,7 +476,7 @@ $("#guessN").append("<br><br><label class='siteLabel'>Guess: </label><input type
             $("#feedback").append("<br><br><img src='Images/cat.png'>");
             $("#newGame").css("display", "inline-block");
             $("#guess").val("");
-            $("#submitG").prop("disabled", true);
+            $("#submitG").attr("disabled", true);
 		}
         else if(repeat===true){
            $("#feedback").html("<br><span style='color: #d70000'>You have already guessed " + playerGuess + ".  You still have " + remGuess + " guesses remaining.  Try Again!</span>"); 
