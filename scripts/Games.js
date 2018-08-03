@@ -73,12 +73,12 @@ function playAgain(){
 
 
 $(document).ready(function(){
-newModal("#HMModalDiv", "HMModal", "Hangman!", "<div id='HMButtons'></div><div id='HMPic'></div><div id='HMAnswerFormat'></div><br><div id='HMguessed'></div><br><div id='HMgetLDiv'></div><div id='HMfeedback'></div><div id='HMEnd'></div>", "#HMModalButton", "Play Hangman"); 
+newModal("#HMModalDiv", "HMModal", "Code Word!", "<div id='HMButtons'></div><div id='HMPic'></div><div id='HMAnswerFormat'></div><br><div id='HMguessed'></div><br><div id='HMgetLDiv'></div><div id='HMfeedback'></div><div id='HMEnd'></div>", "#HMModalButton", "Code Word"); 
 //display select difficulty level choice buttons
 $("#HMButtons").html("Select Difficulty Level:");
 $('#HMButtons').append("<br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='btn btn-primary' style='background-color: #E56C1B' onclick='playGame(1);'>Easy</button><button id='medium' class='btn btn-primary' style='background-color: #1DAAAE' onclick='playGame(2);'>Medium</button><button id='hard' class='btn btn-primary' style='background-color: #159049' onclick='playGame(3);'>Hard</button><br><br>");
 //display initial image
-$("#HMPic").append("<img src='Images/stickman.png'>");   
+$("#HMPic").append("<img src='Images/codeWord.png'>");   
 //display means to get letter guess from user
 $("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input id='HMLetterGuess' class='form-control' style='width: 20%; display: none' type='text' value=''><button class='btn btn-primary' id='HMSubmit'>Submit</button><Br><br>");
         
@@ -109,7 +109,7 @@ $("#HMSubmit").click(function(){
         
         //ask user for another letter guess, if answer key still contains dashes
             if(answerFormat.indexOf("_ ")!=-1){
-                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining");
+                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining.");
             }
         //output winner message if no dashes remain in answer key and load a new round of game
             else{
@@ -128,7 +128,7 @@ $("#HMSubmit").click(function(){
              
             //retrieve another letter guess from user if 'lives' remain
             if(lives>0){
-                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining");
+                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining.");
                 $("#HMLetterGuess").val("");
             }
             else{
@@ -142,7 +142,7 @@ $("#HMSubmit").click(function(){
 });
       
 //display win/lose image; display play again button
-$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.gif'></div><div id='HMSad'><img src='Images/sad.svg'></div>");    
+$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.png' style='margin-left: 7em'></div><div id='HMSad'><img src='Images/sad.svg'></div>");   
 });
 
 
