@@ -51,6 +51,6 @@ $(document).ready(function(){
 		ctr++;
 		}
 		while(ctr<set.length);
-		$("#bubbleSorted").html("Bubble Sorted Data Set: | " + set.join(" | ") + " | ");
+		$("#bubbleSorted").html("Sorted Data Set: | " + set.join(" | ") + " | ");
 		return set;
 	}
