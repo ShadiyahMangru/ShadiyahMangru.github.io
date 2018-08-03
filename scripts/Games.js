@@ -59,6 +59,7 @@ function playAgain(){
     $("#HMLetterGuess").css("display", "none");
     $("#HMLetterGuess").val("");
     $("#HMSubmit").css("display", "none");
+    $("#HMSubmit").prop("disabled", false);
     $("#HMAnswerFormat").html("");
     $("#HMfeedback").html("");
     $("#HMPlayAgain").css("display", "none");
@@ -74,6 +75,9 @@ function playAgain(){
 
 $(document).ready(function(){
 newModal("#HMModalDiv", "HMModal", "Code Word!", "<div id='HMButtons'></div><div id='HMPic'></div><div id='HMAnswerFormat'></div><br><div id='HMguessed'></div><br><div id='HMgetLDiv'></div><div id='HMfeedback'></div><div id='HMEnd'></div>", "#HMModalButton", "Code Word"); 
+$("#HMModalButton").click(function(){
+    playAgain();
+});
 //display select difficulty level choice buttons
 $("#HMButtons").html("Select Difficulty Level:");
 $('#HMButtons').append("<br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='btn btn-primary' style='background-color: #E56C1B' onclick='playGame(1);'>Easy</button><button id='medium' class='btn btn-primary' style='background-color: #1DAAAE' onclick='playGame(2);'>Medium</button><button id='hard' class='btn btn-primary' style='background-color: #159049' onclick='playGame(3);'>Hard</button><br><br>");
@@ -117,6 +121,7 @@ $("#HMSubmit").click(function(){
                 $("#HMCelebrate").css("display", "block");
                 $("#HMPlayAgain").css("display", "block");
                 $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
+                $("#HMSubmit").prop("disabled", true);
             }
         }   
         //if current letter guess not in word, decrease 'lives' by one
@@ -135,6 +140,7 @@ $("#HMSubmit").click(function(){
             //output mystery word and a game over message to user if no 'lives' remain; load another round of game
                 $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
                 $("#HMSad").css("display", "block");
+                $("#HMSubmit").prop("disabled", true);
                 $("#HMPlayAgain").css("display", "block");
             }
         }
@@ -321,7 +327,20 @@ function splitDeck(){
 
 $(document).ready(function(){
     newModal("#WModalDiv", "WModal", "War!", "<p>In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!</p><span id='WGamePic'><img src='Images/cardDeck.png'></span><div id='youCPic'><p id='youLabel'>You: </p><div id='youCBorder'><div id='cardNumY1'>Q</div><img id='youCardDisplay'  src='Images/diamonds.png'><div id='cardNumY2'>Q</div></div></div><div id='dealerCPic'><p id='dealerLabel'>The Dealer: </p><div id='dealerCBorder'><div id='cardNumD1'>K</div><img id='dealerCardDisplay'  src='Images/clubs.png'><div id='cardNumD2'>K</div></div></div><br><br><button class='btn btn-primary' id='war' onclick='flipCard();'>Play War!</button><div id='WScore'></div><div id='warResults' style='color: #3335B2'></div><button class='btn btn-primary' id='WARplayAgain' style='background-color: #A3206F' onclick='playWarAgain();'>Load A New Game</button>", "#WModalButton", "War"); 
-    
+    $("#WModalButton").click(function(){
+        $("#warResults").html("");
+        $("#dealerScore").html("0");
+        $("#youScore").html("0");
+        $("#WGamePic").css("display", "block");
+        $("#youCPic").css("display", "none");
+        $("#dealerCPic").css("display", "none");
+        $("#WARplayAgain").css("display", "none");
+        $("#war").prop("disabled", false);
+        deck = [];
+        dealerDeck = [];
+        youDeck = [];
+        loadGame();
+    });
     $("#WScore").append("<br>Score: <br>You:<span id='youScore' style='float: right'>0</span><br>Dealer: <span id='dealerScore' style='float: right'>0</span>"); 
 
     function loadGame(){
