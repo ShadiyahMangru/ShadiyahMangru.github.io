@@ -50,6 +50,19 @@ function playGame(num){
     return mysteryWord;
 }              
 
+//only accepts letters as input
+var aLetter;
+function checkInp(){
+    aLetter = true;
+    var inp=$("#HMLetterGuess").val();
+    var regex=/^[a-zA-Z]+$/;
+    if (!inp.match(regex))
+    {
+        $("#HMfeedback").html("Must input a letter.  Try Again!");
+        return aLetter = false;
+    }
+}
+
 //********************************************************************************
 //function that returns user to word difficulty selection that precedes a new game
 //********************************************************************************
@@ -77,7 +90,7 @@ $(document).ready(function(){
 newModal("#HMModalDiv", "HMModal", "Code Word!", "<div id='HMButtons'></div><div id='HMPic'></div><div id='HMAnswerFormat'></div><br><div id='HMguessed'></div><br><div id='HMgetLDiv'></div><div id='HMfeedback'></div><div id='HMEnd'></div>", "#HMModalButton", "Code Word"); 
 $("#HMModalButton").click(function(){
     playAgain();
-});
+});    
 //display select difficulty level choice buttons
 $("#HMButtons").html("Select Difficulty Level:");
 $('#HMButtons').append("<br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='btn btn-primary' style='background-color: #E56C1B' onclick='playGame(1);'>Easy</button><button id='medium' class='btn btn-primary' style='background-color: #1DAAAE' onclick='playGame(2);'>Medium</button><button id='hard' class='btn btn-primary' style='background-color: #159049' onclick='playGame(3);'>Hard</button><br><br>");
@@ -92,7 +105,8 @@ $("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input
 $("#HMSubmit").click(function(){
     var guess = $("#HMLetterGuess").val();
     guess = guess.toUpperCase();
-    if(guess.length==1){
+    checkInp();
+    if(guess.length==1 & aLetter===true){
         //if current letter has already been guessed during this round, retrieve another guess from user
         if(alreadyGuess.indexOf(guess)!=-1){
             $("#HMfeedback").html("You have already guessed " + guess + ".  You still have " + lives + " guesses remaining.  Try again!"); 
@@ -146,7 +160,13 @@ $("#HMSubmit").click(function(){
         }
 } 
 });
-      
+//submit input upon pressing enter key   
+$("#HMLetterGuess").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#HMSubmit").click();
+    }
+});   
+    
 //display win/lose image; display play again button
 $("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.png' style='margin-left: 7em'></div><div id='HMSad'><img src='Images/sad.svg'></div>");   
 });
