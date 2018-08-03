@@ -5,7 +5,6 @@ function newModal(divID, modalID, modalTitle, modalContent, buttonID, buttonText
     $(buttonID).append("<button type='button' class='btn btn-primary' style='background-color: rebeccapurple' data-toggle='modal' data-target='#" + modalID + "'>" + buttonText + "</button><br><br>");
 }
 
-
 //function to display a site subPage upon homepage button click
 function displayPage(pageId){
     $("#mainNav").css("display", "none");
