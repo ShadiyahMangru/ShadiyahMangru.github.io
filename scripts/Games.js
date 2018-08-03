@@ -49,65 +49,6 @@ function playGame(num){
     $("#hard").prop("disabled", true);
     return mysteryWord;
 }              
-    
-//*************************************************************************
-//function to get letter guess from user and output feedback based on guess
-//*************************************************************************
-function guessLetter(){
-    var guess = $("#HMLetterGuess").val();
-    guess = guess.toUpperCase();
-    if(guess.length==1){
-        //if current letter has already been guessed during this round, retrieve another guess from user
-        if(alreadyGuess.includes(guess)==true){
-            $("#HMfeedback").html("You have already guessed " + guess + ".  You still have " + lives + " guesses remaining.  Try again!"); 
-            $("#HMLetterGuess").val("");
-        }
-        //if current letter guess is in word, update mystery word format key and reveal to user
-        else if(mysteryWord.includes(guess)==true & alreadyGuess.indexOf(guess)==-1){
-            alreadyGuess.unshift(guess);
-            for(var i=0; i < mysteryWord.length; i++){
-						if(mysteryWord.charAt(i)==guess.charAt(0)){
-							answerFormat[i] = guess + " ";	
-						}
-					}
-            $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
-            $("#HMLetterGuess").val("");
-            $("#HMguessed").css("display", "block");
-            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
-        
-        //ask user for another letter guess, if answer key still contains dashes
-            if(answerFormat.includes("_ ")==true){
-                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining");
-            }
-        //output winner message if no dashes remain in answer key and load a new round of game
-            else{
-                $("#HMfeedback").html("  YOU WON!!!");
-                $("#HMCelebrate").css("display", "block");
-                $("#HMPlayAgain").css("display", "block");
-                $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
-            }
-        }   
-        //if current letter guess not in word, decrease 'lives' by one
-        else if(mysteryWord.includes(guess)==false){
-            alreadyGuess.unshift(guess);
-            lives--;
-            $("#HMguessed").css("display", "block");
-            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
-             
-            //retrieve another letter guess from user if 'lives' remain
-            if(lives>0){
-                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining");
-                $("#HMLetterGuess").val("");
-            }
-            else{
-            //output mystery word and a game over message to user if no 'lives' remain; load another round of game
-                $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
-                $("#HMSad").css("display", "block");
-                $("#HMPlayAgain").css("display", "block");
-            }
-        }
-} 
-}
 
 //********************************************************************************
 //function that returns user to word difficulty selection that precedes a new game
@@ -139,7 +80,67 @@ $('#HMButtons').append("<br><button class='btn btn-primary' style='background-co
 //display initial image
 $("#HMPic").append("<img src='Images/stickman.png'>");   
 //display means to get letter guess from user
-$("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input id='HMLetterGuess' class='form-control' style='width: 20%; display: none' type='text' value=''><button class='btn btn-primary' id='HMSubmit' onclick='guessLetter();'>Submit</button><Br><br>");
+$("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input id='HMLetterGuess' class='form-control' style='width: 20%; display: none' type='text' value=''><button class='btn btn-primary' id='HMSubmit'>Submit</button><Br><br>");
+        
+//*************************************************************************
+//function to get letter guess from user and output feedback based on guess
+//*************************************************************************   
+$("#HMSubmit").click(function(){
+    var guess = $("#HMLetterGuess").val();
+    guess = guess.toUpperCase();
+    if(guess.length==1){
+        //if current letter has already been guessed during this round, retrieve another guess from user
+        if(alreadyGuess.indexOf(guess)!=-1){
+            $("#HMfeedback").html("You have already guessed " + guess + ".  You still have " + lives + " guesses remaining.  Try again!"); 
+            $("#HMLetterGuess").val("");
+        }
+        //if current letter guess is in word, update mystery word format key and reveal to user
+        else if(mysteryWord.indexOf(guess)!=-1 & alreadyGuess.indexOf(guess)==-1){
+            alreadyGuess.unshift(guess);
+            for(var i=0; i < mysteryWord.length; i++){
+						if(mysteryWord.charAt(i)==guess.charAt(0)){
+							answerFormat[i] = guess + " ";	
+						}
+					}
+            $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
+            $("#HMLetterGuess").val("");
+            $("#HMguessed").css("display", "block");
+            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
+        
+        //ask user for another letter guess, if answer key still contains dashes
+            if(answerFormat.indexOf("_ ")!=-1){
+                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining");
+            }
+        //output winner message if no dashes remain in answer key and load a new round of game
+            else{
+                $("#HMfeedback").html("  YOU WON!!!");
+                $("#HMCelebrate").css("display", "block");
+                $("#HMPlayAgain").css("display", "block");
+                $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
+            }
+        }   
+        //if current letter guess not in word, decrease 'lives' by one
+        else if(mysteryWord.indexOf(guess)==-1){
+            alreadyGuess.unshift(guess);
+            lives--;
+            $("#HMguessed").css("display", "block");
+            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
+             
+            //retrieve another letter guess from user if 'lives' remain
+            if(lives>0){
+                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining");
+                $("#HMLetterGuess").val("");
+            }
+            else{
+            //output mystery word and a game over message to user if no 'lives' remain; load another round of game
+                $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
+                $("#HMSad").css("display", "block");
+                $("#HMPlayAgain").css("display", "block");
+            }
+        }
+} 
+});
+      
 //display win/lose image; display play again button
 $("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.gif'></div><div id='HMSad'><img src='Images/sad.svg'></div>");    
 });
