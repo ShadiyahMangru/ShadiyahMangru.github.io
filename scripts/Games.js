@@ -500,9 +500,9 @@ $("#guessN").append("<br><br><label class='siteLabel'>Guess: </label><input type
 		}
 		else if(remGuess===0){
 			$("#feedback").html("<br>You are out of guesses! The correct number was " + computerNumber +".");
-            		$("#newGame").css("display", "inline-block");
-            		$("#guess").val("");
-	    		$("#submitG").attr("disabled", true);
+            $("#newGame").css("display", "inline-block");
+            $("#guess").val("");
+            $("#submitG").attr("disabled", true);
 		}
     }); 
     
@@ -525,21 +525,285 @@ $("#guess").keyup(function(event) {
 //**********************************
 //Add It Up! Game source code
 //**********************************
-
-    createGameBoard();     
-    showKey();
-
-    var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
-        
-    function showKey(){
-        rbpg = ["10", "27", "16", "22"];
-        var key = "<span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #006bff'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: #b825df'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3]; 
-        $("#key").html(key);
-        $("#key").append("<br><br>")
+    var solValid;
+    var redSum=0;
+    var blueSum=0;
+    var purpleSum=0;
+    var greenSum=0;
+    var sumsCorrect;
+  
+    function newGame(){
+        $("#AIUIntro").css("display", "block");
+        $("#key").html("");
+        $("#gb").html("");
+        $("#mySolution").html("");
+        $("#winLose").html("");
     }
+
+    //create more gameboards per level
+    $(document).ready(function(){
+    newModal("#AIUModalDiv", "AIUModal", "Add It Up!", "<div id='AIUIntro'><p>Rules: </p><ol><li>Populate each gamboard square with numbers 1-3 (for Easy), 1-4 (for Medium) or 1-5 (for Hard).</li><li>Do NOT repeat a number in any row or column.</li><li>Ensure color-coded regions sum to the value specified in each gameboard's key.</li></ol><p>Select a difficulty level:</p><button id='GBEasy' class='btn btn-primary'>Easy</button><button id='GBMedium' class='btn btn-primary'>Medium</button><button id='GBHard' class='btn btn-primary'>Hard</button></div><div id='key'></div><div id='winLose'></div><div id='gb'></div><div id='mySolution'></div><br>", "#AIUModalButton", "Add It Up!"); 
+    
+    $("#AIUModalButton").click(function(){
+        newGame();
+    });   
         
-    function createGameBoard(){
-    answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
+    $("#GBEasy").click(function(){ 
+    $("#AIUIntro").css("display", "none");
+    $("#key").html("");
+    $("#gb").html("");
+    $("#mySolution").html("");
+    var pg = ["8", "10"]; 
+    var answerKeyC = ["ppp", "pgg", "ggg"];
+    var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color: #b825df'>purple</span> squares is " + pg[0] + ", (ii) the <span style='color: #2c8309'>green</span> squares is " + pg[1] + "."; 
+        $("#key").html(key);
+        $("#key").append("<br><br>")    
+        
+    
+    var counter = 0;
+    var setStyle;
+        while(counter < 3){
+            for(var i = 0; i < 3; i++){
+                if(answerKeyC[counter].charAt(i)==='p'){
+                    setStyle = "style='background-color: #B825DF'";
+                }    
+                else if(answerKeyC[counter].charAt(i)==='g'){
+                    setStyle = "style='background-color: #2c8309'";
+                }     
+                $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
+            }
+            $("#gb").append("<br>");
+            counter++;
+        }
+        $("#mySolution").append("<br><button id='submitSolutionEasy' class='btn btn-primary'>Submit My Solution</button><br><br><button id='EMM' class='btn btn-primary'>Return to Main Menu</button>");
+        
+        $("#EMM").click(function(){
+            newGame();
+        });
+        
+        $( ".clickButton" ).click(function() {
+        var buttonCount = $(this).html();
+        parseInt(buttonCount);
+        if(buttonCount<3){
+            buttonCount++;
+        }
+        else{
+            buttonCount = 1;
+        }
+        $(this).html(buttonCount);
+        }); 
+     
+       $( "#submitSolutionEasy" ).click(function() {
+        solValid=true;
+        sumsCorrect=true;
+        $("#winLose").html("");
+        var ys = [];
+        var sol = "";
+        var counter = 0;
+        var colArray = [];
+        var colString = '';
+        purpleSum=0;
+        greenSum=0;
+        while(counter < 3){
+            sol="";
+            for(var i = 0; i < 3; i++){
+                var id = "#a"+i+counter;
+                sol += $("" + id + "").html();
+            }
+        ys[counter] = sol;
+        counter++;    
+        }
+        //check if 1,2,3 only used once per row
+        for(var i=0; i<3; i++){
+            if(ys[i].indexOf((i+1).toString())===1){
+                solValid=false;
+            }
+        }
+        //check if 1,2,3 only used once per column
+        for(var a=0; a<3; a++){
+            for(var b=0; b<3; b++){
+            var columnVal = ys[b].charAt(a);
+            colString += columnVal;
+            }
+            colArray.unshift(colString);
+            colString='';
+        }
+        //alert(colArray);
+        for(var i=0; i<3; i++){
+            if(colArray[i].indexOf((i+1).toString())===1){
+                solValid=false;
+            }
+        }
+        //check if each color-coded region sums to specified values
+        for(var c=0; c<3; c++){
+            for(var d=0; d<3; d++){
+            if(answerKeyC[d].charAt(c)=='p'){
+                purpleSum += parseInt(ys[d].charAt(c));    
+            }
+            else if(answerKeyC[d].charAt(c)=='g'){
+                greenSum += parseInt(ys[d].charAt(c));    
+            }
+        }
+       }
+       if(purpleSum!=pg[0]){
+           sumsCorrect=false;
+       }
+       if(greenSum!=pg[1]){
+           sumsCorrect=false;
+       }
+       if(solValid===false){
+            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
+       }
+        if(sumsCorrect===false){
+            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
+        }
+        else{
+            $("#winLose").html("YOU WIN!!!");
+        }
+    });    
+        
+        
+    });
+
+    $("#GBMedium").click(function(){
+    $("#AIUIntro").css("display", "none");
+    $("#key").html("");
+    $("#gb").html("");
+    $("#mySolution").html("");
+    var rpg = ["15", "5", "20"];
+    var answerKeyC = ["ppgg", "rrgg", "rrgg", "rrgg"];
+        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rpg[0] + ", (ii) the <span style='color: #b825df'>purple</span> squares is " + rpg[1] + ", (iii) the <span style='color: #2c8309'>green</span> squares is " + rpg[2] + "."; 
+        $("#key").html(key);
+        $("#key").append("<br><br>")       
+        
+    
+    var counter = 0;
+    var setStyle;
+        while(counter < 4){
+            for(var i = 0; i < 4; i++){
+                if(answerKeyC[counter].charAt(i)==='r'){
+                    setStyle = "style='background-color: #ff0000'";
+                }
+                else if(answerKeyC[counter].charAt(i)==='p'){
+                    setStyle = "style='background-color: #B825DF'";
+                }    
+                else if(answerKeyC[counter].charAt(i)==='g'){
+                    setStyle = "style='background-color: #2c8309'";
+                }     
+                $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
+            }
+            $("#gb").append("<br>");
+            counter++;
+        }
+        $("#mySolution").append("<br><button id='submitSolutionM' class='btn btn-primary'>Submit My Solution</button><br><br><button id='MMM' class='btn btn-primary'>Return to Main Menu</button>");
+        
+        $("#MMM").click(function(){
+            newGame();
+        });
+        
+        $( ".clickButton" ).click(function() {
+        var buttonCount = $(this).html();
+        parseInt(buttonCount);
+        if(buttonCount<4){
+            buttonCount++;
+        }
+        else{
+            buttonCount = 1;
+        }
+        $(this).html(buttonCount);
+        });
+    
+       $( "#submitSolutionM" ).click(function() {
+        solValid=true;
+        sumsCorrect=true;
+        $("#winLose").html("");
+        var ys = [];
+        var sol = "";
+        var counter = 0;
+        var colArray = [];
+        var colString = '';
+        redSum=0;
+        purpleSum=0;
+        greenSum=0;
+        while(counter < 4){
+            sol="";
+            for(var i = 0; i < 4; i++){
+                var id = "#a"+i+counter;
+                sol += $("" + id + "").html();
+            }
+        ys[counter] = sol;
+        counter++;    
+        }
+        //check if 1,2,3,4 only used once per row
+        for(var i=0; i<4; i++){
+            if(ys[i].indexOf((i+1).toString())===1){
+                solValid=false;
+            }
+        }
+        //check if 1,2,3,4,5 only used once per column
+        for(var a=0; a<4; a++){
+            for(var b=0; b<4; b++){
+            var columnVal = ys[b].charAt(a);
+            colString += columnVal;
+            }
+            colArray.unshift(colString);
+            colString='';
+        }
+        //alert(colArray);
+        for(var i=0; i<4; i++){
+            if(colArray[i].indexOf((i+1).toString())===1){
+                solValid=false;
+            }
+        }
+        //check if each color-coded region sums to specified values
+        for(var c=0; c<4; c++){
+            for(var d=0; d<4; d++){
+            if(answerKeyC[d].charAt(c)=='r'){
+                redSum += parseInt(ys[d].charAt(c));
+            }
+            else if(answerKeyC[d].charAt(c)=='p'){
+                purpleSum += parseInt(ys[d].charAt(c));    
+            }
+            else if(answerKeyC[d].charAt(c)=='g'){
+                greenSum += parseInt(ys[d].charAt(c));    
+            }
+        }
+       }
+       if(redSum!=rpg[0]){
+           sumsCorrect=false;
+       }
+       if(purpleSum!=rpg[1]){
+           sumsCorrect=false;
+       }
+       if(greenSum!=rpg[2]){
+           sumsCorrect=false;
+       }
+       if(solValid===false){
+            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
+       }
+        if(sumsCorrect===false){
+            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
+        }
+        else{
+            $("#winLose").html("YOU WIN!!!");
+        }
+    });
+        
+    });
+        
+
+    $("#GBHard").click(function(){
+    $("#AIUIntro").css("display", "none");
+    $("#key").html("");
+    $("#gb").html("");
+    $("#mySolution").html("");
+    var rbpg = ["10", "27", "16", "22"];
+    var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
+        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #006bff'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: #b825df'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3] + "."; 
+        $("#key").html(key);
+        $("#key").append("<br><br>")    
+          
+    
     var counter = 0;
     var setStyle;
         while(counter < 5){
@@ -561,29 +825,40 @@ $("#guess").keyup(function(event) {
             $("#gb").append("<br>");
             counter++;
         }
-        $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary'>Submit My Solution</button>");
-    }   
-          
-    var solValid;
-    var redSum=0;
-    var blueSum=0;
-    var purpleSum=0;
-    var greenSum=0;
-    var sumsCorrect;
+        $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary'>Submit My Solution</button><br><br><button id='HMM' class='btn btn-primary'>Return to Main Menu</button>");
+        
+        $("#HMM").click(function(){
+            newGame();
+        });
+        
+        $( ".clickButton" ).click(function() {
+        var buttonCount = $(this).html();
+        parseInt(buttonCount);
+        if(buttonCount<5){
+            buttonCount++;
+        }
+        else{
+            buttonCount = 1;
+        }
+        $(this).html(buttonCount);
+        });
+        
 
-
-
-    $(document).ready(function(){
-    newModal("#rules", "AddItUpRules", "Add It Up! Rules", "<ol><li>Populate each gamboard square with numbers 1-5.</li><li>Do NOT repeat a number in any row or column.</li><li>Use the color-coded KEY to facilitate input.</li></ol>", "#ModalB", "Show Rules");      
-    });
-
-    
-
+//var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
 
    $( "#submitSolution" ).click(function() {
+        solValid=true;
+        sumsCorrect=true;
+        $("#winLose").html("");
         var ys = [];
         var sol = "";
         var counter = 0;
+        var colArray = [];
+        var colString = '';
+        redSum=0;
+        blueSum=0;
+        purpleSum=0;
+        greenSum=0;
         while(counter < 5){
             sol="";
             for(var i = 0; i < 5; i++){
@@ -595,13 +870,11 @@ $("#guess").keyup(function(event) {
         }
         //check if 1,2,3,4,5 only used once per row
         for(var i=0; i<5; i++){
-            if(ys[i].includes(i+1)===false){
+            if(ys[i].indexOf((i+1).toString())===1){
                 solValid=false;
             }
         }
         //check if 1,2,3,4,5 only used once per column
-        var colArray = [];
-        var colString = '';
         for(var a=0; a<5; a++){
             for(var b=0; b<5; b++){
             var columnVal = ys[b].charAt(a);
@@ -612,7 +885,7 @@ $("#guess").keyup(function(event) {
         }
         //alert(colArray);
         for(var i=0; i<5; i++){
-            if(colArray[i].includes(i+1)===false){
+            if(colArray[i].indexOf((i+1).toString())===1){
                 solValid=false;
             }
         }
@@ -633,10 +906,6 @@ $("#guess").keyup(function(event) {
             }
         }
        }
-       //alert("r" + redSum);
-       //alert("b" + blueSum);
-       //alert("p" + purpleSum);
-       //alert("p" + greenSum);
        if(redSum!=rbpg[0]){
            sumsCorrect=false;
        }
@@ -650,33 +919,15 @@ $("#guess").keyup(function(event) {
            sumsCorrect=false;
        }
        if(solValid===false){
-            $("#winLose").html("Not quite; 1,2,3,4,5 may only be used once per row/column.");
+            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
        }
-        //else if(ys.join(", ")===aSolution.join(", ")){
-        //    $("#winLose").html("YOU WIN!!!")
-        //}
         if(sumsCorrect===false){
-            $("#winLose").append("<br><br>Sums of color-coded regions do not match key.  Try again!");
+            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
         }
         else{
             $("#winLose").html("YOU WIN!!!");
-            ys = [];
-            sol = "";
-            counter = 0;
-            redSum=0;
-            blueSum=0;
-            purpleSum=0;
-            greenSum=0;
         }
     });
-    $( ".clickButton" ).click(function() {
-        var buttonCount = $(this).html();
-        parseInt(buttonCount);
-        if(buttonCount<5){
-            buttonCount++;
-        }
-        else{
-            buttonCount = 1;
-        }
-        $(this).html(buttonCount);
-    });       
+    });
+    
+    });
