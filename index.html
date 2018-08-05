@@ -379,7 +379,25 @@
 #HMSad{
     display: none; 
     width: 20%;
-}       
+}   
+      
+#gb{
+    line-height: 100%; 
+    color: white;
+}
+.clickButton{
+    height: 3.5em;
+    width: 3.5em;
+    font-weight: 600;
+    border-radius: 6px;
+    text-shadow: 4px 2px 2px black;
+}
+#winLose{ 
+    color: #e8005e;
+    font-weight: 600; 
+}  
+      
+      
 </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -470,8 +488,9 @@
       <p>Try to guess the mystery number</p>
     </div>
     <div class="col-sm-3">
-      <span class="logo-small"><img src="Images/robot.png" style="width: 13%"></span>
-      <h4>ADD IT UP!</h4>
+      <span class="logo-small"><img src="Images/robot.png" style="width: 14.5%; padding-bottom: .1em"></span>
+      <div id="AIUModalDiv"></div>
+      <div id="AIUModalButton"></div>
       <p>Arrange the numbers in a winning combination</p>
     </div>
   </div>
