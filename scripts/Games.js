@@ -555,7 +555,7 @@ $("#guess").keyup(function(event) {
     $("#mySolution").html("");
     var pg = ["8", "10"]; 
     var answerKeyC = ["ppp", "pgg", "ggg"];
-    var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color: #b825df'>purple</span> squares is " + pg[0] + ", (ii) the <span style='color: #2c8309'>green</span> squares is " + pg[1] + "."; 
+    var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color: rebeccapurple'>purple</span> squares is " + pg[0] + ", (ii) the <span style='color: #2c8309'>green</span> squares is " + pg[1] + "."; 
         $("#key").html(key);
         $("#key").append("<br><br>")    
         
@@ -565,7 +565,7 @@ $("#guess").keyup(function(event) {
         while(counter < 3){
             for(var i = 0; i < 3; i++){
                 if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: #B825DF'";
+                    setStyle = "style='background-color: rebeccapurple'";
                 }    
                 else if(answerKeyC[counter].charAt(i)==='g'){
                     setStyle = "style='background-color: #2c8309'";
@@ -575,7 +575,7 @@ $("#guess").keyup(function(event) {
             $("#gb").append("<br>");
             counter++;
         }
-        $("#mySolution").append("<br><button id='submitSolutionEasy' class='btn btn-primary'>Submit My Solution</button><br><br><button id='EMM' class='btn btn-primary'>Return to Main Menu</button>");
+        $("#mySolution").append("<br><button id='submitSolutionEasy' class='btn btn-primary' style='background-color: #424949'>Submit My Solution</button><br><br><button id='EMM' class='btn btn-primary' style='background-color: navy'>Return to Main Menu</button>");
         
         $("#EMM").click(function(){
             newGame();
@@ -672,7 +672,7 @@ $("#guess").keyup(function(event) {
     $("#mySolution").html("");
     var rpg = ["15", "5", "20"];
     var answerKeyC = ["ppgg", "rrgg", "rrgg", "rrgg"];
-        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rpg[0] + ", (ii) the <span style='color: #b825df'>purple</span> squares is " + rpg[1] + ", (iii) the <span style='color: #2c8309'>green</span> squares is " + rpg[2] + "."; 
+        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rpg[0] + ", (ii) the <span style='color: rebeccapurple'>purple</span> squares is " + rpg[1] + ", (iii) the <span style='color: #2c8309'>green</span> squares is " + rpg[2] + "."; 
         $("#key").html(key);
         $("#key").append("<br><br>")       
         
@@ -682,10 +682,10 @@ $("#guess").keyup(function(event) {
         while(counter < 4){
             for(var i = 0; i < 4; i++){
                 if(answerKeyC[counter].charAt(i)==='r'){
-                    setStyle = "style='background-color: #ff0000'";
+                    setStyle = "style='background-color: #A8224A'";
                 }
                 else if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: #B825DF'";
+                    setStyle = "style='background-color: rebeccapurple'";
                 }    
                 else if(answerKeyC[counter].charAt(i)==='g'){
                     setStyle = "style='background-color: #2c8309'";
@@ -695,7 +695,7 @@ $("#guess").keyup(function(event) {
             $("#gb").append("<br>");
             counter++;
         }
-        $("#mySolution").append("<br><button id='submitSolutionM' class='btn btn-primary'>Submit My Solution</button><br><br><button id='MMM' class='btn btn-primary'>Return to Main Menu</button>");
+        $("#mySolution").append("<br><button id='submitSolutionM' class='btn btn-primary' style='background-color: #424949'>Submit My Solution</button><br><br><button id='MMM' class='btn btn-primary' style='background-color: navy'>Return to Main Menu</button>");
         
         $("#MMM").click(function(){
             newGame();
@@ -799,7 +799,7 @@ $("#guess").keyup(function(event) {
     $("#mySolution").html("");
     var rbpg = ["10", "27", "16", "22"];
     var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
-        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#ff0000'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #006bff'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: #b825df'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3] + "."; 
+        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #3766BD'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: rebeccapurple'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3] + "."; 
         $("#key").html(key);
         $("#key").append("<br><br>")    
           
@@ -809,13 +809,13 @@ $("#guess").keyup(function(event) {
         while(counter < 5){
             for(var i = 0; i < 5; i++){
                 if(answerKeyC[counter].charAt(i)==='r'){
-                    setStyle = "style='background-color: #ff0000'";
+                    setStyle = "style='background-color: #A8224A'";
                 }
                 else if(answerKeyC[counter].charAt(i)==='b'){
-                    setStyle = "style='background-color: #006bff'";
+                    setStyle = "style='background-color: #3766BD'";
                 }
                 else if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: #B825DF'";
+                    setStyle = "style='background-color: rebeccapurple'";
                 }    
                 else if(answerKeyC[counter].charAt(i)==='g'){
                     setStyle = "style='background-color: #2c8309'";
@@ -825,7 +825,7 @@ $("#guess").keyup(function(event) {
             $("#gb").append("<br>");
             counter++;
         }
-        $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary'>Submit My Solution</button><br><br><button id='HMM' class='btn btn-primary'>Return to Main Menu</button>");
+        $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary' style='background-color: #424949'>Submit My Solution</button><br><br><button id='HMM' class='btn btn-primary' style='background-color: navy'>Return to Main Menu</button>");
         
         $("#HMM").click(function(){
             newGame();
