@@ -6,7 +6,7 @@ var easyWords = ["flower", "cake", "rain", "tree", "bee", "frozen", "snow", "lea
     
 var mediumWords = ["January", "computer", "television", "soccer", "dinosaur", "shovel", "garden", "cucumber", "parade", "watermelon", "cupcake", "pizza", "tiger", "giant", "unicorn", "octopus", "volcano", "meteor", "ocean", "beach", "cloud", "elephant", "bakery", "forest", "wizard", "drum", "couch", "rainbow", "glitter", "window", "wand", "potato"];
 
-var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut", "restaurant", "baseball", "cylinder", "country"];    
+var hardWords = ["dolphin", "instrument", "blender", "gasoline", "cantaloupe", "firefighter", "icicle", "thunder", "telephone", "locomotive", "triangle", "thirteen", "eight", "tricycle", "automobile", "circle", "gymnastics", "subtraction", "skyscraper", "piano", "ballet", "rectangle", "astronaut", "restaurant", "baseball", "cylinder", "country", "Quebec"];    
     
 var mysteryWord;  
 var answerFormat = [];
@@ -43,7 +43,7 @@ function playGame(num){
     for(var i=0; i<mysteryWord.length; i++){
         answerFormat[i] = "_ "
     }
-    $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
+    $("#HMAnswerFormat").html("CODE WORD FORMAT: " + answerFormat.join(""));
     $("#easy").attr("disabled", true);
     $("#medium").attr("disabled", true);
     $("#hard").attr("disabled", true);
@@ -92,10 +92,10 @@ $("#HMModalButton").click(function(){
     playAgain();
 });    
 //display select difficulty level choice buttons
-$("#HMButtons").html("Select Difficulty Level:");
-$('#HMButtons').append("<br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='btn btn-primary' style='background-color: #E56C1B' onclick='playGame(1);'>Easy</button><button id='medium' class='btn btn-primary' style='background-color: #1DAAAE' onclick='playGame(2);'>Medium</button><button id='hard' class='btn btn-primary' style='background-color: #159049' onclick='playGame(3);'>Hard</button><br><br>");
+$("#HMButtons").html("Select Classification Level:");
+$('#HMButtons').append("<br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button><button id='easy' class='btn btn-primary' style='background-color: #E56C1B' onclick='playGame(1);'>Confidential</button><button id='medium' class='btn btn-primary' style='background-color: #1DAAAE' onclick='playGame(2);'>Secret</button><button id='hard' class='btn btn-primary' style='background-color: #159049' onclick='playGame(3);'>Top Secret</button><br><br>");
 //display initial image
-$("#HMPic").append("<img src='Images/codeWord.png'>");   
+$("#HMPic").append("<img src='Images/f16.png' style='margin-top: 6em; margin-left: -5em'>");   
 //display means to get letter guess from user
 $("#HMgetLDiv").append("<strong id='HMGetLetter'>Enter a letter:</strong> <input id='HMLetterGuess' class='form-control' style='width: 20%; display: none' type='text' value=''><button class='btn btn-primary' id='HMSubmit'>Submit</button><Br><br>");
         
@@ -109,7 +109,7 @@ $("#HMSubmit").click(function(){
     if(guess.length==1 & aLetter===true){
         //if current letter has already been guessed during this round, retrieve another guess from user
         if(alreadyGuess.indexOf(guess)!=-1){
-            $("#HMfeedback").html("You have already guessed " + guess + ".  You still have " + lives + " guesses remaining.  Try again!"); 
+            $("#HMfeedback").html("You have already entered " + guess + ".  You still have " + lives + " tries remaining.  Try again!"); 
             $("#HMLetterGuess").val("");
         }
         //if current letter guess is in word, update mystery word format key and reveal to user
@@ -120,21 +120,21 @@ $("#HMSubmit").click(function(){
 							answerFormat[i] = guess + " ";	
 						}
 					}
-            $("#HMAnswerFormat").html("ANSWER FORMAT: " + answerFormat.join(""));
+            $("#HMAnswerFormat").html("CODE WORD FORMAT: " + answerFormat.join(""));
             $("#HMLetterGuess").val("");
             $("#HMguessed").css("display", "block");
-            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
+            $("#HMguessed").html("ALREADY ENTERED: " + alreadyGuess.join(", "));
         
         //ask user for another letter guess, if answer key still contains dashes
             if(answerFormat.indexOf("_ ")!=-1){
-                    $("#HMfeedback").html("Good Work!  Guess Again!  You have " + lives + " guesses remaining.");
+                    $("#HMfeedback").html("Good Work!  Keep trying!  You have " + lives + " tries remaining.");
             }
         //output winner message if no dashes remain in answer key and load a new round of game
             else{
-                $("#HMfeedback").html("  YOU WON!!!");
+                $("#HMfeedback").html("  ACCESS GRANTED!!!");
                 $("#HMCelebrate").css("display", "block");
                 $("#HMPlayAgain").css("display", "block");
-                $("#HMAnswerFormat").html("ANSWER: " + answerFormat.join(""));
+                $("#HMAnswerFormat").html("CODE WORD: " + answerFormat.join(""));
                 $("#HMSubmit").attr("disabled", true);
             }
         }   
@@ -143,16 +143,16 @@ $("#HMSubmit").click(function(){
             alreadyGuess.unshift(guess);
             lives--;
             $("#HMguessed").css("display", "block");
-            $("#HMguessed").html("ALREADY GUESSED: " + alreadyGuess.join(", "));
+            $("#HMguessed").html("ALREADY ENTERED: " + alreadyGuess.join(", "));
              
             //retrieve another letter guess from user if 'lives' remain
             if(lives>0){
-                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Guess another letter!  You have " + lives + " guesses remaining.");
+                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Enter another letter!  You have " + lives + " tries remaining.");
                 $("#HMLetterGuess").val("");
             }
             else{
             //output mystery word and a game over message to user if no 'lives' remain; load another round of game
-                $("#HMfeedback").html("  GAME OVER.  The mystery word was " + mysteryWord.toUpperCase() + ".  Better luck next time!");
+                $("#HMfeedback").html("  ACCESS DENIED.  The Code Word was " + mysteryWord.toUpperCase() + " but has now been changed.");
                 $("#HMSad").css("display", "block");
                 $("#HMSubmit").attr("disabled", true);
                 $("#HMPlayAgain").css("display", "block");
@@ -168,7 +168,7 @@ $("#HMLetterGuess").keyup(function(event) {
 });   
     
 //display win/lose image; display play again button
-$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/celebrate.png' style='margin-left: 7em'></div><div id='HMSad'><img src='Images/sad.svg'></div>");   
+$("#HMEnd").append("<div id='HMCelebrate'><img src='Images/mil.png' style='margin-left: 15em'></div><div id='HMSad'><img src='Images/classified.png'></div>");   
 });
 
 
