@@ -198,76 +198,7 @@
         color: rebeccapurple;
         font-weight: 600;
     }    
-    .scroll-up {
- background-color: black;
- height: 400px;	
- width: 100%;
- overflow: hidden;
- position: relative;
- color: white;
- border: 2px solid black;
- font-size: 130%;
-}
-.scroll-up p {
- position: absolute;
- width: 100%;
- height: 100%;
- margin: 0;
- line-height: 50px;
- text-align: center;
- /* Starting position */
- -moz-transform:translateY(100%);
- -webkit-transform:translateY(100%);	
- transform:translateY(100%);
- /* Apply animation to this element */	
- -moz-animation: scroll-up 7s linear infinite;
- -webkit-animation: scroll-up 7s linear infinite;
- animation: scroll-up 7s linear infinite;
-}
-/* Move it (define the animation) */
-@-moz-keyframes scroll-up {
- 0%   { -moz-transform: translateY(100%); }
- 100% { -moz-transform: translateY(-100%); }
-}
-@-webkit-keyframes scroll-up {
- 0%   { -webkit-transform: translateY(100%); }
- 100% { -webkit-transform: translateY(-100%); }
-}
-@keyframes scroll-up {
- 0%   { 
- -moz-transform: translateY(100%); /* Browser bug fix */
- -webkit-transform: translateY(100%); /* Browser bug fix */
- transform: translateY(100%); 		
- }
- 100% { 
- -moz-transform: translateY(-100%); /* Browser bug fix */
- -webkit-transform: translateY(-100%); /* Browser bug fix */
- transform: translateY(-100%); 
- }
-}
-      #calculate{
-      background-image: url('Images/background.jpg');
-      height: 100%; 
-      background-position: center;
-      background-size: cover;
-      }
-#PTriangle{
-    margin-top: .5em;
-    text-align: center;
-}    
-
-    #PTriangle >label{
-    width: 6%;
-    font-size: 1em;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #F8ECEC;
-    border: solid black 1px;
-    text-align: center;
-    padding: .5em;
-    } 
-      
-      
+ 
       
 #warResults{
         margin-top: 1em;  
@@ -408,6 +339,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+      <a class="navbar-brand" href="#" onClick="history.go(-1);return true;">&#9756;</a>
       <a class="navbar-brand" href="#myPage">APP-TITUDE</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -418,17 +350,15 @@
   </div>
 </nav>
 
-<div class="jumbotron text-center" style="background:url(img/bg-pattern.png),linear-gradient(to left,#5076b0,#626567)">
-  <h1 style="text-shadow: 4px 4px 2px #212f3d; color: white; font-family: Catamaran,Helvetica,Arial,sans-serif; font-weight: 200; etter-spacing: 1px;
+<div class="jumbotron text-center" style="background:url(img/bg-pattern.jpg),linear-gradient(to left,#5076b0,#626567); background-size: cover">
+  <h1 style="text-shadow: 4px 4px 4px black; color: white; font-family: Catamaran,Helvetica,Arial,sans-serif; font-weight: 200; letter-spacing: 1px;
 }">APP-TITUDE v1.0</h1> 
 </div>
 
 <!-- Container (APP Section) -->
 <div id="play" class="container-fluid text-center">
-<br>
     <h2>SELECT A GAME</h2>
-  <!--<h4>Refocus with a game</h4>-->
-<br><br><br>
+<br><br>
 <div class="row">
     <div class="col-sm-3">
       <span class="logo-small"><img src='Images/cw.JPG' style="width: 38%; padding-bottom: .1em"></span>
@@ -457,7 +387,7 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center" style="background-color: black">
+<footer class="container-fluid text-center" style="background-color: #161738;">
   <a href="#myPage" title="To Top">
     <span style="color: white; font-size: 200%" class="glyphicon glyphicon-chevron-up"></span>
   </a>
