@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js">
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<style>
+      .navbar {
+      margin-bottom: 0;
+      background-color: black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: steelblue !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  .jumbotron {
+      background-image: url('Images/banner.jpg');
+      height: 100%; 
+      background-position: center;
+      background-size: cover;
+      border-bottom: 1.2px solid black;
+      /*background-color: #812056;*/
+      color: black;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+      font-weight: 900;
+  }  
+    .jumbotron h1{
+        text-shadow: 4px 4px 4px black; 
+        color: white; 
+        font-family: Catamaran,Helvetica,Arial,sans-serif; 
+        font-weight: 200; 
+        letter-spacing: 1px;
+    }
+</style>
+</head>
+<body ng-app="myApp">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#/!">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#!page1">Add It Up!</a></li>
+        <li><a href="#!page2">Code Word</a></li>
+        <li><a href="#!page3">Number Guess</a></li>
+        <li><a href="#!page4">War</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div ng-view style="color: black"></div>
+<footer class="footer navbar-fixed-bottom container-fluid text-center" style="background-color: #10102c">
+<br>
+    <p style="color: white">By <a style="color: white" href="mailto: shadiyahmangru@gmail.com" title="contact Shadiyah Mangru">Shadiyah Mangru</a></p>
+<br>
+</footer>
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl: "html/main.html",
+        controller : "mainCtrl"
+    })
+    .when("/page1", {
+        templateUrl: "html/page1.html",
+        controller : "page1Ctrl"
+    })
+    .when("/page2", {
+        templateUrl: "html/page2.html",
+        controller : "page2Ctrl"
+    })
+    .when("/page3", {
+        templateUrl: "html/page3.html",
+        controller : "page3Ctrl"
+    })
+    .when("/page4", {
+        templateUrl: "html/page4.html",
+        controller : "page4Ctrl"
+    });
+});
+app.controller("mainCtrl", function ($scope){
+   $scope.mainTitle = "APP-titude"; 
+   $scope.contentsHeader = "Hone Your Quantitative and Verbal Skills";
+   $scope.descrip1 = "Have sum fun with Add It Up";
+   $scope.descrip2 = "Strategically (enter vowels to) access classified information in Code Word";
+   $scope.descrip3 = "Employ strategy (similar to the bisection method) with Guess the Number";
+   $scope.descrip4 = "Perform quantitative comparisons during War";
+});
+app.controller("page1Ctrl", function ($scope) {
+    $scope.mainTitle = "Add it Up!";
+    $scope.contentsHeader = "Coming Soon!";
+    $scope.directions = "";
+});
+app.controller("page2Ctrl", function ($scope) {
+    $scope.mainTitle = "Code Word";
+    $scope.contentsHeader = "Coming Soon!";
+    $scope.directions = "Entering the correct code word makes your mission possible.";
+});
+app.controller("page3Ctrl", function ($scope) {
+    $scope.mainTitle = "Guess the Number";
+    $scope.contentsHeader = "Coming Soon!";
+    $scope.directions = "Directions: The computer is thinking of a number between 1 and 100, inclusive.  You have at most 10 guesses.";
+});
+app.controller("page4Ctrl", function ($scope) {
+    $scope.mainTitle = "War";
+    $scope.contentsHeader = "Coming Soon!";
+    $scope.directions = "In this game, King is a high card (=13) and Ace is a low card (=1).  Good luck!";
+});
+</script>   
+    
+</body>
+</html>
