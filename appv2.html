@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +52,21 @@
         font-weight: 200; 
         letter-spacing: 1px;
     }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
 </style>
 </head>
 <body ng-app="myApp">
@@ -74,7 +90,7 @@
     </div>
   </div>
 </nav>
-<div ng-view style="color: black"></div>
+<div ng-view style="color: black"></div><br>
 <footer class="footer navbar-fixed-bottom container-fluid text-center" style="background-color: #10102c">
 <br>
     <p style="color: white">By <a style="color: white" href="mailto: shadiyahmangru@gmail.com" title="contact Shadiyah Mangru">Shadiyah Mangru</a></p>
