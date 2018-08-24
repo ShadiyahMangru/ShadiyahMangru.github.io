@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -258,12 +259,96 @@ $scope.CWSubmit = function() {
 });
     
     
-    
+//**************************************************    
 app.controller("page3Ctrl", function ($scope) {
     $scope.mainTitle = "Guess the Number";
-    $scope.contentsHeader = "Coming Soon!";
-    $scope.directions = "Directions: The computer is thinking of a number between 1 and 100, inclusive.  You have at most 10 guesses.";
+    $scope.contentsHeader = "The computer is thinking of a number between 1 and 100, inclusive.  You have at most 10 guesses.";
+ 
+//function to generate a random integer between two values
+	$scope.getRandomInt = function(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min; //max exclusive, min inclusive
+	};    
+    
+$scope.computerNumber = $scope.getRandomInt(1, 101);
+$scope.remGuess = 10;
+$scope.alreadyG = [];
+$scope.aNumber;
+   
+    //only accepts numbers as input
+    $scope.checkNGInp = function (){
+        $scope.aNumber = true;
+        var inp=$("#guess").val();
+        var regex=/^[0-9]+$/;
+        if (!inp.match(regex))
+        {
+            $("#feedback").html("Must input a number.  Try Again!");
+            return $scope.aNumber = false;
+        }
+    };
+
+$scope.playerGuess;
+//checks if guess is correct and provides user with feedback
+    $scope.submitNG = function (){
+        var repeat=false;
+		$scope.playerGuess = parseInt($("#guess").val());
+        $scope.computerNumber = parseInt($scope.computerNumber);
+        $scope.checkNGInp();
+        if($scope.alreadyG.indexOf($scope.playerGuess)!=-1){
+            repeat=true;
+        }
+        else if($scope.aNumber===false){
+           $("#feedback").html("You may only input numbers.  You still have " + $scope.remGuess + " guesses remaining.  Try Again!"); 
+           $("#guess").val("");
+        }
+        else{
+        $scope.alreadyG.unshift($scope.playerGuess);
+        $("#aGuessed").html("Previous Guesses: " + $scope.alreadyG.join(", "));
+		$scope.remGuess--;
+        }
+		if($scope.playerGuess===$scope.computerNumber && $scope.remGuess > 0){
+			$("#feedback").html("That is correct! <strong>The number was " + $scope.computerNumber + " and it only took you " + (10-$scope.remGuess) + " tries!</strong>");
+
+            $("#guess").val("");
+            $("#submitG").attr("disabled", true);
+		}
+        else if(repeat===true){
+           $("#feedback").html("<br><span style='color: #d70000'>You have already guessed " + $scope.playerGuess + ".  You still have " + $scope.remGuess + " guesses remaining.  Try Again!</span>"); 
+           $("#guess").val("");
+        }
+		else if($scope.playerGuess !== $scope.computerNumber && $scope.remGuess > 0){
+			if($scope.playerGuess > $scope.computerNumber){
+            if($scope.remGuess===10){
+                $scope.remGuess--;
+            }
+			$("#feedback").html("<br><strong style='color: #1e87d6'>LOWER than " + $scope.playerGuess + "...</strong><br>" + $scope.remGuess + " guesses remaining!"); 
+            $("#guess").val("");
+			}
+			else if($scope.playerGuess < $scope.computerNumber){
+                if($scope.remGuess===10){
+                $scope.remGuess--;
+                }
+				$("#feedback").html("<br><strong style='color: #ff1a72'>HIGHER than " + $scope.playerGuess + "... </strong><br>" + $scope.remGuess + " guesses remaining!");
+                $("#guess").val("");
+			}
+		}
+		else if($scope.remGuess===0){
+			$("#feedback").html("<br>You are out of guesses! <strong>The correct number was " + $scope.computerNumber +"</strong>.");
+            $("#guess").val("");
+            $("#submitG").attr("disabled", true);
+		}
+    }; 
+    
+//submit input upon pressing enter key   
+$("#guess").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#submitG").click();
+    }
+});  
+    
 });
+    
 app.controller("page4Ctrl", function ($scope) {
     $scope.mainTitle = "War";
     $scope.contentsHeader = "Coming Soon!";
