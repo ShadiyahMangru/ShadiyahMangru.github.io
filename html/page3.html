@@ -7,12 +7,12 @@
 <h2>{{contentsHeader}}</h2>
 <br>
 <div class="row">
-    <h4>{{directions}}</h4>
-    <br><br>
+    <h4 id='aGuessed'></h4>
+    <h4 id='feedback'></h4> 
+    
     <label><h3>Guess: </h3></label>
     <input type='number' id='guess' class='form-control' style='width: 20%; display: inline'>
-    <button id='submitG' class='btn btn-primary'>Correct?</button>
-    <button id='newGame' class='btn btn-primary' style='background-color: #A3206F; display: none; margin-left: 1em'>Play Again!</button>
+    <button id='submitG' class='btn btn-warning' ng-click="submitNG();">Correct?</button>
     <br>
   </div>
 </div>
