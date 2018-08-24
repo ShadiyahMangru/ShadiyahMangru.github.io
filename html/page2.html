@@ -7,13 +7,19 @@
     <h2>{{contentsHeader}}</h2>
 <br>
 <div class="row">
-    <h4>{{directions}}</h4>
-    <br>
-    <h4>Select Classification Level:</h4>
-    <br><button class='btn btn-primary' style='background-color: #A3206F; display: none' id='HMPlayAgain' onclick='playAgain();'>Play Again!</button>
-    <button id='easy' class='btn btn-primary' onclick='playGame(1);'>Confidential</button>
-    <button id='medium' class='btn btn-info' onclick='playGame(2);'>Secret</button>
-    <button id='hard' class='btn btn-warning' onclick='playGame(3);'>Top Secret</button>
-    <br><br>
+    <label><h4>Degree of Difficulty:</h4></label>
+    <button id='easy' class='btn btn-primary' ng-click="playGame(1);">Beginner</button>
+    <button id='medium' class='btn btn-info' ng-click="playGame(2);">Intermediate</button>
+    <button id='hard' class='btn btn-warning' ng-click="playGame(3);">Advanced</button>
+    
+    <h4 id='HMAnswerFormat'></h4>
+    
+    <h4 id='HMguessed'></h4><br>
+    
+    <label><h4>Enter a letter:</h4></label> 
+    <input id='HMLetterGuess' class='form-control' style='width: 5em; display: inline' type='text' value=''><button class='btn btn-success' id='HMSubmit' ng-click="CWSubmit();">Submit</button><br><br>
+    
+    <h4 id='HMfeedback'></h4>
+
   </div>
 </div>
