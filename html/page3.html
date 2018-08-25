@@ -3,10 +3,15 @@
 </div>
 
 <div id="content" class="container-fluid text-center">
-<br>
-<h2>{{contentsHeader}}</h2>
-<br>
 <div class="row">
+    <div class="col-sm-4">
+        <img src="af6.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: 2em; margin-right: 5%">
+    </div>
+    <br>
+    <div class="col-sm-8">
+        <h2>{{contentsHeader}}</h2>
+<br>
+
     <h4 id='aGuessed'></h4>
     <h4 id='feedback'></h4> 
     
@@ -14,5 +19,6 @@
     <input type='number' id='guess' class='form-control' style='width: 20%; display: inline'>
     <button id='submitG' class='btn btn-warning' ng-click="submitNG();">Correct?</button>
     <br>
+    </div>
   </div>
 </div>
