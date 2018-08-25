@@ -43,7 +43,11 @@
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
       font-weight: 900;
-  }  
+  }
+
+    /*#cWord{
+        background-image: url('Images/bannerBlue.jpg') !important;
+    }*/
     .jumbotron h1{
         text-shadow: 4px 4px 4px black; 
         color: white; 
@@ -261,8 +265,8 @@ $scope.CWSubmit = function() {
     
 //**************************************************    
 app.controller("page3Ctrl", function ($scope) {
-    $scope.mainTitle = "Guess the Number";
-    $scope.contentsHeader = "The computer is thinking of a number between 1 and 100, inclusive.  You have at most 10 guesses.";
+    $scope.mainTitle = "Number Guess";
+    $scope.contentsHeader = "Simon says: the computer is thinking of a number between 1 and 100, inclusive.  Disarm the bomb by identifying the number in 10 guesses or less.";
  
 //function to generate a random integer between two values
 	$scope.getRandomInt = function(min, max) {
@@ -308,7 +312,7 @@ $scope.playerGuess;
 		$scope.remGuess--;
         }
 		if($scope.playerGuess===$scope.computerNumber && $scope.remGuess > 0){
-			$("#feedback").html("That is correct! <strong>The number was " + $scope.computerNumber + " and it only took you " + (10-$scope.remGuess) + " tries!</strong>");
+			$("#feedback").html("Bomb successfully disarmed! <strong>The number was " + $scope.computerNumber + " and it only took you " + (10-$scope.remGuess) + " tries!</strong>");
 
             $("#guess").val("");
             $("#submitG").attr("disabled", true);
@@ -334,7 +338,7 @@ $scope.playerGuess;
 			}
 		}
 		else if($scope.remGuess===0){
-			$("#feedback").html("<br>You are out of guesses! <strong>The correct number was " + $scope.computerNumber +"</strong>.");
+			$("#feedback").html("<br>Disaster!  You are out of guesses. <strong>The correct number was " + $scope.computerNumber +"</strong>.");
             $("#guess").val("");
             $("#submitG").attr("disabled", true);
 		}
