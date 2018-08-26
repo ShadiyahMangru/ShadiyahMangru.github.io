@@ -3,12 +3,50 @@
 </div>
 
 <div id="content" class="container-fluid text-center">
-<br>
-    <h2>{{contentsHeader}}</h2>
-<br>
 <div class="row">
-    <h4>{{directions}}</h4>
+<div class="col-sm-8">  
+    <h2>{{contentsHeader}}</h2>
+    <div class="row">
+    <div class="col-sm-4" id='youCPic'>
+        <p id='youLabel'>You: </p>
+        <div id='youCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 4em 0 4em; padding: 8em 0 8em 0; position: relative">
+            <h2 id='cardNumY1' style="position: absolute; top: 0; right: 85%">Q</h2>
+            <img id='youCardDisplay'  src='Images/diamonds.png'>
+            <h2 id='cardNumY2' style="position: absolute; bottom: 0; left: 85%">Q</h2>
+        </div>
+    </div>
+    <div class="col-sm-4" id='dealerCPic'>
+        <p id='dealerLabel'>Computer: </p>
+        <div id='dealerCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 4em 0 4em; padding: 8em 0 8em 0; position: relative">
+            <h2 id='cardNumD1' style="position: absolute; top: 0; right: 85%">K</h2>
+            <img id='dealerCardDisplay'  src='Images/clubs.png'>
+            <h2 id='cardNumD2' style="position: absolute; bottom: 0; left: 85%">K</h2>
+        </div>
+    </div>
+    <div class="col-sm-4">
+    <br><br>
+    <div class="row">
+    <div class="col-sm-6">
+    <button type="button" class="btn btn-success">Play War!</button><br><br>
+    </div>
+    <div class="col-sm-6">
+    Score: <br>You:<span id='youScore' style='float: right'>0</span><br>Computer: <span id='dealerScore' style='float: right'>0</span>
+    </div>
+    </div>
+    <br><br>
+    <h3>Winner of this battle is...?</h3>
+    <button type="button" class="btn btn-primary">You</button>
+    <button type="button" class="btn btn-primary">Computer</button>
+    <button type="button" class="btn btn-primary">Tie</button>
+    <br><br><br>
+    <h4>Quantitative Comparisons Score: </h4>
+    </div>
+    </div>
     <br>
-    <button type="button" class="btn btn-success">Play War!</button>
+    <h4 style="float: left">{{directions}}</h4>
+    </div> 
+    <div class="col-sm-4">
+        <img src="af4.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: 2em; margin-right: 5%">
+    </div> 
   </div>
 </div>
