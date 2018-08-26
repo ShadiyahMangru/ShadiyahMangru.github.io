@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,10 +43,6 @@
       font-family: Montserrat, sans-serif;
       font-weight: 900;
   }
-
-    /*#cWord{
-        background-image: url('Images/bannerBlue.jpg') !important;
-    }*/
     .jumbotron h1{
         text-shadow: 4px 4px 4px black; 
         color: white; 
@@ -358,12 +353,6 @@ app.controller("page4Ctrl", function ($scope) {
     $scope.contentsHeader = "Achieve victory with accurate quantitative comparisons (In Progress)";
     $scope.directions = "NOTE: King is a high card (=13) and Ace is a low card (=1).  Good luck!";
     
-    
-    
-//******************************************
-//methods to play war!
-//******************************************
-    
     $scope.deck = [];
     $scope.dealerDeck = [];
     $scope.youDeck = [];
@@ -437,13 +426,23 @@ $scope.splitDeck = function (){
             //display a results message -- congrats to winner
             $("#war").attr("disabled", true);
             if($scope.youScore > $scope.dealerScore){
-                $("#warResults").html("YOU WIN!!!");
+                //$("#warResults").html("YOU WIN!!!");
+                $("#youLabel").css("backgroundColor", "white");
+                $("#dealerLabel").css("backgroundColor", "white");
+                $("#youScore").css("backgroundColor", "yellow");
             }
             else if($scope.youScore < $scope.dealerScore){
-                $("#warResults").html("DEALER WINS!!!");
+                //$("#warResults").html("COMPUTER WINS!!!");
+                $("#youLabel").css("backgroundColor", "white");
+                $("#dealerLabel").css("backgroundColor", "white");
+                $("#dealerScore").css("backgroundColor", "yellow");
             }
             else{
-                $("#warResults").html("IT IS A TIE!!!");
+                //$("#warResults").html("IT IS A TIE!!!");
+                $("#youLabel").css("backgroundColor", "white");
+                $("#dealerLabel").css("backgroundColor", "white");
+                $("#youScore").css("backgroundColor", "yellow");
+                $("#dealerScore").css("backgroundColor", "yellow");
             }
             document.querySelector("#WARplayAgain").style.display = "block";
         }
@@ -526,7 +525,7 @@ $scope.splitDeck = function (){
             //alert("there is a tie");
             $("#youLabel").css("backgroundColor", "white");
             $("#dealerLabel").css("backgroundColor", "white");
-            score();
+            $scope.score();
         }
     };
 
