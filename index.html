@@ -95,7 +95,8 @@
     <p style="color: white">By <a style="color: white" href="mailto: shadiyahmangru@gmail.com" title="contact Shadiyah Mangru">Shadiyah Mangru</a></p>
 <br>
 </footer>
--->
+--> 
+    
 <script>
 var app = angular.module("myApp", ["ngRoute"]);
 app.config(function($routeProvider) {
@@ -526,7 +527,8 @@ $scope.makeHardGB = function() {
     
     
 });
-    
+ 
+//**********************************************    
 app.controller("page2Ctrl", function ($scope) {
     $scope.mainTitle = "Code Word";
     $scope.contentsHeader = "Entering the correct code word makes your mission possible.";
@@ -657,13 +659,12 @@ $scope.CWSubmit = function() {
     });   
        
     
-});
-    
+}); 
     
 //**************************************************    
 app.controller("page3Ctrl", function ($scope) {
     $scope.mainTitle = "Number Guess";
-    $scope.contentsHeader = "Simon says: the computer is thinking of a number between 1 and 100, inclusive.  Disarm the bomb by identifying the number in 10 guesses or less.";
+    $scope.contentsHeader = "Thwart bomber Simon’s diabolical scheme by besting him at his own game.  Simon says: the computer is thinking of a number between 1 and 100, inclusive.  Prevent detonation by identifying the number in 10 guesses or less.";
  
 //function to generate a random integer between two values
 	$scope.getRandomInt = function(min, max) {
@@ -676,68 +677,70 @@ $scope.computerNumber = $scope.getRandomInt(1, 101);
 $scope.remGuess = 10;
 $scope.alreadyG = [];
 $scope.aNumber;
-   
-    //only accepts numbers as input
-    $scope.checkNGInp = function (){
-        $scope.aNumber = true;
-        var inp=$("#guess").val();
-        var regex=/^[0-9]+$/;
-        if (!inp.match(regex))
-        {
-            $("#feedback").html("Must input a number.  Try Again!");
-            return $scope.aNumber = false;
-        }
-    };
+$scope.ngFeedback;
+$scope.disableSubmitG = false;
+$scope.aGuessed;
+
+//only accepts numbers as input
+$scope.checkNGInp = function (){
+    $scope.aNumber = true;
+    var inp=$("#guess").val();
+    var regex=/^[0-9]+$/;
+    if (!inp.match(regex))
+    {
+        $scope.ngFeedback = "Must input a number.  Try Again!";
+        return $scope.aNumber = false;
+    }
+};
 
 $scope.playerGuess;
 //checks if guess is correct and provides user with feedback
     $scope.submitNG = function (){
         var repeat=false;
-		$scope.playerGuess = parseInt($("#guess").val());
+		$scope.playerGuess = parseInt($scope.playerGuess);
         $scope.computerNumber = parseInt($scope.computerNumber);
         $scope.checkNGInp();
         if($scope.alreadyG.indexOf($scope.playerGuess)!=-1){
             repeat=true;
         }
         else if($scope.aNumber===false){
-           $("#feedback").html("You may only input numbers.  You still have " + $scope.remGuess + " guesses remaining.  Try Again!"); 
-           $("#guess").val("");
+           $scope.ngFeedback = "You may only input numbers.  You still have " + $scope.remGuess + " guesses remaining.  Try Again!"; 
+           $scope.playerGuess = "";
         }
         else{
         $scope.alreadyG.unshift($scope.playerGuess);
-        $("#aGuessed").html("Previous Guesses: " + $scope.alreadyG.join(", "));
+        $scope.aGuessed = "Previous Guesses: " + $scope.alreadyG.join(", ");
 		$scope.remGuess--;
         }
 		if($scope.playerGuess===$scope.computerNumber && $scope.remGuess > 0){
-			$("#feedback").html("Bomb successfully disarmed! <strong>The number was " + $scope.computerNumber + " and it only took you " + (10-$scope.remGuess) + " tries!</strong>");
-
-            $("#guess").val("");
-            $("#submitG").attr("disabled", true);
+			$scope.ngFeedback = "Bomb successfully disarmed! The number was " + $scope.computerNumber + " and it only took you " + (10-$scope.remGuess) + " tries!";
+            $scope.playerGuess = "";
+            $scope.disableSubmitG = true;
 		}
         else if(repeat===true){
-           $("#feedback").html("<br><span style='color: #d70000'>You have already guessed " + $scope.playerGuess + ".  You still have " + $scope.remGuess + " guesses remaining.  Try Again!</span>"); 
-           $("#guess").val("");
+           $scope.ngFeedback = "You have already guessed " + $scope.playerGuess + ".  You still have " + $scope.remGuess + " guesses remaining.  Try Again!"; 
+           $scope.playerGuess = "";
         }
 		else if($scope.playerGuess !== $scope.computerNumber && $scope.remGuess > 0){
 			if($scope.playerGuess > $scope.computerNumber){
             if($scope.remGuess===10){
                 $scope.remGuess--;
             }
-			$("#feedback").html("<br><strong style='color: #1e87d6'>LOWER than " + $scope.playerGuess + "...</strong><br>" + $scope.remGuess + " guesses remaining!"); 
-            $("#guess").val("");
+			$scope.ngFeedback = "LOWER than " + $scope.playerGuess + "..." + $scope.remGuess + " guesses remaining!"; 
+            $scope.playerGuess = "";
 			}
 			else if($scope.playerGuess < $scope.computerNumber){
                 if($scope.remGuess===10){
                 $scope.remGuess--;
                 }
-				$("#feedback").html("<br><strong style='color: #ff1a72'>HIGHER than " + $scope.playerGuess + "... </strong><br>" + $scope.remGuess + " guesses remaining!");
-                $("#guess").val("");
+				$scope.ngFeedback = "HIGHER than " + $scope.playerGuess + "..." + $scope.remGuess + " guesses remaining!";
+                $scope.playerGuess = "";
 			}
 		}
 		else if($scope.remGuess===0){
-			$("#feedback").html("<br>Disaster!  You are out of guesses. <strong>The correct number was " + $scope.computerNumber +"</strong>.");
-            $("#guess").val("");
-            $("#submitG").attr("disabled", true);
+			$scope.ngFeedback = "Disaster!  You are out of guesses. The correct number was " + $scope.computerNumber + ".";
+            $scope.playerGuess = "";
+            $scope.disableSubmitG = true;
 		}
     }; 
     
@@ -749,6 +752,8 @@ $("#guess").keyup(function(event) {
 });  
     
 });
+ 
+//**********************************************
     
 app.controller("page4Ctrl", function ($scope) {
     $scope.mainTitle = "War";
