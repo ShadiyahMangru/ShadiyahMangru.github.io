@@ -545,7 +545,16 @@ app.controller("page2Ctrl", function ($scope) {
     $scope.alreadyGuess;
     $scope.lives;
     $scope.answerFormat =[];
-$("#HMSubmit").attr("disabled", true);    
+    
+    $scope.disableSubmit = true;
+    $scope.disableEasy = false;
+    $scope.disableMedium = false;
+    $scope.disableHard = false;
+     
+    $scope.guess;
+    $scope.cwFormat;
+    $scope.aGuess;
+    
 $scope.playGame = function(num){
     $scope.lives=7;
     $scope.alreadyGuess = [];
@@ -563,14 +572,15 @@ $scope.playGame = function(num){
     for(var i=0; i<$scope.mysteryWord.length; i++){
         $scope.answerFormat[i] = "_ ";
     }
-    $("#HMAnswerFormat").html("CODE WORD FORMAT: " + $scope.answerFormat.join(""));
-    $("#easy").attr("disabled", true);
-    $("#medium").attr("disabled", true);
-    $("#hard").attr("disabled", true);
-    $("#HMSubmit").attr("disabled", false);
+    $scope.cwFormat = "CODE WORD FORMAT: " + $scope.answerFormat.join("");
+    $scope.disableSubmit = false;
+    $scope.disableEasy = true;
+    $scope.disableMedium = true;
+    $scope.disableHard = true;
     return $scope.mysteryWord;
 };    
-
+    
+$scope.feedback = "";
 //only accepts letters as input
 $scope.aLetter;
 $scope.checkInp = function(){
@@ -579,62 +589,61 @@ $scope.checkInp = function(){
     var regex=/^[a-zA-Z]+$/;
     if (!inp.match(regex))
     {
-        $("#HMfeedback").html("Must input a letter.  Try Again!");
+        $scope.feedback="Must input a letter.  Try Again!";
         return $scope.aLetter = false;
     }
 };   
-        
+
 //*************************************************************************
 //function to get letter guess from user and output feedback based on guess
 //*************************************************************************   
 $scope.CWSubmit = function() {
-    var guess = $("#HMLetterGuess").val();
-    guess = guess.toUpperCase();
+    $scope.guess = $scope.guess.toUpperCase();
     $scope.checkInp();
-    if(guess.length==1 & $scope.aLetter===true){
+    if($scope.guess.length==1 & $scope.aLetter===true){
         //if current letter has already been guessed during this round, retrieve another guess from user
-        if($scope.alreadyGuess.indexOf(guess)!=-1){
-            $("#HMfeedback").html("You have already entered " + guess + ".  You still have " + $scope.lives + " tries remaining.  Try again!"); 
-            $("#HMLetterGuess").val("");
+        if($scope.alreadyGuess.indexOf($scope.guess)!=-1){
+            $scope.feedback = "You have already entered " + $scope.guess + ".  You still have " + $scope.lives + " tries remaining.  Try again!"; 
+            $scope.guess = "";
         }
-        //if current letter guess is in word, update mystery word format key and reveal to user
-        else if($scope.mysteryWord.indexOf(guess)!=-1 & $scope.alreadyGuess.indexOf(guess)==-1){
-            $scope.alreadyGuess.unshift(guess);
+        //if current letter guess is in word, show user updated mystery word format key
+        else if($scope.mysteryWord.indexOf($scope.guess)!=-1 & $scope.alreadyGuess.indexOf($scope.guess)==-1){
+            $scope.alreadyGuess.unshift($scope.guess);
             for(var i=0; i < $scope.mysteryWord.length; i++){
-						if($scope.mysteryWord.charAt(i)==guess.charAt(0)){
-							$scope.answerFormat[i] = guess + " ";	
+						if($scope.mysteryWord.charAt(i)==$scope.guess.charAt(0)){
+							$scope.answerFormat[i] = $scope.guess + " ";	
 						}
 					}
-            $("#HMAnswerFormat").html("CODE WORD FORMAT: " + $scope.answerFormat.join(""));
-            $("#HMLetterGuess").val("");
-            $("#HMguessed").html("ALREADY ENTERED: " + $scope.alreadyGuess.join(", "));
+            $scope.cwFormat = "CODE WORD FORMAT: " + $scope.answerFormat.join("");
+            $scope.guess = "";
+            $scope.aGuess = "ALREADY ENTERED: " + $scope.alreadyGuess.join(", ");
         
         //ask user for another letter guess, if answer key still contains dashes
             if($scope.answerFormat.indexOf("_ ")!=-1){
-                    $("#HMfeedback").html("Good Work!  Keep trying!  You have " + $scope.lives + " tries remaining.");
+                    $scope.feedback = "Good Work!  Keep trying!  You have " + $scope.lives + " tries remaining.";
             }
-        //output winner message if no dashes remain in answer key and load a new round of game
+        //output winner message if no dashes remain in answer key
             else{
-                $("#HMfeedback").html("  ACCESS TO MISSION GRANTED!!!");
-                $("#HMAnswerFormat").html("CODE WORD: " + $scope.answerFormat.join(""));
-                $("#HMSubmit").attr("disabled", true);
+                $scope.feedback = "  ACCESS TO MISSION GRANTED!!!";
+                $scope.cwFormat = "CODE WORD: " + $scope.answerFormat.join("");
+                $scope.disableSubmit = true;
             }
         }   
         //if current letter guess not in word, decrease 'lives' by one
-        else if($scope.mysteryWord.indexOf(guess)==-1){
-            $scope.alreadyGuess.unshift(guess);
+        else if($scope.mysteryWord.indexOf($scope.guess)==-1){
+            $scope.alreadyGuess.unshift($scope.guess);
             $scope.lives--;
-            $("#HMguessed").html("ALREADY ENTERED: " + $scope.alreadyGuess.join(", "));
+            $scope.aGuess = "ALREADY ENTERED: " + $scope.alreadyGuess.join(", ");
              
             //retrieve another letter guess from user if 'lives' remain
             if($scope.lives>0){
-                $("#HMfeedback").html(guess.toUpperCase() + " is not in the word.  Enter another letter!  You have " + $scope.lives + " tries remaining.");
-                $("#HMLetterGuess").val("");
+                $scope.feedback = $scope.guess.toUpperCase() + " is not in the word.  Enter another letter!  You have " + $scope.lives + " tries remaining.";
+                $scope.guess = "";
             }
             else{
-            //output mystery word and a game over message to user if no 'lives' remain; load another round of game
-                $("#HMfeedback").html("  ACCESS DENIED.  The Code Word was " + $scope.mysteryWord.toUpperCase() + " but has now been changed.");
-                $("#HMSubmit").attr("disabled", true);
+            //output mystery word and a game over message to user if no 'lives' remain
+                $scope.feedback =  "ACCESS DENIED.  The Code Word was " + $scope.mysteryWord.toUpperCase() + " but has now been changed.";
+                $scope.disableSubmit = true;
             }
         }
 } 
