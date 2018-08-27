@@ -814,11 +814,19 @@ $scope.splitDeck = function (){
         $scope.youDeck = $scope.deck.slice(26, 52);
 };
 
-    
+    $scope.disablePlayWar = false;
+    $scope.flipCounter=0;
+    $scope.correctCounter = 0;
+    $scope.QCScore;
     //'flip' 1 card from each deck
     $scope.flipCard = function (){
+        $scope.flipCounter++;
+        $scope.disablePlayWar = true;
         $("#youCPic").css("display", "inline-block");
         $("#dealerCPic").css("display", "inline-block");
+        $("#youLabel").css("backgroundColor", "white");
+        $("#dealerLabel").css("backgroundColor", "white");
+        $scope.roundWinMessage = "";
         $scope.youCard = $scope.youDeck[26-$scope.cardsLeft];
         //alert(typeof youCard.split(",")[1]);
         $scope.cardImage($scope.youCard, "#youCardDisplay", "#cardNumY1", "#cardNumY2");
@@ -906,10 +914,38 @@ $scope.splitDeck = function (){
         }
     };
     
+    
+    //*****************
+    $scope.roundWinMessage = "";
+    $scope.roundWinner;
+    $scope.click=false;
+    $scope.whoWon = function (num) {
+        if(num===1){
+            $scope.roundWinner='you';
+        }
+        else if(num===2){
+            $scope.roundWinner='computer';
+        }
+        else if(num===3){
+            $scope.roundWinner='tie';
+        }
+        $scope.click=true;
+        $scope.score();  
+        $scope.disablePlayWar = false;
+        $scope.QCScore = $scope.correctCounter + "/" + $scope.flipCounter;
+    };
+
     //a function to compare cards and adjust score based on flipped card values
     $scope.score = function (){
         //if dealer card < you card, +2 you
-        if(parseInt($scope.youCard.split(",")[0]) > parseInt($scope.dealerCard.split(",")[0])){
+        if(parseInt($scope.youCard.split(",")[0]) > parseInt($scope.dealerCard.split(",")[0]) && $scope.click===true){
+            if($scope.roundWinner==='you'){
+                $scope.roundWinMessage = " Yes, player 1 won that round!";
+                $scope.correctCounter++;
+            }
+            else{
+                $scope.roundWinMessage = " Actually, player 1 won that round!";
+            }
             var addPoints = 2;
             $scope.youScore+=parseInt(addPoints);
             //alert("you: " + youScore);
@@ -918,7 +954,14 @@ $scope.splitDeck = function (){
             $("#dealerLabel").css("backgroundColor", "white");
         }
         //if dealer card > you card, +2 dealer
-        else if(parseInt($scope.youCard.split(",")[0]) < parseInt($scope.dealerCard.split(",")[0])){
+        else if(parseInt($scope.youCard.split(",")[0]) < parseInt($scope.dealerCard.split(",")[0]) && $scope.click===true){
+            if($scope.roundWinner==='computer'){
+                $scope.roundWinMessage = " Yes, player 2 won that round!";
+                $scope.correctCounter++;
+            }
+            else{
+                $scope.roundWinMessage = " Actually, player 2 won that round!";
+            }
             var addPoints = 2;
             $scope.dealerScore+=parseInt(addPoints);
             //alert("dealer: " + dealerScore);
@@ -927,12 +970,20 @@ $scope.splitDeck = function (){
             $("#dealerLabel").css("backgroundColor", "yellow");
         }
         //if dealer card = you card, flip again without adjusting score (once tie broken, score of winner increased by total number cards flipped since tie began). //WORK ON THIS CONDITION
-        else{
+        else if($scope.click===true){
+            if($scope.roundWinner==='tie'){
+                $scope.roundWinMessage = " Yes, this round we have a tie!";
+                $scope.correctCounter++;
+            }
+            else{
+                $scope.roundWinMessage = " Actually, this round we have a tie!";
+            }
             //alert("there is a tie");
             $("#youLabel").css("backgroundColor", "white");
             $("#dealerLabel").css("backgroundColor", "white");
             $scope.score();
         }
+        $scope.click=false;
     };
 
     $scope.loadGame = function (){
