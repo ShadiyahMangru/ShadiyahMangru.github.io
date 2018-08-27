@@ -10,9 +10,11 @@
 <br>
 <div class="col-sm-8">
     <h2>{{contentsHeader}}</h2>
+<div class="row">
+<div class="col-sm-2 text-left">
 <!--html for Rules MODAL--> 
 <br><br>
-<button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal'>Rules</button> 
+<button type='button' id='CP' class='btn btn-info' style="width: 80%" data-toggle='modal' data-target='#RulesModal'>Rules</button> 
 <div id="RModal">
         <div class='modal fade' id='RulesModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
         <div class='modal-dialog' role='document'><br><br>
@@ -40,11 +42,20 @@
 
     <h4>{{directions}}
     <br>
-    Select a difficulty level:<br><br>
-    <button type="button" class="btn btn-success">Easy</button>
-    <button type="button" class="btn btn-warning">Medium</button>
-    <button type="button" class="btn btn-danger">Hard</button>
+    Difficulty level:<br><br>
+    <button type="button" class="btn btn-success" ng-click="makeEasyGB()" style="width: 80%">Easy</button><br>
+    <button type="button" class="btn btn-warning" ng-click="makeMediumGB()" style="width: 80%">Medium</button><br>
+    <button type="button" class="btn btn-danger" ng-click="makeHardGB()" style="width: 80%">Hard</button><br>
     </h4>
   </div>
+<div class="col-sm-10">
+    <h3 style="border: 1px solid crimson; padding: 5%"><span>WARNING:<br></span>Malevolent hackers have taken over your navigation system.<br><strong>Your mission:</strong> regain control by successfully solving a puzzle board.  <br>Familiarize yourself with the rules located to the left, then select a difficulty level to begin.</h3>
+<h4 id="key"></h4>
+<h2 id="gb" style="color: white"></h2>
+<h3 id="mySolution"></h3>
+<h3 id="winLose"></h3>
+</div>
+</div>
+</div>
 </div>
 </div>
