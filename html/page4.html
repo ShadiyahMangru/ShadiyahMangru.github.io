@@ -29,7 +29,7 @@
     <div class="row" style="border: 1px solid midnightblue; padding: 1em; border-radius: 6px">
     <div class="col-sm-6">
     <br>
-    <button type="button" class="btn btn-success" ng-click="flipCard();">Play War!</button><br><br>
+    <button type="button" class="btn btn-success" ng-click="flipCard();" ng-disabled="disablePlayWar">Play War!</button><br><br>
     </div>
     <div class="col-sm-6">
         <strong>Score: </strong><br>P1:<span id='youScore' style='float: right'>0</span><br>P2: <span id='dealerScore' style='float: right'>0</span>
@@ -39,11 +39,12 @@
     <br>
     <div class="col-sm-12" style="border: 1px solid midnightblue; padding: .5em; border-radius: 6px;">
     <h3>Winner of this battle is...?</h3>
-    <button type="button" class="btn btn-primary">P1</button>
-    <button type="button" class="btn btn-primary">P2</button>
-    <button type="button" class="btn btn-primary">Tie</button>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(1);">P1</button>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(2);">P2</button>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(3);">Tie</button>
+    <h3 id="roundWin" ng-model="roundWinMessage">{{roundWinMessage}}</h3>
     <br><br><br>
-    <h4>Quantitative Comparisons Score: </h4>
+    <h4 ng-model="QCScore">Quantitative Comparisons Score: {{QCScore}}</h4>
     <br>
     </div>
     </div>
