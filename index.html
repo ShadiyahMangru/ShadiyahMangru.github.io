@@ -51,7 +51,7 @@
         letter-spacing: 1px;
     }
   @media screen and (max-width: 768px) {
-    .col-sm-4 {
+    .col-sm-3 {
       text-align: center;
       margin: 25px 0;
     }
@@ -521,11 +521,7 @@ $scope.makeHardGB = function() {
     };
     };
     
-    });
-    
-    
-    
-    
+    });    
     
 });
  
@@ -652,14 +648,13 @@ $scope.CWSubmit = function() {
 } 
 };
     
-    //submit input upon pressing enter key   
-    $("#HMLetterGuess").keyup(function(event) {
-        if (event.keyCode === 13) {
-            $("#HMSubmit").click();
-        }
-    });   
-       
-    
+//submit input upon pressing enter key   
+$("#HMLetterGuess").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#HMSubmit").click();
+    }
+});      
+
 }); 
     
 //**************************************************    
