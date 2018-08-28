@@ -8,21 +8,51 @@
     <h2>{{contentsHeader}}</h2>
     <h2>{{mission}}</h2>
     <br><br><br>
+    
+<!--html for Rules MODAL--> 
+<div id="RModal">
+        <div class='modal fade' id='RulesModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='document'><br><br>
+            <div class='modal-content'>
+                <div class='modal-header' style='background-color: #1cadc2; color: white'>
+                    <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>War Rules</h3>
+                </div>
+                <div class='modal-body'>
+                <h4>
+                <ol style="text-align: left; color: dimgray; line-height: 140%">
+                    
+                    <li>Press 'Play War' to start each battle.</li>
+                    <li>Identify the battle winner as either 'P1', 'P2', or 'Tie', by pressing the corresponding button.  The objective is to maximize your Quantitative Comparisons score by correctly identifying the winner of each battle.</li>
+                    <li>Repeat steps 1 and 2 until no cards remain to be flipped. Good luck!</li>
+                </ol> 
+                </h4>
+                </div>
+                <div class='modal-footer' style='background-color: white; border-top: 1px solid black;'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal' style="box-shadow: 4px 4px 4px grey">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div> 
+<!--end html for RULES MODAL-->  
+
+    
+    
     <div class="row">
     <div class="col-sm-4" id='youCPic'>
-        <p id='youLabel'>Player 1: </p>
-        <div id='youCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative">
-            <h2 id='cardNumY1' style="position: absolute; top: 0; right: 85%">Q</h2>
-            <img id='youCardDisplay'  src='Images/diamonds.png'>
-            <h2 id='cardNumY2' style="position: absolute; bottom: 0; left: 85%">Q</h2>
+        <p id='youLabel' ng-style="P1LabelStyle">Player 1: </p>
+        <div id='youCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative" ng-model="cardP1.num">
+            <h2 id='cardNumY1' style="position: absolute; top: 0; right: 85%" ng-style="cardP1">{{cardP1.num}}</h2>
+            <img id='youCardDisplay' ng-model="cardP1.src" src={{cardP1.src}}>
+            <h2 id='cardNumY2' style="position: absolute; bottom: 0; left: 85%" ng-style="cardP1">{{cardP1.num}}</h2>
         </div>
     </div>
     <div class="col-sm-4" id='dealerCPic'>
-        <p id='dealerLabel'>Player 2: </p>
-        <div id='dealerCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative">
-            <h2 id='cardNumD1' style="position: absolute; top: 0; right: 85%">K</h2>
-            <img id='dealerCardDisplay'  src='Images/clubs.png'>
-            <h2 id='cardNumD2' style="position: absolute; bottom: 0; left: 85%">K</h2>
+        <p id='dealerLabel' ng-style="P2LabelStyle">Player 2: </p>
+        <div id='dealerCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative" ng-model="cardP2.num">
+            <h2 id='cardNumD1' style="position: absolute; top: 0; right: 85%" ng-style="cardP2">{{cardP2.num}}</h2>
+            <img id='dealerCardDisplay'  ng-model="cardP2.src" src={{cardP2.src}}>
+            <h2 id='cardNumD2' style="position: absolute; bottom: 0; left: 85%" ng-style="cardP2">{{cardP2.num}}</h2>
         </div>
     </div>
     <div class="col-sm-4">
@@ -32,7 +62,7 @@
     <button type="button" class="btn btn-success" ng-click="flipCard();" ng-disabled="disablePlayWar">Play War!</button><br><br>
     </div>
     <div class="col-sm-6">
-        <strong>Score: </strong><br>P1:<span id='youScore' style='float: right'>0</span><br>P2: <span id='dealerScore' style='float: right'>0</span>
+        <strong>Score: </strong><br>P1:<span id='youScore' ng-model="youScore" style='float: right' ng-style="P1ScoreStyle">{{youScore}}</span><br>P2: <span id='dealerScore' style='float: right' ng-model="dealerScore" ng-style="P2ScoreStyle">{{dealerScore}}</span>
     </div>
     </div>
     <div class="row">
@@ -50,8 +80,9 @@
     </div>
     </div>
     </div>
-    <br>
     <h4 style="float: left">{{directions}}</h4>
+        <button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal' style="float:left; margin-left: 5%">Rules</button>
+    <br><br>
     </div> 
     <div class="col-sm-4">
         <img src="af4.JPG"; style="width: 100%; border: 4px solid #24292f; margin-right: 5%">
