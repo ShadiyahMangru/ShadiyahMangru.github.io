@@ -80,7 +80,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#!page1">Add It Up!</a></li>
+        <li><a href="#!page1">Sum Puzzles</a></li>
         <li><a href="#!page2">Code Word</a></li>
         <li><a href="#!page3">Number Guess</a></li>
         <li><a href="#!page4">War</a></li>
@@ -125,13 +125,13 @@ app.config(function($routeProvider) {
 app.controller("mainCtrl", function ($scope){
    $scope.mainTitle = "APP-lied Sciences Adventures"; 
    $scope.contentsHeader = "APP-ly Your Quantitative and Verbal Skills";
-   $scope.descrip1 = "Avert disaster by arranging the numbers in a winning combination during Add It Up!";
+   $scope.descrip1 = "Avert disaster by arranging the numbers in a winning combination during Sum Puzzles";
    $scope.descrip2 = "Accept your secret mission by strategically entering vowels during Code Word";
    $scope.descrip3 = "Disarm explosives by strategically bisecting numeric intervals during Number Guess";
    $scope.descrip4 = "Achieve victory with correct quantitative comparisons during War";
 });
 app.controller("page1Ctrl", function ($scope) {
-    $scope.mainTitle = "Add it Up!";
+    $scope.mainTitle = "Sum Puzzles";
     $scope.contentsHeader = "Avert disaster through quantitative reasoning (In Progress)";
 
     $scope.directions = "";
@@ -139,389 +139,112 @@ app.controller("page1Ctrl", function ($scope) {
 //**********************************
 //Add It Up! Game source code
 //**********************************
-    $scope.solValid;
-    $scope.redSum=0;
-    $scope.blueSum=0;
-    $scope.purpleSum=0;
-    $scope.greenSum=0;
+    
+    $scope.easyGB1key = "KEY: The sum of the purple squares is 8, and the green squares is 10.";
+    
+    $scope.btn1 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
+    $scope.btn2 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
+    $scope.btn3 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
+    $scope.btn4 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
+    $scope.btn5 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    $scope.btn6 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    $scope.btn7 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    $scope.btn8 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    $scope.btn9 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    
+    $scope.solutionValid;
     $scope.sumsCorrect;
-
-    //create more gameboards per level
-    $(document).ready(function(){
-       
-        
-    $scope.makeEasyGB = function () { 
-    $("#key").html("");
-    $("#gb").html("");
-    $("#mySolution").html("");
-    var pg = ["8", "10"]; 
-    var answerKeyC = ["ppp", "pgg", "ggg"];
-    var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color: rebeccapurple'>purple</span> squares is " + pg[0] + ", (ii) the <span style='color: #2c8309'>green</span> squares is " + pg[1] + "."; 
-        $("#key").html(key);
-        $("#key").append("<br><br>")    
-        
+    $scope.winLoseMessage;
     
-    var counter = 0;
-    var setStyle;
-        while(counter < 3){
-            for(var i = 0; i < 3; i++){
-                if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: rebeccapurple'";
-                }    
-                else if(answerKeyC[counter].charAt(i)==='g'){
-                    setStyle = "style='background-color: #2c8309'";
-                }     
-                $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
-            }
-            $("#gb").append("<br>");
-            counter++;
-        }
-        $("#mySolution").append("<br><button id='submitSolutionEasy' class='btn btn-primary'>Submit My Solution</button>");
-        
-        $( ".clickButton" ).click(function() {
-        var buttonCount = $(this).html();
-        parseInt(buttonCount);
-        if(buttonCount<3){
-            buttonCount++;
-        }
-        else{
-            buttonCount = 1;
-        }
-        $(this).html(buttonCount);
-        }); 
-     
-    $scope.submitSolutionEasy = function() {
-        solValid=true;
-        $scope.sumsCorrect=true;
-        $("#winLose").html("");
-        var ys = [];
-        var sol = "";
-        var counter = 0;
-        var colArray = [];
-        var colString = '';
-        $scope.purpleSum=0;
-        $scope.greenSum=0;
-        while(counter < 3){
-            sol="";
-            for(var i = 0; i < 3; i++){
-                var id = "#a"+i+counter;
-                sol += $("" + id + "").html();
-            }
-        ys[counter] = sol;
-        counter++;    
-        }
-        //check if 1,2,3 only used once per row
-        for(var i=0; i<3; i++){
-            if(ys[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if 1,2,3 only used once per column
-        for(var a=0; a<3; a++){
-            for(var b=0; b<3; b++){
-            var columnVal = ys[b].charAt(a);
-            colString += columnVal;
-            }
-            colArray.unshift(colString);
-            colString='';
-        }
-        //alert(colArray);
-        for(var i=0; i<3; i++){
-            if(colArray[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if each color-coded region sums to specified values
-        for(var c=0; c<3; c++){
-            for(var d=0; d<3; d++){
-            if(answerKeyC[d].charAt(c)=='p'){
-                $scope.purpleSum += parseInt(ys[d].charAt(c));    
-            }
-            else if(answerKeyC[d].charAt(c)=='g'){
-                $scope.greenSum += parseInt(ys[d].charAt(c));    
-            }
-        }
-       }
-       if($scope.purpleSum!=pg[0]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.greenSum!=pg[1]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.solValid===false){
-            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
-       }
-        if($scope.sumsCorrect===false){
-            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
-        }
-        else{
-            $("#winLose").html("YOU WIN!!!");
-        }
-    };    
-        
-        
-    };
-
-        
-        
-$scope.makeMediumGB = function(){
-    $("#key").html("");
-    $("#gb").html("");
-    $("#mySolution").html("");
-    var rpg = ["15", "5", "20"];
-    var answerKeyC = ["ppgg", "rrgg", "rrgg", "rrgg"];
-        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rpg[0] + ", (ii) the <span style='color: rebeccapurple'>purple</span> squares is " + rpg[1] + ", (iii) the <span style='color: #2c8309'>green</span> squares is " + rpg[2] + "."; 
-        $("#key").html(key);
-        $("#key").append("<br><br>")       
-        
+$scope.clickSq = function(btn, num) {
+    if(btn<num){
+        btn++;
+    }
+    else{
+        btn = 1;
+    }
+    return btn;
+}; 
     
-    var counter = 0;
-    var setStyle;
-        while(counter < 4){
-            for(var i = 0; i < 4; i++){
-                if(answerKeyC[counter].charAt(i)==='r'){
-                    setStyle = "style='background-color: #A8224A'";
-                }
-                else if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: rebeccapurple'";
-                }    
-                else if(answerKeyC[counter].charAt(i)==='g'){
-                    setStyle = "style='background-color: #2c8309'";
-                }     
-                $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
-            }
-            $("#gb").append("<br>");
-            counter++;
+$scope.noRepeats = function(a, num){
+    for(var i=1; i<(num+1); i++){
+        if(a.indexOf(i)===-1){
+            $scope.solutionValid = false;
         }
-        $("#mySolution").append("<br><button id='submitSolutionM' class='btn btn-primary' ng-click='submitSolutionMedium()'>Submit My Solution</button>");
-        
-        
-        $( ".clickButton" ).click(function() {
-        var buttonCount = $(this).html();
-        parseInt(buttonCount);
-        if(buttonCount<4){
-            buttonCount++;
-        }
-        else{
-            buttonCount = 1;
-        }
-        $(this).html(buttonCount);
-        });
+    }
+    return $scope.solutionValid;
+}
     
-    $scope.submitSolutionMedium = function() {
-        $scope.solValid=true;
-        $scope.sumsCorrect=true;
-        $("#winLose").html("");
-        var ys = [];
-        var sol = "";
-        var counter = 0;
-        var colArray = [];
-        var colString = '';
-        $scope.redSum=0;
-        $scope.purpleSum=0;
-        $scope.greenSum=0;
-        while(counter < 4){
-            sol="";
-            for(var i = 0; i < 4; i++){
-                var id = "#a"+i+counter;
-                sol += $("" + id + "").html();
-            }
-        ys[counter] = sol;
-        counter++;    
-        }
-        //check if 1,2,3,4 only used once per row
-        for(var i=0; i<4; i++){
-            if(ys[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if 1,2,3,4,5 only used once per column
-        for(var a=0; a<4; a++){
-            for(var b=0; b<4; b++){
-            var columnVal = ys[b].charAt(a);
-            colString += columnVal;
-            }
-            colArray.unshift(colString);
-            colString='';
-        }
-        //alert(colArray);
-        for(var i=0; i<4; i++){
-            if(colArray[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if each color-coded region sums to specified values
-        for(var c=0; c<4; c++){
-            for(var d=0; d<4; d++){
-            if(answerKeyC[d].charAt(c)=='r'){
-                $scope.redSum += parseInt(ys[d].charAt(c));
-            }
-            else if(answerKeyC[d].charAt(c)=='p'){
-                $scope.purpleSum += parseInt(ys[d].charAt(c));    
-            }
-            else if(answerKeyC[d].charAt(c)=='g'){
-                $scope.greenSum += parseInt(ys[d].charAt(c));    
-            }
-        }
-       }
-       if($scope.redSum!=rpg[0]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.purpleSum!=rpg[1]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.greenSum!=rpg[2]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.solValid===false){
-            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
-       }
-        if($scope.sumsCorrect===false){
-            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
-        }
-        else{
-            $("#winLose").html("YOU WIN!!!");
-        }
-    };
-        
-    };
-        
-
-$scope.makeHardGB = function() {
-    $("#key").html("");
-    $("#gb").html("");
-    $("#mySolution").html("");
-    var rbpg = ["10", "27", "16", "22"];
-    var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
-        var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #3766BD'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: rebeccapurple'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3] + "."; 
-        $("#key").html(key);
-        $("#key").append("<br><br>")    
-          
     
-    var counter = 0;
-    var setStyle;
-        while(counter < 5){
-            for(var i = 0; i < 5; i++){
-                if(answerKeyC[counter].charAt(i)==='r'){
-                    setStyle = "style='background-color: #A8224A'";
-                }
-                else if(answerKeyC[counter].charAt(i)==='b'){
-                    setStyle = "style='background-color: #3766BD'";
-                }
-                else if(answerKeyC[counter].charAt(i)==='p'){
-                    setStyle = "style='background-color: rebeccapurple'";
-                }    
-                else if(answerKeyC[counter].charAt(i)==='g'){
-                    setStyle = "style='background-color: #2c8309'";
-                }     
-                $("#gb").append('<button ' + setStyle + 'class="clickButton" id="a' + i + counter + '">'+ 1 +'</button>');
-            }
-            $("#gb").append("<br>");
-            counter++;
-        }
-        $("#mySolution").append("<br><button id='submitSolution' class='btn btn-primary' >Submit My Solution</button>");
-
-        
-        $( ".clickButton" ).click(function() {
-        var buttonCount = $(this).html();
-        parseInt(buttonCount);
-        if(buttonCount<5){
-            buttonCount++;
-        }
-        else{
-            buttonCount = 1;
-        }
-        $(this).html(buttonCount);
-        });
-        
-
-//var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
-
-   $scope.submitSolutionHard = function() {
-        $scope.solValid=true;
-        $scope.sumsCorrect=true;
-        $("#winLose").html("");
-        var ys = [];
-        var sol = "";
-        var counter = 0;
-        var colArray = [];
-        var colString = '';
-        $scope.redSum=0;
-        $scope.blueSum=0;
-        $scope.purpleSum=0;
-        $scope.greenSum=0;
-        while(counter < 5){
-            sol="";
-            for(var i = 0; i < 5; i++){
-                var id = "#a"+i+counter;
-                sol += $("" + id + "").html();
-            }
-        ys[counter] = sol;
-        counter++;    
-        }
-        //check if 1,2,3,4,5 only used once per row
-        for(var i=0; i<5; i++){
-            if(ys[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if 1,2,3,4,5 only used once per column
-        for(var a=0; a<5; a++){
-            for(var b=0; b<5; b++){
-            var columnVal = ys[b].charAt(a);
-            colString += columnVal;
-            }
-            colArray.unshift(colString);
-            colString='';
-        }
-        //alert(colArray);
-        for(var i=0; i<5; i++){
-            if(colArray[i].indexOf((i+1).toString())===1){
-                $scope.solValid=false;
-            }
-        }
-        //check if each color-coded region sums to specified values
-        for(var c=0; c<5; c++){
-            for(var d=0; d<5; d++){
-            if(answerKeyC[d].charAt(c)=='r'){
-                $scope.redSum += parseInt(ys[d].charAt(c));
-            }
-            else if(answerKeyC[d].charAt(c)=='b'){
-                $scope.blueSum += parseInt(ys[d].charAt(c));
-            }
-            else if(answerKeyC[d].charAt(c)=='p'){
-                $scope.purpleSum += parseInt(ys[d].charAt(c));    
-            }
-            else if(answerKeyC[d].charAt(c)=='g'){
-                $scope.greenSum += parseInt(ys[d].charAt(c));    
-            }
-        }
-       }
-       if($scope.redSum!=rbpg[0]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.blueSum!=rbpg[1]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.purpleSum!=rbpg[2]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.greenSum!=rbpg[3]){
-           $scope.sumsCorrect=false;
-       }
-       if($scope.solValid===false){
-            $("#winLose").append("Not quite; no repeated numbers allowed per row/column.");
-       }
-        if($scope.sumsCorrect===false){
-            $("#winLose").append("<br>Sums of color-coded regions do not match key.  Try again!<br><br>");
-        }
-        else{
-            $("#winLose").html("YOU WIN!!!");
-        }
-    };
-    };
+$scope.submitSolution = function(num) {
+    $scope.solutionValid = true;
+    $scope.sumsCorrect = true;
+    //check if 1,2,3 only used once per row
+    var row1 = "";
+    var row2 = "";
+    var row3 = "";
+    row1 = $scope.btn1.value.toString() + $scope.btn2.value + $scope.btn3.value;
+    row2 = $scope.btn4.value.toString() + $scope.btn5.value + $scope.btn6.value;
+    row3 = $scope.btn7.value.toString() + $scope.btn8.value + $scope.btn9.value;
+    $scope.solutionValid = $scope.noRepeats(row1, 3);
+    $scope.solutionValid = $scope.noRepeats(row2, 3);
+    $scope.solutionValid = $scope.noRepeats(row3, 3);
     
-    });    
+    alert("rows: " + $scope.solutionValid);
+    
+    //check if 1,2,3 only used once per column
+    var col1 = "";
+    var col2 = "";
+    var col3 = "";
+    col1 = $scope.btn1.value.toString() + $scope.btn4.value + $scope.btn7.value;
+    col2 = $scope.btn2.value.toString() + $scope.btn5.value + $scope.btn8.value;
+    col3 = $scope.btn3.value.toString() + $scope.btn6.value + $scope.btn9.value;
+    $scope.solutionValid = $scope.noRepeats(col1, 3);
+    $scope.solutionValid = $scope.noRepeats(col2, 3);
+    $scope.solutionValid = $scope.noRepeats(col3, 3);    
+      
+    alert("columns: " + $scope.solutionValid);
+    
+    //check if each color-coded region sums to specified values
+    var purpleSum = $scope.btn1.value + $scope.btn2.value + $scope.btn3.value +                             $scope.btn4.value;
+    if(purpleSum !== 8){
+        $scope.sumsCorrect = false;
+    }
+    var greenSum = $scope.btn5.value + $scope.btn6.value + $scope.btn7.value +                              $scope.btn8.value + $scope.btn9.value;
+    if(greenSum !== 10){
+        $scope.sumsCorrect = false;
+    }
+    
+    alert($scope.sumsCorrect);
+    
+    if($scope.solutionValid === false && $scope.sumsCorrect ===false){
+        $scope.winLoseMessage = "No repeated numbers allowed per row/column.  Sums of color-coded regions do not match key.  Try again!";
+    }
+    else if($scope.solutionValid === false && $scope.sumsCorrect ===true){
+        $scope.winLoseMessage = "No repeated numbers allowed per row/column.Try again!";
+    }
+    else if($scope.solutionValid === true && $scope.sumsCorrect ===false){
+        $scope.winLoseMessage = "Sums of color-coded regions do not match key.  Try again!";
+    }
+    else{
+        $scope.winLoseMessage = "Hooray!  You have successfully solved this puzzle!  You have regained control of your navigation system.";
+    }
+};
+    
+    //create more gameboards per level 
+               
+    //var rpg = ["15", "5", "20"];
+    //var answerKeyC = ["ppgg", "rrgg", "rrgg", "rrgg"];
+    //var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rpg[0] + ", (ii) the <span style='color: rebeccapurple'>purple</span> squares is " + rpg[1] + ", (iii) the <span style='color: #2c8309'>green</span> squares is " + rpg[2] + "."; 
+            
+    // RED: background-color: #A8224A'";
+
+    //var rbpg = ["10", "27", "16", "22"];
+    //var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
+    //var key = "<br><span style='color: #003399; font-size: 120%; font-weight: 600'><u>KEY:</u></span> \n\nThe sum of: (i) the <span style='color:#A8224A'>red</span> squares is " + rbpg[0] + ", (ii) the <span style='color: #3766BD'>blue</span> squares is " + rbpg[1] + ", (iii) the <span style='color: rebeccapurple'>purple</span> squares is " + rbpg[2] + ", (iv) the <span style='color: #2c8309'>green</span> squares is " + rbpg[3] + "."; 
+  
+    //BLUE: background-color: #3766BD'"          
+    //var aSolution = ["13425", "42351", "25143", "51234", "34512"];    
     
 });
  
