@@ -80,8 +80,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#!page1">Sum Puzzles</a></li>
-        <li><a href="#!page2">Code Word</a></li>
+        <li><a href="#!page1">Code Word</a></li>
+        <li><a href="#!page2">Sum Puzzles</a></li>
         <li><a href="#!page3">Number Guess</a></li>
         <li><a href="#!page4">War</a></li>
       </ul>
@@ -106,11 +106,11 @@ app.config(function($routeProvider) {
         controller : "mainCtrl"
     })
     .when("/page1", {
-        templateUrl: "html/page1.html",
+        templateUrl: "html/page2.html",
         controller : "page1Ctrl"
     })
     .when("/page2", {
-        templateUrl: "html/page2.html",
+        templateUrl: "html/page1.html",
         controller : "page2Ctrl"
     })
     .when("/page3", {
@@ -130,7 +130,7 @@ app.controller("mainCtrl", function ($scope){
    $scope.descrip3 = "Disarm explosives by strategically bisecting numeric intervals during Number Guess";
    $scope.descrip4 = "Achieve victory with correct quantitative comparisons during War";
 });
-app.controller("page1Ctrl", function ($scope) {
+app.controller("page2Ctrl", function ($scope) {
     $scope.mainTitle = "Sum Puzzles";
     $scope.contentsHeader = "Stay afloat during a cyber attack on your ship’s navigation systems.  To regain control of your ship, the malevolent hackers require you to exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules located to the left, then select a difficulty level to begin your mission. (In Progress)";
 
@@ -249,7 +249,7 @@ $scope.submitSolution = function(num) {
 });
  
 //**********************************************    
-app.controller("page2Ctrl", function ($scope) {
+app.controller("page1Ctrl", function ($scope) {
     $scope.mainTitle = "Code Word";
     $scope.contentsHeader = "Entering the correct code word makes your mission possible.";
     
@@ -479,8 +479,7 @@ $("#guess").keyup(function(event) {
 //2. quantitative comparisons tie button (so that play war becomes active again upon pressing)
 app.controller("page4Ctrl", function ($scope) {
     $scope.mainTitle = "War";
-    $scope.contentsHeader = "War is a card game between two players.  Each player flips one card per 'battle' and the player with the high card wins.  Here, King is a high card (=13) and Ace is a low card (=1).";
-    $scope.mission = "Your mission: correctly identify the victor of each battle.  A high score hinges on expert use of your quantitative comparison skills.  Familiarize yourself with the rules below, then press 'Play War' to begin!";
+    $scope.contentsHeader = "Successfully free hostages from capture and end your final mission with accurate quantitative comparisons.  During a game of War, correctly identify the victor of each battle.  Familiarize yourself with the rules of this card game below, then press ‘Play War’ to begin.";
     
     $scope.deck = [];
     $scope.dealerDeck = [];
