@@ -5,8 +5,8 @@
 <div id="content" class="container-fluid text-center">
 <div class="row">
 <div class="col-sm-4">
-    <!--<img src="af1.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: 2em; margin-right: 5%">-->
-    <img src="af6.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: 2em; margin-right: 5%">
+    <img src="navy2.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: 2em; margin-right: 5%">
+    <img src="navy1.JPG"; style="width: 100%; border: 4px solid #24292f; margin-top: .75em; margin-right: 5%">
 </div>
 <br>
 <div class="col-sm-8">
@@ -21,7 +21,7 @@
         <div class='modal-dialog' role='document'><br><br>
             <div class='modal-content'>
                 <div class='modal-header' style='background-color: #1cadc2; color: white'>
-                    <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>Add It Up! Rules</h3>
+                    <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>Sum Puzzles Rules</h3>
                 </div>
                 <div class='modal-body'>
                 <h4>
@@ -45,15 +45,26 @@
     <br>
     Difficulty level:<br><br>
     <button type="button" class="btn btn-success" ng-click="makeEasyGB()" style="width: 80%">Easy</button><br>
-    <button type="button" class="btn btn-warning" ng-click="makeMediumGB()" style="width: 80%">Medium</button><br>
-    <button type="button" class="btn btn-danger" ng-click="makeHardGB()" style="width: 80%">Hard</button><br>
+    <button type="button" class="btn btn-warning" ng-click="makeMediumGB()" style="width: 80%" disabled="true">Medium</button><br>
+    <button type="button" class="btn btn-danger" ng-click="makeHardGB()" style="width: 80%" disabled="true">Hard</button><br>
     </h4>
   </div>
 <div class="col-sm-10">
-    <h4 id="key"></h4>
-    <h2 id="gb" style="color: white"></h2>
-    <h3 id="mySolution"></h3>
-    <h3 id="winLose"></h3>
+    <h4 id="key" ng-model="easyGB1key">{{easyGB1key}}</h4>
+    <h2 id="gb">
+    <button ng-click="btn1.value = clickSq(btn1.value, 3)" ng-model="btn1.value" ng-style="btn1">{{btn1.value}}</button>
+    <button ng-click="btn2.value = clickSq(btn2.value, 3)" ng-model="btn2.value" ng-style="btn2">{{btn2.value}}</button>
+    <button ng-click="btn3.value = clickSq(btn3.value, 3)" ng-model="btn3.value" ng-style="btn3">{{btn3.value}}</button><br>
+    <button ng-click="btn4.value = clickSq(btn4.value, 3)" ng-model="btn4.value" ng-style="btn4">{{btn4.value}}</button>
+    <button ng-click="btn5.value = clickSq(btn5.value, 3)" ng-model="btn5.value" ng-style="btn5">{{btn5.value}}</button>
+    <button ng-click="btn6.value = clickSq(btn6.value, 3)" ng-model="btn6.value" ng-style="btn6">{{btn6.value}}</button><br>
+    <button ng-click="btn7.value = clickSq(btn7.value, 3)" ng-model="btn7.value" ng-style="btn7">{{btn7.value}}</button>
+    <button ng-click="btn8.value = clickSq(btn8.value, 3)" ng-model="btn8.value" ng-style="btn8">{{btn8.value}}</button>
+    <button ng-click="btn9.value = clickSq(btn9.value, 3)" ng-model="btn9.value" ng-style="btn9">{{btn9.value}}</button><br>
+    </h2>
+    <h3 id="mySolution"><br><button id='submitSolutionEasy' ng-click="submitSolution(3)" class='btn btn-primary'>Submit My Solution</button></h3>
+    <h3 id="winLose" ng-model="winLoseMessage">{{winLoseMessage}}</h3>
+    
     <h3 style="border: 1px solid crimson; padding: 5%"><span>WARNING:<br></span>Malevolent hackers have taken over your navigation system.<br><strong>Your mission:</strong> regain control by successfully solving a puzzle board.  <br>Familiarize yourself with the rules located to the left, then select a difficulty level to begin.</h3>
 </div>
 </div>
