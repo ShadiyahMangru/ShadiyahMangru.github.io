@@ -190,7 +190,7 @@ $scope.submitSolution = function(num) {
     $scope.solutionValid = $scope.noRepeats(row2, 3);
     $scope.solutionValid = $scope.noRepeats(row3, 3);
     
-    alert("rows: " + $scope.solutionValid);
+    //alert("rows: " + $scope.solutionValid);
     
     //check if 1,2,3 only used once per column
     var col1 = "";
@@ -203,7 +203,7 @@ $scope.submitSolution = function(num) {
     $scope.solutionValid = $scope.noRepeats(col2, 3);
     $scope.solutionValid = $scope.noRepeats(col3, 3);    
       
-    alert("columns: " + $scope.solutionValid);
+    //alert("columns: " + $scope.solutionValid);
     
     //check if each color-coded region sums to specified values
     var purpleSum = $scope.btn1.value + $scope.btn2.value + $scope.btn3.value +                             $scope.btn4.value;
@@ -215,7 +215,7 @@ $scope.submitSolution = function(num) {
         $scope.sumsCorrect = false;
     }
     
-    alert($scope.sumsCorrect);
+    //alert($scope.sumsCorrect);
     
     if($scope.solutionValid === false && $scope.sumsCorrect ===false){
         $scope.winLoseMessage = "No repeated numbers allowed per row/column.  Sums of color-coded regions do not match key.  Try again!";
