@@ -1,0 +1,20 @@
+<span ng-controller="CodeWordCtrl">
+<div id="content" class="container-fluid">
+<div>
+    <h2>{{contentsHeader}}</h2>
+<br>
+    <label><h4>Get Started by Selecting Degree of Difficulty:</h4></label>
+    <button id='easy' class='btn btn-primary' ng-click="playGame(1);" ng-disabled="disableEasy">Beginner</button>
+    <button id='medium' class='btn btn-info' ng-click="playGame(2);" ng-disabled="disableMedium">Intermediate</button>
+    <button id='hard' class='btn btn-warning' ng-click="playGame(3);" ng-disabled="disableHard">Advanced</button>
+    
+    <h4 id='HMAnswerFormat' ng-model="cwFormat">{{cwFormat}}</h4>
+    <h4 id='HMguessed' ng-model="aGuess"></h4>{{aGuess}}<br>
+    
+    <label><h4>Enter a letter:</h4></label> 
+    <input id='HMLetterGuess' class='form-control' style='width: 5em; display: inline' type='text' value='' ng-model="guess"><button class='btn btn-success' id='HMSubmit' ng-click="CWSubmit();" ng-disabled="disableSubmit">Submit</button><br><br>
+    <h4 id='HMfeedback' ng-model="feedback">{{feedback}}</h4>
+    </div>
+<br>
+</div>
+</span>

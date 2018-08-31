@@ -1,0 +1,14 @@
+<span ng-controller="NumberGuessCtrl">
+<div id="content" class="container-fluid">
+    <h2>{{contentsHeader}}</h2>
+    <br>
+
+    <h4 id='aGuessed' ng-model="aGuessed">{{aGuessed}}</h4>
+    <h4 id='feedback' ng-model="ngFeedback">{{ngFeedback}}</h4> 
+    
+    <label><h3>Guess: </h3></label>
+    <input type='number' id='guess' class='form-control' style='width: 20%; display: inline' ng-model="playerGuess">
+    <button id='submitG' class='btn btn-warning' ng-click="submitNG();" ng-disabled= "disableSubmitG">Correct?</button>
+    <br>
+</div>
+</span> 

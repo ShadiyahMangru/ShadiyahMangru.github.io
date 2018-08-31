@@ -1,0 +1,90 @@
+<span ng-controller="SumPuzzlesCtrl">
+<div id="content" class="container-fluid">
+    <h2>{{contentsHeader}}</h2>
+<div class="row">
+<!--html for Rules MODAL--> 
+<br>
+
+<div id="RModal">
+        <div class='modal fade' id='RulesModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='document'><br><br>
+            <div class='modal-content'>
+                <div class='modal-header' style='background-color: #1cadc2; color: white'>
+                    <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>Sum Puzzles Rules</h3>
+                </div>
+                <div class='modal-body'>
+                <h4>
+                <ol style="text-align: left; color: dimgray; line-height: 140%">
+                    <li>Populate each gamboard square with numbers 1-3 (for Easy), 1-4 (for Medium) or 1-5 (for Hard).</li>
+                    <li>Do NOT repeat a number in any row or column.</li>
+                    <li>Ensure color-coded regions sum to the value specified in each gameboard's key.</li>
+                </ol> 
+                </h4>
+                </div>
+                <div class='modal-footer' style='background-color: white; border-top: 1px solid black;'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal' style="box-shadow: 4px 4px 4px grey">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div> 
+<!--end html for RULES MODAL-->  
+<div class="row" style="margin-left: 1em">
+<h4>
+<button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal' style="margin-right: 3em">Rules</button> 
+    Difficulty level:
+    <button type="button" ng-click="isShowHide('va')" class="btn btn-primary">Easy</button><button type="button" ng-click="isShowHide('vb')" class="btn btn-primary">Medium</button><button type="button" ng-click="isShowHide('vc')" class="btn btn-primary">Hard</button>
+</h4>
+</div>
+
+    <div id="aDiv">
+    <br>
+    <span ng-show="vala">
+        <h4 id="key" ng-model="easyGB1key">{{easyGB1key}}</h4>
+        <h2 id="gb">
+        <button ng-click="btn1.value = clickSq(btn1.value, 3)" ng-model="btn1.value" ng-style="btn1">{{btn1.value}}</button>
+        <button ng-click="btn2.value = clickSq(btn2.value, 3)" ng-model="btn2.value" ng-style="btn2">{{btn2.value}}</button>
+        <button ng-click="btn3.value = clickSq(btn3.value, 3)" ng-model="btn3.value" ng-style="btn3">{{btn3.value}}</button><br>
+        <button ng-click="btn4.value = clickSq(btn4.value, 3)" ng-model="btn4.value" ng-style="btn4">{{btn4.value}}</button>
+        <button ng-click="btn5.value = clickSq(btn5.value, 3)" ng-model="btn5.value" ng-style="btn5">{{btn5.value}}</button>
+        <button ng-click="btn6.value = clickSq(btn6.value, 3)" ng-model="btn6.value" ng-style="btn6">{{btn6.value}}</button><br>
+        <button ng-click="btn7.value = clickSq(btn7.value, 3)" ng-model="btn7.value" ng-style="btn7">{{btn7.value}}</button>
+        <button ng-click="btn8.value = clickSq(btn8.value, 3)" ng-model="btn8.value" ng-style="btn8">{{btn8.value}}</button>
+        <button ng-click="btn9.value = clickSq(btn9.value, 3)" ng-model="btn9.value" ng-style="btn9">{{btn9.value}}</button><br>
+        </h2>
+        <h3 id="mySolution"><br><button id='submitSolutionEasy' ng-click="submitSolution(3)" class='btn btn-primary'>Submit My Solution</button></h3>
+        <h3 id="winLose" ng-model="winLoseMessage">{{winLoseMessage}}</h3>    
+    </span>
+    <span ng-hide="valb">
+    <h4 ng-model="mediumGB1key">{{mediumGB1key}}</h4>
+        <h2>
+        <button ng-click="Mbtn1.value = clickSq(Mbtn1.value, 4)" ng-model="Mbtn1.value" ng-style="Mbtn1">{{Mbtn1.value}}</button>
+        <button ng-click="Mbtn2.value = clickSq(Mbtn2.value, 4)" ng-model="Mbtn2.value" ng-style="Mbtn2">{{Mbtn2.value}}</button>
+        <button ng-click="Mbtn3.value = clickSq(Mbtn3.value, 4)" ng-model="Mbtn3.value" ng-style="Mbtn3">{{Mbtn3.value}}</button>
+        <button ng-click="Mbtn4.value = clickSq(Mbtn4.value, 4)" ng-model="Mbtn4.value" ng-style="Mbtn4">{{Mbtn4.value}}</button><br>
+        <button ng-click="Mbtn5.value = clickSq(Mbtn5.value, 4)" ng-model="Mbtn5.value" ng-style="Mbtn5">{{Mbtn5.value}}</button>
+        <button ng-click="Mbtn6.value = clickSq(Mbtn6.value, 4)" ng-model="Mbtn6.value" ng-style="Mbtn6">{{Mbtn6.value}}</button>
+        <button ng-click="Mbtn7.value = clickSq(Mbtn7.value, 4)" ng-model="Mbtn7.value" ng-style="Mbtn7">{{Mbtn7.value}}</button>
+        <button ng-click="Mbtn8.value = clickSq(Mbtn8.value, 4)" ng-model="Mbtn8.value" ng-style="Mbtn8">{{Mbtn8.value}}</button><br>
+        <button ng-click="Mbtn9.value = clickSq(Mbtn9.value, 4)" ng-model="Mbtn9.value" ng-style="Mbtn9">{{Mbtn9.value}}</button>
+        <button ng-click="Mbtn10.value = clickSq(Mbtn10.value, 4)" ng-model="Mbtn10.value" ng-style="Mbtn10">{{Mbtn10.value}}</button>
+        <button ng-click="Mbtn11.value = clickSq(Mbtn11.value, 4)" ng-model="Mbtn11.value" ng-style="Mbtn11">{{Mbtn11.value}}</button>
+        <button ng-click="Mbtn12.value = clickSq(Mbtn12.value, 4)" ng-model="Mbtn12.value" ng-style="Mbtn12">{{Mbtn12.value}}</button><br>
+        <button ng-click="Mbtn13.value = clickSq(Mbtn13.value, 4)" ng-model="Mbtn13.value" ng-style="Mbtn13">{{Mbtn13.value}}</button>
+        <button ng-click="Mbtn14.value = clickSq(Mbtn14.value, 4)" ng-model="Mbtn14.value" ng-style="Mbtn14">{{Mbtn14.value}}</button>
+        <button ng-click="Mbtn15.value = clickSq(Mbtn15.value, 4)" ng-model="Mbtn15.value" ng-style="Mbtn15">{{Mbtn15.value}}</button>
+        <button ng-click="Mbtn16.value = clickSq(Mbtn16.value, 4)" ng-model="Mbtn16.value" ng-style="Mbtn16">{{Mbtn16.value}}</button>
+        
+        </h2>
+        <h3><br><button ng-click="MsubmitSolution(4)" class='btn btn-primary'>Submit My Solution</button></h3>
+        <h3 ng-model="MwinLoseMessage">{{MwinLoseMessage}}</h3>        
+        
+        
+    </span>
+    <span ng-hide="valc">Hard Game Board</span>
+    </div>
+</div>
+</div>    
+    
+    
+</span> 
