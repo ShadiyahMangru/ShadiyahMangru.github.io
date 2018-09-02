@@ -1,35 +1,11 @@
-<style>
-    .mainPics{
-        width: 95%; 
-        padding-bottom: .8em;
-    }
-</style>
-
-<span ng-controller="mainCtrl" ng-model="descrip">  
-<div id="content" class="container-fluid">
-    <h2>{{descrip.header}}</h2>
-<br><br><br>
-<div class="row text-center" ng-model="pic">
-    <div class="col-sm-3">
-        <img src={{pic.codeWord}} class="mainPics">
-        <br>
-        <h4>{{descrip.codeWord}}</h4>
+<span class="container-fluid" ng-controller="mainCtrl" ng-model="header">  
+    <h2>{{header}}</h2>
+    <br><br><br>
+    <div class="row text-center" ng-model="descripPic">
+        <div class="col-sm-3" ng-repeat="item in descripPic">
+            <img src={{item.pic}} class="mainPics">
+            <br>
+            <h4>{{item.descrip}}</h4>
+        </div>
     </div>
-    <div class="col-sm-3">
-        <img src={{pic.sumPuzzles}} class="mainPics">
-        <br>
-        <h4>{{descrip.sumPuzzles}}</h4>
-    </div>
-    <div class="col-sm-3">
-        <img src={{pic.numberGuess}} class="mainPics">
-        <br>
-        <h4>{{descrip.numberGuess}}</h4>
-    </div>
-    <div class="col-sm-3">
-        <img src={{pic.war}} class="mainPics">
-        <br>
-        <h4>{{descrip.war}}</h4>
-    </div>
-  </div>
-</div>
 </span>
