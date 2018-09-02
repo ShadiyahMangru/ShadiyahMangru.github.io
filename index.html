@@ -3,59 +3,24 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="css/appStyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<style>
-  .jumbotron {
-      background-image: url('Images/usmc5.JPG');
-      height: 100%; 
-      background-position: center;
-      background-size: cover;
-      border-bottom: 1.2px solid black;
-      /*background-color: #812056;*/
-      color: black;
-      padding: 80px 25px;
-      font-family: Montserrat, sans-serif;
-      font-weight: 900;
-  }
-    .jumbotron h1{
-        text-shadow: 4px 4px 4px black; 
-        color: white; 
-        font-family: Catamaran,Helvetica,Arial,sans-serif; 
-        font-weight: 200; 
-        letter-spacing: 1px;
-    }
-  @media screen and (max-width: 768px) {
-    .col-sm-3 {
-      text-align: center;
-      margin: 25px 0;
-    }
-    .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
-    }
-  }
-</style>
 </head>
 <body ng-app="myApp">
     <div class="row">
-        <div class="jumbotron text-center">
+        <div class="jumbotron text-center" id="banner">
             <h1>APP-lied Sciences Adventures</h1> 
         </div>
-        <h4 style="float: right; margin-right: 2em; font-weight: 600; color: #72727e">By Shadiyah Mangru</h4>
+        <h4 id="developer">By Shadiyah Mangru</h4>
     </div>
 <div class="row">
     <div class="col-sm-2">
         <div class="wrapper">
-            <!-- Sidebar -->
-            <nav id="sidebar" style="margin-left: 1em; font-family: Montserrat, sans-serif;">
-                <div class="sidebar-header">
-                    <h3 style="font-weight: 600">Page Navigation</h3>
-                </div>
+            <nav id="sidebar">
                 <h3>
-                <ul class="list-unstyled components" style="line-height: 160%">
+                <ul class="list-unstyled components">
                     <li class="active">
                         <a href="#/!">Home</a>
                     </li>
@@ -77,7 +42,7 @@
         </div>    
     </div>
 
-    <div ng-view class="col-sm-10" style="color: black; border-left: 1px solid grey"></div>
+    <div id="subPageContent" ng-view class="col-sm-10"></div>
 </div>
 <br>
 <script src="controllers/app.js"></script>
