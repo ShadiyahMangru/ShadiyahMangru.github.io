@@ -42,8 +42,8 @@
         padding-bottom: .8em;
     }
 
-    /*styling for CodeWord.html*/
-    #enterLetter{
+    /*styling for CodeWord.html and NumberGuess.html*/
+    #enterLetter, #enterNum{
         width: 5em; 
         display: inline;    
     }
