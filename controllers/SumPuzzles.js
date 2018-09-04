@@ -34,15 +34,15 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     
     $scope.easyGB1key = "KEY: The sum of the purple squares is 8, and the green squares is 10.";
     
-    var btn1 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var btn2 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var btn3 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var btn4 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var btn5 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var btn6 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var btn7 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var btn8 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var btn9 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    var btn1 = {value : 1, "background-color" : "rebeccapurple"};
+    var btn2 = {value : 1, "background-color" : "rebeccapurple"};
+    var btn3 = {value : 1, "background-color" : "rebeccapurple"};
+    var btn4 = {value : 1, "background-color" : "rebeccapurple"};
+    var btn5 = {value : 1, "background-color" : "#2c8309"};
+    var btn6 = {value : 1, "background-color" : "#2c8309"};
+    var btn7 = {value : 1, "background-color" : "#2c8309"};
+    var btn8 = {value : 1, "background-color" : "#2c8309"};
+    var btn9 = {value : 1, "background-color" : "#2c8309"};
     
     $scope.EasyGBRow1 = [btn1 ,btn2 ,btn3];
     $scope.EasyGBRow2 = [btn4, btn5, btn6];
@@ -53,22 +53,22 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     
     $scope.mediumGB1key = "KEY: The sum of the red squares is 15, the purple squares is 5, and the green squares is 20.";
     
-    var Mbtn1 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Mbtn2 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Mbtn3 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn4 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn5 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn6 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn7 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn8 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn9 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn10 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn11 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn12 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn13 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn14 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Mbtn15 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Mbtn16 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    var Mbtn1 = {value : 1, "background-color" : "rebeccapurple"};
+    var Mbtn2 = {value : 1, "background-color" : "rebeccapurple"};
+    var Mbtn3 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn4 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn5 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn6 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn7 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn8 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn9 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn10 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn11 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn12 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn13 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn14 = {value : 1, "background-color" : "#A8224A"};
+    var Mbtn15 = {value : 1, "background-color" : "#2c8309"};
+    var Mbtn16 = {value : 1, "background-color" : "#2c8309"};
     
     $scope.MGBRow1 = [Mbtn1 ,Mbtn2 ,Mbtn3, Mbtn4];
     $scope.MGBRow2 = [Mbtn5, Mbtn6, Mbtn7, Mbtn8];
@@ -83,31 +83,31 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     
     $scope.HGB1key = "KEY: The sum of the red squares is 10, the blue squares is 27, the purple squares is 16, and the green squares is 22.";
     
-    var Hbtn1 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Hbtn2 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Hbtn3 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn4 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn5 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn6 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Hbtn7 = {value : 1, "background-color" : "#A8224A", "color" : "white"};
-    var Hbtn8 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn9 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn10 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn11 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn12 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn13 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn14 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn15 = {value : 1, "background-color" : "#3766BD", "color" : "white"};
-    var Hbtn16 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn17 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn18 = {value : 1, "background-color" : "rebeccapurple", "color" : "white"};
-    var Hbtn19 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn20 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn21 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn22 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn23 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn24 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
-    var Hbtn25 = {value : 1, "background-color" : "#2c8309", "color" : "white"};
+    var Hbtn1 = {value : 1, "background-color" : "#A8224A"};
+    var Hbtn2 = {value : 1, "background-color" : "#A8224A"};
+    var Hbtn3 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn4 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn5 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn6 = {value : 1, "background-color" : "#A8224A"};
+    var Hbtn7 = {value : 1, "background-color" : "#A8224A"};
+    var Hbtn8 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn9 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn10 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn11 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn12 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn13 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn14 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn15 = {value : 1, "background-color" : "#3766BD"};
+    var Hbtn16 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn17 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn18 = {value : 1, "background-color" : "rebeccapurple"};
+    var Hbtn19 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn20 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn21 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn22 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn23 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn24 = {value : 1, "background-color" : "#2c8309"};
+    var Hbtn25 = {value : 1, "background-color" : "#2c8309"};
     
     $scope.HGBRow1 = [Hbtn1 ,Hbtn2 ,Hbtn3, Hbtn4, Hbtn5];
     $scope.HGBRow2 = [Hbtn6, Hbtn7, Hbtn8, Hbtn9, Hbtn10];
