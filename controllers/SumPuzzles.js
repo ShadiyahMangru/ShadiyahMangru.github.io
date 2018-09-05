@@ -2,7 +2,7 @@ var sumPuzzles=angular.module('sumPuzzles',[]);
 
 sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {    
     $scope.mainTitle = "Sum Puzzles";
-    $scope.contentsHeader = "Stay afloat during a cyber attack on your ship's navigation systems.  To regain control of your ship, militants require you to exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin your mission. (In Progress)";
+    $scope.contentsHeader = "Stay afloat during a cyber attack on your ship's navigation systems.  To regain control of your ship, militants require you to exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin your mission.";
 
         $scope.vala = false;
         $scope.valb = true;
