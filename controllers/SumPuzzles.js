@@ -43,14 +43,13 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     var btn7 = {value : 1, "background-color" : "#2c8309"};
     var btn8 = {value : 1, "background-color" : "#2c8309"};
     var btn9 = {value : 1, "background-color" : "#2c8309"};
-    
+
     $scope.EasyGBRow1 = [btn1 ,btn2 ,btn3];
     $scope.EasyGBRow2 = [btn4, btn5, btn6];
     $scope.EasyGBRow3 = [btn7, btn8, btn9];
-    
-    $scope.winLoseMessage;
-    
-    
+
+    $scope.EasyGB = [$scope.EasyGBRow1, $scope.EasyGBRow2, $scope.EasyGBRow3];    
+        
     $scope.mediumGB1key = "KEY: The sum of the red squares is 15, the purple squares is 5, and the green squares is 20.";
     
     var Mbtn1 = {value : 1, "background-color" : "rebeccapurple"};
@@ -75,9 +74,7 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     $scope.MGBRow3 = [Mbtn9, Mbtn10, Mbtn11, Mbtn12];
     $scope.MGBRow4 = [Mbtn13, Mbtn14, Mbtn15, Mbtn16];
     
-    $scope.MwinLoseMessage;
-    
-    
+    $scope.MGB = [$scope.MGBRow1, $scope.MGBRow2, $scope.MGBRow3, $scope.MGBRow4]; 
     //var rbpg = ["10", "27", "16", "22"];
     //var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
     
@@ -115,8 +112,8 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     $scope.HGBRow4 = [Hbtn16, Hbtn17, Hbtn18, Hbtn19, Hbtn20];
     $scope.HGBRow5 = [Hbtn21, Hbtn22, Hbtn23, Hbtn24, Hbtn25];
     
-    $scope.HwinLoseMessage;
-           
+    $scope.HGB = [$scope.HGBRow1, $scope.HGBRow2, $scope.HGBRow3, $scope.HGBRow4, $scope.HGBRow5]; 
+    
     //var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
     
     
@@ -129,6 +126,50 @@ $scope.clickSq = function(btn, num) {
     }
     return btn;
 }; 
+
+$scope.getRowsArray = function(num){
+    var gbArray;
+    if(num===3){
+        gbArray = $scope.EasyGB;
+    }
+    if(num===4){
+        gbArray = $scope.MGB;
+    }
+    if(num===5){
+        gbArray = $scope.HGB;
+    }
+    var rowsArray = [];
+    for(var h=0; h<num; h++){
+        var row = "";
+        for(var i = 0; i<num; i++){
+            row += gbArray[h][i].value.toString();
+        }
+        rowsArray.push(row);
+    }
+    return rowsArray;
+};    
+    
+$scope.getColsArray = function(num){
+var gbArray;
+    if(num===3){
+        gbArray = $scope.EasyGB;
+    }
+    if(num===4){
+        gbArray = $scope.MGB;
+    }
+    if(num===5){
+        gbArray = $scope.HGB;
+    }
+    var colsArray = [];
+    for(var h=0; h<num; h++){
+        var col = "";
+        for(var i = 0; i<num; i++){
+            col += gbArray[i][h].value.toString();
+        }
+        colsArray.push(col);
+    }
+    return colsArray;
+};    
     
 $scope.noRepeats = function(a, num){
     var sv = true;
@@ -140,7 +181,7 @@ $scope.noRepeats = function(a, num){
     return sv;
 }
 
-$scope.noRepsRowCol = function(anArray, rowcol) {
+$scope.noRepsRowCol = function(anArray, rowCol) {
 var solValid = true;
     for(var i=0; i<anArray.length; i++){
        if($scope.noRepeats(anArray[i], rowCol)===false){
@@ -150,6 +191,22 @@ var solValid = true;
     return solValid;
 }; 
 
+$scope.getColorSum = function(num, colorSumVal, hexColor, gbArray){
+    var colorSum = 0;
+    var sumsCorrect = true;
+    for(var i = 0; i<num; i++){
+        for(var h=0; h<num; h++){
+            if(gbArray[h][i]["background-color"]===hexColor){
+                colorSum += gbArray[h][i].value;
+            }
+        }
+    }
+    if(colorSum !== colorSumVal){
+        sumsCorrect = false;
+    }
+    return sumsCorrect;
+};    
+    
 $scope.solutionFeedback = function(sv, sc){
     var winOrLose = "";
     if(sv === false && sc ===false){
@@ -167,173 +224,67 @@ $scope.solutionFeedback = function(sv, sc){
     return winOrLose;
 };   
     
+$scope.winLoseMessage;     
+    
 $scope.submitSolution = function(num) {
+    $scope.winLoseMessage = "";
     var solutionValid = true;
     var sumsCorrect = true;
-    //check if 1,2,3 only used once per row
-    var row1 = "";
-    var row2 = "";
-    var row3 = "";
-    var rowsArray = [row1, row2, row3]
-    for(var i=0; i<3; i++){
-        row1 += $scope.EasyGBRow1[i].value.toString();
-        row2 += $scope.EasyGBRow2[i].value.toString();
-        row3 += $scope.EasyGBRow3[i].value.toString();
-    }
-    solutionValid = $scope.noRepsRowCol(rowsArray, 3);
-
-    //alert("rows: " + $scope.solutionValid);
+    //check if 1, ..., num only used once per row
+    var rowsArray = [];
+    rowsArray = $scope.getRowsArray(num); 
+    solutionValid = $scope.noRepsRowCol(rowsArray, num);
     
-    //check if 1,2,3 only used once per column
-    var col1 = "";
-    var col2 = "";
-    var col3 = "";
-    var colsArray = [col1, col2, col3];
-    col1 = $scope.EasyGBRow1[0].value.toString() + $scope.EasyGBRow2[0].value + $scope.EasyGBRow3[0].value;
-    col2 = $scope.EasyGBRow1[1].value.toString() + $scope.EasyGBRow2[1].value + $scope.EasyGBRow3[1].value;
-    col3 = $scope.EasyGBRow1[2].value.toString() + $scope.EasyGBRow2[2].value + $scope.EasyGBRow3[2].value;
-    
-    solutionValid = $scope.noRepsRowCol(colsArray, 3);
-    
-    //alert("columns: " + $scope.solutionValid);
+    //check if 1,...,num only used once per column
+    var colsArray = [];
+    colsArray = $scope.getColsArray(num);
+    solutionValid = $scope.noRepsRowCol(colsArray, num);
     
     //check if each color-coded region sums to specified values
-    var purpleSum = 0;
-    for(var i = 0; i<3; i++){
-        if($scope.EasyGBRow1[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.EasyGBRow1[i].value;
+    if(num===3){
+        //purple
+        if($scope.getColorSum(3, 8, "rebeccapurple", $scope.EasyGB)===false){
+            sumsCorrect = false;
         }
-        if($scope.EasyGBRow2[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.EasyGBRow2[i].value;
+        //green
+        if($scope.getColorSum(3, 10, "#2c8309", $scope.EasyGB)===false){
+            sumsCorrect = false;
+        }      
+    }
+    else if(num===4){
+        //red
+        if($scope.getColorSum(4, 15, "#A8224A", $scope.MGB)===false){
+            sumsCorrect = false;
         }
-        if($scope.EasyGBRow3[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.EasyGBRow3[i].value;
+        //purple
+        if($scope.getColorSum(4, 5, "rebeccapurple", $scope.MGB)===false){
+            sumsCorrect = false;
+        }
+        //green
+        if($scope.getColorSum(4, 20, "#2c8309", $scope.MGB)===false){
+            sumsCorrect = false;
         }
     }
-    if(purpleSum !== 8){
-        sumsCorrect = false;
-    }
-    
-    var greenSum = 0;
-    for(var i = 0; i<3; i++){
-        if($scope.EasyGBRow1[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.EasyGBRow1[i].value;
+    else if(num===5){
+        //red
+        if($scope.getColorSum(5, 10, "#A8224A", $scope.HGB)===false){
+            sumsCorrect = false;
         }
-        if($scope.EasyGBRow2[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.EasyGBRow2[i].value;
+        //blue
+        if($scope.getColorSum(5, 27, "#3766BD", $scope.HGB)===false){
+            sumsCorrect = false;
         }
-        if($scope.EasyGBRow3[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.EasyGBRow3[i].value;
+        //purple
+        if($scope.getColorSum(5, 16, "rebeccapurple", $scope.HGB)===false){
+            sumsCorrect = false;
+        }
+        //green
+        if($scope.getColorSum(5, 22, "#2c8309", $scope.HGB)===false){
+            sumsCorrect = false;
         }
     }
-    
-    if(greenSum !== 10){
-        sumsCorrect = false;
-    }
-    
-    //alert($scope.sumsCorrect);
     
     $scope.winLoseMessage = $scope.solutionFeedback(solutionValid, sumsCorrect);
 };
-
-    
-$scope.MsubmitSolution = function(num) {
-    var solutionValid = true;
-    var sumsCorrect = true;
-    //check if 1,2,3,4 only used once per row
-    var row1 = "";
-    var row2 = "";
-    var row3 = "";
-    var row4 = "";
-    var rowsArray = [row1, row2, row3, row4];
-    for(var i=0; i<4; i++){
-        row1 += $scope.MGBRow1[i].value.toString();
-        row2 += $scope.MGBRow2[i].value.toString();
-        row3 += $scope.MGBRow3[i].value.toString();
-        row4 += $scope.MGBRow4[i].value.toString();
-    }
-    solutionValid = $scope.noRepsRowCol(rowsArray, 4);
-
-    //alert("rows: " + $scope.MsolutionValid);
-    
-    //check if 1,2,3,4 only used once per column
-    var col1 = "";
-    var col2 = "";
-    var col3 = "";
-    var col4 = "";
-    var colsArray = [col1, col2, col3, col4];
-    col1 = $scope.MGBRow1[0].value.toString() + $scope.MGBRow2[0].value + $scope.MGBRow3[0].value + $scope.MGBRow4[0].value;
-    col2 = $scope.MGBRow1[1].value.toString() + $scope.MGBRow2[1].value + $scope.MGBRow3[1].value + $scope.MGBRow4[1].value;
-    col3 = $scope.MGBRow1[2].value.toString() + $scope.MGBRow2[2].value + $scope.MGBRow3[2].value + $scope.MGBRow4[2].value;
-    col4 = $scope.MGBRow1[3].value.toString() + $scope.MGBRow2[3].value + $scope.MGBRow3[3].value + $scope.MGBRow4[3].value;
-    
-    solutionValid = $scope.noRepsRowCol(colsArray, 4);
-  
-    //alert("columns: " + $scope.solutionValid);
-    
-    //check if each color-coded region sums to specified values
-    var redSum = 0;
-    for(var i = 0; i<4; i++){
-        if($scope.MGBRow1[i]["background-color"]==="#A8224A"){
-            redSum += $scope.MGBRow1[i].value;
-        }
-        if($scope.MGBRow2[i]["background-color"]==="#A8224A"){
-            redSum += $scope.MGBRow2[i].value;
-        }
-        if($scope.MGBRow3[i]["background-color"]==="#A8224A"){
-            redSum += $scope.MGBRow3[i].value;
-        }
-        if($scope.MGBRow4[i]["background-color"]==="#A8224A"){
-            redSum += $scope.MGBRow4[i].value;
-        }
-    } 
-
-    if(redSum !== 15){
-        sumsCorrect = false;
-    }
-    
-    var purpleSum = 0;
-    for(var i = 0; i<4; i++){
-        if($scope.MGBRow1[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.MGBRow1[i].value;
-        }
-        if($scope.MGBRow2[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.MGBRow2[i].value;
-        }
-        if($scope.MGBRow3[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.MGBRow3[i].value;
-        }
-        if($scope.MGBRow4[i]["background-color"]==="rebeccapurple"){
-            purpleSum += $scope.MGBRow4[i].value;
-        }
-    }
-    
-    if(purpleSum !== 5){
-        sumsCorrect = false;
-    }
-    
-    var greenSum = 0;
-    for(var i = 0; i<4; i++){
-        if($scope.MGBRow1[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.MGBRow1[i].value;
-        }
-        if($scope.MGBRow2[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.MGBRow2[i].value;
-        }
-        if($scope.MGBRow3[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.MGBRow3[i].value;
-        }
-        if($scope.MGBRow4[i]["background-color"]==="#2c8309"){
-            greenSum += $scope.MGBRow4[i].value;
-        }
-    }    
-    
-    if(greenSum !== 20){
-        sumsCorrect = false;
-    }
-    
-    //alert($scope.MsumsCorrect);
-    $scope.MwinLoseMessage = $scope.solutionFeedback(solutionValid, sumsCorrect);
-};   
     
 });
