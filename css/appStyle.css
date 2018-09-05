@@ -51,6 +51,24 @@
     /*styling for SumPuzzles.html*/
     #aDiv button{
         color: white;
+        border-radius: 6px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 5px 10px 5px 10px;
+        box-shadow: 6px 6px 6px grey;
+    }
+
+    #aDiv h2 button{
+        text-shadow: 2px 2px 2px black;
+    }
+    
+    #aDiv h3{
+        color: navy;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    #aDiv h4{
+        font-weight: 600;
+        color: #4d4d4d;
     }
 
   @media screen and (max-width: 768px) {
