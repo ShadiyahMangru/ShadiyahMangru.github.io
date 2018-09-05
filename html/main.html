@@ -1,11 +1,20 @@
 <span class="container-fluid" ng-controller="mainCtrl" ng-model="header">  
-    <h2>{{header}}</h2>
-    <br><br><br>
-    <div class="row text-center" ng-model="descripPic">
+    <h2 id="mainHeader">{{header}}</h2>
+    <div id="main">
+    <br>
+    <div class="row text-center" id="pics" ng-model="descripPic">
         <div class="col-sm-3" ng-repeat="item in descripPic">
             <img src={{item.pic}} class="mainPics">
-            <br>
-            <h4>{{item.descrip}}</h4>
         </div>
     </div>
+    <br>
+    <marquee class="text-center" behavior="scroll" direction="up" scrollamount="3">
+     <h4>
+         Accept your secret mission by strategically entering vowels during <strong>Code Word</strong>.<br><br>
+         Avert disaster by arranging the numbers in a winning combination during <strong>Sum Puzzles</strong>.<br><br>
+         Thwart villainous plots by strategically bisecting numeric intervals during <strong>Number Guess</strong>.<br><br>
+         Achieve victory with correct quantitative comparisons during <strong>War</strong>.<br><br> 
+    </h4>
+ </marquee>
+</div>
 </span>
