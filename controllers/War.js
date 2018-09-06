@@ -5,7 +5,7 @@ var war = angular.module("war", []);
 
 war.controller("WarCtrl", function ($scope) {
     $scope.mainTitle = "War";
-    $scope.contentsHeader = "Successfully free hostages from capture and end your final mission with accurate quantitative comparisons.  During a game of War, correctly identify the victor of each battle.  Familiarize yourself with the rules of this card game below, then press 'Play War' to begin.";
+    $scope.contentsHeader = "Set hostages free and complete your final mission with accurate quantitative comparisons.  During a card game of War, correctly identify the victor of each battle.  Review the rules below, then press 'Play War' to begin.";
     
     $scope.deck = [];
     $scope.dealerDeck = [];
