@@ -2,16 +2,13 @@
     <h2 id="mainHeader">{{header}}</h2>
     <div id="main">
     <br>
-    <div class="row text-center" id="pics" ng-model="descripPic">
+    <div class="row text-center" id="pics">
         <div class="col-sm-3" ng-repeat="item in descripPic">
             <img src={{item.pic}} class="mainPics">
         </div>
     </div>
      <h4 id="summary">
-         Accept your secret mission by strategically entering vowels during <strong>Code Word</strong>.<br>
-         Avert disaster by arranging the numbers in a winning combination during <strong>Sum Puzzles</strong>.<br>
-         Thwart villainous plots by strategically bisecting numeric intervals during <strong>Number Guess</strong>.<br>
-         Achieve victory with correct quantitative comparisons during <strong>War</strong>.
+         <div ng-repeat="item in descripPic"><strong>{{item.descrip}}</strong></div>
     </h4>
 </div>
 </span>
