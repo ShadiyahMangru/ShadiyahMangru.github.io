@@ -1,6 +1,4 @@
-//FIX:
-//1. when score gets highlighted upon win (currently highlighted one round too early)
-//2. quantitative comparisons tie button (so that play war becomes active again upon pressing)
+//FIX: when score gets highlighted upon win (currently highlighted one round too early)
 var war = angular.module("war", []);
 
 war.controller("WarCtrl", function ($scope) {
@@ -25,6 +23,8 @@ war.controller("WarCtrl", function ($scope) {
     $scope.roundWinner;
     $scope.click=false;
 
+    $scope.tie = 0;
+    
     $scope.cardP1 = {num:"W", src:"Images/diamonds.png", "color" : "red"};
     $scope.cardP2 = {num:"W", src:"Images/clubs.png", "color" : "black"};
     
@@ -190,7 +190,8 @@ $scope.score = function (){
             $scope.roundWinMessage = " Actually, player 1 won that round!";
         }
         var addPoints = 2;
-        $scope.youScore+=parseInt(addPoints);
+        $scope.youScore+=(addPoints + $scope.tie);
+        $scope.tie=0;
         $scope.P1LabelStyle["background-color"] = "yellow";
         $scope.P2LabelStyle["background-color"] = "white";
     }
@@ -204,12 +205,13 @@ $scope.score = function (){
             $scope.roundWinMessage = " Actually, player 2 won that round!";
         }
         var addPoints = 2;
-        $scope.dealerScore+=parseInt(addPoints);
+        $scope.dealerScore+=(addPoints + $scope.tie);
+        $scope.tie=0;
         $scope.P1LabelStyle["background-color"] = "white";
         $scope.P2LabelStyle["background-color"] = "yellow";
     }
-    //if dealer card = you card, flip again without adjusting score (once tie broken, score of winner increased by total number cards flipped since tie began). //WORK ON THIS CONDITION
     else if($scope.click===true){
+        $scope.tie+=2;
         if($scope.roundWinner==='tie'){
             $scope.roundWinMessage = " Yes, this round we have a tie!";
             $scope.correctCounter++;
@@ -219,7 +221,6 @@ $scope.score = function (){
         }
         $scope.P1LabelStyle["background-color"] = "white";
         $scope.P2LabelStyle["background-color"] = "white";
-        $scope.score();
     }
     $scope.click=false;
 };
