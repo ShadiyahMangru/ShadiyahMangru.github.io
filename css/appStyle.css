@@ -10,6 +10,7 @@
       padding: 50px 25px;
       font-family: Montserrat, sans-serif;
       font-weight: 900;
+      box-shadow: 6px 6px 6px grey;
   }
     #banner h1{
         text-shadow: 4px 4px 4px black; 
@@ -27,6 +28,7 @@
     #sidebar{
         margin-left: 1em; 
         font-family: Montserrat, sans-serif;
+        text-shadow: 2px 2px 2px gainsboro;
     }
     #subPageContent{
         color: black; 
@@ -39,25 +41,23 @@
     /*styling for main.html*/
     .mainPics{
         width: 99%; 
-        padding-bottom: .8em;
     }
     #summary{
+        border-top: 1px solid black; 
+        width: 98%; 
+        margin-left: auto; 
+        margin-right: auto;
         font-size: 20px;
         font-family: Montserrat, sans-serif;
-        margin-left: 1em;
         line-height: 140%;
+        text-shadow: 1px 2px 1px gainsboro;
     } 
     #mainHeader{
         z-index: 1; 
         position: absolute; 
         margin-left: .4em;
         margin-top: -1em;
-    }
-    #pics{
-        border-bottom: 1px solid black; 
-        width: 95%; 
-        margin-left: auto; 
-        margin-right: auto;
+        text-shadow: 1px 1px 2px darkgrey;
     }
 
     /*styling for CodeWord.html and NumberGuess.html*/
