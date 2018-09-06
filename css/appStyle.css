@@ -88,7 +88,43 @@
         font-weight: 600;
         color: #4d4d4d;
     }
-
+    /*styling for War.html*/
+    #youCBorder, #dealerCBorder{
+        border: 1px solid black; 
+        border-radius: 6px; 
+        margin: 0 18% 0 18%; 
+        padding: 34% 0 34% 0; 
+        position: relative;
+    }
+    #cardNumY1, #cardNumD1{
+        position: absolute; 
+        top: 0; 
+        right: 85%;
+    }
+    #cardNumY2, #cardNumD2{
+        position: absolute; 
+        bottom: 0; 
+        left: 85%; 
+    }
+    #roundWin{
+        color: crimson;
+    }
+    #score, #qc{
+        border: 1px solid midnightblue; 
+        padding: 1em; 
+        border-radius: 6px;
+    }
+    #yS, #dS{
+        float: right;
+    }
+    #rtCol{
+        padding-right: 3em;
+        padding-top: 2em;
+    }
+    #mainDiv{
+        margin-top: -1em;
+    }
+  
   @media screen and (max-width: 768px) {
     .col-sm-3 {
       text-align: center;
