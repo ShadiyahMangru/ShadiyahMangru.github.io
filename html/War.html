@@ -1,3 +1,40 @@
+<style>
+    #youCBorder, #dealerCBorder{
+        border: 1px solid black; 
+        border-radius: 6px; 
+        margin: 0 18% 0 18%; 
+        padding: 34% 0 34% 0; 
+        position: relative;
+    }
+    #cardNumY1, #cardNumD1{
+        position: absolute; 
+        top: 0; 
+        right: 85%;
+    }
+    #cardNumY2, #cardNumD2{
+        position: absolute; 
+        bottom: 0; 
+        left: 85%; 
+    }
+    #roundWin{
+        color: crimson;
+    }
+    #score, #qc{
+        border: 1px solid midnightblue; 
+        padding: 1em; 
+        border-radius: 6px;
+    }
+    #yS, #dS{
+        float: right;
+    }
+    #rtCol{
+        padding-right: 3em;
+        padding-top: 2em;
+    }
+    #mainDiv{
+        margin-top: -1em;
+    }
+</style>
 <span ng-controller="WarCtrl">
 <div id="content" class="container-fluid"> 
     <h3>{{contentsHeader}}</h3>
@@ -33,51 +70,45 @@
 
     
     
-    <div class="row text-center" style="margin-right: 2em">
-    <div class="col-sm-4" id='youCPic'>
-        <p id='youLabel' ng-style="P1LabelStyle">Player 1: </p>
-        <div id='youCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative" ng-model="cardP1.num">
-            <h2 id='cardNumY1' style="position: absolute; top: 0; right: 85%" ng-style="cardP1">{{cardP1.num}}</h2>
+    <div class="row text-center" id="mainDiv">
+    <div class="col-sm-4">
+        <span ng-style="P1LabelStyle">Player 1: </span>
+        <div id='youCBorder' ng-model="cardP1.num">
+            <h2 id='cardNumY1' ng-style="cardP1"><strong>{{cardP1.num}}</strong></h2>
             <img id='youCardDisplay' ng-model="cardP1.src" src={{cardP1.src}}>
-            <h2 id='cardNumY2' style="position: absolute; bottom: 0; left: 85%" ng-style="cardP1">{{cardP1.num}}</h2>
-        </div>
-    </div>
-    <div class="col-sm-4" id='dealerCPic'>
-        <p id='dealerLabel' ng-style="P2LabelStyle">Player 2: </p>
-        <div id='dealerCBorder' style="border: 1px solid black; border-radius: 6px; margin: 0 15% 0 15%; padding: 35% 0 35% 0; position: relative" ng-model="cardP2.num">
-            <h2 id='cardNumD1' style="position: absolute; top: 0; right: 85%" ng-style="cardP2">{{cardP2.num}}</h2>
-            <img id='dealerCardDisplay'  ng-model="cardP2.src" src={{cardP2.src}}>
-            <h2 id='cardNumD2' style="position: absolute; bottom: 0; left: 85%" ng-style="cardP2">{{cardP2.num}}</h2>
+            <h2 id='cardNumY2' ng-style="cardP1"><strong>{{cardP1.num}}</strong></h2>
         </div>
     </div>
     <div class="col-sm-4">
-    <div class="row" style="border: 1px solid midnightblue; padding: 1em; border-radius: 6px">
+        <span ng-style="P2LabelStyle">Player 2: </span>
+        <div id='dealerCBorder' ng-model="cardP2.num">
+            <h2 id='cardNumD1' ng-style="cardP2"><strong>{{cardP2.num}}</strong></h2>
+            <img id='dealerCardDisplay'  ng-model="cardP2.src" src={{cardP2.src}}>
+            <h2 id='cardNumD2' ng-style="cardP2"><strong>{{cardP2.num}}</strong></h2>
+        </div>
+    </div>
+    <div id="rtCol" class="col-sm-4">
+    <div class="row" id="score">
     <div class="col-sm-6">
-    <br>
-    <button type="button" class="btn btn-success" ng-click="flipCard();" ng-disabled="disablePlayWar">Play War!</button><br><br>
+    <button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal'>Rules</button> <br><br>   
+    <button type="button" class="btn btn-success" ng-click="flipCard();" ng-disabled="disablePlayWar">Play War!</button><br>
     </div>
     <div class="col-sm-6">
-        <strong>Score: </strong><br>P1:<span id='youScore' ng-model="youScore" style='float: right' ng-style="P1ScoreStyle">{{youScore}}</span><br>P2: <span id='dealerScore' style='float: right' ng-model="dealerScore" ng-style="P2ScoreStyle">{{dealerScore}}</span>
+        <strong>Score: </strong><br>P1:<span id="yS" ng-model="youScore" ng-style="P1ScoreStyle">{{youScore}}</span><br>P2: <span id="dS" ng-model="dealerScore" ng-style="P2ScoreStyle">{{dealerScore}}</span>
     </div>
     </div>
-    <div class="row">
     <br>
-    <div class="col-sm-12" style="border: 1px solid midnightblue; padding: .5em; border-radius: 6px;">
+    <div class="row" id="qc">
     <h3>Winner of this battle is...?</h3>
     <button type="button" class="btn btn-primary" ng-click="whoWon(1);">P1</button>
     <button type="button" class="btn btn-primary" ng-click="whoWon(2);">P2</button>
     <button type="button" class="btn btn-primary" ng-click="whoWon(3);">Tie</button>
-    <h3 id="roundWin" ng-model="roundWinMessage">{{roundWinMessage}}</h3>
-    <br><br><br>
+    <h3 id="roundWin" ng-model="roundWinMessage"><strong>{{roundWinMessage}}</strong></h3>
     <h4 ng-model="QCScore">Quantitative Comparisons Score: {{QCScore}}</h4>
+    </div>
+    </div>
+    </div>
     <br>
-    </div>
-    </div>
-    </div>
-    </div>
-    <h4 style="float: left">{{directions}}</h4><br>
-        <button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal' style="float:left; margin-left: 5%">Rules</button>
-    <br><br>
 </div>    
     
 </span>
