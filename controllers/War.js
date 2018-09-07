@@ -1,11 +1,9 @@
-//FIX: when score gets highlighted upon win (currently highlighted one round too early)
 var war = angular.module("war", []);
 
 war.controller("WarCtrl", function ($scope) {
     $scope.mainTitle = "War";
     $scope.contentsHeader = "Set hostages free and complete your final mission with accurate quantitative comparisons.  During a card game of War, correctly identify the victor of each battle.  Review the rules below, then press 'Play War' to begin.";
-    
-    $scope.deck = [];
+    $scope.cardObjArray = [];
     $scope.dealerDeck = [];
     $scope.youDeck = [];
     $scope.dealerScore = 0;
@@ -31,7 +29,9 @@ war.controller("WarCtrl", function ($scope) {
     $scope.P1LabelStyle = {"background-color" : "white"};
     $scope.P1ScoreStyle = {"background-color" : "white"};
     $scope.P2LabelStyle = {"background-color" : "white"};
-    $scope.P2ScoreStyle = {"background-color" : "white"};    
+    $scope.P2ScoreStyle = {"background-color" : "white"}; 
+    
+    $scope.qcStyle = {"background-color" : "white"};
     
 //construct a standard 52-card deck
 $scope.makeDeck = function (){
@@ -45,8 +45,10 @@ $scope.makeDeck = function (){
 
 //make quarter of deck corresponding to a particular suit
 $scope.suitOfDeck = function (suit){
+    var cardObj = {};
     for(var i=1; i<14; i++){
-        $scope.deck.unshift(i + "," + suit);
+        cardObj = {num: i.toString(), suit: suit};
+        $scope.cardObjArray.push(cardObj);
     }
 };
     
@@ -68,8 +70,8 @@ $scope.shuffle = function (array) { //adapted from Fisher-Yates shuffle
 };
 
 $scope.splitDeck = function (){
-    $scope.dealerDeck = $scope.deck.slice(0, 26);
-    $scope.youDeck = $scope.deck.slice(26, 52);
+    $scope.dealerDeck = $scope.cardObjArray.slice(0, 26);
+    $scope.youDeck = $scope.cardObjArray.slice(26, 52);
 };
     
 //'flip' 1 card from each deck
@@ -94,44 +96,23 @@ $scope.flipCard = function (){
     
     $scope.cardsLeft--;
     $scope.score();
-    
-    if($scope.cardsLeft===0){
-        //disable war button when each 26 card pile has no cards remaining
-        //display a results message -- congrats to winner
-        $scope.disablePlayWar = true;
-        $scope.P1LabelStyle["background-color"] = "white";
-        $scope.P2LabelStyle["background-color"] = "white";
-        if($scope.youScore > $scope.dealerScore){
-            //Player 1 WINS
-            $scope.P1ScoreStyle["background-color"] = "yellow";
-        }
-        else if($scope.youScore < $scope.dealerScore){
-            //Player 2 WINS
-            $scope.P2ScoreStyle["background-color"] = "yellow";
-        }
-        else{
-            //IT IS A TIE
-            $scope.P1ScoreStyle["background-color"] = "yellow";
-            $scope.P2ScoreStyle["background-color"] = "yellow";
-        }
-    }
 };
     
 //function to determine which suit to display on screen
 $scope.cardImage = function (cardType, imgID, cardNumStyle){
-    if(cardType.split(",")[1]=="h"){
+    if(cardType.suit=="h"){
         imgID = "Images/hearts.png";
         cardNumStyle = "red";
     }
-    else if(cardType.split(",")[1]=="d"){
+    else if(cardType.suit=="d"){
         imgID = "Images/diamonds.png";
         cardNumStyle = "red";
     }
-    else if(cardType.split(",")[1]=="c"){
+    else if(cardType.suit=="c"){
         imgID="Images/clubs.png";
         cardNumStyle = "black";
     }
-    else if(cardType.split(",")[1]=="s"){
+    else if(cardType.suit=="s"){
         imgID="Images/spades.png";
         cardNumStyle = "black";
     }
@@ -143,20 +124,20 @@ $scope.cardImage = function (cardType, imgID, cardNumStyle){
     
 //function to determine if a number or K, Q, J, A displayed on screen
 $scope.cardNumber = function (cardNum, cardN){
-    if(cardNum.split(",")[0]==="13"){
+    if(cardNum.num==="13"){
         cardN = "K";
     }
-    else if(cardNum.split(",")[0]==="12"){
+    else if(cardNum.num==="12"){
         cardN = "Q";
     }
-    else if(cardNum.split(",")[0]==="11"){
+    else if(cardNum.num==="11"){
         cardN = "J";
     }
-    else if(cardNum.split(",")[0]==="1"){
+    else if(cardNum.num==="1"){
         cardN = "A";
     }
     else{
-        cardN = cardNum.split(",")[0].toString();
+        cardN = cardNum.num.toString();
     }
     return cardN;
 };
@@ -174,14 +155,31 @@ $scope.whoWon = function (num) {
     }
     $scope.click=true;
     $scope.score();  
+    if($scope.flipCounter<26){
     $scope.disablePlayWar = false;
+    }
+    if($scope.flipCounter===26){
+        //add a highlight to Quantitative Comparisons score
+        $scope.qcStyle["background-color"] = "cyan";
+        if($scope.dealerScore > $scope.youScore){
+            $scope.P1ScoreStyle["background-color"] = "white";
+        }
+        else if($scope.dealerScore < $scope.youScore){
+            $scope.P1ScoreStyle["background-color"] = "yellow";
+        }
+        else{
+            $scope.P1ScoreStyle["background-color"] = "yellow";
+            $scope.P2ScoreStyle["background-color"] = "yellow";
+        }
+    }
     $scope.QCScore = $scope.correctCounter + "/" + $scope.flipCounter;
+    //if $scope.correctCounter = 26, display a success message!!!
 };
 
 //a function to compare cards and adjust score based on flipped card values
 $scope.score = function (){
     //if dealer card < you card, +2 you
-    if(parseInt($scope.youCard.split(",")[0]) > parseInt($scope.dealerCard.split(",")[0]) && $scope.click===true){
+    if(parseInt($scope.youCard.num) > parseInt($scope.dealerCard.num) && $scope.click===true){
         if($scope.roundWinner==='you'){
             $scope.roundWinMessage = " Yes, player 1 won that round!";
             $scope.correctCounter++;
@@ -196,7 +194,7 @@ $scope.score = function (){
         $scope.P2LabelStyle["background-color"] = "white";
     }
     //if dealer card > you card, +2 dealer
-    else if(parseInt($scope.youCard.split(",")[0]) < parseInt($scope.dealerCard.split(",")[0]) && $scope.click===true){
+    else if(parseInt($scope.youCard.num) < parseInt($scope.dealerCard.num) && $scope.click===true){
         if($scope.roundWinner==='computer'){
             $scope.roundWinMessage = " Yes, player 2 won that round!";
             $scope.correctCounter++;
@@ -227,7 +225,7 @@ $scope.score = function (){
 
 $scope.loadGame = function (){
     $scope.makeDeck();
-    $scope.shuffle($scope.deck);
+    $scope.shuffle($scope.cardObjArray);
     $scope.splitDeck(); 
     $scope.cardsLeft = 26;
 };
