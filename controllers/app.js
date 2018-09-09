@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", "main", "codeWord", "sumPuzzles", "numberGuess", "war"]);
+var app = angular.module("myApp", ["ngRoute", "main", "codeWord", "sumPuzzles", "numberGuess", "memory", "war"]);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -17,6 +17,10 @@ app.config(function($routeProvider) {
     .when("/NumberGuess", {
         templateUrl : "html/NumberGuess.html",
         controller : "NumberGuessCtrl"
+    })
+    .when("/Memory", {
+        templateUrl : "html/Memory.html",
+        controller : "MemoryCtrl"
     })
     .when("/War", {
         templateUrl : "html/War.html",
