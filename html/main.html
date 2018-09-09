@@ -1,14 +1,13 @@
 <span class="container-fluid" ng-controller="mainCtrl" ng-model="header">  
     <h2 id="mainHeader">{{header}}</h2>
     <h4 id="summary">
-         <div ng-repeat="item in descripPic"><strong>{{item.descrip}}</strong></div>
+         <div ng-repeat="item in descrip"><strong>{{item}}</strong></div>
     </h4>
     <div id="main">
     <br>
     <div class="row text-center" id="pics">
-        <div class="col-sm-3" ng-repeat="item in descripPic">
-            <img src={{item.pic}} class="mainPics" style="box-shadow: 4px 4px 4px grey">
-            <p class="text-left" style="margin-top: .5em">{{item.caption}}</p>
+        <div class="col-sm-3" ng-repeat="item in marinesPics">
+            <img src={{item.pic}} class="mainPics" title={{item.caption}} style="box-shadow: 4px 4px 4px grey">
         </div>
     </div>
 </div>

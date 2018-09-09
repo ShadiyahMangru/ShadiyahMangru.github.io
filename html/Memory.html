@@ -1,0 +1,11 @@
+<span class="container-fluid" ng-controller="MemoryCtrl">
+    <h3>{{contentsHeader}}</h3>
+    <br>
+    <h4>Time left: </h4>
+    <br>
+    <div class="row">   
+    <span ng-repeat="pic in picObjArray track by $index" class="col">
+        <img src={{pic.image}} width="24%">  
+    </span>    
+    </div>    
+</span> 
