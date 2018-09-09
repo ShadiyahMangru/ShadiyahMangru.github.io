@@ -1,7 +1,7 @@
 var memory = angular.module("memory", []);
 memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
-    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs in the alloted time. (In Progress)";
+    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs in the allotted time. (In Progress)";
     
     var pic1 = {image: "Images/usmcM1.JPG", id: 1};
     var pic2 = {image: "Images/usmcM2.JPG", id: 2};
