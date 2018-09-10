@@ -5,7 +5,7 @@
     <br>
     <div class="row">   
     <span ng-repeat="pic in picObjArray track by $index" class="col">
-        <img src={{pic.image}} width="24%">  
+        <img src={{pic.image}} width="24%" ng-click="getElement(picObjArray[$index].image, $index)" ng-style="picObjArray[$index]">  
     </span>    
     </div>    
 </span> 
