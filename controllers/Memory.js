@@ -3,12 +3,12 @@ memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
     $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs in the allotted time. (In Progress)";
     
-    var pic1 = {image: "Images/usmcM1.JPG", "display" : "inline-block"};
-    var pic2 = {image: "Images/usmcM2.JPG", "display" : "inline-block"};
-    var pic3 = {image: "Images/usmcM3.JPG", "display" : "inline-block"};
-    var pic4 = {image: "Images/usmcM4.JPG", "display" : "inline-block"};
-    var pic5 = {image: "Images/usmcM5.JPG", "display" : "inline-block"};
-    var pic6 = {image: "Images/usmcM6.JPG", "display" : "inline-block"};
+    var pic1 = {image: "Images/usmcM1.JPG", "visibility" : "visible"};
+    var pic2 = {image: "Images/usmcM2.JPG", "visibility" : "visible"};
+    var pic3 = {image: "Images/usmcM3.JPG", "visibility" : "visible"};
+    var pic4 = {image: "Images/usmcM4.JPG", "visibility" : "visible"};
+    var pic5 = {image: "Images/usmcM5.JPG", "visibility" : "visible"};
+    var pic6 = {image: "Images/usmcM6.JPG", "visibility" : "visible"};
     
     $scope.picObjArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic1, pic2, pic3, pic4, pic5, pic6]; 
     
@@ -41,8 +41,8 @@ $scope.getElement = function(v, index){
     }
     if($scope.matchArray.length===2 &&$scope.matchArray[0]===$scope.matchArray[1]){
         alert('match');
-        $scope.picObjArray[$scope.indexArray[0]]["display"] = "none";
-        $scope.picObjArray[$scope.indexArray[1]]["display"] = "none";
+        $scope.picObjArray[$scope.indexArray[0]]["visibility"] = "hidden";
+        $scope.picObjArray[$scope.indexArray[1]]["visibility"] = "hidden";
         $scope.matchArray=[];
         $scope.indexArray = [];
         
