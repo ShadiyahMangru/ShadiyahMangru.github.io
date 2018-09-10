@@ -1,11 +1,12 @@
 <span class="container-fluid" ng-controller="MemoryCtrl">
     <h3>{{contentsHeader}}</h3>
     <br>
-    <h4>Time left: </h4>
-    <br>
+    <h4 ng-model="tries">Attempts: {{tries}}<br><br><span style="color: rebeccapurple; font-weight: 600" ng-model="done">{{done}}</span></h4>
+    <button class="btn btn-success" ng-click="submit();">Submit</button>
+    <br><br>
     <div class="row">   
     <span ng-repeat="pic in picObjArray track by $index" class="col">
-        <img src={{pic.image}} width="24%" ng-click="getElement(picObjArray[$index].image, $index)" ng-style="picObjArray[$index]">  
+        <img ng-src="{{pic.cardFront}}" width="24%" ng-click="getElement(picObjArray[$index].image, $index)" ng-style="picObjArray[$index]">
     </span>    
     </div>    
 </span> 
