@@ -1,16 +1,21 @@
 var memory = angular.module("memory", []);
 memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
-    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs in the allotted time. (In Progress)";
+    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards and press 'Submit'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard. (In Progress)";
     
-    var pic1 = {image: "Images/usmcM1.JPG", "visibility" : "visible"};
-    var pic2 = {image: "Images/usmcM2.JPG", "visibility" : "visible"};
-    var pic3 = {image: "Images/usmcM3.JPG", "visibility" : "visible"};
-    var pic4 = {image: "Images/usmcM4.JPG", "visibility" : "visible"};
-    var pic5 = {image: "Images/usmcM5.JPG", "visibility" : "visible"};
-    var pic6 = {image: "Images/usmcM6.JPG", "visibility" : "visible"};
-    
-    $scope.picObjArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic1, pic2, pic3, pic4, pic5, pic6]; 
+    var pic1 = {cardFront: "Images/memory.JPG", image: "Images/usmcM1.JPG", "visibility": "visible"};
+    var pic2 = {cardFront: "Images/memory.JPG", image: "Images/usmcM2.JPG", "visibility": "visible"};
+    var pic3 = {cardFront: "Images/memory.JPG", image: "Images/usmcM3.JPG", "visibility": "visible"};
+    var pic4 = {cardFront: "Images/memory.JPG", image: "Images/usmcM4.JPG", "visibility": "visible"};
+    var pic5 = {cardFront: "Images/memory.JPG", image: "Images/usmcM5.JPG", "visibility": "visible"};
+    var pic6 = {cardFront: "Images/memory.JPG", image: "Images/usmcM6.JPG", "visibility": "visible"};
+    var pic7 = {cardFront: "Images/memory.JPG", image: "Images/usmcM1.JPG", "visibility": "visible"};
+    var pic8 = {cardFront: "Images/memory.JPG", image: "Images/usmcM2.JPG", "visibility": "visible"};
+    var pic9 = {cardFront: "Images/memory.JPG", image: "Images/usmcM3.JPG", "visibility": "visible"};
+    var pic10 = {cardFront: "Images/memory.JPG", image: "Images/usmcM4.JPG", "visibility": "visible"};
+    var pic11 = {cardFront: "Images/memory.JPG", image: "Images/usmcM5.JPG", "visibility": "visible"};
+    var pic12 = {cardFront: "Images/memory.JPG", image: "Images/usmcM6.JPG", "visibility": "visible"};
+    $scope.picObjArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12]; 
     
 //shuffle image pairs
 $scope.shuffle = function (array) { //adapted from Fisher-Yates shuffle
@@ -32,26 +37,40 @@ $scope.shuffle = function (array) { //adapted from Fisher-Yates shuffle
 $scope.picObjArray = $scope.shuffle($scope.picObjArray);
 $scope.matchArray = [];
 $scope.indexArray = [];
-
+$scope.tries = 0; 
+$scope.pairsLeft = $scope.picObjArray.length/2;
+$scope.done = "";
     
-$scope.getElement = function(v, index){
+$scope.getElement = function(pic, index){
     if($scope.matchArray.length<2){
-        $scope.matchArray.push(v);
+        $scope.matchArray.push(pic);
         $scope.indexArray.push(index);
+        $scope.picObjArray[$scope.indexArray[0]].cardFront = $scope.picObjArray[$scope.indexArray[0]].image;
     }
-    if($scope.matchArray.length===2 &&$scope.matchArray[0]===$scope.matchArray[1]){
-        alert('match');
+    if($scope.indexArray.length===2){
+        $scope.picObjArray[$scope.indexArray[1]].cardFront = $scope.picObjArray[$scope.indexArray[1]].image;
+    }
+};
+    
+$scope.submit = function(){
+    if($scope.matchArray.length===2 && $scope.matchArray[0]===$scope.matchArray[1]){
+        alert('match!');
         $scope.picObjArray[$scope.indexArray[0]]["visibility"] = "hidden";
-        $scope.picObjArray[$scope.indexArray[1]]["visibility"] = "hidden";
-        $scope.matchArray=[];
-        $scope.indexArray = [];
-        
+        $scope.picObjArray[$scope.indexArray[1]]["visibility"] = "hidden"; 
+        $scope.tries++;
+        $scope.pairsLeft--;
     }
     else if($scope.matchArray.length===2 && $scope.matchArray[0]!==$scope.matchArray[1]){
         alert('not a match');
+        $scope.picObjArray[$scope.indexArray[0]].cardFront = "Images/memory.JPG";
+        $scope.picObjArray[$scope.indexArray[1]].cardFront = "Images/memory.JPG";
+        $scope.tries++;
+    }
+    if($scope.pairsLeft===0){
+        $scope.done = "Congrats!  You have identified all of the matching image pairs!"
+    }
         $scope.matchArray = [];
         $scope.indexArray = [];
-    }
-};    
+};        
     
 });
