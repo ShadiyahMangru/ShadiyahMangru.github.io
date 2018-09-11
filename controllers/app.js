@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", "main", "codeWord", "sumPuzzles", "numberGuess", "memory", "war"]);
+var app = angular.module("myApp", ["ngRoute", "main", "codeWord", "baseChange", "sumPuzzles", "numberGuess", "memory", "war"]);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -9,6 +9,10 @@ app.config(function($routeProvider) {
     .when("/CodeWord", {
         templateUrl : "html/CodeWord.html",
         controller : "CodeWordCtrl"
+    })
+    .when("/BaseChange", {
+        templateUrl : "html/BaseChange.html",
+        controller : "BaseChangeCtrl"
     })
     .when("/SumPuzzles", {
         templateUrl : "html/SumPuzzles.html",

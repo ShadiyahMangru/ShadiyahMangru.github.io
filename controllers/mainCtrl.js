@@ -5,6 +5,7 @@ main.controller("mainCtrl", function ($scope){
     $scope.header = "Problem Solving: 'Improvise, Adapt and Overcome'";
     
     var codeWord = "Accept your secret mission by strategically entering vowels during Code Word.";
+    var baseChange = "Reveal your mission location through accurate numeric conversions during Base Change.";
     var sumPuzzles = "Avert disaster by arranging numbers in a winning combination during Sum Puzzles.";
     var numberGuess = "Foil villainous plots by strategically bisecting numeric intervals during Number Guess.";
     var memory = "Approach mission completion through a display of mental agility during Memory.";
@@ -18,6 +19,6 @@ main.controller("mainCtrl", function ($scope){
     
     var marines4 = {pic: "Images/usmc4.JPG", caption: "'FORT A.P. HILL, Va. (July 31, 2018) - A Marine with Battalion Landing Team, 1st Battalion, 2nd Marines, 22nd Marine Expeditionary Unit fast ropes out of an MV-22 Osprey during the 22nd MEU Deployment for Training at Fort A.P. Hill, VA.... In preparation for their upcoming deployment, the Marines practiced embassy reinforcement by fast roping onto a rooftop and clearing out a simulated embassy building....' --Marines.mil "};
     
-    $scope.descrip = [codeWord, sumPuzzles, numberGuess, memory, war];
+    $scope.descrip = [codeWord, baseChange, sumPuzzles, numberGuess, memory, war];
     $scope.marinesPics = [marines1, marines2, marines3, marines4];
 });

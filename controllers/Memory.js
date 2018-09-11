@@ -1,7 +1,7 @@
 var memory = angular.module("memory", []);
 memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
-    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards, note feedback and press 'OK'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard. (In Progress)";
+    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards, note feedback and press 'OK'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard.";
     
     var pic1 = {cardFront: "Images/memory.jpg", image: "Images/usmcM1.JPG", "visibility": "visible"};
     var pic2 = {cardFront: "Images/memory.jpg", image: "Images/usmcM2.JPG", "visibility": "visible"};
