@@ -1,7 +1,7 @@
 var memory = angular.module("memory", []);
 memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
-    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards and press 'Submit'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard. (In Progress)";
+    $scope.contentsHeader = "Advance to your final mission by using your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards, note feedback and press 'OK'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard. (In Progress)";
     
     var pic1 = {cardFront: "Images/memory.jpg", image: "Images/usmcM1.JPG", "visibility": "visible"};
     var pic2 = {cardFront: "Images/memory.jpg", image: "Images/usmcM2.JPG", "visibility": "visible"};
@@ -39,7 +39,7 @@ $scope.matchArray = [];
 $scope.indexArray = [];
 $scope.tries = 0; 
 $scope.pairsLeft = $scope.picObjArray.length/2;
-$scope.done = "";
+$scope.feedback = "";
     
 $scope.getElement = function(pic, index){
     if($scope.matchArray.length<2){
@@ -50,24 +50,29 @@ $scope.getElement = function(pic, index){
     if($scope.indexArray.length===2){
         $scope.picObjArray[$scope.indexArray[1]].cardFront = $scope.picObjArray[$scope.indexArray[1]].image;
     }
+    if($scope.matchArray.length===2 && $scope.matchArray[0]===$scope.matchArray[1]){
+        $scope.feedback = 'MATCH!';
+    }
+    else if($scope.matchArray.length===2 && $scope.matchArray[0]!==$scope.matchArray[1]){
+        $scope.feedback = 'NOT A MATCH';
+    }
 };
     
 $scope.submit = function(){
     if($scope.matchArray.length===2 && $scope.matchArray[0]===$scope.matchArray[1]){
-        alert('match!');
         $scope.picObjArray[$scope.indexArray[0]]["visibility"] = "hidden";
         $scope.picObjArray[$scope.indexArray[1]]["visibility"] = "hidden"; 
         $scope.tries++;
         $scope.pairsLeft--;
     }
     else if($scope.matchArray.length===2 && $scope.matchArray[0]!==$scope.matchArray[1]){
-        alert('not a match');
         $scope.picObjArray[$scope.indexArray[0]].cardFront = "Images/memory.jpg";
         $scope.picObjArray[$scope.indexArray[1]].cardFront = "Images/memory.jpg";
         $scope.tries++;
     }
+    $scope.feedback = "";
     if($scope.pairsLeft===0){
-        $scope.done = "Congrats!  You have identified all of the matching image pairs!"
+        $scope.feedback = "Congrats!"
     }
         $scope.matchArray = [];
         $scope.indexArray = [];
