@@ -1,8 +1,12 @@
 <span class="container-fluid" ng-controller="MemoryCtrl">
     <h3>{{contentsHeader}}</h3>
     <br>
-    <h4 ng-model="tries">Attempts: {{tries}}<br><br><span style="color: rebeccapurple; font-weight: 600" ng-model="done">{{done}}</span></h4>
-    <button class="btn btn-success" ng-click="submit();">Submit</button>
+    <div class="row">
+    <div class="col-sm-2"><button class=" btn btn-success" ng-click="submit();">OK</button>
+    </div>
+    <h2 class="col-sm-6" ng-model="feedback" style="color: rebeccapurple; font-weight: 600; margin-top: -.1em">{{feedback}}</h2>
+    <h4 class="col-sm-4" ng-model="tries">Attempts: {{tries}}</h4>   
+    </div>
     <br><br>
     <div class="row">   
     <span ng-repeat="pic in picObjArray track by $index" class="col">
