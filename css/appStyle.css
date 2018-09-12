@@ -59,6 +59,12 @@
         text-shadow: 1px 1px 2px darkgrey;
     }
 
+    /*styling for BaseChange.html*/
+    #convert{
+        width: 15em; 
+        display: inline;    
+    }
+
     /*styling for CodeWord.html and NumberGuess.html*/
     #enterLetter, #enterNum{
         width: 5em; 
