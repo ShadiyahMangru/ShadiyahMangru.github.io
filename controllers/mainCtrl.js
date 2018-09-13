@@ -2,7 +2,7 @@ var main=angular.module('main',[]);
 
 main.controller("mainCtrl", function ($scope){ 
     
-    $scope.header = "Problem Solving: 'Improvise, Adapt and Overcome'";
+    $scope.header = "Develop your critical thinking skills by:";
     
     var codeWord = "strategically entering vowels during Code Word";
     var baseChange = "methodically and accurately performing numeric conversions during Base Change";
