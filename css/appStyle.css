@@ -12,13 +12,14 @@
       font-weight: 900;
       box-shadow: 6px 6px 6px grey;
   }
-    #banner h1{
+    #banner h1, #banner h2{
         text-shadow: 4px 4px 4px black; 
         color: white; 
         font-family: Catamaran,Helvetica,Arial,sans-serif; 
         font-weight: 200; 
         letter-spacing: 1px;
     }
+
     #developer{
         font-weight: 600; 
         color: #72727e;
@@ -42,10 +43,6 @@
         width: 99%; 
     }
     #summary{
-        border-top: 1px solid black; 
-        width: 98%; 
-        margin-left: auto; 
-        margin-right: auto;
         font-size: 20px;
         font-family: Montserrat, sans-serif;
         line-height: 140%;
