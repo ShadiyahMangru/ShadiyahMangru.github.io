@@ -41,13 +41,11 @@
 </div> 
 <!--end html for Examples MODAL-->  
 
-    <h3 ng-model="attempts">Attempts: {{attempts}}</h3>
-    <h3 ng-model="correct">Correct: {{correct}}</h3>
-    <h3 ng-model="output">Number: {{output}}</h3>
+    <h3>Score: <span ng-model="correct">{{correct}}</span>/<span ng-model="attempts">{{attempts}}</span></h3>
+    <h3 ng-model="output"><span ng-model="typeOrig">{{typeOrig}} </span> Number: {{output}}</h3>
     
-    <label><h3 ng-model="type">Enter {{type}} Equivalent: </h3></label>
+    <label><h3 ng-model="typeConvert">Enter {{typeConvert}} Equivalent: </h3></label>
     <input type='number' id="convert" class='form-control' ng-model="userEquiv" pattern="[0-9]+" ng-pattern-restrict value='' ng-keyup="$event.keyCode == 13 && submitNG();">
     <button class='btn btn-success' ng-click="isCorrect();" ng-disabled= "disableCorrect">Correct?</button>
     <h3 ng-model="feedback">{{feedback}}</h3>
-    <h3 ng-model="compare">Correct Answer: {{compare}}</h3>
 </span> 
