@@ -26,6 +26,7 @@ $scope.userEquiv;
 $scope.feedback;
 $scope.typeOrig;
 $scope.typeConvert;
+$scope.disableCorrect = false;
 
 $scope.getNum = function(){
     var rNumber = getRandomInt(1, 51);
@@ -61,6 +62,10 @@ function getFeedback(){
     if($scope.userEquiv == $scope.compare){
         $scope.feedback = "CORRECT!";
         $scope.correct++;
+        if($scope.correct===10){
+            $scope.feedback = "CORRECT!  You have successfully completed this training exercise.";
+            $scope.disableCorrect = true;
+        }
     }    
     else{
         $scope.feedback = "INCORRECT.  The correct answer was " + $scope.output + "(" + $scope.typeOrig + ") = " + $scope.compare + "(" + $scope.typeConvert + ").";
