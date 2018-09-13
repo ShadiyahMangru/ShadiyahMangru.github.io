@@ -4,12 +4,12 @@ main.controller("mainCtrl", function ($scope){
     
     $scope.header = "Problem Solving: 'Improvise, Adapt and Overcome'";
     
-    var codeWord = "Accept your secret mission by strategically entering vowels during Code Word.";
-    var baseChange = "Reveal your mission location through accurate numeric conversions during Base Change.";
-    var sumPuzzles = "Avert disaster by arranging numbers in a winning combination during Sum Puzzles.";
-    var numberGuess = "Foil villainous plots by strategically bisecting numeric intervals during Number Guess.";
-    var memory = "Approach mission completion through a display of mental agility during Memory.";
-    var war = "Achieve victory with correct quantitative comparisons during War.";
+    var codeWord = "strategically entering vowels during Code Word";
+    var baseChange = "methodically and accurately performing numeric conversions during Base Change";
+    var sumPuzzles = "generating numeric solutions that simultaneously satisfy multiple conditions during Sum Puzzles";
+    var numberGuess = "strategically bisecting numeric intervals during Number Guess";
+    var memory = "employing a strategic process of elimination to maximize matches while minimizing attempts during Memory";
+    var war = "consistently making accurate quantitative comparisons during War";
     
     var marines1 = {pic: "Images/usmc1.JPG", caption: "'NEW YORK, N.Y. (May 26, 2018) - Staff Sgt. Raymond Brown, with Special Purpose Marine Air-Ground Task Force Fleet Week New York, watches the Manhattan Bridge and New York pass below on a flight to Marine Day...in Brooklyn, New York.... Fleet Week is the city's time-honored celebration of the sea services. It is an unparalleled opportunity for the citizens of New York and the surrounding tri-state area to...witness firsthand the latest capabilities of today's maritime services.' --Marines.mil "};
     
