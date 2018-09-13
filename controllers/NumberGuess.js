@@ -1,6 +1,6 @@
 var numberGuess = angular.module("numberGuess", []);
 numberGuess.controller("NumberGuessCtrl", function ($scope) {
-    $scope.contentsHeader = "Thwart villain Simon's diabolical scheme by besting him at his own game.  Simon says: 'the computer is thinking of an integer between 1 and 100, inclusive.  Prevent explosives detonation by identifying the number in 10 guesses or less.'";
+    $scope.contentsHeader = "Training Scenario: an enemy's computer will detonate explosives unless you correctly identify, in 10 guesses or less, a predetermined integer between 1 and 100, inclusive.  Good luck!";
  
 //function to generate a random integer between two values
 $scope.getRandomInt = function(min, max) {
