@@ -2,7 +2,7 @@ var sumPuzzles=angular.module('sumPuzzles',[]);
 
 sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {    
     $scope.mainTitle = "Sum Puzzles";
-    $scope.contentsHeader = "Stay afloat during a cyber attack on your ship's navigation systems.  To regain control of your ship, militants require you to exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin your mission.";
+    $scope.contentsHeader = "A non-combatant exercise designed to train you for your next mission demands you exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin.";
 
         $scope.vala = false;
         $scope.valb = true;
@@ -213,13 +213,13 @@ $scope.solutionFeedback = function(sv, sc){
         winOrLose = "No repeated numbers allowed per row/column.  Sums of color-coded regions do not match key.  Try again!";
     }
     else if(sv === false && sc ===true){
-        winOrLose = "No repeated numbers allowed per row/column.Try again!";
+        winOrLose = "No repeated numbers allowed per row/column.  Try again!";
     }
     else if(sv === true && sc ===false){
         winOrLose = "Sums of color-coded regions do not match key.  Try again!";
     }
     else{
-        winOrLose = "Hooray!  You have successfully solved this puzzle!  You have regained control of your navigation system.";
+        winOrLose = "Hooray!  You have successfully solved this puzzle!  Training exercise complete.";
     }
     return winOrLose;
 };   
