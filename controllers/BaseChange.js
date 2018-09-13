@@ -24,17 +24,20 @@ $scope.attempts = 0;
 $scope.correct = 0;
 $scope.userEquiv; 
 $scope.feedback;
-$scope.type;
+$scope.typeOrig;
+$scope.typeConvert;
 
 $scope.getNum = function(){
     var rNumber = getRandomInt(1, 51);
     if($scope.attempts%2===0){
         $scope.output = binDecConvert(rNumber, 10, 2);
-        $scope.type = "Decimal";
+        $scope.typeOrig = "Binary";
+        $scope.typeConvert = "Decimal";
     }
     else{
         $scope.output = rNumber;
-        $scope.type = "Binary";
+        $scope.typeOrig = "Decimal";
+        $scope.typeConvert = "Binary";
     }
 }    
 
@@ -42,7 +45,7 @@ $scope.getNum();
 
 $scope.isCorrect = function(){
 $scope.attempts++;
-    if($scope.type==="Binary"){
+    if($scope.typeConvert==="Binary"){
         $scope.compare = binDecConvert($scope.output, 10, 2);
         getFeedback();
     }
@@ -56,11 +59,11 @@ $scope.attempts++;
  
 function getFeedback(){
     if($scope.userEquiv == $scope.compare){
-        $scope.feedback = "correct";
+        $scope.feedback = "CORRECT!";
         $scope.correct++;
     }    
     else{
-        $scope.feedback = "incorrect";
+        $scope.feedback = "INCORRECT.  The correct answer was " + $scope.output + "(" + $scope.typeOrig + ") = " + $scope.compare + "(" + $scope.typeConvert + ").";
     }
 };
 });
