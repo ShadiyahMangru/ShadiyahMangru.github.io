@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="css/appStyle.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div class="row">
+        <div class="jumbotron text-center" id="banner" title="'SAN FRANCISCO, Calif. - Officers look at the Bay Bridge from USS Essex prior to the Senior Leadership Seminar during San Francisco Fleet Week Oct. 5, 2017. ' -- Marines.mil">
+            <h1>Effective Problem Solving</h1>
+        </div>
+    </div>
+        <h4 class="row text-right" id="developer">By Shadiyah Mangru<br><small>Software Engineer<br>Booz | Allen | Hamilton</small><br></h4> 
+<div class="row">
+    <div class="col-sm-2">
+        <div class="wrapper">
+            <nav id="sidebar">
+                <h3>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#/!">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#!CodeWord">Mystery Word</a>
+                    </li>
+                    <li>
+                        <a href="#!BaseChange">Base Change</a>
+                    </li>
+                    <li>
+                        <a href="#!SumPuzzles">Sum Puzzles</a>
+                    </li>
+                    <li>
+                        <a href="#!NumberGuess">Number Guess</a>
+                    </li>
+                    <li>
+                        <a href="#!Memory">Memory</a>
+                    </li>
+                    <li>
+                        <a href="#!War">War</a>
+                    </li>
+                </ul>
+                </h3>
+            </nav>
+            <br><br><br>
+        </div>    
+    </div>
+
+    <div id="subPageContent" ng-view class="col-sm-10"></div>
+</div>
+<br>
+<script src="controllers/app.js"></script>
+<script src="controllers/mainCtrl.js"></script>  
+<script src="controllers/CodeWord.js"></script>
+<script src="controllers/BaseChange.js"></script>    
+<script src="controllers/SumPuzzles.js"></script>
+<script src="controllers/NumberGuess.js"></script>
+<script src="controllers/Memory.js"></script>
+<script src="controllers/War.js"></script>    
+</body>
+</html>
