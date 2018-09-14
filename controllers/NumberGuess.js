@@ -1,6 +1,6 @@
 var numberGuess = angular.module("numberGuess", []);
 numberGuess.controller("NumberGuessCtrl", function ($scope) {
-    $scope.contentsHeader = "Training Scenario: an enemy's computer will detonate explosives unless you correctly identify, in 10 guesses or less, a predetermined integer between 1 and 100, inclusive.  Good luck!";
+    $scope.contentsHeader = "Correctly identify, in 10 guesses or less, a predetermined integer between 1 and 100, inclusive.  Good luck!";
  
 //function to generate a random integer between two values
 $scope.getRandomInt = function(min, max) {
@@ -25,7 +25,7 @@ $scope.submitNG = function (){
     else{
     $scope.alreadyG.unshift($scope.playerGuess);
         if($scope.playerGuess===$scope.rNumber){
-            $scope.ngFeedback = "Bomb successfully disarmed! The number was " + $scope.rNumber + " and it only took you " + $scope.alreadyG.length + " tries!";
+            $scope.ngFeedback = "You're right! The number was " + $scope.rNumber + " and it only took you " + $scope.alreadyG.length + " tries!";
             $scope.disableSubmitG = true;
         }
         else if($scope.playerGuess !== $scope.rNumber && $scope.alreadyG.length < 10){

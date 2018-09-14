@@ -2,7 +2,7 @@ var war = angular.module("war", []);
 
 war.controller("WarCtrl", function ($scope) {
     $scope.mainTitle = "War";
-    $scope.contentsHeader = "Complete your final training exercise with accurate quantitative comparisons.  During a card game of War, correctly identify the victor of each battle.  Review the rules below, then press 'Play War' to begin.";
+    $scope.contentsHeader = "During a card game of War, use your quantitative comparison skills to correctly identify the victor of each battle.  Review the rules below, then press 'Play War' to begin.";
     $scope.cardObjArray = [];
     $scope.dealerDeck = [];
     $scope.youDeck = [];

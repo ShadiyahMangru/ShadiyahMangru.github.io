@@ -2,7 +2,7 @@ var sumPuzzles=angular.module('sumPuzzles',[]);
 
 sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {    
     $scope.mainTitle = "Sum Puzzles";
-    $scope.contentsHeader = "A non-combatant exercise designed to train you for your next mission demands you exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin.";
+    $scope.contentsHeader = "Exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin.";
 
         $scope.vala = false;
         $scope.valb = true;

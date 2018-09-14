@@ -1,7 +1,7 @@
 var codeWord = angular.module("codeWord",[]);    
 codeWord.controller("CodeWordCtrl", function ($scope) { 
     $scope.mainTitle = "Code Word";
-    $scope.contentsHeader = "Entering the correct code word makes your mission possible.";
+    $scope.contentsHeader = "Correctly identify the Mystery Word before tries run out.";
      
     $scope.mysteryWord = "";
     $scope.alreadyGuess;
@@ -43,7 +43,7 @@ $scope.playGame = function(num){
     for(var i=0; i<$scope.mysteryWord.length; i++){
         $scope.answerFormat[i] = "_ ";
     }
-    $scope.cwFormat = "CODE WORD FORMAT: " + $scope.answerFormat.join("");
+    $scope.cwFormat = "MYSTERY WORD FORMAT: " + $scope.answerFormat.join("");
     $scope.disableSubmit = false;
     $scope.disableEasy = true;
     $scope.disableMedium = true;
@@ -70,7 +70,7 @@ $scope.CWSubmit = function() {
 							$scope.answerFormat[i] = $scope.guess + " ";	
 						}
 					}
-            $scope.cwFormat = "CODE WORD FORMAT: " + $scope.answerFormat.join("");
+            $scope.cwFormat = "MYSTERY WORD FORMAT: " + $scope.answerFormat.join("");
             $scope.guess = "";
             $scope.aGuess = "ALREADY ENTERED: " + $scope.alreadyGuess.join(", ");
         
@@ -80,8 +80,8 @@ $scope.CWSubmit = function() {
             }
         //output winner message if no dashes remain in answer key
             else{
-                $scope.feedback = "  ACCESS TO MISSION GRANTED!!!";
-                $scope.cwFormat = "CODE WORD: " + $scope.answerFormat.join("");
+                $scope.feedback = "  YOU'RE RIGHT!!!";
+                $scope.cwFormat = "MYSTERY WORD: " + $scope.answerFormat.join("");
                 $scope.disableSubmit = true;
             }
         }   
@@ -98,7 +98,7 @@ $scope.CWSubmit = function() {
             }
             else{
             //output mystery word and a game over message to user if no 'lives' remain
-                $scope.feedback =  "ACCESS DENIED.  The Code Word was " + $scope.mysteryWord + " but has now been changed.";
+                $scope.feedback =  "No tries remain.  The Mystery Word was " + $scope.mysteryWord + ".  Better luck next time!";
                 $scope.disableSubmit = true;
             }
         }
