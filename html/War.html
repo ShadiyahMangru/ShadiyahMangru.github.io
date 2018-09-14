@@ -1,0 +1,77 @@
+<span ng-controller="WarCtrl">
+<div id="content" class="container-fluid"> 
+    <h3>{{contentsHeader}}</h3>
+    <br>
+    
+<!--html for Rules MODAL--> 
+<div id="RModal">
+        <div class='modal fade' id='RulesModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='document'><br><br>
+            <div class='modal-content'>
+                <div class='modal-header' style='background-color: #1cadc2; color: white'>
+                    <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>War Rules</h3>
+                </div>
+                <div class='modal-body'>
+                <h4 style="text-align: left; color: dimgray; line-height: 140%">
+                War is a card game between two players.  Each player flips one card per 'battle' and the player with the high card wins.  Here, King is a high card (=13) and Ace is a low card (=1).<br><br>
+                During this mission:
+                <ol>
+                    <li>Press 'Play War' to start each battle.</li>
+                    <li>Identify the battle winner as either 'P1', 'P2', or 'Tie', by pressing the corresponding button.  The objective is to maximize your Quantitative Comparisons score by correctly identifying the winner of each battle.</li>
+                    <li>Repeat steps 1 and 2 until no cards remain to be flipped. Good luck!</li>
+                </ol> 
+                </h4>
+                </div>
+                <div class='modal-footer' style='background-color: white; border-top: 1px solid black;'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal' style="box-shadow: 4px 4px 4px grey">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div> 
+<!--end html for RULES MODAL-->  
+
+    
+    
+    <div class="row text-center" id="mainDiv">
+    <div class="col-sm-4">
+        <span ng-style="P1LabelStyle">Player 1: </span>
+        <div id='youCBorder' ng-model="cardP1.num">
+            <h2 id='cardNumY1' ng-style="cardP1"><strong>{{cardP1.num}}</strong></h2>
+            <img id='youCardDisplay' ng-model="cardP1.src" src={{cardP1.src}}>
+            <h2 id='cardNumY2' ng-style="cardP1"><strong>{{cardP1.num}}</strong></h2>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <span ng-style="P2LabelStyle">Player 2: </span>
+        <div id='dealerCBorder' ng-model="cardP2.num">
+            <h2 id='cardNumD1' ng-style="cardP2"><strong>{{cardP2.num}}</strong></h2>
+            <img id='dealerCardDisplay'  ng-model="cardP2.src" src={{cardP2.src}}>
+            <h2 id='cardNumD2' ng-style="cardP2"><strong>{{cardP2.num}}</strong></h2>
+        </div>
+    </div>
+    <div id="rtCol" class="col-sm-4">
+    <div class="row" id="score">
+    <div class="col-sm-6">
+    <button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#RulesModal'>Rules</button> <br><br>   
+    <button type="button" class="btn btn-success" ng-click="flipCard();" ng-disabled="disablePlayWar">Play War!</button><br>
+    </div>
+    <div class="col-sm-6">
+        <strong>Score: </strong><br>P1:<span id="yS" ng-model="youScore" ng-style="P1ScoreStyle">{{youScore}}</span><br>P2: <span id="dS" ng-model="dealerScore" ng-style="P2ScoreStyle">{{dealerScore}}</span>
+    </div>
+    </div>
+    <br>
+    <div class="row" id="qc">
+    <h3>Winner of this battle is...?</h3>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(1);">P1</button>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(2);">P2</button>
+    <button type="button" class="btn btn-primary" ng-click="whoWon(3);">Tie</button>
+    <h3 id="roundWin" ng-model="roundWinMessage"><strong>{{roundWinMessage}}</strong></h3>
+    <h4 ng-model="QCScore" ng-style="qcStyle">Quantitative Comparisons Score: {{QCScore}}</h4>
+    </div>
+    </div>
+    </div>
+    <br>
+</div>    
+    
+</span>

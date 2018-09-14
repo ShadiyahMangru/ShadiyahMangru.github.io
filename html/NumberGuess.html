@@ -1,0 +1,13 @@
+<span class="container-fluid" ng-controller="NumberGuessCtrl">
+    <h3>{{contentsHeader}}</h3>
+    <br>
+    <div ng-model="alreadyG">
+    <h4>Previous Guesses: <span ng-repeat="item in alreadyG">{{item}} </span></h4>
+    </div>
+    <h4 ng-model="ngFeedback">{{ngFeedback}}</h4> 
+    
+    <label><h3>Guess: </h3></label>
+    <input type='number' id='enterNum' class='form-control' ng-model="playerGuess" pattern="[0-9]+" ng-pattern-restrict value='' ng-keyup="$event.keyCode == 13 && submitNG();">
+    <button class='btn btn-warning' ng-click="submitNG();" ng-disabled= "disableSubmitG">Correct?</button>
+    <br>
+</span> 
