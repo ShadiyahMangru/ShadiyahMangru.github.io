@@ -1,6 +1,6 @@
 var codeWord = angular.module("codeWord",[]);    
 codeWord.controller("CodeWordCtrl", function ($scope) { 
-    $scope.contentsHeader = "Correctly identify the Mystery Word before tries run out.";
+    $scope.contentsHeader = "Correctly identify the Mystery Word/Phrase before tries run out.";
      
     $scope.mysteryWord = "";
     $scope.alreadyGuess;
@@ -18,7 +18,7 @@ function randArrayE(arr) {
 };
     
 function playGame(){
-    var words = ["skate", "rink", "zamboni", "puck", "slapshot", "slashing", "hockey", "goalie", "shootout", "wraparound", "whistle", "linesman", "cage", "net", "roughing", "backhand", "boarding", "penalty", "faceoff", "goal", "crease", "offside", "icing", "forecheck", "misconduct", "holding", "hooking", "netminder", "captain", "coach", "overtime", "rebound", "save", "shutout", "jersey", "breakaway", "playoffs", "conference", "rookie", "defenseman", "NHL", "trapezoid", "timeout", "crossbar", "interference", "period", "shorthanded", "embellishment", "bench", "intermission", "ice", "referee"];
+    var words = ["skate", "rink", "zamboni", "puck", "slapshot", "slashing", "hockey", "goalie", "shootout", "wraparound", "whistle", "linesman", "cage", "net", "roughing", "backhand", "boarding", "penalty", "faceoff", "goal", "crease", "offside", "icing", "forecheck", "misconduct", "holding", "hooking", "netminder", "captain", "coach", "overtime", "rebound", "save", "shutout", "jersey", "breakaway", "playoffs", "conference", "rookie", "defenseman", "NHL", "trapezoid", "timeout", "crossbar", "interference", "period", "shorthanded", "embellishment", "bench", "intermission", "ice", "referee", "powerplay", "too many men on the ice", "delay of game", "sudden-death overtime", "period of the long change", "center ice", "defensive-zone faceoff", "call on the ice stands", "odd-man rush", "empty-net goal", "hat trick", "coach's challenge", "short-handed goal", "best of seven", "the five hole", "five-minute major", "blue line", "delayed offside", "extra attacker", "hand pass", "home-ice advantage", "net front presence", "penalty kill", "red line", "wraparound goal"];
     
     $scope.attemptsLeft=7;
     $scope.alreadyGuess = [];
@@ -27,9 +27,17 @@ function playGame(){
  
     $scope.answerFormat[$scope.mysteryWord.length];
     for(var i=0; i<$scope.mysteryWord.length; i++){
-        $scope.answerFormat[i] = "_ ";
+        if($scope.mysteryWord.charAt(i)==' '){
+            $scope.answerFormat[i] = '__';
+        }
+        else if($scope.mysteryWord.charAt(i)==="-"){
+            $scope.answerFormat[i] = "-- ";
+        }
+        else{
+        $scope.answerFormat[i] = " * ";
+        }
     }
-    $scope.cwFormat = "MYSTERY WORD FORMAT: " + $scope.answerFormat.join("");
+    $scope.cwFormat = "MYSTERY WORD/PHRASE FORMAT: " + $scope.answerFormat.join("");
     $scope.disableSubmit = false;
     return $scope.mysteryWord.toUpperCase();
 };    
@@ -55,18 +63,18 @@ $scope.CWSubmit = function() {
 							$scope.answerFormat[i] = $scope.guess + " ";	
 						}
 					}
-            $scope.cwFormat = "MYSTERY WORD FORMAT: " + $scope.answerFormat.join("");
+            $scope.cwFormat = "MYSTERY WORD/PHRASE FORMAT: " + $scope.answerFormat.join("");
             $scope.guess = "";
             $scope.aGuess = "ALREADY ENTERED: " + $scope.alreadyGuess.join(", ");
         
         //ask user for another letter guess, if answer key still contains dashes
-            if($scope.answerFormat.indexOf("_ ")!=-1){
+            if($scope.answerFormat.indexOf(" * ")!=-1){
                     $scope.feedback = "Good Work!  Keep trying!  You have " + $scope.attemptsLeft + " tries remaining.";
             }
-        //output winner message if no dashes remain in answer key
+        //output winner message if no stars remain in answer key
             else{
                 $scope.feedback = "  YOU'RE RIGHT!!!";
-                $scope.cwFormat = "MYSTERY WORD: " + $scope.answerFormat.join("");
+                $scope.cwFormat = "MYSTERY WORD/PHRASE: " + $scope.answerFormat.join("");
                 $scope.disableSubmit = true;
             }
         }   
@@ -83,7 +91,7 @@ $scope.CWSubmit = function() {
             }
             else{
             //output mystery word and a game over message to user if attemptsLeft === 0 
-                $scope.feedback =  "No tries remain.  The Mystery Word was " + $scope.mysteryWord + ".  Better luck next time!";
+                $scope.feedback =  "No tries remain.  The Mystery Word/Phrase was " + $scope.mysteryWord + ".  Better luck next time!";
                 $scope.disableSubmit = true;
             }
         }
