@@ -4,8 +4,8 @@ main.controller("mainCtrl", function ($scope){
     
     $scope.header = "Develop your critical thinking skills by:";
     
-    var codeWord = "strategically entering vowels during Mystery Word";
-    var baseChange = "methodically and accurately performing numeric conversions during Base Change";
+    var codeWord = "strategically entering vowels during Mystery Word/Phrase";
+    var baseChange = "methodically and accurately performing numeric computations during Stats Calculations";
     var sumPuzzles = "generating numeric solutions that simultaneously satisfy multiple conditions during Sum Puzzles";
     var numberGuess = "strategically bisecting numeric intervals during Number Guess";
     var memory = "employing a strategic process of elimination to maximize matches while minimizing attempts during Memory";
