@@ -3,18 +3,18 @@ memory.controller("MemoryCtrl", function ($scope) {
     $scope.mainTitle = "Memory";
     $scope.contentsHeader = "Use your short-term memory skills and mental agility to identify all of the matching image pairs.  Flip two (ideally identical) cards, note feedback and press 'OK'.  Repeat this process until you have identified all of the pairs and no cards remain on the gameboard.";
     
-    var pic1 = {cardFront: "Images/memory.jpg", image: "Images/usmcM1.JPG", "visibility": "visible"};
-    var pic2 = {cardFront: "Images/memory.jpg", image: "Images/usmcM2.JPG", "visibility": "visible"};
-    var pic3 = {cardFront: "Images/memory.jpg", image: "Images/usmcM3.JPG", "visibility": "visible"};
-    var pic4 = {cardFront: "Images/memory.jpg", image: "Images/usmcM4.JPG", "visibility": "visible"};
-    var pic5 = {cardFront: "Images/memory.jpg", image: "Images/usmcM5.JPG", "visibility": "visible"};
-    var pic6 = {cardFront: "Images/memory.jpg", image: "Images/usmcM6.JPG", "visibility": "visible"};
-    var pic7 = {cardFront: "Images/memory.jpg", image: "Images/usmcM1.JPG", "visibility": "visible"};
-    var pic8 = {cardFront: "Images/memory.jpg", image: "Images/usmcM2.JPG", "visibility": "visible"};
-    var pic9 = {cardFront: "Images/memory.jpg", image: "Images/usmcM3.JPG", "visibility": "visible"};
-    var pic10 = {cardFront: "Images/memory.jpg", image: "Images/usmcM4.JPG", "visibility": "visible"};
-    var pic11 = {cardFront: "Images/memory.jpg", image: "Images/usmcM5.JPG", "visibility": "visible"};
-    var pic12 = {cardFront: "Images/memory.jpg", image: "Images/usmcM6.JPG", "visibility": "visible"};
+    var pic1 = {cardFront: "Images/memory.jpg", image: "Images/h1.jpg", "visibility": "visible"};
+    var pic2 = {cardFront: "Images/memory.jpg", image: "Images/h2.jpg", "visibility": "visible"};
+    var pic3 = {cardFront: "Images/memory.jpg", image: "Images/h3.jpg", "visibility": "visible"};
+    var pic4 = {cardFront: "Images/memory.jpg", image: "Images/h4.jpg", "visibility": "visible"};
+    var pic5 = {cardFront: "Images/memory.jpg", image: "Images/h5.jpg", "visibility": "visible"};
+    var pic6 = {cardFront: "Images/memory.jpg", image: "Images/h6.jpg", "visibility": "visible"};
+    var pic7 = {cardFront: "Images/memory.jpg", image: "Images/h1.jpg", "visibility": "visible"};
+    var pic8 = {cardFront: "Images/memory.jpg", image: "Images/h2.jpg", "visibility": "visible"};
+    var pic9 = {cardFront: "Images/memory.jpg", image: "Images/h3.jpg", "visibility": "visible"};
+    var pic10 = {cardFront: "Images/memory.jpg", image: "Images/h4.jpg", "visibility": "visible"};
+    var pic11 = {cardFront: "Images/memory.jpg", image: "Images/h5.jpg", "visibility": "visible"};
+    var pic12 = {cardFront: "Images/memory.jpg", image: "Images/h6.jpg", "visibility": "visible"};
     $scope.picObjArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12]; 
     
 //shuffle image pairs
