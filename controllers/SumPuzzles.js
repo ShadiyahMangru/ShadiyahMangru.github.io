@@ -2,13 +2,14 @@ var sumPuzzles=angular.module('sumPuzzles',[]);
 
 sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {    
     $scope.mainTitle = "Sum Puzzles";
-    $scope.contentsHeader = "Exercise your quantitative reasoning skills and successfully solve a numeric puzzle.  Familiarize yourself with the rules below, then select a difficulty level to begin.";
+    $scope.contentsHeader = "Exercise your quantitative reasoning skills and unlock a Washington Capitals' 2018 playoffs trophy.  Familiarize yourself with the rules below, then select a trophy to begin.";
 
         $scope.vala = false;
         $scope.valb = true;
         $scope.valc = true;
         
         $scope.isShowHide = function (param){
+            $scope.winLoseMessage = "";
             $("#aDiv").css("display", "block");
             if(param=="va"){
                 $scope.vala=true;
@@ -219,7 +220,7 @@ $scope.solutionFeedback = function(sv, sc){
         winOrLose = "Sums of color-coded regions do not match key.  Try again!";
     }
     else{
-        winOrLose = "Hooray!  You have successfully solved this puzzle!  Training exercise complete.";
+        winOrLose = "Hooray!  You have successfully unlocked this trophy case!";
     }
     return winOrLose;
 };   

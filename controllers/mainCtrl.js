@@ -6,7 +6,7 @@ main.controller("mainCtrl", function ($scope){
     
     var codeWord = "strategically entering vowels during Mystery Word/Phrase";
     var baseChange = "methodically and accurately performing numeric computations during Stats Calculations";
-    var sumPuzzles = "generating numeric solutions that simultaneously satisfy multiple conditions during Sum Puzzles";
+    var sumPuzzles = "generating numeric solutions that simultaneously satisfy multiple conditions during Winning Combination";
     var numberGuess = "strategically bisecting numeric intervals, if necessary, during Jersey Quiz";
     var memory = "employing a strategic process of elimination to maximize matches while minimizing attempts during Memory";
     var war = "consistently making accurate quantitative comparisons during War";
