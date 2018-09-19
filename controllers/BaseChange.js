@@ -14,24 +14,30 @@ function randArrayE(arr) {
 };    
     
 function getGoals(shots, shootingP){
-    var goals = (shootingP*shots)/100;
+    var goals = (shootingP/100) * shots;
+    goals = parseFloat(goals.toPrecision(4));
     return Math.ceil(goals);
 };
     
 function getShots(goals, shootingP){
-    var shots = (goals / shootingP)*100;
+    var shots = (100*goals) / shootingP;
+    shots = parseFloat(shots.toPrecision(4));
     return Math.ceil(shots);
 };
     
 function getShootingP(goals, shots){
-    var shootingP = goals / shots;
+    //include error handling for if shots === 0
+    var shootingP = (goals / shots)*100;
+    shootingP = parseFloat(shootingP.toPrecision(4));
+    return shootingP;
 };
 
-var kuznetsov = {name: "Evgeny Kuznetsov", goals: 12, shots: 89, shootingPercentage: 13.5}; 
-var ovechkin = {name: "Alex Ovechkin", goals: 15, shots: 99, shootingPercentage: 15.2}; 
-var backstrom = {name: "Nicklas Backstrom", goals: 5, shots: 36, shootingPercentage: 13.9}; var oshie = {name: "T.J. Oshie", goals: 18, shots: 55, shootingPercentage: 14.5}; 
-var carlson = {name: "John Carlson", goals: 5, shots: 80, shootingPercentage: 6.3}; 
-var eller = {name: "Lars Eller", goals: 7, shots: 52, shootingPercentage: 13.5}; 
+var kuznetsov = {name: "Evgeny Kuznetsov", goals: 12, shots: 89, shootingPercentage: 13.483}; 
+var ovechkin = {name: "Alex Ovechkin", goals: 15, shots: 99, shootingPercentage: 15.152}; 
+var backstrom = {name: "Nicklas Backstrom", goals: 5, shots: 36, shootingPercentage: 13.889}; 
+var oshie = {name: "T.J. Oshie", goals: 8, shots: 55, shootingPercentage: 14.545}; 
+var carlson = {name: "John Carlson", goals: 5, shots: 80, shootingPercentage: 6.250}; 
+var eller = {name: "Lars Eller", goals: 7, shots: 52, shootingPercentage: 13.462}; 
 
 $scope.playerArray = [kuznetsov, ovechkin, backstrom, oshie, carlson, eller];    
 
@@ -92,7 +98,7 @@ $scope.attempts++;
            $scope.correct++;    
         }
         else{
-            $scope.feedback = "INCORRECT.  " + $scope.player.name + " had a" + sp + " shooting percentage.";
+            $scope.feedback = "INCORRECT.  " + $scope.player.name + " had a " + sp + " shooting percentage.";
         } 
     }
 }    
