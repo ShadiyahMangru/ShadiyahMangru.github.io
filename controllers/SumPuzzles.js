@@ -10,6 +10,7 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
         
         $scope.isShowHide = function (param){
             $scope.winLoseMessage = "";
+            $scope.trophy = "";
             $("#aDiv").css("display", "block");
             if(param=="va"){
                 $scope.vala=true;
@@ -116,7 +117,8 @@ sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {
     $scope.HGB = [$scope.HGBRow1, $scope.HGBRow2, $scope.HGBRow3, $scope.HGBRow4, $scope.HGBRow5]; 
     
     //var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
-    
+ 
+$scope.trophy;
     
 $scope.clickSq = function(btn, num) {
     if(btn<num){
@@ -220,7 +222,7 @@ $scope.solutionFeedback = function(sv, sc){
         winOrLose = "Sums of color-coded regions do not match key.  Try again!";
     }
     else{
-        winOrLose = "Hooray!  You have successfully unlocked this trophy case!";
+        winOrLose = "Tada!  You have successfully unlocked the " + $scope.trophy + " trophy case!";
     }
     return winOrLose;
 };   
@@ -243,6 +245,7 @@ $scope.submitSolution = function(num) {
     
     //check if each color-coded region sums to specified values
     if(num===3){
+        $scope.trophy = "Prince of Wales";
         //purple
         if($scope.getColorSum(3, 8, "rebeccapurple", $scope.EasyGB)===false){
             sumsCorrect = false;
@@ -253,6 +256,7 @@ $scope.submitSolution = function(num) {
         }      
     }
     else if(num===4){
+        $scope.trophy = "Conn Smythe";
         //red
         if($scope.getColorSum(4, 15, "#A8224A", $scope.MGB)===false){
             sumsCorrect = false;
@@ -267,6 +271,7 @@ $scope.submitSolution = function(num) {
         }
     }
     else if(num===5){
+        $scope.trophy = "Stanley Cup";
         //red
         if($scope.getColorSum(5, 10, "#A8224A", $scope.HGB)===false){
             sumsCorrect = false;
