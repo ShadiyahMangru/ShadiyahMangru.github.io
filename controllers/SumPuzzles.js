@@ -2,7 +2,7 @@ var sumPuzzles=angular.module('sumPuzzles',[]);
 
 sumPuzzles.controller("SumPuzzlesCtrl", function ($scope) {    
     $scope.mainTitle = "Sum Puzzles";
-    $scope.contentsHeader = "Exercise your quantitative reasoning skills and unlock a Washington Capitals' 2018 playoffs trophy.  Familiarize yourself with the rules below, then select a trophy to begin.";
+    $scope.contentsHeader = "Unlock a Washington Capitals' 2018 playoffs trophy.  Familiarize yourself with the rules below, then select a trophy to begin.";
 
         $scope.vala = false;
         $scope.valb = true;

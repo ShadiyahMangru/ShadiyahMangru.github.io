@@ -6,19 +6,19 @@ app.config(function($routeProvider) {
         templateUrl : "html/main.html",
         controller : "mainCtrl",
     })
-    .when("/CodeWord", {
+    .when("/HockeyLexicon", {
         templateUrl : "html/CodeWord.html",
         controller : "CodeWordCtrl"
     })
-    .when("/BaseChange", {
+    .when("/StatsCalc", {
         templateUrl : "html/BaseChange.html",
         controller : "BaseChangeCtrl"
     })
-    .when("/SumPuzzles", {
+    .when("/UnlockTrophies", {
         templateUrl : "html/SumPuzzles.html",
         controller : "SumPuzzlesCtrl"
     })
-    .when("/NumberGuess", {
+    .when("/JerseyQuiz", {
         templateUrl : "html/NumberGuess.html",
         controller : "NumberGuessCtrl"
     })
@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
         templateUrl : "html/Memory.html",
         controller : "MemoryCtrl"
     })
-    .when("/War", {
+    .when("/PointsFaceoff", {
         templateUrl : "html/War.html",
         controller : "WarCtrl"
     });
