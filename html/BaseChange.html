@@ -2,7 +2,7 @@
     <h3>{{contentsHeader}}</h3>
     <br>
 
-<button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#ConvertModal'>Review Examples</button>    
+<button type='button' id='CP' class='btn btn-info' data-toggle='modal' data-target='#ConvertModal'>Relevant Formulae</button>    
     
 <!--html for Examples MODAL--> 
 <div id="RModal">
@@ -10,11 +10,15 @@
     <div class='modal-dialog' role='document'><br><br>
         <div class='modal-content'>
             <div class='modal-header' style='background-color: #1cadc2; color: white'>
-                <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>Examples</h3>
+                <h3 class='modal-title' id='exampleModalLabel' style='color: white; text-align: left'>Relevant Formulae</h3>
             </div>
             <div class='modal-body'>
             <h4 style="text-align: left; color: dimgray; line-height: 140%">
-            examples go here
+            <ol>
+                <li>shooting percentage = (goals / shots) * 100</li>
+                <li>goals = (shooting percentage / 100) * shots</li>
+                <li>shots = (100*goals) / shooting percentage</li>
+            </ol>
             </h4>
             </div>
                 <div class='modal-footer' style='background-color: white; border-top: 1px solid black;'>
@@ -27,7 +31,7 @@
 <!--end html for Examples MODAL-->  
     <br>
     <h3 ng-model="player">During the 2018 Stanley Cup Playoffs, {{player.name}} had {{player.shots}} shots, {{player.goals}} goals, and a {{player.shootingPercentage}} shooting percentage.<br><br>
-        Calculate {{player.name}}'s <span ng-model="missingVar">{{missingVar}}?</span></h3>
+        Calculate {{player.name}}'s <span ng-model="missingVar">{{missingVar}}:</span></h3>
     <input type='number' id="convert" class='form-control' ng-model="userEquiv" pattern="[0-9]+" ng-pattern-restrict value='' ng-keyup="$event.keyCode == 13 && submitNG();">
     <button class='btn btn-success' ng-click="isCorrect();" ng-disabled= "disableCorrect">Correct?</button>
     <h3 ng-model="feedback">{{feedback}}</h3>
