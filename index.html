@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="css/appStyle.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div class="row">
+        <div class="jumbotron text-center" id="banner" title="">
+            <h1>Effective Problem Solving</h1>
+        </div>
+    </div>
+        <h4 class="row text-right" id="developer">By Shadiyah Mangru<br><small>Software Engineer<br>Booz | Allen | Hamilton</small><br></h4> 
+<div class="row">
+    <div class="col-sm-2">
+        <div class="wrapper">
+            <nav id="sidebar">
+                <h3>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#/!">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#!HockeyLexicon">Mystery Word / Phrase</a>
+                    </li>
+                    <li>
+                        <a href="#!Stats">Stats Calculations</a>
+                    </li>
+                    <li>
+                        <a href="#!Trophies">Winning Combination</a>
+                    </li>
+                    <li>
+                        <a href="#!Jersey">Jersey Quiz</a>
+                    </li>
+                    <li>
+                        <a href="#!Memory">Memory</a>
+                    </li>
+                    <li>
+                        <a href="#!Points">Points Faceoff</a>
+                    </li>
+                </ul>
+                </h3>
+            </nav>
+            <br><br><br>
+        </div>    
+    </div>
+
+    <div id="subPageContent" ng-view class="col-sm-10"></div>
+</div>
+<br>
+<script src="controllers/app.js"></script>
+<script src="controllers/mainCtrl.js"></script> 
+<script src="controllers/HockeyLexicon.js"></script>
+<script src="controllers/Stats.js"></script>    
+<script src="controllers/Trophies.js"></script>
+<script src="controllers/Jersey.js"></script>
+<script src="controllers/Memory.js"></script>
+<script src="controllers/Points.js"></script>    
+</body>
+</html>
