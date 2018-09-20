@@ -12,10 +12,6 @@ hockeyLexicon.controller("HockeyLexiconCtrl", function ($scope) {
     $scope.feedback = "";
     
     $scope.disableSubmit = true;
-     
-function randArrayE(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-};
     
 function playGame(){
     var words = ["skate", "rink", "zamboni", "puck", "slapshot", "slashing", "hockey", "goalie", "shootout", "wraparound", "whistle", "linesman", "cage", "net", "roughing", "backhand", "boarding", "penalty", "faceoff", "goal", "crease", "offside", "icing", "forecheck", "misconduct", "holding", "hooking", "netminder", "captain", "coach", "overtime", "rebound", "save", "shutout", "jersey", "breakaway", "playoffs", "conference", "rookie", "defenseman", "National Hockey League", "trapezoid", "timeout", "crossbar", "interference", "period", "shorthanded", "embellishment", "bench", "intermission", "ice", "referee", "powerplay", "too many men on the ice", "delay of game", "sudden-death overtime", "period of the long change", "center ice", "defensive-zone faceoff", "call on the ice stands", "odd-man rush", "empty-net goal", "hat trick", "coach's challenge", "short-handed goal", "best of seven", "the five hole", "five-minute major", "blue line", "delayed offside", "extra attacker", "hand pass", "home-ice advantage", "net front presence", "penalty kill", "red line", "wraparound goal", "stick salute to the fans", "stanley cup", "the winter classic", "national anthem", "Hockey Hall of Fame"];

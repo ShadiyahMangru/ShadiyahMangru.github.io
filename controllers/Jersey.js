@@ -22,11 +22,7 @@ $scope.playerGuess;
 $scope.alreadyG = [];
 $scope.ngFeedback;
 $scope.disableSubmitG = false;
-$scope.player; 
-    
-function randArrayE(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-};      
+$scope.player;      
  
 $scope.loadDescrip = function(){
     $scope.player = randArrayE($scope.playerJerseyArray);

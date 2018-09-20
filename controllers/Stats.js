@@ -1,18 +1,7 @@
 var stats = angular.module("stats", []);
 stats.controller("StatsCtrl", function ($scope) {
     $scope.contentsHeader = "Fill-in the 2018 Stanley Cup Champions' missing stats.";
- 
-//function to generate a random integer between two values
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min)) + min; //max exclusive, min inclusive
-};     
-
-function randArrayE(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-};    
-    
+     
 function getGoals(shots, shootingP){
     var goals = (shootingP/100) * shots;
     goals = parseFloat(goals.toPrecision(4));
@@ -20,26 +9,28 @@ function getGoals(shots, shootingP){
 };
     
 function getShots(goals, shootingP){
-    var shots = (100*goals) / shootingP;
-    shots = parseFloat(shots.toPrecision(4));
-    return Math.ceil(shots);
+    if(shootingP===0){
+        return 0;
+    }
+    else{
+        var shots = (100*goals) / shootingP;
+        shots = parseFloat(shots.toPrecision(4));
+        return Math.ceil(shots);
+    }
 };
     
 function getShootingP(goals, shots){
-    //include error handling for if shots === 0
-    var shootingP = (goals / shots)*100;
-    shootingP = parseFloat(shootingP.toPrecision(4));
-    return shootingP;
+    if(shots===0){
+        return 0.000;
+    }
+    else{
+        var shootingP = (goals / shots)*100;
+        shootingP = parseFloat(shootingP.toPrecision(4));
+        return shootingP;
+    }
 };
 
-var kuznetsov = {name: "Evgeny Kuznetsov", goals: 12, shots: 89, shootingPercentage: 13.483}; 
-var ovechkin = {name: "Alex Ovechkin", goals: 15, shots: 99, shootingPercentage: 15.152}; 
-var backstrom = {name: "Nicklas Backstrom", goals: 5, shots: 36, shootingPercentage: 13.889}; 
-var oshie = {name: "T.J. Oshie", goals: 8, shots: 55, shootingPercentage: 14.545}; 
-var carlson = {name: "John Carlson", goals: 5, shots: 80, shootingPercentage: 6.250}; 
-var eller = {name: "Lars Eller", goals: 7, shots: 52, shootingPercentage: 13.462}; 
-
-$scope.playerArray = [kuznetsov, ovechkin, backstrom, oshie, carlson, eller];    
+$scope.playerArray = stats2018PlayoffsArray;   
 
 $scope.attempts = 0;
 $scope.correct = 0;

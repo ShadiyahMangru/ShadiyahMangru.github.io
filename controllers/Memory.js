@@ -16,24 +16,7 @@ memory.controller("MemoryCtrl", function ($scope) {
     var pic12 = {cardFront: "Images/memory.jpg", image: "Images/h6.jpg", "visibility": "visible"};
     $scope.picObjArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12]; 
     
-//shuffle image pairs
-$scope.shuffle = function (array) { //adapted from Fisher-Yates shuffle
-    let counter = array.length;
-    // While there are elements in the array
-    while (counter > 0) {
-        // Pick a random index
-        let index = Math.floor(Math.random() * counter);
-        // Decrease counter by 1
-        counter--;
-        // And swap the last element with it
-        let temp = array[counter];
-        array[counter] = array[index];
-        array[index] = temp;
-    }  
-    return array;
-};
-    
-$scope.picObjArray = $scope.shuffle($scope.picObjArray);
+$scope.picObjArray = shuffleImages($scope.picObjArray);
 $scope.matchArray = [];
 $scope.indexArray = [];
 $scope.tries = 0; 

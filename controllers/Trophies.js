@@ -229,7 +229,6 @@ $scope.solutionFeedback = function(sv, sc){
 $scope.winLoseMessage;     
     
 $scope.submitSolution = function(num) {
-    $scope.winLoseMessage = "";
     var solutionValid = true;
     var sumsCorrect = true;
     //check if 1, ..., num only used once per row
