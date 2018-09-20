@@ -1,0 +1,13 @@
+<span ng-controller="HockeyLexiconCtrl" class="container-fluid">
+    <h3>{{contentsHeader}}</h3>
+<br>
+    
+    <h4 ng-model="cwFormat">{{cwFormat}}</h4>
+    <h4 ng-model="aGuess"></h4>{{aGuess}}<br>
+    
+    <label><h4>Enter a letter:</h4></label> 
+    <input id="enterLetter" class='form-control' type='text' pattern="[a-zA-Z]+" ng-pattern-restrict value='' ng-model="guess" ng-keyup="$event.keyCode == 13 && CWSubmit();">
+    <button class='btn btn-success' ng-click="CWSubmit();" ng-disabled="disableSubmit">Submit</button><br><br>
+    <h4 ng-model="feedback">{{feedback}}</h4>
+<br>
+</span>

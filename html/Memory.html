@@ -1,0 +1,16 @@
+<span class="container-fluid" ng-controller="MemoryCtrl">
+    <h3>{{contentsHeader}}</h3>
+    <br>
+    <div class="row">
+    <div class="col-sm-2"><button class=" btn btn-success" ng-click="submit();">OK</button>
+    </div>
+    <h2 class="col-sm-6" ng-model="feedback" style="color: rebeccapurple; font-weight: 600; margin-top: -.1em">{{feedback}}</h2>
+    <h4 class="col-sm-4" ng-model="tries">Attempts: {{tries}}</h4>   
+    </div>
+    <br><br>
+    <div class="row">   
+    <span ng-repeat="pic in picObjArray track by $index" class="col">
+        <img ng-src="{{pic.cardFront}}" width="24%" ng-click="getElement(picObjArray[$index].image, $index)" ng-style="picObjArray[$index]">
+    </span>    
+    </div>    
+</span> 
