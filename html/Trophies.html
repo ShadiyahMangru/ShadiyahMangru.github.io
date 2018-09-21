@@ -43,12 +43,7 @@
         <h3 id="mySolution"><button ng-click="submitSolution(3)" class='btn btn-primary'>Unlock?</button></h3>
         </span>
         <h2 class="col-sm-5">
-        <button ng-style="EasyGBRow1[$index]" ng-click = "EasyGBRow1[$index].value = clickSq(EasyGBRow1[$index].value, 3)" ng-repeat="item in EasyGBRow1 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="EasyGBRow2[$index]" ng-click = "EasyGBRow2[$index].value = clickSq(EasyGBRow2[$index].value, 3)" ng-repeat="item in EasyGBRow2 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="EasyGBRow3[$index]" ng-click = "EasyGBRow3[$index].value = clickSq(EasyGBRow3[$index].value, 3)" ng-repeat="item in EasyGBRow3 track by $index">{{item.value}}</button>
-        <br>
+        <button ng-style="EasyGB[$index]" ng-click = "EasyGB[$index].value = clickSq(EasyGB[$index].value, 3)" ng-repeat="item in EasyGB track by $index" style="width: 32%">{{item.value}}</button>
         </h2>
         <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
         <img src={{trophyPic}} width="90%;" ng-show="w"></h3>
@@ -60,14 +55,7 @@
     <h3><button ng-click="submitSolution(4)" class='btn btn-primary'>Unlock?</button></h3>
     </span>
         <h2 class="col-sm-5">
-        <button ng-style="MGBRow1[$index]" ng-click = "MGBRow1[$index].value = clickSq(MGBRow1[$index].value, 4)" ng-repeat="item in MGBRow1 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="MGBRow2[$index]" ng-click = "MGBRow2[$index].value = clickSq(MGBRow2[$index].value, 4)" ng-repeat="item in MGBRow2 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="MGBRow3[$index]" ng-click = "MGBRow3[$index].value = clickSq(MGBRow3[$index].value, 4)" ng-repeat="item in MGBRow3 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="MGBRow4[$index]" ng-click = "MGBRow4[$index].value = clickSq(MGBRow4[$index].value, 4)" ng-repeat="item in MGBRow4 track by $index">{{item.value}}</button>
-        <br>
+       <button ng-style="MGB[$index]" ng-click = "MGB[$index].value = clickSq(MGB[$index].value, 4)" ng-repeat="item in MGB track by $index" style="width: 24%">{{item.value}}</button>
         </h2>
         <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
         <img src={{trophyPic}} width="90%;" ng-show="c"></h3>            
@@ -79,16 +67,7 @@
         <h3><button ng-click="submitSolution(5)" class='btn btn-primary'>Unlock?</button></h3>
         </span>
         <h2 class="col-sm-5">
-        <button ng-style="HGBRow1[$index]" ng-click = "HGBRow1[$index].value = clickSq(HGBRow1[$index].value, 5)" ng-repeat="item in HGBRow1 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="HGBRow2[$index]" ng-click = "HGBRow2[$index].value = clickSq(HGBRow2[$index].value, 5)" ng-repeat="item in HGBRow2 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="HGBRow3[$index]" ng-click = "HGBRow3[$index].value = clickSq(HGBRow3[$index].value, 5)" ng-repeat="item in HGBRow3 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="HGBRow4[$index]" ng-click = "HGBRow4[$index].value = clickSq(HGBRow4[$index].value, 5)" ng-repeat="item in HGBRow4 track by $index">{{item.value}}</button>
-        <br>
-        <button ng-style="HGBRow5[$index]" ng-click = "HGBRow5[$index].value = clickSq(HGBRow5[$index].value, 5)" ng-repeat="item in HGBRow5 track by $index">{{item.value}}</button>
-        <br>
+        <button ng-style="HGB[$index]" ng-click = "HGB[$index].value = clickSq(HGB[$index].value, 5)" ng-repeat="item in HGB track by $index" style="width: 19%">{{item.value}}</button>
         </h2>
         <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
         <img src={{trophyPic}} width="90%;" ng-show="s"></h3>  
