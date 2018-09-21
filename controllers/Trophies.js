@@ -57,11 +57,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
     var btn8 = {value : 1, "background-color" : "#041E42"};
     var btn9 = {value : 1, "background-color" : "#041E42"};
 
-    $scope.EasyGBRow1 = [btn1 ,btn2 ,btn3];
-    $scope.EasyGBRow2 = [btn4, btn5, btn6];
-    $scope.EasyGBRow3 = [btn7, btn8, btn9];
-
-    $scope.EasyGB = [$scope.EasyGBRow1, $scope.EasyGBRow2, $scope.EasyGBRow3];    
+    $scope.EasyGB = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9];    
         
     $scope.mediumGB1key = "KEY: The sum of the red squares is 15, the grey squares is 5, and the navy squares is 20.";
     
@@ -82,12 +78,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
     var Mbtn15 = {value : 1, "background-color" : "#041E42"};
     var Mbtn16 = {value : 1, "background-color" : "#041E42"};
     
-    $scope.MGBRow1 = [Mbtn1 ,Mbtn2 ,Mbtn3, Mbtn4];
-    $scope.MGBRow2 = [Mbtn5, Mbtn6, Mbtn7, Mbtn8];
-    $scope.MGBRow3 = [Mbtn9, Mbtn10, Mbtn11, Mbtn12];
-    $scope.MGBRow4 = [Mbtn13, Mbtn14, Mbtn15, Mbtn16];
-    
-    $scope.MGB = [$scope.MGBRow1, $scope.MGBRow2, $scope.MGBRow3, $scope.MGBRow4]; 
+    $scope.MGB = [Mbtn1 ,Mbtn2 ,Mbtn3, Mbtn4, Mbtn5, Mbtn6, Mbtn7, Mbtn8, Mbtn9, Mbtn10, Mbtn11, Mbtn12, Mbtn13, Mbtn14, Mbtn15, Mbtn16]; 
     //var rbpg = ["10", "27", "16", "22"];
     //var answerKeyC = ["rrbbb", "rrbbb", "pppbb", "pppgg", "ggggg"];
     
@@ -119,13 +110,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
     var Hbtn24 = {value : 1, "background-color" : "#041E42"};
     var Hbtn25 = {value : 1, "background-color" : "#041E42"};
     
-    $scope.HGBRow1 = [Hbtn1 ,Hbtn2 ,Hbtn3, Hbtn4, Hbtn5];
-    $scope.HGBRow2 = [Hbtn6, Hbtn7, Hbtn8, Hbtn9, Hbtn10];
-    $scope.HGBRow3 = [Hbtn11, Hbtn12, Hbtn13, Hbtn14, Hbtn15];
-    $scope.HGBRow4 = [Hbtn16, Hbtn17, Hbtn18, Hbtn19, Hbtn20];
-    $scope.HGBRow5 = [Hbtn21, Hbtn22, Hbtn23, Hbtn24, Hbtn25];
-    
-    $scope.HGB = [$scope.HGBRow1, $scope.HGBRow2, $scope.HGBRow3, $scope.HGBRow4, $scope.HGBRow5]; 
+    $scope.HGB = [Hbtn1 ,Hbtn2 ,Hbtn3, Hbtn4, Hbtn5, Hbtn6, Hbtn7, Hbtn8, Hbtn9, Hbtn10, Hbtn11, Hbtn12, Hbtn13, Hbtn14, Hbtn15, Hbtn16, Hbtn17, Hbtn18, Hbtn19, Hbtn20, Hbtn21, Hbtn22, Hbtn23, Hbtn24, Hbtn25];
     
     //var aSolution = ["13425", "42351", "25143", "51234", "34512"]; 
  
@@ -153,13 +138,15 @@ $scope.getRowsArray = function(num){
         gbArray = $scope.HGB;
     }
     var rowsArray = [];
-    for(var h=0; h<num; h++){
-        var row = "";
-        for(var i = 0; i<num; i++){
-            row += gbArray[h][i].value.toString();
+    var rowIndexInc = 0;
+        while(rowIndexInc<gbArray.length){
+            var row="";
+            for(var h=0; h<num; h++){
+                row+=gbArray[h+rowIndexInc].value.toString();
+            }
+            rowsArray.push(row);
+            rowIndexInc = rowIndexInc+num;
         }
-        rowsArray.push(row);
-    }
     return rowsArray;
 };    
     
@@ -175,12 +162,16 @@ var gbArray;
         gbArray = $scope.HGB;
     }
     var colsArray = [];
-    for(var h=0; h<num; h++){
+    var colIndexInc=0;
+    while(colIndexInc<num){
         var col = "";
-        for(var i = 0; i<num; i++){
-            col += gbArray[i][h].value.toString();
+        for(var i=0; i<gbArray.length; i++){
+            if(i%num===colIndexInc){
+                col +=gbArray[i].value.toString();
+            } 
         }
-        colsArray.push(col);
+        colsArray.push(col); 
+        colIndexInc++;   
     }
     return colsArray;
 };    
@@ -208,13 +199,11 @@ var solValid = true;
 $scope.getColorSum = function(num, colorSumVal, hexColor, gbArray){
     var colorSum = 0;
     var sumsCorrect = true;
-    for(var i = 0; i<num; i++){
-        for(var h=0; h<num; h++){
-            if(gbArray[h][i]["background-color"]===hexColor){
-                colorSum += gbArray[h][i].value;
+        for(var h=0; h<gbArray.length; h++){
+            if(gbArray[h]["background-color"]===hexColor){
+                colorSum += gbArray[h].value;
             }
         }
-    }
     if(colorSum !== colorSumVal){
         sumsCorrect = false;
     }
