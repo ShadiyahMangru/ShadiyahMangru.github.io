@@ -60,8 +60,7 @@ $scope.temp;
     //output: shooting percentage
     function getShootingP(goals, shots){
         if(shots===0){
-            var zero = 0.000
-            return zero.toPrecision(5);
+            return 0.000;
         }
         else{
             var shootingP = (goals / shots)*100;
