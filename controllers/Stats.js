@@ -70,7 +70,7 @@ $scope.temp;
     };    
     
 $scope.checkUserInput = function(){
-    $scope.attempts++;
+    //$scope.attempts++;
     var calcVal;
     var output;
         if($scope.unknownVar===0){
@@ -90,7 +90,7 @@ $scope.checkUserInput = function(){
         }
     if($scope.userInput===calcVal){
         $scope.feedback = "CORRECT!";
-        $scope.correct++;        
+        //$scope.correct++;        
     }
     else{
         $scope.feedback = "INCORRECT.  " + $scope.player.name + "'s actual" + output + " has been filled-in above.";    
