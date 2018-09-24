@@ -40,21 +40,21 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         $scope.gameBoard = [];
         if(trophyType==="wales"){
             $scope.num = 3;
-            $scope.key = "KEY: The sum of the grey squares is 8, and the navy squares is 10.";
+            $scope.key = "KEY: The sum of the " + walesSumKey[0].color + " squares is " + walesSumKey[0].sum + ", and the " + walesSumKey[1].color + " squares is " + walesSumKey[1].sum + ".";
             $scope.gameBoard = GBcolors(32, walesGBColors); 
             $scope.trophy = "Prince of Wales";
             $scope.trophyPic = "Images/walesTrophy.jpg";
         }
         else if(trophyType==="connSmythe"){
             $scope.num = 4;
-            $scope.key = "KEY: The sum of the red squares is 15, the grey squares is 5, and the navy squares is 20.";
+            $scope.key = "KEY: The sum of the " + connSmytheSumKey[0].color + " squares is " + connSmytheSumKey[0].sum + ", the " + connSmytheSumKey[1].color + " squares is " + connSmytheSumKey[1].sum + ", and the" + connSmytheSumKey[2].color + " squares is " + connSmytheSumKey[2].sum + ".";
             $scope.gameBoard = GBcolors(24, connSmytheGBColors);
             $scope.trophy = "Conn Smythe";
             $scope.trophyPic = "Images/connSmytheTrophy.jpg";
         }
         else if(trophyType==="stanleyCup"){
             $scope.num = 5;
-            $scope.key = "KEY: The sum of the red squares is 10, the blue squares is 27, the grey squares is 16, and the navy squares is 22.";
+            $scope.key = "KEY: The sum of the " + stanleyCupSumKey[0].color + " squares is " + stanleyCupSumKey[0].sum + ", the " + stanleyCupSumKey[1].color + " squares is " + stanleyCupSumKey[1].sum + ", the " + stanleyCupSumKey[2].color + " squares is " + stanleyCupSumKey[2].sum + ", and the " + stanleyCupSumKey[3].color + " squares is " + stanleyCupSumKey[3].sum + ".";
             $scope.gameBoard = GBcolors(19, stanleyCupGBColors);
             $scope.trophy = "Stanley Cup";
             $scope.trophyPic = "Images/stanleyCup.jpg";
@@ -72,7 +72,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         return btn;
     }; 
 
-    $scope.getRowsArray = function(){
+    function getRowsArray(){
         var rowsArray = [];
         var rowIndexInc = 0;
             while(rowIndexInc<$scope.gameBoard.length){
@@ -86,7 +86,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         return rowsArray;
     };    
 
-    $scope.getColsArray = function(){
+    function getColsArray(){
         var colsArray = [];
         var colIndexInc=0;
         while(colIndexInc<$scope.num){
@@ -102,7 +102,7 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         return colsArray;
     };    
     
-    $scope.noRepeats = function(a){
+    function noRepeats(a){
         var sv = true;
         for(var i=1; i<($scope.num+1); i++){
             if(a.indexOf(i)===-1){
@@ -112,17 +112,17 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         return sv;
     }
 
-    $scope.noRepsRowCol = function(anArray) {
+    function noRepsRowCol(anArray) {
     var solValid = true;
         for(var i=0; i<anArray.length; i++){
-           if($scope.noRepeats(anArray[i])===false){
+           if(noRepeats(anArray[i])===false){
                 solValid = false;
             } 
         }
         return solValid;
     }; 
-
-    $scope.getColorSum = function(colorSumVal, hexColor){
+    
+    function getColorSum(colorSumVal, hexColor){
         var colorSum = 0;
         var sumsCorrect = true;
             for(var h=0; h<$scope.gameBoard.length; h++){
@@ -135,8 +135,18 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         }
         return sumsCorrect;
     };    
-     
-    $scope.solutionFeedback = function(sv, sc){
+    
+    function checkColorSum(colorSumArray){
+        var sumsCorrect = true;
+        for(var i=0; i<colorSumArray.length; i++){
+            if(getColorSum(colorSumArray[i].sum, colorSumArray[i].hex)===false){
+                sumsCorrect = false;
+            }
+        }  
+        return sumsCorrect;
+    }
+    
+    function solutionFeedback(sv, sc){
         var winOrLose = "";
         if(sv === false && sc ===false){
             winOrLose = "No repeated numbers allowed per row/column.  Sums of color-coded regions do not match key.  Try again!";
@@ -159,38 +169,26 @@ trophies.controller("TrophiesCtrl", function ($scope) {
         var sumsCorrect = true;
         //check if 1, ..., num only used once per row
         var rowsArray = [];
-        rowsArray = $scope.getRowsArray(); 
-        solutionValid = $scope.noRepsRowCol(rowsArray);
+        rowsArray = getRowsArray(); 
+        solutionValid = noRepsRowCol(rowsArray);
 
         //check if 1,...,num only used once per column
         var colsArray = [];
-        colsArray = $scope.getColsArray();
-        solutionValid = $scope.noRepsRowCol(colsArray);
+        colsArray = getColsArray();
+        solutionValid = noRepsRowCol(colsArray);
 
         //check if each color-coded region sums to specified values
         if($scope.num===3){
-            for(var i=0; i<walesSumKey.length; i++){
-                if($scope.getColorSum(walesSumKey[i].sum, walesSumKey[i].hex)===false){
-                    sumsCorrect = false;
-                }
-            }     
+            sumsCorrect = checkColorSum(walesSumKey);    
         }
         else if($scope.num===4){
-            for(var i=0; i<connSmytheSumKey.length; i++){
-                if($scope.getColorSum(connSmytheSumKey[i].sum, connSmytheSumKey[i].hex)===false){
-                    sumsCorrect = false;
-                }
-            }  
+            sumsCorrect = checkColorSum(connSmytheSumKey);   
         }
         else if($scope.num===5){
-            for(var i=0; i<stanleyCupSumKey.length; i++){
-                if($scope.getColorSum(stanleyCupSumKey[i].sum, stanleyCupSumKey[i].hex)===false){
-                    sumsCorrect = false;
-                }
-            }          
+            sumsCorrect = checkColorSum(stanleyCupSumKey);          
         }
 
-        $scope.winLoseMessage = $scope.solutionFeedback(solutionValid, sumsCorrect);
+        $scope.winLoseMessage = solutionFeedback(solutionValid, sumsCorrect);
     };
     
 });
