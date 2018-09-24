@@ -30,47 +30,22 @@
 <!--end html for RULES MODAL-->  
 <div class="row" style="margin-left: 1em">
 <h4>
-<button type='button' id='CP' class='btn btn-secondary' data-toggle='modal' data-target='#RulesModal' style="margin-right: 3em">Rules</button> 
+<button type='button' class='btn btn-secondary' data-toggle='modal' data-target='#RulesModal' style="margin-right: 3em">Rules</button> 
     Select a trophy:
-    <button type="button" ng-click="isShowHide('va')" class="btn btn-primary">Prince of Wales Trophy</button><button type="button" ng-click="isShowHide('vb')" class="btn btn-primary">Conn Smythe Trophy</button><button type="button" ng-click="isShowHide('vc')" class="btn btn-primary">Stanley Cup</button>
+    <button type="button" ng-click="setGameBoard('wales')" class="btn btn-primary">Prince of Wales Trophy</button><button type="button" ng-click="setGameBoard('connSmythe')" class="btn btn-primary">Conn Smythe Trophy</button><button type="button" ng-click="setGameBoard('stanleyCup')" class="btn btn-primary">Stanley Cup</button>
 </h4>
 </div>
-
     <div id="aDiv" class="text-center" style="border-top: 1px solid black; width: 97%">
-    <span ng-show="vala" class="row" ng-model="trophyPic">
+    <span class="row" ng-model="trophyPic" ng-show="showGameBoard">
         <span class="col-sm-2">
-        <h4 id="key" ng-model="easyGB1key">{{easyGB1key}}</h4>
+        <h4 id="key" ng-model="key">{{key}}</h4>
         <h3 id="mySolution"><button ng-click="submitSolution(3)" class='btn btn-primary'>Unlock?</button></h3>
         </span>
         <h2 class="col-sm-5">
-        <button ng-style="EasyGB[$index]" ng-click = "EasyGB[$index].value = clickSq(EasyGB[$index].value, 3)" ng-repeat="item in EasyGB track by $index" style="width: 32%">{{item.value}}</button>
+        <button ng-style="gameBoard[$index]" ng-click = "gameBoard[$index].value = clickSq(gameBoard[$index].value)" ng-repeat="item in gameBoard track by $index">{{item.value}}</button>
         </h2>
         <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
-        <img src={{trophyPic}} width="90%;" ng-show="w"></h3>
-    </span>
-        
-    <span ng-hide="valb" class="row">
-    <span class="col-sm-2">
-    <h4 ng-model="mediumGB1key">{{mediumGB1key}}</h4>
-    <h3><button ng-click="submitSolution(4)" class='btn btn-primary'>Unlock?</button></h3>
-    </span>
-        <h2 class="col-sm-5">
-       <button ng-style="MGB[$index]" ng-click = "MGB[$index].value = clickSq(MGB[$index].value, 4)" ng-repeat="item in MGB track by $index" style="width: 24%">{{item.value}}</button>
-        </h2>
-        <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
-        <img src={{trophyPic}} width="90%;" ng-show="c"></h3>            
-    </span>
-            
-    <span ng-hide="valc" class="row">
-        <span class="col-sm-2">
-        <h4 ng-model="HGB1key">{{HGB1key}}</h4>
-        <h3><button ng-click="submitSolution(5)" class='btn btn-primary'>Unlock?</button></h3>
-        </span>
-        <h2 class="col-sm-5">
-        <button ng-style="HGB[$index]" ng-click = "HGB[$index].value = clickSq(HGB[$index].value, 5)" ng-repeat="item in HGB track by $index" style="width: 19%">{{item.value}}</button>
-        </h2>
-        <h3 class="col-sm-5 text-left" ng-model="winLoseMessage"><u>Feedback</u>: {{winLoseMessage}}<br><br>
-        <img src={{trophyPic}} width="90%;" ng-show="s"></h3>  
+        <img src={{trophyPic}} width="90%;" ng-show="showTrophy"></h3>
     </span>
     </div>
 </div>
